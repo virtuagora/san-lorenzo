@@ -57,7 +57,7 @@
     "cross-env": "^5.2.0",
     "facebook-sdk-promise": "^1.2.1",
     "laravel-mix": "^4.0.15",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.13",
     "vue-avatar": "^2.1.6",
     "vue-carousel": "^0.6.14",
     "vue-chartjs": "^3.4.0",
