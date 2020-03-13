@@ -1,9 +1,9 @@
-# san-lorenzo
+![alt text](/docs/header.png "Logo Virtuagora")
+
+# Presupuesto Participativo de San Lorenzo
+Transparentando procesos de presupuesto participación.
 
 *By [Virtuágora](https://virtuagora.org). With the collaboration of [Democracia en Red](https://democraciaenred.org) & SantaLab (Laboratorio de participación ciudadana de Santa Fe)*
-
-# Nice budget
-Transparentando procesos de presupuesto participación.
 
 ## Acerca de
 (Mas información proximamente)
