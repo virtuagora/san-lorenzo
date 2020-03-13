@@ -1,0 +1,259 @@
+{% set show_navbar = true %}
+{% set show_footer = true %}
+{# set body_class = '' #}
+
+{% block scriptshead %}
+  <script>
+    var shareOnFacebook = function () {
+      FB.ui({
+        method: 'share',
+        mobile_iframe: true,
+        href: 'https://pp.sanlorenzo.gob.ar/',
+        hashtag: '#PPSanLorenzo',
+        quote: '¡Conocé, Compartí, Votá! Más de 75 proyectos institucionales y comunitarios están participando del Presupuesto Participativo de San Lorenzo. ¡Participá hoy conocíendolos, compartíendolos, y sobre todo, dandoles tú apoyo con tú voto!',
+        display: 'popup'
+      }, function (response) {});
+    }
+
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: '367317793807869', cookie: true, // This is important, it's not enabled by default
+        version: 'v3.1'
+      });
+    };
+
+    (function (d, s, id) {
+      var js,
+        fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {
+        return;
+      }
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+{% endblock %}
+
+{% extends 'master.twig' %}
+
+{% block body %}
+  <section class="hero is-primary is-medium indexBg">
+    <div class="hero-body has-text-centered">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-8 is-offset-2">
+            <img src="{{asset('img/pp-logo-horizontal-white.svg')}}" alt="Volver al inicio" class="image is-centered logo-pp">
+            {% if vote_available() %}
+              <a href="{{ subject.id is not null ? citizen() is not null and citizen().voted == false ? path_for('showVoting') : path_for('showCatalogo') : path_for('showLogin')}}">
+                <countdown-closing date="{{options().deadline}}"></countdown-closing>
+              </a>
+              <p class="title is-3 shadow-text is-marginless">¡Conocé, compartí y votá los proyectos!</p>
+              <p class="is-size-6 shadow-text">Más de 75 proyectos institucionales y comunitarios están participando este año y necesitan de tu apoyo.
+                {% if subject.id is null %}
+                  <br>
+                  <b>¡Registrate y participá hoy!</b>
+                {% endif %}
+              </p>
+              {% if (vote_available()and subject.id is null) 
+                or(vote_available()and subject.id and citizen()is not null and citizen().voted == false) %}
+                <br>
+                <a href="{{ citizen() is not null and citizen().voted == false ? path_for('showVoting') : path_for('showLogin')}}" class="button is-rounded is-medium is-white is-outlined">
+                  <i class="fas {{subject.id is null ? 'fa-sign-in-alt' : 'fa-paper-plane' }} fa-fw "></i>&nbsp;{{subject.id is null ? 'Entrá y votá' : '¡Vota HOY!' }}</a>
+              {% endif %}
+            {% else %}
+              {% if vote_ended() %}
+              {# <span class="tag is-large is-rounded is-white has-text-primary">¡La votación ha finalizado!&nbsp;<i class="far fa-grin-alt"></i></span> #}
+              {# <br> #}
+              {# <br> #}
+              <p class="title is-3 shadow-text">¡Gracias por haber participado!</p>
+              {# <p class="is-size-6 shadow-text">Muy pronto publicaremos los resultados<br>¡Seguinos en las redes sociales para enterarte primero!</p> #}
+              <a href="{{path_for('showSeleccionados')}}" class="button is-rounded is-medium is-warning"><i class="fa fa-medal fa-fw fa-lg"></i>&nbsp;¡Conocé los proyectos ganadores!</a>
+              <br>
+              {# <p class="">
+                <a href="https://www.facebook.com/PresupuestoParticipativoSanLorenzo/">
+                  <i class="fab fa-facebook fa-2x fa-fw"></i>
+                </a>
+                <a href="https://twitter.com/PrensaSL">
+                  <i class="fab fa-twitter fa-2x fa-fw"></i>
+                </a>
+                <a href="https://www.instagram.com/PrensaSL/">
+                  <i class="fab fa-instagram fa-2x fa-fw"></i>
+                </a>
+              </p> #}
+              {% else %}
+              <p class="title is-3 shadow-text is-marginless">¡Conocé, compartí y votá los proyectos!</p>
+              <p class="is-size-6 shadow-text">Más de 75 proyectos institucionales y comunitarios están participando este año y necesitan de tú apoyo.<br>
+                <b>¡Registrate y conocelos!</b>
+              </p>
+              <br>
+              <countdown-to date="{{options().launch}}"></countdown-to>
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+        {# <a href="#" class="button is-white is-large">¡Votá!</a> #}
+      </div>
+    </div>
+  </section>
+  
+  {% if not vote_ended() %}
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-6 has-text-centered-touch has-text-left-desktop">
+          <h1 class="title is-2 has-text-primary">¡Participá de la votación ONLINE!</h1>
+          <h1 class="subtitle is-3">Podés votar hasta 3 proyectos de cada tipo</h1>
+          <div class="buttons is-hidden-touch">
+            {% if (vote_available()and subject.id is null) 
+              or(vote_available()and subject.id and citizen()is not null and citizen().voted == false) %}
+              <a href="{{ citizen() is not null and citizen().voted == false ? path_for('showVoting') : path_for('showLogin')}}" class="button is-primary is-rounded is-medium">
+                <i class="fas fa-paper-plane fa"></i>&nbsp;¡Votá!</a>
+            {% endif %}
+            <a href="{{path_for('showCatalogo')}}" class="button is-primary is-rounded is-outlined is-medium">
+              <i class="fas fa-book-reader fa-fw"></i>&nbsp;¡Conocé los proyectos!</a>
+          </div>
+          <div class="buttons is-centered is-hidden-desktop">
+            {% if vote_available() %}
+              <a href="{{ subject.id ? path_for('showVoting') : path_for('showLogin')}}" class="button is-primary is-rounded is-medium">
+                <i class="fas fa-paper-plane fa"></i>&nbsp;¡Votá!</a>
+            {% endif %}
+            <a href="{{path_for('showCatalogo')}}" class="button is-primary is-rounded is-outlined is-medium">
+              <i class="fas fa-book-reader fa-fw"></i>&nbsp;¡Conocé los proyectos!</a>
+          </div>
+        </div>
+        <div class="column">
+          <div class="columns is-mobile">
+            <div class="column has-text-centered">
+            <a href="{{path_for('showCatalogo')}}">
+              <img src="{{asset('img/icons/mark-institucional-round.svg')}}" class="image is-96x96 is-centered" alt="">
+              <h2 class="subtitle is-3 color-institucional">Institucionales</h2>
+            </a>
+            </div>
+            <div class="column has-text-centered">
+            <a href="{{path_for('showCatalogo')}}">
+              <img src="{{asset('img/icons/mark-comunitario-round.svg')}}" class="image is-96x96 is-centered" alt="">
+              <h2 class="subtitle is-3 color-comunitario">Comunitarios</h2>
+            </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <hr class="is-marginless">
+  <div class="hero is-light">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-narrow">
+            <img src="/assets/img/urna-color.svg" alt="Imagen de urna">
+          </div>
+          <div class="column">
+            <h1 class="title is-2 has-text-primary">¿Preferís acercarte a votar?</h1>
+            <h1 class="subtitle is-4">Nuestra urna va a estar recorriendo los distritos de San Lorenzo</h1>
+            <div class="message is-link" style="display: inline-flex">
+              <div class="message-body" style="padding: 8px 10px">
+                <i class="fas fa-umbrella fa-fw"></i>&nbsp;{{options()['rain-message']}}
+              </div>
+            </div>
+            <h1 class="subtitle is-4 has-text-link is-spaced">¡Conocé las fechas y los horarios para acercarte!</h1>
+          </div>
+          <div class="column is-5">
+            <calendar-index :calendar="{{options().calendar}}" :show-more="true">
+              {% include 'loading.twig' %}
+            </calendar-index>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr class="is-marginless">
+  <section class="section">
+    <div class="container">
+      <h1 class="title is-2 is-size-3-touch has-text-centered has-text-primary">Algunos de los proyectos que participan...</h1>
+      <h1 class="subtitle is-5 has-text-centered">Hay proyectos de los distritos NORTE, CENTRO Y SUR. ¡Conocelos a todos!</h1>
+      <br>
+      <exhibit url="{{path_for('retrieveProject')}}">
+        {% include 'loading.twig' %}
+      </exhibit>
+    </div>
+  </section>
+  {% else %}
+  {{show_results()}}
+  {% if show_results() %}
+  <section class="section">
+    <div class="container">
+      <h1 class="title is-2 is-size-3-touch has-text-centered has-text-primary">Algunos de los proyectos ganadores</h1>
+      <h1 class="subtitle is-5 has-text-centered">¡Conocelos a todos!</h1>
+      <br>
+      <exhibit url="{{path_for('retrieveProject')}}" :selected="true" :show-winners="true">
+        {% include 'loading.twig' %}
+      </exhibit>
+    </div>
+  </section>
+  {% else %}
+   <hr class="is-marginless">
+  <section class="section">
+    <div class="container">
+      <h1 class="title is-2 is-size-3-touch has-text-centered has-text-primary">Algunos de los proyectos que participan...</h1>
+      <h1 class="subtitle is-5 has-text-centered">Hay proyectos de los distritos NORTE, CENTRO Y SUR. ¡Conocelos a todos!</h1>
+      <br>
+      <exhibit url="{{path_for('retrieveProject')}}" :show-winners="false">
+        {% include 'loading.twig' %}
+      </exhibit>
+    </div>
+  </section>
+  {% endif %}
+  {% endif %}
+  <div class="hero is-primary indexBg">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <div class="columns">
+          {% if (vote_available()and subject.id is null) 
+            or(vote_available()and subject.id and citizen()is not null and citizen().voted == false) %}
+            <div class="column">
+              <h1 class="title is-3 is-size-4-touch shadow-text">¡No pierdas tú oportunidad de ser parte del Presupuesto Participativo!</h1>
+              {% if citizen()is not null and citizen().voted == false %}
+                <a href="{{path_for('showVoting')}}" class="button is-white is-outlined is-large is-rounded">
+                  <i class="fas fa-paper-plane fa-fw"></i>¡Votá&nbsp;<span class="is-800">HOY</span>!</a>
+              {% endif %}
+              {% if subject.id is null %}
+                <a href="{{path_for('showLogin')}}" class="button is-white is-outlined is-large is-rounded">
+                  <i class="fas fa-sign-in-alt fa-fw"></i>¡Entrá y votá!</a>
+              {% endif %}
+              {# <br>
+                <a href="{{ subject.id ? path_for('showVoting') : path_for('showLogin')}}" class="button is-rounded is-medium is-white is-outlined">
+                  <i class="fas {{subject.id is null ? 'fa-sign-in-alt' : 'fa-paper-plane' }} fa-fw "></i>&nbsp;{{subject.id is null ? 'Entrá y votá' : '¡Vota HOY!' }}</a> #}
+            </div>
+          {% endif %}
+          {% if (vote_available()and subject.id is null) 
+            or(vote_available()and subject.id and citizen()is not null and citizen().voted == false) %}
+            <div class="column is-3">
+            {% else %}
+              <div class="column">
+              {% endif %}
+              <hr class="is-hidden-desktop">
+              <h1 class="title is-3 is-size-4-touch shadow-text">¡Corré la voz!</h1>
+              <h1 class="subtitle is-5 is-size-6-touch shadow-text">Compartilo en tus redes, ¡Los proyectos necesitan de tu apoyo!</h1>
+              <p class="">
+                <a href="javascript:shareOnFacebook()">
+                  <i class="fab fa-facebook fa-2x fa-fw"></i>
+                </a>
+                <a href="https://twitter.com/intent/tweet?text=¡Más de 75 proyectos están participando del Presupuesto Participativo de San Lorenzo! ¡Conocé, compartí, y votá!&url=https://pp.sanlorenzo.gob.ar/">
+                  <i class="fab fa-twitter fa-2x fa-fw"></i>
+                </a>
+                <a href="whatsapp://send?text=¡Más de 75 proyectos están participando del Presupuesto Participativo de San Lorenzo! ¡Conocé, compartí, y votá! #PPSanLorenzo https://pp.sanlorenzo.gob.ar/">
+                  <i class="fab fa-whatsapp fa-2x fa-fw"></i>
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include 'sl/base/collab.twig' %}
+  {% endblock %}
+
+  {% block javascripts %}{% endblock %}

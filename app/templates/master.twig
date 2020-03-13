@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      {% block title %}Inicio{% endblock %}
+      - Presupuesto Participativo - Municipio de San Lorenzo
+    </title>
+    {% block opengraph %}
+      <!-- Social Media Metatags! -->
+      <meta property="fb:app_id" content="367317793807869"/>
+      <meta property="og:type" content="article"/>
+      <meta name="description" content="¡Proponé, Compartí, Votá! Contribuí al presupuesto participativo del Municipio de San Lorenzo con tus propuestas institucionales y comunitarias. Ademas, ¡Participá, compartílos, y sobre todo, dandoles tú voto!">
+      <meta property="og:title" content="Presupuesto Participativo de San Lorenzo ¡Proponé, Compartí, Votá!">
+      <meta property="og:description" content="Contribuí al presupuesto participativo del Municipio de San Lorenzo con tus propuestas institucionales y comunitarias. Ademas, ¡Participá, compartílos, y sobre todo, dandoles tú voto!">
+      <meta property="og:image" content="/assets/img/sharer.jpg">
+      <meta property="og:url" content="https://pp.sanlorenzo.gob.ar/">
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:title" content="Presupuesto Participativo de San Lorenzo ¡Proponé, Compartí, Votá!">
+      <meta name="twitter:site" content="@prensasl">
+      <meta name="twitter:creator" content="@prensasl">
+      <meta name="twitter:description" content="Contribuí al presupuesto participativo del Municipio de San Lorenzo con tus propuestas institucionales y comunitarias. Ademas, ¡Participá, compartílos, y sobre todo, dandoles tú voto!">
+      <meta name="twitter:image" content="https://pp.sanlorenzo.gob.ar/assets/img/sharer.jpg">
+    {% endblock %}
+    <link rel="icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('favicon-16x16.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{asset('favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{asset('favicon-96x96.png')}}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block stylesheets %}{% endblock %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/virtuagora.css') }}">
+<link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" rel="stylesheet">
+    <!--[if lt IE 9]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73061346-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-73061346-14');
+    </script>
+    {% block scriptshead %}{% endblock %}
+  </head>
+  <body {% if body_class is defined %} class='{{ body_class }}' {% endif %}>
+    <div id="vue" class="content-master">
+      {% if show_navbar == true %}
+        {% include 'sl/base/navbar.twig' %}
+      {% endif %}
+      {% block body %}{% endblock %}
+    </div>
+    {% if show_footer == true %}
+      {% include 'sl/base/footer.twig'%}
+    {% endif %}
+    <script type="text/javascript" src="{{asset('js/manifest.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/vendor.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/virtuagora.js')}}?updated=20190827"></script>
+    {% block javascripts %}{% endblock %}
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+
+        // Get all "navbar-burger" elements
+        var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+        // Check if there are any navbar burgers
+        if ($navbarBurgers.length > 0) {
+
+          // Add a click event on each of them
+          $navbarBurgers.forEach(function ($el) {
+            $el.addEventListener('click', function () {
+
+              // Get the target from the "data-target" attribute
+              var target = $el.dataset.target;
+              var $target = document.getElementById(target);
+
+              // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+              $el.classList.toggle('is-active');
+              $target.classList.toggle('is-active');
+
+            });
+          });
+        }
+
+      });
+    </script>
+  </body>
+</html>

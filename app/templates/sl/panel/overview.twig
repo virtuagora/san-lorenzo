@@ -1,0 +1,22 @@
+{% extends 'sl/panel/master.twig' %}
+
+{% block section %}
+<h1 class="title is-1 is-size-3-touch has-text-primary">¡Hola {{subject.name|split(' ')[0]}}!</h1>
+<h1 class="subtitle is-3 is-size-5-touch">Este es tú panel de control <i class="far fa-grin-wink animated bounceIn delay-1s"></i></h1>
+<p><i class="fas fa-arrow-left fa-fw"></i>&nbsp;Comenzá haciendo clic en alguna función del menú</p>
+{% if 'verified' in subject.roles %}
+  {% if is_state('upload-proposals') and proposals_available() %}
+    <hr>
+    <a href="{{path_for('showUserPanelCreateProject')}}">
+      <div class="notification is-link">
+      <figure class="image is-48x48 has-text-right is-pulled-right">
+      <i class="fas fa-chevron-circle-right fa-fw fa-2x animated bounceIn delay-2s"></i>
+      </figure>
+      <h1 class="title is-5 is-marginless">Participá subiendo tu propuesta!&nbsp;<i class="fas fa-star"></i></h1>
+        <p>No te olvides! Tenes tiempo hasta el {{options()['proposals-deadline']|date('d/m/Y')}} para subir tu propuesta!</p>
+      </div>
+    </a>
+  {% endif %}
+{% endif %}
+
+{% endblock %}

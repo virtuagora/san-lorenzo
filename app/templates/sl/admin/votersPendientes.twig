@@ -1,0 +1,77 @@
+{% extends 'sl/admin/master.twig' %}
+
+{% set percConversion = (votantesRegistradosVotaron / cantCiudadanosUsuarios) * 100 %}
+
+{% block section %}
+  <h1 class="title is-1">Votantes pendientes
+  </h1>
+  <h2 class="subtitle is-4">
+    Para enviar un mail invitando al usuario que se registro y que aún no votó de que recuerde votar
+  </h2>
+  <hr>
+ <div class="message is-dark">
+    <div class="message-body">
+      <nav class="level">
+        <div class="level-item">
+          <h1 class="title is-3">Conversión</h1>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Ciudadanos registrados
+            </p>
+            <p class="title">{{cantCiudadanosUsuarios}}</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">ya votaron</p>
+            <p class="title">{{votantesRegistradosVotaron}}</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">faltan</p>
+            <p class="title">{{cantCiudadanosUsuarios - votantesRegistradosVotaron}}</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Conversion</p>
+            <p class="title">{{percConversion|number_format(2,'.',',')}}%</p>
+          </div>
+        </div>
+        <div class="level-item">
+          <h1 class="title is-1">
+            {% if percConversion > 0 and percConversion <= 10 %}
+              <i class="far fa-sad-cry"></i>
+            {% elseif percConversion > 10 and percConversion <= 20 %}
+              <i class="far fa-frown"></i>
+            {% elseif percConversion > 20 and percConversion <= 35 %}
+              <i class="far fa-frown-open "></i>
+            {% elseif percConversion > 35 and percConversion <= 50 %}
+              <i class="far fa-meh-blank "></i>
+            {% elseif percConversion > 50 and percConversion <= 65 %}
+              <i class="far fa-smile"></i>
+            {% elseif percConversion > 65 and percConversion <= 75 %}
+              <i class="far fa-laugh-wink"></i>
+            {% elseif percConversion > 75 and percConversion <= 85 %}
+              <i class="far fa-grin-tongue-squint"></i>
+            {% elseif percConversion > 85 and percConversion <= 95 %}
+              <i class="far fa-grin-squint-tears"></i>
+            {% elseif percConversion > 95 %}
+              <i class="far fa-kiss-wink-heart"></i>
+            {% endif %}
+          </h1>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="message">
+  <div class="message-body">
+  Si desea, puede volver a mandarle un email al usuario pidiendo que haga su voto haciendo clic en el botón <i class="fas fa-paper-plane has-text-primary"></i>&nbsp;<br>(El envio tiene un "cooldown" de <i class="far fa-clock"></i> 15 minutos por usuario, para evitar que caiga en SPAM)
+  </div>
+  </div>
+  <pending-voter-sender url="{{path_for('getPendingVoters')}}" post="{{path_for('runSendPendingVoter')}}">
+  {% include 'loading.twig' %}  
+  </pending-voter-sender>
+{% endblock %}

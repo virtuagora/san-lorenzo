@@ -1,0 +1,63 @@
+{% set show_footer = true %}
+{% set show_navbar = true %}
+{% set enableDownload = ( is_state('results') ) ? 'true' : 'false'  %}
+
+{% block title %}
+  Consultas y preguntas frecuentes
+{% endblock %}
+
+{% extends 'master.twig' %}
+
+{% block body %}
+  <div class="hero is-primary indexBg">
+    <div class="hero-body has-text-centered">
+      <div class="container">
+        <h1 class="title is-2">
+          <i class="fas fa-medal fa-lg fa-fw"></i>
+        </h1>
+        <h1 class="title is-2">Presupuesto Participativo Joven</h1>
+        <h1 class="subtitle is-5">Conocé los proyectos ganadores</h1>
+      </div>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+    <div class="columns is-centered">
+    <div class="column is-6">
+    <div class="content">
+    <p>
+      <img src="{{asset('img/ppj-color.svg')}}" class="image is-centered" style="width:300px" alt="">
+    </p>
+    <p>El día jueves 15 de Agosto en el SUM del Parador Turístico de nuestra ciudad, se llevó a cabo el escrutinio definitivo del proceso de votación del Presupuesto Participativo Joven 2019 .</p>
+    <p>Estuvieron presentes alumnos de la Escuela de Enseñanza Técnica Nº 672, quienes junto al Equipo Técnico de PP dependiente de la Secretaría de Coordinación General llevaron adelante el recuento de los votos.</p>
+    <p>A las 10:00 horas se dio inicio al escrutinio, el cual arrojó los siguientes resultados según el orden de votos recibidos y de acuerdo al monto de asignación presupuestaria para el año 2019:</p>
+    <table class="table is-fullwidth">
+    <thead>
+    <tr>
+    <th>Nombre del Proyecto</th>
+    <th width="100" class="has-text-centered">Monto ($)</th>
+    <th width="100" class="has-text-centered">Cantidad de votos</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><b>14) "Comunidad animal. Fortalecer el Refugio de animales de la ciudad"</b></td>
+    <td class="has-text-centered">148.600</td>
+    <td class="has-text-centered">533 (43%)</td>
+    </tr>
+    <tr>
+    <td><b>15) "Fulbito para todxs"</b></td>
+    <td class="has-text-centered">179.200</td>
+    <td class="has-text-centered">338 (28%)</td>
+    </tr>
+    </tbody>
+    </table>
+    <p>Siendo el monto disponible para esta edición $ 333.450, los proyectos elegidos suman un total de <b>$ 327.800</b>.  Asimismo se contabilizaron un total de 1217 jóvenes que participaron en esta edición.</p>
+    </div>
+    </div>
+    </div>
+    </div>
+  </section>
+  {% include 'sl/base/collab.twig' %}
+
+{% endblock %}

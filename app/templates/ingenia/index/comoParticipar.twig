@@ -1,0 +1,56 @@
+{# set show_footer = true #}
+{% set show_navbar = false %}
+{# set body_class = '' #}
+
+{% extends 'master.twig' %}
+
+{% block title %}
+  Como participar
+{% endblock %}
+
+{% block body %}
+  {% include "ingenia/index/header.twig" %}
+  <div class="container">
+    <section class="section">
+      <div class="columns">
+        <div class="column is-8 is-offset-2">
+          <div class="content is-large">
+          <h1 class="title is-1 has-text-black">
+            <b>¿Como participar?</b>
+          </h1>
+            <p>
+              Las y los jóvenes que deseen participar deberán registrarse en el portal de Ingenia+Virtuagora y allí el/la quien sea responsable del grupo/equipo deberá conformar el equipo y cargar el proyecto invitando al resto de los integrantes a unirse al mismo.
+            </p>
+            <p>
+              Para presentar un proyecto se deberán seguir los pasos que indicando la pagina completando un formulario estandarizado donde los grupos de jóvenes detallan en qué consiste el proyecto que pretenden desarrollar, describiendo objetivos, actividades, cronograma y presupuesto.
+            </p>
+            <div class="columns">
+              <div class="column">
+                <div class="box">
+                  <img src="{{asset('img/screen1.png')}}" class="image" style="margin: 0 auto;">
+                </div>
+              </div>
+              <div class="column">
+                <div class="box">
+                  <img src="{{asset('img/screen2.png')}}" class="image" style="margin: 0 auto;">
+                </div>
+              </div>
+            </div>
+            <p>
+              El formulario puede ser editado y enriquecido con los aportes ciudadanos hasta el día de cierre donde el proyecto quedará presentado definitivamente y ya no podrá ser modificado.
+            </p>
+            <p>
+              Cumplidos los plazos de presentación, se realizará la selección de los proyectos y a los seleccionados se les asignara el monto estimulo para la realización de la iniciativa.
+            </p>
+          </div>
+          <br>
+          <br>
+          <img src="{{asset('img/slogan3-dark.svg')}}" class="image is-hidden-touch" style="height: 100px; margin: 0 auto;">
+          <img src="{{asset('img/slogan4-dark.svg')}}" class="image is-hidden-desktop" style="width: 250px; margin: 0 auto;">
+          <br>
+          <br>
+        </div>
+      </div>
+    </section>
+  </div>
+{% endblock %}

@@ -1,0 +1,89 @@
+{% if subject.id is null %}
+ <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-6 has-text-centered-touch has-text-left-desktop">
+          <h1 class="title is-3 has-text-primary">¡Subí tu propuesta de forma ONLINE!</h1>
+          <h1 class="subtitle is-5">Tu propuesta puede quedar seleccionada para participar en la votación del Presupuesto Participativo del 2019</h1>
+          {% if proposals_available() %}
+					<div class="buttons ">
+              <a href="/login" class="button is-primary is-medium is-outlined is-rounded"><i class="fas fa-plus-square fa-fw fa-lg"></i>&nbsp;Subí tu propuesta</a>
+          </div>
+					{% else %}
+					<h1 class="subtitle is-6"><b>¡El formulario ha cerrado!</b><br>
+					<a href="/catalogo"><u>¡Conocé todas las propuestas en el cátalogo!</u></a></h1>
+					<h1 class="subtitle is-6">Múy pronto conocerás las propuestas factibles que serán parte de la votación que comienza el {{options()['vote-launch']|date("d/m/Y")}}</h1>
+					{% endif %}
+        </div>
+        <div class="column">
+          <div class="columns is-mobile">
+            <div class="column has-text-centered">
+              <img src="{{asset('img/icons/mark-institucional-round.svg')}}" class="image is-96x96 is-centered" alt="">
+              <h2 class="subtitle is-4 color-institucional">Propuestas<br><b>Institucionales</b></h2>
+            </div>
+            <div class="column has-text-centered">
+              <img src="{{asset('img/icons/mark-comunitario-round.svg')}}" class="image is-96x96 is-centered" alt="">
+              <h2 class="subtitle is-4 color-comunitario">Propuestas<br><b>Comunitarias</b></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% else %}
+	{% if is_state('upload-proposals') and 'verified' in subject.roles %}
+	<section class="section">
+		<div class="container">
+			<h1 class="title is-3 is-size-4-touch has-text-primary"><i class="fas fa-sticky-note"></i>&nbsp;Mis propuestas subidas</h1>
+			<h1 class="subtitle is-4 is-size-5-touch">Aquí están tus propuestas subidas para el Presupuesto Participativo del 2019</h1>
+				<project-carousel url="{{path_for('retrieveProject')}}" :timeout="7400" author="{{subject.extra.user_id}}">
+						{% include 'loading.twig' %}
+				</project-carousel>
+				{% if proposals_available() %}
+				<br>
+				<a class="button is-primary is-rounded" href="{{path_for('showUserPanelCreateProject')}}">
+					<i class="fas fa-plus-square fa-fw fa-lg"></i>&nbsp;Subí tu propuesta</a>
+				{% endif %}
+		</div>
+	</section>
+	{% endif %}
+{% endif %}
+<hr class="is-marginless">
+<section class="section" id="norte">
+    <div class="container">
+        <h1 class="has-text-centered subtitle is-3">Propuestas para</h1>
+        <h1 class="has-text-centered title is-4 has-text-info">
+            <i class="fas fa-map-marker-alt fa-fw animated pulse infinite"></i>&nbsp;Distrito
+            <b>NORTE</b>
+        </h1>
+        <project-carousel url="{{path_for('retrieveProject')}}" :timeout="6200" district="1">
+            {% include 'loading.twig' %}
+        </project-carousel>
+    </div>
+</section>
+<hr class="is-marginless">
+<section class="section" id="centro">
+    <div class="container">
+         <h1 class="has-text-centered subtitle is-3">Propuestas para</h1>
+        <h1 class="has-text-centered title is-4 has-text-info">
+            <i class="fas fa-map-marker-alt fa-fw animated pulse infinite"></i>&nbsp;Distrito
+            <b>CENTRO</b>
+        </h1>
+        <project-carousel url="{{path_for('retrieveProject')}}" :timeout="6900" district="2">
+            {% include 'loading.twig' %}
+        </project-carousel>
+    </div>
+</section>
+<hr class="is-marginless">
+<section class="section" id="sur">
+    <div class="container">
+         <h1 class="has-text-centered subtitle is-3">Propuestas para</h1>
+        <h1 class="has-text-centered title is-4 has-text-info">
+            <i class="fas fa-map-marker-alt fa-fw animated pulse infinite"></i>&nbsp;Distrito
+            <b>SUR</b>
+        </h1>
+        <project-carousel url="{{path_for('retrieveProject')}}" :timeout="7400" district="3">
+            {% include 'loading.twig' %}
+        </project-carousel>
+    </div>
+</section>

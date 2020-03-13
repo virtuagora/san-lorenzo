@@ -1,0 +1,92 @@
+{% set show_footer = true %}
+{% set show_navbar = true %}
+{# set body_class = '' #}
+
+{% block title %}
+  Catálogo
+{% endblock %}
+
+{% extends 'master.twig' %}
+
+{% block body %}
+  <div class="hero is-primary indexBg">
+    <div class="hero-body has-text-centered">
+      <div class="container">
+        <img src="{{asset('img/icons/w-proyectos.svg')}}" class="image is-centered" style="width: 200px;" alt=""><br>
+        <h1 class="title is-3 shadow-text">Catálogo de propuestas y proyectos</h1>
+        <h1 class="subtitle is-5 shadow-text">¡Conocé las propuestas y proyectos que forman parte del Presupuesto Participativo!</h1>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container is-fluid">
+    {% if is_state('pre-upload-proposals') %}
+    <br>
+    <br>
+    <h1 class="title is-2 has-text-centered"><i class="far fa-surprise fa-lg"></i></h1>
+    <h1 class="title is-4 has-text-centered">¡Aún no ha comenzado el presupuesto participativo!</h1>
+    <h1 class="subtitle is-5 has-text-centered">A partir del {{options()['proposals-launch']|date("d/m/Y")}} se abren los formularios para crear propuestas</h1>
+    <br>
+    <br>
+    {% elseif is_state('upload-proposals') %}
+     <catalogo url="{{path_for('retrieveProject')}}"
+     :show-filter="false"
+     :force-proposals="false"
+     :hide-selected-filter="true"
+     :hide-feasible-filter="true"
+     :hide-unfeasible-filter="true"
+     >
+      {% include 'loading.twig' %}
+      </catalogo>
+    {% elseif is_state('pre-vote') %}
+    <catalogo url="{{path_for('retrieveProject')}}"
+     :show-filter="false"
+     :hide-selected-filter="true"
+     :hide-proposal-filter="true"
+     :hide-feasible-filter="false"
+     :hide-unfeasible-filter="false"
+     :show-feasibility="true"
+     >
+      {% include 'loading.twig' %}
+      </catalogo>
+    {% elseif is_state('vote') %}
+    <catalogo url="{{path_for('retrieveProject')}}"
+     :show-filter="true"
+     :hide-selected-filter="true"
+     :hide-proposal-filter="true"
+     :hide-feasible-filter="false"
+     :hide-unfeasible-filter="false"
+     :show-feasibility="true"
+     >
+    {% elseif is_state('pre-results') %}
+    <catalogo url="{{path_for('retrieveProject')}}"
+     :show-filter="true"
+     :hide-selected-filter="true"
+     :hide-proposal-filter="true"
+     :hide-feasible-filter="false"
+     :hide-unfeasible-filter="false"
+     :show-feasibility="true"
+     >
+    {% elseif is_state('results') %}
+    <catalogo url="{{path_for('retrieveProject')}}"
+     :show-filter="true"
+     :hide-selected-filter="false"
+     :hide-proposal-filter="true"
+     :hide-feasible-filter="false"
+     :hide-unfeasible-filter="false"
+     :show-feasibility="true"
+     :show-winners="true"
+     >
+    {% endif %}
+    {# {% elseif is_state('results') %}
+      <catalogo url="{{path_for('retrieveProject')}}" :show-filter="true">
+      {% include 'loading.twig' %}
+      </catalogo>
+    {% else %}
+      <catalogo url="{{path_for('retrieveProject')}}">
+        {% include 'loading.twig' %}
+      </catalogo>
+    {% endif %} #}
+      </div>
+    </div>
+{% endblock %}

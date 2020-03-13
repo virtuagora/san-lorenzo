@@ -1,0 +1,91 @@
+{# set show_footer = true #}
+{% set show_navbar = false %}
+{# set body_class = '' #}
+
+{% extends 'master.twig' %}
+
+{% block body %}
+  {% include "ingenia/index/header.twig" %}
+  <div class="container">
+    <section class="section">
+      <div class="columns">
+        <div class="column is-8">
+          <div class="content">
+            <h1 class="subtitle is-3">
+              <b>¿Problemas? ¿Algo no está funcionando?</b>
+            </h1>
+            <p>
+              <b>¡Contactanos!</b>
+              Envianos un mensaje en Facebook o a nuestro Twitter y contanos que esta fallando! ¡Mucho mejor si adjuntas capturas de pantalla!
+            </p>
+            <p>
+              <a href="https://twitter.com/gabinetejoven/">
+                <i class="fab fa-twitter fa-fw fa-lg"></i>
+                @Virtuagora</a>&nbsp;&nbsp;<a href="https://www.facebook.com/GabineteJoven/">
+                <i class="fab fa-facebook fa-fw fa-lg"></i>
+                /Virtuagora
+              </a>
+            </p>
+            <h1 class="subtitle is-3">
+              <b>Mejoramos con tu opinión</b>
+            </h1>
+            <p>
+              <b>¡Virtuágora quiere saber sobre tú experiencia!</b>
+              ¿Como podríamos mejorar la plataforma? ¿Tenes sugerencias para hacer? ¡Nosotros estamos muy interesados y curiosos de saber que opinan! Envianos un mensaje en Facebook o a nuestro Twitter
+            </p>
+            <p>
+              <a href="https://twitter.com/gabinetejoven/">
+                <i class="fab fa-twitter fa-fw fa-lg"></i>
+                @Virtuagora</a>&nbsp;&nbsp;<a href="https://www.facebook.com/GabineteJoven/">
+                <i class="fab fa-facebook fa-fw fa-lg"></i>
+                /Virtuagora
+              </a>
+            </p>
+            <h1 class="subtitle is-3">
+              <b>¿Confundido sobre INGENIA?</b>
+            </h1>
+            <p>
+              Si necesitas información sobre la convocatoria en general, contactá al Gabinete Joven en su página de Facebook o en Twitter:
+            </p>
+            <p>
+              <a href="https://twitter.com/gabinetejoven/">
+                <i class="fab fa-twitter fa-fw fa-lg"></i>
+                @GabineteJoven</a>&nbsp;&nbsp;<a href="https://www.facebook.com/GabineteJoven/">
+                <i class="fab fa-facebook fa-fw fa-lg"></i>
+                /GabineteJoven
+              </a>
+            </p>
+<h1 class="subtitle is-3">
+  <b>¡Tambien tenemos video!</b>
+</h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/z2qZLhXhiM8?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen="allowfullscreen"></iframe>
+          </div>
+           <h1 id="log" class="subtitle is-4">
+              <b>Bitácora de cambios</b>
+            </h1>
+          <div class="notification">
+            <div class="content">
+              {% include 'pastLogs.twig' %}
+            </div>
+          </div>
+        </div>
+        <div class="column is-offset-1">
+          <h1 class="subtitle is-4 has-text-link has-text-centered">
+            <b>¡Enterate de las ultimas actualizaciones!</b>
+          </h1>
+          <a class="twitter-timeline" data-height="600" data-theme="light" data-link-color="#9266CC" href="https://twitter.com/search?q=%23Ingenia%20%23Update" data-widget-id="990754810835144704">Tweets de #Ingenia #Update</a>
+        </div>
+      </div>
+      <br>
+      <br>
+      <img src="{{asset('img/slogan3-dark.svg')}}" class="image is-hidden-touch" style="height: 100px; margin: 0 auto;">
+      <img src="{{asset('img/slogan4-dark.svg')}}" class="image is-hidden-desktop" style="width: 250px; margin: 0 auto;">
+      <br>
+      <br>
+    </section>
+  </div>
+{% endblock %}
+
+{% block javascripts %}
+  <script async="async" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+{% endblock %}

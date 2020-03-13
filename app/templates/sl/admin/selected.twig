@@ -1,0 +1,92 @@
+{% extends 'sl/admin/master.twig' %}
+
+{% block section %}
+  <h1 class="title is-1">Proyectos seleccionados</h1>
+  <h2 class="subtitle is-4">
+    Seleccione que proyectos serán los seleccionados para el presupuesto
+  </h2>
+  <hr>
+  <div class="box">
+  <h1 class="title is-3">Seleccionados</h1>
+   <table class="table is-centered is-fullwidth is-hoverable is-marginless">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Proyecto</th>
+        <th>Tipo</th>
+        <th>Distrito</th>
+        <th width="100" class="has-text-centered">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for project in proyectosSeleccionados %}
+        <tr>
+          <td>{{project.code}}</td>
+          <td>
+            <a href="{{path_for('showProject', {pro: project.id})}}">{{project.name}}</a>
+            <br>
+            <small>Por
+              {{project.author_names}}
+              {{project.author_surnames}}</small>
+          </td>
+          <td>
+            <span class="tag is-{{project.type}}">
+            {{project.type|capitalize}}</span>
+          </td>
+          <td>
+            {{project.district.name|capitalize}}
+          </td>
+          <td>
+            <form action="{{path_for('runQuitar',{'pro': project.id })}}" method="POST">
+              <input type="hidden" name="id">
+              <button type="submit" class="button is-small is-danger is-outlined">
+                <i class="fas fa-reply fa-fw"></i>&nbsp;Quitar
+              </button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  <h1 class="title is-3">No seleccionados</h1>
+   <table class="table is-centered is-fullwidth is-hoverable">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Proyecto</th>
+        <th>Tipo</th>
+        <th>Distrito</th>
+        <th width="100" class="has-text-centered">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for project in proyectosNoSeleccionados %}
+        <tr>
+          <td>{{project.code}}</td>
+          <td>
+            <a href="{{path_for('showProject', {pro: project.id})}}">{{project.name}}</a>
+            <br>
+            <small>Por
+              {{project.author_names}}
+              {{project.author_surnames}}</small>
+          </td>
+          <td>
+            <span class="tag is-{{project.type}}">
+            {{project.type|capitalize}}</span>
+          </td>
+          <td>
+            {{project.district.name|capitalize}}
+          </td>
+          <td>
+            <form action="{{path_for('runSeleccionar',{'pro': project.id })}}" method="POST">
+              <button type="submit" class="button is-small is-link is-outlined">
+                <i class="fas fa-trophy fa-fw"></i>&nbsp;Seleccionar
+              </button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

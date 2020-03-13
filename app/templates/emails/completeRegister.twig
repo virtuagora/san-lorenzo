@@ -1,0 +1,8 @@
+{% extends 'emails/master.twig' %}
+
+{% block body %}
+  {% include 'emails/utils/paragraph.twig' with {'text':'¡Bienvenido al Presupuesto Participativo de San Lorenzo!'}%}
+  {% include 'emails/utils/paragraph.twig' with {'text':'Para completar tu registro, ingresá al siguiente link:'}%}
+  {% include 'emails/utils/button.twig' with {'url': url ,'label': 'Completar registro'}%}
+  {% include 'emails/utils/paragraph.twig' with {'text':'Si tenes algún problema con el registro, contactate con presupuestoparticipativo.sl@gmail.com '}%}
+{% endblock %}

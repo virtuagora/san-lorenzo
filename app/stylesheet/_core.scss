@@ -1,0 +1,28 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-master {
+  flex: 1 0 auto;
+}
+
+footer.footer {
+  flex-shrink: 0;
+  color: #FFFFFF;
+  a {
+      color: #FFFFFF;
+      &:hover{
+          font-weight: bold;
+      }
+  }
+}
+
+.is-oswald{
+  font-family: "Oswald";
+}

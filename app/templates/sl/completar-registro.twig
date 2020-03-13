@@ -1,0 +1,33 @@
+{# set show_footer = true }}
+{# set show_navbar = true #}
+{# set body_class = '' #}
+
+{% extends 'master.twig' %}
+
+{% block title %}Completá tu registro{% endblock %}
+{% block body %}
+  <div class="hero is-white is-fullheight is-login-window">
+    <div class="hero-body has-text-centered">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-6-tablet is-offset-3-tablet is-4-desktop is-offset-4-desktop">
+            <img src="{{asset('img/logo-sl.svg')}}" class="image login-logo" alt="">
+            <h1 class="title is-5">¡Gracias por ser parte del Presupuesto Participativo!</h1>
+            <p>Para terminar tu registro, te pedimos por favor que completes los siguientes campos.</p>
+            <hr>
+            {% if error %}
+              <div class="notification is-warning">
+                {{ error }}
+              </div>
+            {% endif %}
+            <completar-registro form-url="{{ path_for('runNewUser') }}" :neighbourhoods="{{neighbourhoods|json_encode}}" log-in-url="{{path_for('showLogin')}}" token="{{activation_key}}">
+              {% include 'loading.twig' %}
+            </completar-registro>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block javascripts %}{% endblock %}

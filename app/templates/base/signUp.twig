@@ -1,0 +1,27 @@
+{# set show_footer = true #}
+{# set show_navbar = true #}
+{# set body_class = '' #}
+
+{% extends 'master.twig' %}
+
+{% block title %}Sign up{% endblock %}
+{% block body %}
+   <div id="vue" class="hero is-primary is-fullheight is-login-window">
+      <div class="hero-body has-text-centered">
+         <div class="container">
+            <div class="columns">
+               <div class="column is-6-tablet is-offset-3-tablet is-4-desktop is-offset-4-desktop">
+                  <img alt="" class="image login-logo" src="{{asset('img/logo-virtuagora-white.svg')}}">
+                  <sign-up form-url="{{ path_for('runRegisterEmail') }}" message="{{subject.type}}" login-url="{{ path_for('showLogin') }}" home-url="{{ path_for('showHome') }}">
+                    <div class="box">
+                        <span class="icon">
+                            <i class="fas fa-cog fa-spin"></i>
+                        </span> Loading . . .
+                    </div>
+                  </sign-up>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+{% endblock %}

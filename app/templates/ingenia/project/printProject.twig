@@ -1,0 +1,396 @@
+{% set show_footer = false %}
+{% set show_navbar = false %}
+{# set body_class = '' #}
+{% extends 'master.twig' %}
+{% block title %}Imprimir{% endblock %}
+{% block scriptshead %}{% endblock %}
+{% block body %}
+  <section class="section">
+    <div class="container is-fluid">
+      <div class="is-clearfix">
+        <img src="{{asset('img/logo-v.svg')}}" class="image is-pulled-left" style="max-height:30px; margin-right: 10px" alt="">
+        <img src="{{asset('img/ingenia2018.svg')}}" class="image is-pulled-right" style="max-height:30px; margin-right: 10px" alt="">
+        <h6 class="subtitle is-6 has-text-centered">Virtuágora - Plataforma de participación ciudadana</h6>
+        <h6 class="title is-6 has-text-centered">Ingenia 2018</h6>
+      </div>
+      <hr>
+      <div class="tags">
+        <span class="tag is-dark is-large">
+          <i class="fa fa-hashtag fa-fw"></i>&nbsp;{{ "%03d"|format(project.id)}}</span>
+        <span class="tag is-light is-large">{{project.category.name}}</span>
+        <span class="tag is-warning is-large"><img src="{{asset('img/muscle-black.svg')}}" class="image" style="max-height:18px;">&nbsp;{{project.likes}}</span>
+      </div>
+      <h1 class="title is-2">
+        {{project.name}}
+      </h1>
+      <h1 class="subtitle is-3">
+        {{project.group.name}}
+      </h1>
+        {% if project.notes is not null %}
+          <div class="notification">
+            <p class="nl2br">
+              <i class="fas fa-info-circle fa-lg fa-fw"></i>&nbsp;<b>Observaciones</b>
+              <br>{{project.notes}}</p>
+          </div>
+        {% endif %}
+      <div class="content is-clearfix">
+        <div class="box is-paddingless is-pulled-right" style="max-width:350px; margin:6px">
+          {% if project.has_image %}
+            <img src="{{'/project/'~ project.id ~'/picture'}}" class="image" style="margin: 0 auto; border-radius:5px;" alt="">
+          {% else %}
+            <img src="/assets/img/neuronas-ingenia-noimg.jpg" class="image" style="margin: 0 auto; border-radius:5px;" alt="">
+          {% endif %}
+        </div>
+        <h3>
+          <b>Acerca del proyecto</b>
+        </h3>
+        <p class="nl2br">{{project.abstract}}</p>
+        <h3>
+          <b>Fundamentación</b>
+        </h3>
+        <p class="nl2br">{{project.foundation}}</p>
+        <h3>
+          <b>Trabajo previo</b>
+        </h3>
+        {% if project.previous_work %}
+          <p>{{project.previous_work}}</p>
+        {% else %}
+          <p>
+            <i>No presenta trabajo previo</i>
+          </p>
+        {% endif %}
+        <div class="columns">
+          <div class="column">
+            <h3>
+              <b>Donde se implementará</b>
+            </h3>
+            <i class="fas fa-map-marker "></i>&nbsp;{{ project.locality_other ? project.locality_other : project.locality.name}},
+            {{project.locality.department.name}}, Región
+            {{project.locality.department.region.region}}
+            ({{project.locality.department.region.name}})
+          </div>
+          <div class="column">
+            <h3>
+              <b>Barrios en que se implementará</b>
+            </h3>
+            <p>{{project.neighbourhoods|join(', ')}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <h3>
+          <b>Objetivos</b>
+        </h3>
+        <table class="table is-narrow is-bordered">
+          <tbody>
+            {% for objetivo in project.goals %}
+              <tr>
+                <td>
+                  <i class="fas fa-flag-checkered fa-fw"></i>
+                  {{objetivo}}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="content">
+        <h3>
+          <b>Calendario de actividades</b>
+        </h3>
+        <table class="table is-narrow is-bordered">
+          <thead>
+            <tr>
+              <th width="120px">Fecha</th>
+              <th>Actividad</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for actividad in project.schedule %}
+              <tr>
+                <td>
+                  <i class="far fa-calendar-check fa-fw"></i>
+                  {{actividad.date}}</td>
+                <td>{{actividad.activity}}</td>
+              </tr>
+            {% endfor %}
+
+          </tbody>
+        </table>
+      </div>
+      <div class="content">
+        <h3>
+          <b>Presupuesto solicitado</b>
+        </h3>
+        <table class="table is-narrow is-bordered">
+          <thead>
+            <tr>
+              <th width="120px">Rubro</th>
+              <th>Descripción</th>
+              <th width="120px" class="has-text-centered">Monto</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in project.budget %}
+              <tr>
+                <td>{{item.category}}</td>
+                <td>{{item.description}}</td>
+                <td class="has-text-centered">$
+                  {{item.amount}}</td>
+              </tr>
+            {% endfor %}
+            <tr>
+              <th colspan="2" class="has-text-right">Monto total:</th>
+              <td class="has-text-centered">$
+                {{project.total_budget}}</td>
+            </tr>
+          </tbody>
+        </table>
+      <h3>
+          <b>Coordinador <i class="fas fa-bullhorn fa-fw"></i>&nbsp;&nbsp;</b><img src="{{avatar_url(project.coordin.subject.img_type, project.coordin.subject.img_hash, 32)}}" class="is-rounded" style="vertical-align: middle;"> {{project.coordin.names}} {{project.coordin.surnames}} <i>({{project.coordin.email}})</i>
+        </h3>
+      </div>
+      {% if project.organization %}
+        <div class="content">
+          <div class="notification">
+            <p>
+              <i class="fas fa-info-circle fa-lg fa-fw"></i>&nbsp;El proyecto se trabajará en conjunto con una organización</p>
+          </div>
+          <h3 class="subtitle is-4">Organización que trabajará en conjunto</h3>
+          <h3 class="title is-3 is-600">{{project.organization.name}}</h3>
+          <h3>
+            <b>Temáticas que trabaja la organización</b>
+          </h3>
+          <p>{{project.organization.topics|join(', ')}}{{project.organization.topics|length > 0 ? ', ' : null }}{{project.organization.topic_other ? project.organization.topic_other : null}}</p>
+          <h3>
+            <b>Ubicación de la organización</b>
+          </h3>
+          <p>
+            <localidad locality-id="{{project.organization.locality_id}}" locality-other="{{project.organization.locality_other}}"></localidad>
+          </p>
+          <table class="table is-narrow is-bordered">
+            <tbody>
+              <tr>
+                <th>Email de contacto</th>
+                <td>{{project.organization.email ? project.organization.email : 'No registra'}}</td>
+              </tr>
+              <tr>
+                <th>Teléfono de contacto</th>
+                <td>{{project.organization.telephone ? project.organization.telephone : 'No registra'}}</td>
+              </tr>
+              <tr>
+                <th>Página web</th>
+                <td>{{project.organization.web ? project.organization.web : 'No registra'}}</td>
+              </tr>
+              <tr>
+                <th>Facebook</th>
+                <td>{{project.organization.facebook ? project.organization.facebook : 'No registra'}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      {% else %}
+        <div class="content">
+          <h4>
+            <i>El proyecto no registra trabajo en conjunto con una organización</i>
+          </h4>
+        </div>
+      {% endif %}
+      <hr>
+      <div class="content">
+        <h3 class="subtitle is-4">Equipo</h3>
+        <h3 class="title is-3 is-600">{{project.group.name}}</h3>
+        <h3>
+          <b>Acerca del equipo</b>
+        </h3>
+        <p class="nl2br">{{project.group.description}}</p>
+        <h3>
+          <b>Ubicación</b>
+        </h3>
+        <p>
+          <i class="fas fa-map-marker "></i>&nbsp;{{ project.group.locality_other ? project.group.locality_other : project.group.locality.name }},
+          {{project.group.locality.department.name}}, Región
+          {{project.group.locality.department.region.region}}
+          ({{project.group.locality.department.region.name}})
+        </p>
+        <table class="table is-narrow is-bordered">
+          <tbody>
+            <tr>
+              <th>Año de fundación</th>
+              <td>{{project.group.year}}</td>
+            </tr>
+            <tr>
+              <th>
+                Participaciones anteriores
+              </th>
+              <td>
+                {{project.group.previous_editions|length ? project.group.previous_editions|join(', ') : 'No registra'}}
+              </td>
+            </tr>
+            <tr>
+              <th>Email de contacto</th>
+              <td>{{project.group.email}}</td>
+            </tr>
+            <tr>
+              <th>Telefono de contacto</th>
+              <td>{{project.group.telephone}}</td>
+            </tr>
+            <tr>
+              <th>Página web</th>
+              <td>{{project.group.web ? project.group.web : 'No registra'}}</td>
+            </tr>
+            <tr>
+              <th>Facebook</th>
+              <td>{{project.group.facebook ? project.group.facebook : 'No registra'}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>
+          <b>Integrantes</b>
+        </h3>
+      </div>
+      {% for member in project.group.users %}
+        <article class="media">
+          <avatar :user="{{member|json_encode}}" class="media-left" size="96"></avatar>
+          <div class="media-content" style="overflow: inherit">
+            <h1 class="is-size-4 is-600">{{member.subject.display_name}}
+              {% if member.pivot.relation == 'responsable' %}
+                <i class="fas fa-star has-text-warning"></i>
+              {% elseif member.pivot.relation == 'co-responsable' %}
+                <i class="fas fa-shield-alt has-text-info"></i>
+              {% endif %}
+            </h1>
+            <div class="content">
+              {% if member.subject.img_type == 0 %}
+                <p>
+                  <i class="fas fa-check has-text-success fa-fw fa-lg"></i>
+                  <i class="fas fa-envelope fa-fw fa-lg"></i>&nbsp;Verificado con correo electrónico:
+                  <b>{{member.email}}</b>
+                </p>
+              {% elseif member.subject.img_type == 1 %}
+                <p>
+                  <i class="fas fa-check has-text-success fa-fw fa-lg"></i>
+                  <i class="fab fa-facebook has-text-link fa-fw fa-lg"></i>&nbsp;Verificado utilizando perfil de Facebook:
+                  {{member.subject.display_name}}
+                </p>
+              {% endif %}
+              {% if member.bio %}
+                <p class="nl2br">
+                  <i>{{member.bio}}</i>
+                </p>
+              {% else %}
+                <p>
+                  <i>- Sin información -</i>
+                </p>
+              {% endif %}
+              <table class="table is-narrow is-bordered is-fullwidth">
+                <tbody>
+                 <tr>
+                    <th>DNI</th>
+                    <td>{{member.dni}}</td>
+                  </tr>
+                  <tr>
+                    <th>Genero</th>
+                    <td>{{member.gender}}</td>
+                  </tr>
+                  <tr>
+                    <th>Fecha de nacimiento</th>
+                    <td>{{member.birthday|date('Y/m/d')}}</td>
+                  </tr>
+                  <tr>
+                    <th>
+                      Ubicacion
+                    </th>
+                    <td>
+                      <localidad locality-id="{{member.locality_id}}" locality-other="{{member.locality_other}}"></localidad>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      Direccion
+                    </th>
+                    <td>
+                      {{member.address}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      Barrio
+                    </th>
+                    <td>
+                      {{member.neighbourhood}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      Referencia
+                    </th>
+                    <td>
+                      {{member.referer}}
+                    </td>
+                  </tr>
+                  {% if member.referer_other %}
+                    <tr>
+                      <th>Otra referencia</th>
+                      <td>{{member.referer_other}}</td>
+                    </tr>
+                  {% endif %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+      {% endfor %}
+      {% if project.group.parent_organization != null %}
+        <div class="content">
+          <div class="notification">
+            <p>
+              <i class="fas fa-info-circle fa-lg fa-fw"></i>&nbsp;El equipo es parte de una organización</p>
+          </div>
+          <h3 class="subtitle is-4">Organización del equipo</h3>
+          <h3 class="title is-3 is-600">{{project.group.parent_organization.name}}</h3>
+          <h3>
+            <b>Temáticas que trabaja la organización</b>
+          </h3>
+          <p>{{project.group.parent_organization.topics|join(', ')}}{{project.group.parent_organization.topics|length > 0 ? ', ' : null }}{{project.group.parent_organization.topic_other ? project.group.parent_organization.topic_other : null}}</p>
+          <h3>
+            <b>Ubicación de la organización</b>
+          </h3>
+          <p>
+            <localidad locality-id="{{project.group.parent_organization.locality_id}}" locality-other="{{project.group.parent_organization.locality_other}}"></localidad>
+          </p>
+          <table class="table is-narrow is-bordered">
+            <tbody>
+              <tr>
+                <th>Email de contacto</th>
+                <td>{{project.group.parent_organization.email ? project.group.parent_organization.email : 'No registra'}}</td>
+              </tr>
+              <tr>
+                <th>Teléfono de contacto</th>
+                <td>{{project.group.parent_organization.telephone ? project.group.parent_organization.telephone : 'No registra'}}</td>
+              </tr>
+              <tr>
+                <th>Página web</th>
+                <td>{{project.group.parent_organization.web ? project.group.parent_organization.web : 'No registra'}}</td>
+              </tr>
+              <tr>
+                <th>Facebook</th>
+                <td>{{project.group.parent_organization.facebook ? project.group.parent_organization.facebook : 'No registra'}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      {% else %}
+        <div class="content">
+          <h4>
+            <i>El equipo no es parte de una organización</i>
+          </h4>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}
+{% block javascripts %}
+<script>
+window.onload = function () { window.print(); }
+</script>
+{% endblock %}

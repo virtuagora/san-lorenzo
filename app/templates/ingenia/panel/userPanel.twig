@@ -1,0 +1,52 @@
+{% set show_footer = true %}
+{% set show_navbar = true %}
+{# set body_class = '' #}
+{% extends 'master.twig' %}
+{% block title %}Panel de control{% endblock %}
+{% block scriptshead %}
+{% endblock %}
+{% block body %}
+  <section class="section">
+    <div class="container">
+      <div id="loading" class="notification is-light has-text-centered">
+        <span class="icon">
+          <i class="fas fa-cog fa-spin"></i>
+        </span>
+        Cargando . . .
+      </div>
+      <br>
+<router-view 
+ref="userPanel" 
+id="{{subject.extra.user_id}}"
+deadline="{{options()['vote-deadline']}}"
+user-url="{{path_for('getUser',{'usr': ':usr'})}}"
+save-user-profile-url="{{path_for('runUpdUserPro',{'usr': ':usr'})}}"
+save-pending-email="{{path_for('runUpdUserPem', {'usr': ':usr'})}}"
+save-user-dni-url="{{path_for('runUpdUserDni', {'usr': ':usr'})}}" 
+save-user-public-profile-url="{{path_for('runUpdUserPub',{'usr': ':usr'})}}"
+team-url="{{path_for('getGroup',{'gro': ':gro'})}}"
+save-team-url="{{path_for('runCreGro')}}"
+edit-team-url="{{path_for('runUpdGro',{'gro':':gro'})}}"
+send-invitation-url="{{path_for('runCreGroInv',{'gro': ':gro'})}}"
+team-users-url="TODO"
+team-invitations-url="TODO"
+save-agreement-url="{{path_for('runUpdGroAgr',{'gro': ':gro'})}}"
+project-url="{{path_for('getPro',{'pro': ':pro'})}}"
+save-project-url="{{path_for('runCrePro')}}"
+edit-project-url="{{path_for('runUpdPro',{'pro':':pro'})}}"
+delete-group-url="{{path_for('delGro',{'gro': ':gro'})}}"
+save-image-url="{{path_for('runUpdProPic', {'pro':':pro'})}}"
+save-letter-url="{{path_for('runUpdGroLet',{'gro': ':gro'})}}"
+get-group-members="{{path_for('getGroUsr',{'gro': ':gro'})}}"
+accept-group-invitation="{{path_for('runCreGroUsrInv', {'inv': ':inv'})}}"
+accept-group-request="{{path_for('runCreGroUsrReq', {'inv': ':inv'})}}"
+remove-group-user="{{path_for('runDelGroUsr', {'gro': ':gro','usr':':usr'})}}"
+remove-group-invitation="TODO"
+assign-group-second="{{path_for('runCreGroSec', {'gro': ':gro','usr':':usr'})}}"
+delete-group-second="{{path_for('runDelGroSec', {'gro': ':gro','usr':':usr'})}}"
+></router-view>
+
+    </div>
+  </section>
+{% endblock %}
+{% block javascripts %}{% endblock %}

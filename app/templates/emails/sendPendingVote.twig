@@ -1,0 +1,8 @@
+{% extends 'emails/master.twig' %}
+
+{% block body %}
+  {% include 'emails/utils/paragraph.twig' with {'text':'¡Hola! Hemos detectado que te registraste en la plataforma de Presupuesto Participativo de San Lorenzo pero todavía no votaste.'}%}
+  {% include 'emails/utils/paragraph.twig' with {'text':'¡No pierdas la oportunidad de elegir proyectos para tú ciudad! ¡Podés elegir hasta tres por categoría!'}%}
+  {% include 'emails/utils/button.twig' with {'url': url ,'label': 'Visitá el catalogo y votá'}%}
+  {% include 'emails/utils/paragraph.twig' with {'text': '¡Tu participación es muy valiosa para la comunidad de San Lorenzo! ¡Muchas gracias!'}%}
+{% endblock %}

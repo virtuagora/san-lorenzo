@@ -1,0 +1,11 @@
+{% extends 'sl/panel/master.twig' %}
+
+{% block section %}
+<h1 class="title is-1">Mis propuestas</h1>
+  <user-panel-list-projects 
+  :projects="{{proyectos|json_encode}}"
+  url="{{path_for('retrieveProject',{'author': subject.extra.user_id})}}"
+  edit-available="{{ is_state('upload-proposals') and proposals_available() }}">
+    {% include 'loading.twig' %}
+  </user-panel-list-projects>
+{% endblock %}

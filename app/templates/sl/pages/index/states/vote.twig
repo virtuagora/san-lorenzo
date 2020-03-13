@@ -1,0 +1,107 @@
+<div class="notification is-primary is-marginless is-radiusless has-text-centered">
+<i class="fas fa-bullhorn fa-2x"></i>&nbsp;<br>El escrutinio se realizará el próximo Lunes 9 de septiembre a las 9:30 Hs en la sala de la biblioteca del Centro Cultural y educativo Brigadier Estanislao López.<br><b>¡Se extiende la invitación a todos los vecinos y vecinas a participar del mismo!</b>
+</div>
+{% if vote_available() and not vote_ended() %}
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-6 has-text-centered-touch has-text-left-desktop">
+          <h1 class="title is-3 has-text-primary">¡Las urnas están abiertas!</h1>
+          <h1 class="subtitle is-5">¡Es hora de votar por tus proyectos favoritos! Conocelos a todos y elegí los que mas te gusten. ¡Participá por un San Lorenzo mejor!</h1>
+          {% if subject.id %}
+            {% if citizen() is not null and citizen().voted == false %}
+              <div class="buttons is-hidden-touch">
+                <a href="{{path_for('showCatalogo')}}" class="button is-primary is-rounded is-outlined">
+                  <i class="fas fa-book-reader fa-fw fa-lg"></i>&nbsp;Conocé el catálogo</a>
+                <a href="{{path_for('showVoting')}}" class="button is-primary is-rounded">
+                  <i class="fas fa-vote-yea fa-fw fa-lg"></i>&nbsp;Votá tus proyectos favoritos</a>
+              </div>
+              <div class="buttons is-centered is-hidden-desktop">
+                <a href="{{path_for('showCatalogo')}}" class="button is-primary is-rounded is-outlined">
+                  <i class="fas fa-book-reader fa-fw fa-lg"></i>&nbsp;Conocé el catálogo</a>
+                <a href="{{path_for('showVoting')}}" class="button is-primary is-rounded">
+                  <i class="fas fa-vote-yea fa-fw fa-lg"></i>&nbsp;Votá tus proyectos favoritos</a>
+              </div>
+            {% endif %}
+            {% if citizen() is not null and citizen().voted == true %}
+              <div class="notification is-link has-text-centered-touch is-size-7-touch">
+                ¡<b>{{subject.name|split(' ')[0]}}</b>! <i class="fas fa-heart"></i>&nbsp;¡Gracias por haber votado en #PPSanLorenzo!</a>
+              </div>
+            {% endif %}
+            {% if citizen() is null %}
+              <div class="notification is-black has-text-centered-touch is-size-7-touch">
+<p><i class="fas fa-info-circle fa-lg"></i>&nbsp;{{subject.name|split(' ')[0]}}, <b>no estas habilitado/a</b> para votar de forma <u>online</u>. Para conocer las causas, <a href="{{path_for('showFAQ')}}">hacé click aquí</a></p>
+              </div>
+            {% endif %}
+          {% else %}
+           <div class="buttons is-hidden-touch">
+                <a href="{{path_for('showCatalogo')}}" class="button is-primary is-rounded is-outlined">
+                  <i class="fas fa-book-reader fa-fw fa-lg"></i>&nbsp;Conocé el catálogo</a>
+                <a href="{{path_for('showLogin')}}" class="button is-rounded is-link">
+                  <i class="fas fa-sign-in-alt"></i>&nbsp;¡Entrá y votá HOY!</a>
+              </div>
+              <div class="buttons is-centered is-hidden-desktop">
+                <a href="{{path_for('showCatalogo')}}" class="button is-primary is-rounded is-outlined">
+                  <i class="fas fa-book-reader fa-fw fa-lg"></i>&nbsp;Conocé el catálogo</a>
+                <a href="{{path_for('showLogin')}}" class="button is-rounded is-link">
+                  <i class="fas fa-sign-in-alt"></i>&nbsp;¡Entrá y votá HOY!</a>
+              </div>
+          {% endif %}
+          <p>¡Tenes tiempo de votar hasta el
+            {{options()['vote-deadline']|date("d/m/Y")}}!
+          </p>
+        </div>
+        <div class="column">
+          <div class="columns is-mobile">
+            <div class="column has-text-centered">
+              <img src="{{asset('img/icons/mark-institucional-round.svg')}}" class="image is-96x96 is-centered" alt="">
+              <h2 class="subtitle is-4 color-institucional">Propuestas<br><b>Institucionales</b>
+              </h2>
+            </div>
+            <div class="column has-text-centered">
+              <img src="{{asset('img/icons/mark-comunitario-round.svg')}}" class="image is-96x96 is-centered" alt="">
+              <h2 class="subtitle is-4 color-comunitario">Propuestas<br><b>Comunitarias</b>
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <hr class="is-marginless">
+{% endif %}
+<section class="section">
+  <div class="container">
+    {% if vote_available() %}
+      <h1 class="title has-text-centered is-2 is-size-3-touch has-text-primary">&nbsp;¡Estos son algunos proyectos!</h1>
+      <h1 class="subtitle has-text-centered is-4 is-size-6-touch has-text-dark">&nbsp;¡Que podes votar por San Lorenzo!</h1>
+    {% else %}
+      <h1 class="title has-text-centered is-2 is-size-3-touch has-text-primary">&nbsp;¡La votación ha cerrado!</h1>
+      <h1 class="subtitle has-text-centered is-4 is-size-6-touch has-text-dark">&nbsp;Proximamente se publicarán los resultados!</h1>
+    {% endif %}
+    <br>
+    <exhibit url="{{path_for('retrieveProject')}}" :force-feasible="true" :random="true">
+      {% include 'loading.twig' %}
+    </exhibit>
+  </div>
+</section>
+<a href="{{path_for('showSellos')}}">
+<section class="hero is-link">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns">
+        <div class="column">
+        <div class="content has-text-centered-touch">
+          <h1 class="title is-4"><i class="fas fa-lock fa-lg"></i>&nbsp;Agregamos integridad a los resultados</h1>
+          <p>Con el objetivo de sumar una capa adicional de confiabilidad al proceso de votación de proyectos del Presupuesto Participativo de San Lorenzo, los resultados del mismo se van sellando digitalmente de forma diaria.</p>
+          <p>Los resultados se van sellando día a día y publicando en <b>Blockchain Federal Argentina</b>. Donde cualquiera puede verificarlos en su web oficial</p>
+          <p class="has-text-warning"><i class="fas fa-arrow-right fa-lg"></i>&nbsp;Conocé más en nuestra seccion "Integridad de los resultados"</p>
+        </div>
+        </div>
+        <div class="column">
+        <img src="{{asset('img/blockchain-federal-argentina-white.svg')}}" class="image is-centered" style="width:280px;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+</a>

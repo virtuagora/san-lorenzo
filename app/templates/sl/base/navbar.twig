@@ -1,0 +1,130 @@
+<nav class="navbar is-white" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="{{path_for('showHome')}}">
+        <img class="image" src="{{asset('img/logo-sl.svg')}}" alt="Volver al inicio">
+      </a>
+      <a class="navbar-item" target="_blank" href="https://www.instagram.com/PrensaSL/">
+        <i class="fab fa-instagram fa-lg"></i>
+      </a>
+      <a class="navbar-item" target="_blank" href="https://www.facebook.com/PresupuestoParticipativoSanLorenzo/">
+        <i class="fab fa-facebook fa-lg"></i>
+      </a>
+      <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+      </div>
+      <div class="navbar-end">
+      {% if vote_available() %}
+      {% if subject.id is null %}
+        <div class="navbar-item">
+          <a href="{{path_for('showLogin')}}" class="button is-link">
+          <i class="fas fa-vote-yea fa-fw"></i>&nbsp;¡Vota!
+          </a>
+        </div>
+      {% endif %}
+      {% if subject.id and citizen() is not null and citizen().voted == false %}
+        <div class="navbar-item">
+          <a href="{{path_for('showVoting')}}" class="button is-link">
+          <i class="fas fa-vote-yea fa-fw"></i>&nbsp;¡Vota!
+          </a>
+        </div>
+      {% endif %}
+      {% endif %}
+        {% if is_state('results') %}
+        <div class="navbar-item">
+          <a class="button is-warning" href="{{path_for('showSeleccionados')}}">
+            <i class="fas fa-medal fa-fw fa-lg"></i>&nbsp;Seleccionados
+          </a>
+        </div>
+        {% endif %}
+        {% if is_state('upload-proposals') and proposals_available() %}
+          {% if subject.id %} 
+            {% if 'verified' in subject.roles %} 
+            <div class="navbar-item">
+              <a class="button is-link" href="{{path_for('showUserPanelCreateProject')}}">
+                <i class="fas fa-plus-square fa-fw fa-lg"></i>&nbsp;Subí una propuesta
+              </a>
+            </div>
+            {% endif %}
+          {% else %}
+          <div class="navbar-item">
+            <a class="button is-link" href="{{path_for('showLogin')}}">
+              <i class="fas fa-plus-square fa-fw fa-lg"></i>&nbsp;Subí una propuesta
+            </a>
+          </div>
+          {% endif %}
+        {% endif %}
+        {% if not is_state('pre-upload-proposals') %}
+        <a class="navbar-item" href="{{path_for('showCatalogo')}}">
+          <i class="fas fa-book-reader fa-fw fa-lg"></i>&nbsp;Catálogo
+        </a>
+        {% endif %}
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">
+            <i class="fas fa-info-circle fa-fw fa-lg"></i>&nbsp;Mas info
+          </div>
+          <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="{{path_for('showAgenda')}}">
+                <i class="far fa-calendar-alt fa-fw fa-lg"></i>&nbsp;Agenda y Fechas
+            </a>
+            <a class="navbar-item" href="{{path_for('showDatos')}}">
+              <i class="fas fa-chart-line fa-fw fa-lg"></i>&nbsp;Datos #PPSanLorenzo
+            </a>
+            <a class="navbar-item" href="{{path_for('showSellos')}}">
+              <i class="fas fa-database fa-fw fa-lg"></i>&nbsp;Integridad de los resultados
+            </a>
+            <a class="navbar-item" href="{{path_for('showResultsPPJoven')}}">
+              <i class="fas fa-medal fa-fw fa-lg"></i>&nbsp;Escrutinio PP Joven 2019
+            </a>
+            <a class="navbar-item" href="{{path_for('showFAQ')}}">
+              <i class="fas fa-question-circle fa-fw fa-lg"></i>&nbsp;Preguntas frecuentes
+            </a>
+          </div>
+        </div>
+        {% if subject.id %}
+          {# MOBILE MENU #}
+          {% if 'admin' in subject.roles  %}
+           <a class="navbar-item" href="{{path_for('showAdminOverview')}}">
+            <i class="fas fa-cog fa-lg fa-fw"></i>&nbsp;Admin
+          </a>
+          {% endif %}
+          {% if 'user' in subject.roles  %}
+           <a class="navbar-item" href="{{path_for('showUserPanelOverview')}}">
+            <i class="fas fa-external-link-alt fa-lg fa-fw"></i>&nbsp;Panel
+          </a>
+          {% endif %}
+          <div class="navbar-item has-text-primary has-text-weight-bold">
+            {{subject.name|split(' ')[0]}}
+          </div>
+          <a class="navbar-item" href="{{path_for('logout')}}">
+              <i class="fas fa-sign-out-alt fa-lg fa-fw"></i>
+            &nbsp;Salir
+          </a>
+          {% else %}
+            <a class="navbar-item has-text-link" href="{{path_for('showLogin')}}">
+              <span class="icon">
+                <i class="fas fa-sign-in-alt fa-lg"></i>
+              </span>
+              &nbsp;<b>Entrar</b>
+            </a>
+          {% endif %}
+      </div>
+    </div>
+  </div>
+</nav>
+{% if subject.id and 'verified' not in subject.roles  %}
+<div class="notification has-text-centered is-marginless is-radiusless is-black is-size-7-touch" style="padding:7px;">
+  {% include 'sl/pages/index/notificationMessage.twig'%}
+</div>
+{% endif %}
+{% if subject.id and 'verified' in subject.roles and citizen().voted == true %}
+<div class="notification has-text-centered is-marginless is-radiusless is-link is-size-7-touch" style="padding:7px;">
+  ¡<b>{{subject.name|split(' ')[0]}}</b>! <i class="fas fa-heart"></i>&nbsp;¡Gracias por haber votado en #PPSanLorenzo!</a>
+</div>
+{% endif %}

@@ -1,0 +1,77 @@
+{# set show_footer = true #}
+{% set show_navbar = false %}
+{# set body_class = '' #}
+
+{% extends 'master.twig' %}
+
+{% block title %}
+  Reglamento
+{% endblock %}
+
+{% block body %}
+  {% include "ingenia/index/header.twig" %}
+  <div class="container">
+    <br>
+    <br>
+    <section class="section">
+      <div class="columns">
+        <div class="column is-offset-2 is-8">
+          <img src="{{asset('img/isdangerous3.svg')}}" class="image" style="margin:0 auto 20px; width: 600px;" alt="">
+<br>
+<br>
+          <img src="{{asset('img/isdangerous1.svg')}}" class="image is-hidden-touch" style="margin:50px auto 10px; width: 600px;" alt="">
+          <img src="{{asset('img/isdangerous2.svg')}}" class="image is-hidden-desktop" style="margin:50px auto 10px; width: 300px;" alt="">
+          <img src="{{asset('img/oldman.png')}}" class="image" style="margin:0 auto; width: 600px;" alt="">
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column is-6 is-offset-3">
+          <div class="tile is-ancestor">
+            <div class="tile is-6 is-vertical is-parent">
+              <div class="tile is-child box">
+                <a href="{{asset('pdf/ingenia-reglamento.pdf')}}" target="_blank" class="button is-primary is-medium is-fullwidth">
+                  <i class="fas fa-download"></i>&nbsp;Descargá el reglamento</a>
+                <br>
+                <a href="{{asset('pdf/ingenia-reglamento.pdf')}}" target="_blank">
+                  <img src="{{asset('img/reglamento.png')}}" class="image" style="margin:0 auto; max-height: 400px" alt="">
+                </a>
+              </div>
+            </div>
+            <div class="tile is-parent is-6">
+              <div class="tile is-child box">
+                <a href="{{asset('pdf/ingenia-cartas.pdf')}}" target="_blank" class="button is-primary is-medium is-fullwidth">
+                  <i class="fas fa-download"></i>&nbsp;Descargá las cartas</a>
+                <br>
+                <a href="{{asset('pdf/ingenia-reglamento.pdf')}}" target="_blank">
+                  <img src="{{asset('img/cartas.png')}}" class="image" style="margin:0 auto; max-height: 400px" alt="">
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column is-offset-2 is-8">
+          <img src="{{asset('img/links.png')}}" class="image" style="margin:0 auto; width: 450px;" alt="">
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column is-6 is-offset-3">
+          <div class="notification is-black has-text-centered">
+            <h1 class="subtitle is-5">
+              ¡El reglamento y las cartas son importantes a ser leidas por el equipo! ¡Leé bien el reglamento y participá con tú proyecto!
+            </h1>
+          </div>
+          <br>
+          <br>
+<img src="{{asset('img/slogan3-dark.svg')}}" class="image is-hidden-touch" style="height: 100px; margin: 0 auto;">
+<img src="{{asset('img/slogan4-dark.svg')}}" class="image is-hidden-desktop" style="width: 250px; margin: 0 auto;">
+          <br>
+          <br>
+        </div>
+      </div>
+
+    </section>
+  </div>
+{% endblock %}

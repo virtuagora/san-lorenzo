@@ -1,0 +1,257 @@
+ {% if options()['last-scrutiny'] is not null %}
+    <h1 class="title is-4">Distrito Norte</h1>
+    <h1 class="subtitle is-5">Comunitarios</h1>
+    <table class="table is-centered is-fullwidth is-hoverable">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Proyecto</th>
+          <th>Tipo</th>
+          <th class="has-text-centered">Distrito</th>
+          <th class="has-text-centered">Presupuesto</th>
+          <th class="has-text-centered">Votos</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for project in proyectos if (project.district.id == 1 and project.type == 'comunitario') %}
+          <tr>
+            <td>{{project.code}}</td>
+            <td>
+              <a href="{{path_for('showProject', {pro: project.id})}}">{{project.name}}</a>
+              {% if project.selected %}
+              &nbsp;&nbsp;<span class="tag is-warning has-text-black">
+                <i class="fas fa-trophy"></i></span>
+              {% endif %}
+            </td>
+            <td>
+              <span class="tag is-{{project.type}}">
+                {{project.type|capitalize}}</span>
+            </td>
+            <td class="has-text-centered">
+              {{project.district.name|capitalize}}
+            </td>
+            <td class="has-text-centered">
+              $
+              {{project.total_budget|replace({".00" : ""})|number_format(0, ',', '.')}}
+            </td>
+            <td class="has-text-centered">
+              {{project.likes}}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <h1 class="title is-4">Distrito Norte</h1>
+    <h1 class="subtitle is-5">Institucional</h1>
+    <table class="table is-centered is-fullwidth is-hoverable">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Proyecto</th>
+          <th>Tipo</th>
+          <th class="has-text-centered">Distrito</th>
+          <th class="has-text-centered">Presupuesto</th>
+          <th class="has-text-centered">Votos</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for project in proyectos if (project.district.id == 1 and project.type == 'institucional') %}
+          <tr>
+            <td>{{project.code}}</td>
+            <td>
+              <a href="{{path_for('showProject', {pro: project.id})}}">{{project.name}}</a>
+              {% if project.selected %}
+              &nbsp;&nbsp;<span class="tag is-warning has-text-black">
+                <i class="fas fa-trophy"></i></span>
+              {% endif %}
+            </td>
+            <td>
+              <span class="tag is-{{project.type}}">
+                {{project.type|capitalize}}</span>
+            </td>
+            <td class="has-text-centered">
+              {{project.district.name|capitalize}}
+            </td>
+            <td class="has-text-centered">
+              $
+              {{project.total_budget|replace({".00" : ""})|number_format(0, ',', '.')}}
+            </td>
+            <td class="has-text-centered">
+              {{project.likes}}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <hr>
+    <h1 class="title is-4">Distrito Centro</h1>
+    <h1 class="subtitle is-5">Comunitarios</h1>
+    <table class="table is-centered is-fullwidth is-hoverable">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Proyecto</th>
+          <th>Tipo</th>
+          <th class="has-text-centered">Distrito</th>
+          <th class="has-text-centered">Presupuesto</th>
+          <th class="has-text-centered">Votos</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for project in proyectos if (project.district.id == 2 and project.type == 'comunitario') %}
+          <tr>
+            <td>{{project.code}}</td>
+            <td>
+              <a href="{{path_for('showProject', {pro: project.id})}}">{{project.name}}</a>
+              {% if project.selected %}
+              &nbsp;&nbsp;<span class="tag is-warning has-text-black">
+                <i class="fas fa-trophy"></i></span>
+              {% endif %}
+            </td>
+            <td>
+              <span class="tag is-{{project.type}}">
+                {{project.type|capitalize}}</span>
+            </td>
+            <td class="has-text-centered">
+              {{project.district.name|capitalize}}
+            </td>
+            <td class="has-text-centered">
+              $
+              {{project.total_budget|replace({".00" : ""})|number_format(0, ',', '.')}}
+            </td>
+            <td class="has-text-centered">
+              {{project.likes}}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <h1 class="title is-4">Distrito Centro</h1>
+    <h1 class="subtitle is-5">Institucionales</h1>
+    <table class="table is-centered is-fullwidth is-hoverable">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Proyecto</th>
+          <th>Tipo</th>
+          <th class="has-text-centered">Distrito</th>
+          <th class="has-text-centered">Presupuesto</th>
+          <th class="has-text-centered">Votos</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for project in proyectos if (project.district.id == 2 and project.type == 'institucional') %}
+          <tr>
+            <td>{{project.code}}</td>
+            <td>
+              <a href="{{path_for('showProject', {pro: project.id})}}">{{project.name}}</a>
+              {% if project.selected %}
+              &nbsp;&nbsp;<span class="tag is-warning has-text-black">
+                <i class="fas fa-trophy"></i></span>
+              {% endif %}
+            </td>
+            <td>
+              <span class="tag is-{{project.type}}">
+                {{project.type|capitalize}}</span>
+            </td>
+            <td class="has-text-centered">
+              {{project.district.name|capitalize}}
+            </td>
+            <td class="has-text-centered">
+              $
+              {{project.total_budget|replace({".00" : ""})|number_format(0, ',', '.')}}
+            </td>
+            <td class="has-text-centered">
+              {{project.likes}}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+        <hr>
+    <h1 class="title is-4">Distrito Sur</h1>
+    <h1 class="subtitle is-5">Comunitarios</h1>
+    <table class="table is-centered is-fullwidth is-hoverable">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Proyecto</th>
+          <th>Tipo</th>
+          <th class="has-text-centered">Distrito</th>
+          <th class="has-text-centered">Presupuesto</th>
+          <th class="has-text-centered">Votos</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for project in proyectos if (project.district.id == 3 and project.type == 'comunitario') %}
+          <tr>
+            <td>{{project.code}}</td>
+            <td>
+              <a href="{{path_for('showProject', {pro: project.id})}}">{{project.name}}</a>
+              {% if project.selected %}
+              &nbsp;&nbsp;<span class="tag is-warning has-text-black">
+                <i class="fas fa-trophy"></i></span>
+              {% endif %}
+              
+            </td>
+            <td>
+              <span class="tag is-{{project.type}}">
+                {{project.type|capitalize}}</span>
+            </td>
+            <td class="has-text-centered">
+              {{project.district.name|capitalize}}
+            </td>
+            <td class="has-text-centered">
+              $
+              {{project.total_budget|replace({".00" : ""})|number_format(0, ',', '.')}}
+            </td>
+            <td class="has-text-centered">
+              {{project.likes}}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <h1 class="title is-4">Distrito Sur</h1>
+    <h1 class="subtitle is-5">Institucionales</h1>
+    <table class="table is-centered is-fullwidth is-hoverable">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Proyecto</th>
+          <th>Tipo</th>
+          <th class="has-text-centered">Distrito</th>
+          <th class="has-text-centered">Presupuesto</th>
+          <th class="has-text-centered">Votos</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for project in proyectos if (project.district.id == 3 and project.type == 'institucional') %}
+          <tr>
+            <td>{{project.code}}</td>
+            <td>
+              <a href="{{path_for('showProject', {pro: project.id})}}">{{project.name}}</a>
+              {% if project.selected %}
+              &nbsp;&nbsp;<span class="tag is-warning has-text-black">
+                <i class="fas fa-trophy"></i></span>
+              {% endif %}
+            </td>
+            <td>
+              <span class="tag is-{{project.type}}">
+                {{project.type|capitalize}}</span>
+            </td>
+            <td class="has-text-centered">
+              {{project.district.name|capitalize}}
+            </td>
+            <td class="has-text-centered">
+              $
+              {{project.total_budget|replace({".00" : ""})|number_format(0, ',', '.')}}
+            </td>
+            <td class="has-text-centered">
+              {{project.likes}}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}

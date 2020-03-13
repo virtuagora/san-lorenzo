@@ -1,0 +1,122 @@
+{% set show_footer = true %}
+{% set show_navbar = true %}
+{# set body_class = '' #}
+
+{% extends 'master.twig' %}
+
+{% block title %}Panel de admin{% endblock %}
+{% block body %}
+  <div class="hero is-small is-light">
+    <div class="hero-body has-text-centered">
+      <h1 class="subtitle is-4">Panel de administración</h1>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-2">
+          <h1 class="subtitle is-4">Menu de opciones</h1>
+
+          <aside class="menu">
+            <ul class="menu-list">
+              <li>
+                <a href="{{path_for('showAdminOverview')}}">Inicio</a>
+              </li>
+            </ul>
+            <p class="menu-label">
+              Propuestas
+            </p>
+            <ul class="menu-list">
+              {% if is_state('upload-proposals') %}
+              <li>
+                <a href="{{path_for('showAdminCreateProject')}}"><i class="fas fa-plus-square fa-lg has-text-link"></i>&nbsp;Nuevo</a>
+              </li>
+              {% endif %}
+              <li>
+                <a href="{{path_for('showAdminProjects')}}">Listado</a>
+              </li>
+            </ul>
+            <p class="menu-label">
+              Proyectos
+            </p>
+            <ul class="menu-list">
+              <li>
+                <a href="{{path_for('showAdminProjectsFeasible')}}">Factibles</a>
+              </li>
+              <li>
+                <a href="{{path_for('showAdminProjectsNotFeasible')}}">No Factibles</a>
+              </li>
+            </ul>
+            <p class="menu-label">
+              Padrón
+            </p>
+            <ul class="menu-list">
+              <li>
+                <a href="{{path_for('showAdminCitizens')}}">Sincronizar</a>
+              </li>
+              {% if not is_state('pre-results') or not is_state('results') %}
+              <li>
+                <a href="{{path_for('showAddCitizen')}}">Nuevo registro</a>
+              </li>
+              {% endif %}
+            </ul>
+            {% if is_state('vote') or is_state('pre-results') or is_state('results') %}
+              <p class="menu-label">
+                Blockchain
+              </p>
+              <ul class="menu-list">
+                <li><a href="{{path_for('showAdminSellado')}}">Sellados</a></li>
+              </ul>
+            {% endif %}
+            {% if is_state('pre-results') or is_state('results') %}
+              <p class="menu-label">
+                Escrutinio
+              </p>
+              <ul class="menu-list">
+              <li>
+                  <a href="{{path_for('showBoletas')}}">Boletas en papel</a>
+                </li>
+                <li>
+                  <a href="{{path_for('showSeleccionadosAdmin')}}">Seleccionados</a>
+                </li>
+                <li>
+                  <a href="{{path_for('showEscrutinio')}}">Realizar escrutinio</a>
+                </li>
+              </ul>
+            {% endif %}
+            <p class="menu-label">
+              Administración
+            </p>
+            <ul class="menu-list">
+              <li>
+                <a href="{{path_for('showOptions')}}">Configuraciones</a>
+              </li>
+              <li>
+                <a href="{{path_for('showRoles')}}">Asignar roles</a>
+              </li>
+              {% if is_state('vote') or is_state('pre-results') or is_state('results') %}
+              <li>
+                <a href="{{path_for('showAdminStats')}}">Estadísticas</a>
+              </li>
+              {% endif %}
+              {% if is_state('vote') %}
+              <li>
+                <a href="{{path_for('showRegistrosPendientes')}}">Registros pendientes</a>
+              </li>
+              {% endif %}
+              {% if is_state('vote') %}
+              <li>
+                <a href="{{path_for('showVotersPendientes')}}">Votantes pendientes</a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+          <div class="column is-offset-1">
+            {% block section %}{% endblock %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+
+  {% block javascripts %}{% endblock %}

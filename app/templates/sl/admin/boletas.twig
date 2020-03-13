@@ -1,0 +1,13 @@
+{% extends 'sl/admin/master.twig' %}
+
+{% block section %}
+  <h1 class="title is-1">Boletas offline
+  </h1>
+  <h2 class="subtitle is-4">
+    Ingrese las boletas para que los votos sean contados para el escrutinio
+  </h2>
+  <hr>
+  <boletas get-projects="{{path_for('retrieveProject')}}" get-boletas="{{path_for('getOfflineBallots')}}" 
+  post-boleta="{{path_for('runNewOfflineVote')}}" post-boleta-nula="{{path_for('runNewInvalidOfflineVote')}}"
+   delete-boleta="{{path_for('runDeleteOfflineVote',{'bal': '##'})}}" :cant-votos="{{cantVotos}}"></boletas>
+{% endblock %}

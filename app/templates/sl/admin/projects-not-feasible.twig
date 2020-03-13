@@ -1,0 +1,9 @@
+{% set editable = ( is_state('upload-proposals') and proposals_available() ) ? 'true' : 'false'  %}
+{% extends 'sl/admin/master.twig' %}
+{% block section %}
+  <h1 class="title is-1">Proyectos <u>NO</u> factibles
+  </h1>
+  <admin-list-projects :projects="{{proyectos|json_encode}}" url="{{path_for('retrieveProject')}}" :editable="{{editable}}">
+    {% include 'loading.twig' %}
+  </admin-list-projects>
+{% endblock %}

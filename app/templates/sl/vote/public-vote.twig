@@ -1,0 +1,30 @@
+{% set show_footer = false %}
+{% set show_navbar = false %}
+{# {% set body_class = '' %} #}
+
+{% block scriptshead %}
+  <script src="https://www.google.com/recaptcha/api.js?hl=es-419&onload=vueRecaptchaApiLoaded&render=explicit" async="async" defer="defer"></script>
+{% endblock %}
+
+
+{% block title %}
+  Votación
+{% endblock %}
+
+{% extends 'master.twig' %}
+
+{% block body %}
+        <div class="hero is-white is-fullheight">
+          <div class="hero-body">
+  <div class="container">
+    <div class="columns is-gapless is-centered">
+      <div class="column is-6">
+            <public-vote style="width: 100%" google-key="{{googleKey}}" url-vote="{{path_for('runPublicVoting')}}">
+            {% include 'loading.twig' %}
+            </public-vote>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% set show_footer = false %}
+{% set show_navbar = false %}
+{# set body_class = '' #}
+
+{% extends 'master.twig' %}
+{% block scriptshead %}
+  <script src="https://www.google.com/recaptcha/api.js?hl=es-419&onload=vueRecaptchaApiLoaded&render=explicit" async="async" defer="defer"></script>
+{% endblock %}
+
+{% block title %}Iniciar sesión{% endblock %}
+{% block body %}
+  <div class="hero is-white is-fullheight">
+    <div class="hero-body has-text-centered">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-6-tablet is-offset-3-tablet is-4-desktop is-offset-4-desktop">
+            <a href="{{base_url()}}">
+              <img src="{{asset('img/logo-sl.svg')}}" class="image login-logo" alt="">
+            </a>
+            {# {% if error %}
+              <div class="notification is-warning">
+                Usuario o contraseña invalidos. Vuelva a intentarlo
+              </div>
+            {% endif %} #}
+            <login message="{{subject.type}}" login-url="{{ path_for('runLogin') }}" 
+            google-key="{{googleKey}}" error="{{error}}"
+            sign-up-url="{{ path_for('runNewPendingUser') }}"
+            reset-password="{{path_for('runResetPassword')}}"
+            home-url="{{path_for('showHome')}}">
+              {% include 'loading.twig' %}
+            </login>
+            <br>
+            <br>
+            <a href="{{base_url()}}" class="button is-white is-medium is-fullwidth is-300">
+              <i class="fas fa-home fa-fw"></i>&nbsp;Volver al inicio</a>
+            <!---<a href="https://virtuagora.org" target="_blank"><img src="{{asset('img/logo-v.svg')}}" class="image is-32x32 is-centered" alt=""></a>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block javascripts %}{% endblock %}

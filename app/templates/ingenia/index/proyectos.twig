@@ -1,0 +1,34 @@
+{# set show_footer = true #}
+{% set show_navbar = false %}
+{# set body_class = '' #}
+
+{% block title %}
+  Proyectos
+{% endblock %}
+
+{% extends 'master.twig' %}
+{% block scriptshead %}
+  <script async="async" defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.0.0/masonry.pkgd.min.js"></script>
+{% endblock %}
+
+{% block body %}
+  {% include "ingenia/index/header.twig" %}
+  <div class="container is-fluid">
+    <section class="section">
+      <catalogo get-projects-url="{{path_for('lisPro')}}">
+        <div class="notification has-text-centered">
+          <i class="fas fa-cog fa-spin fa-lg"></i>
+          Cargando...
+        </div>
+      </catalogo>
+
+      <br>
+      <br>
+      <br>
+      <img src="{{asset('img/slogan3-dark.svg')}}" class="image is-hidden-touch" style="height: 100px; margin: 0 auto;">
+      <img src="{{asset('img/slogan4-dark.svg')}}" class="image is-hidden-desktop" style="width: 250px; margin: 0 auto;">
+      <br>
+      <br>
+    </section>
+  </div>
+{% endblock %}

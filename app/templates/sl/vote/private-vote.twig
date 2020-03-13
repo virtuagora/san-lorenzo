@@ -1,0 +1,25 @@
+{% set show_footer = false %}
+{% set show_navbar = false %}
+{# {% set body_class = '' %} #}
+
+{% block title %}
+  Urna digital
+{% endblock %}
+
+{% extends 'master.twig' %}
+
+{% block body %}
+       <div class="hero is-white is-fullheight">
+          <div class="hero-body">
+  <div class="container">
+    <div class="columns is-gapless is-centered">
+      <div class="column is-6">
+            <private-vote style="width: 100%" url-vote="{{path_for('runPrivateVoting')}}">
+            {% include 'loading.twig' %}
+            </private-vote>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,175 @@
+{% set show_footer = true %}
+{% set show_navbar = true %}
+{# set body_class = '' #}
+
+{% block title %}
+  Proyectos ganadores 2018
+{% endblock %}
+
+{% extends 'master.twig' %}
+
+{% block body %}
+  <div class="hero is-primary indexBg">
+    <div class="hero-body has-text-centered">
+      <div class="container">
+        <h1 class="title is-1">
+          <i class="fas fa-trophy fa-lg"></i>
+        </h1>
+        <h1 class="title is-1">¡Proyectos ganadores!</h1>
+        <h1 class="subtitle is-4">Presentamos los proyectos ganadores de los distintos distritos y tipos de proyectos</h1>
+      </div>
+    </div>
+  </div>
+  <section class="section">
+   <div class="columns">
+   
+   <div class="column">
+   <div class="notification is-comunitario">
+   <img src="/assets/img/icons/w-comunitario.svg" alt="" class="image is-inline" style="width: 35px;margin-bottom: -8px;float:right;">
+      <h1 class="title is-4 has-text-white">Distrito Norte</h1>
+    <h1 class="subtitle is-5 has-text-white">Comunitarios</h1>
+   </div>
+        {% for project in proyectos if (project.district.id == 1 and project.type == 'comunitario') %}
+    <article class="media">
+      <div class="media-content" style="overflow: visible;">
+        <h1 class="subtitle is-6 has-text-primary" style="margin-bottom:10px;"><a href="{{path_for('showProject', {pro: project.id})}}">{{project.name}}</a></h1>
+        <div class="tags">
+                <span class="tag is-warning"><i class="fas fa-dollar-sign"></i>&nbsp; {{project.total_budget|replace({".00" : ""})|number_format(0, ',', '.')}}</span>
+              <span class="tag is-light">{{project.code}}</span>
+            </div>
+      </div>
+      <div class="media-right has-text-centered">
+      <div class="subtitle is-6">Votos</div>
+       <h1 class="title is-3">
+          {{project.likes}}
+        </h1>
+          </div>
+        </article>
+        {% endfor %}
+        <br>
+   <div class="notification is-institucional">
+   <img src="/assets/img/icons/w-institucional.svg" alt="" class="image is-inline" style="width: 35px;margin-bottom: -8px;float:right;">
+    <h1 class="title is-4 has-text-white">Distrito Norte</h1>
+    <h1 class="subtitle is-5 has-text-white">Institucional</h1>
+   </div>
+        {% for project in proyectos if (project.district.id == 1 and project.type == 'institucional') %}
+          <article class="media">
+      <div class="media-content" style="overflow: visible;">
+        <h1 class="subtitle is-6 has-text-primary" style="margin-bottom:10px;"><a href="{{path_for('showProject', {pro: project.id})}}">{{project.name}}</a></h1>
+        <div class="tags">
+                <span class="tag is-warning"><i class="fas fa-dollar-sign"></i>&nbsp; {{project.total_budget|replace({".00" : ""})|number_format(0, ',', '.')}}</span>
+              <span class="tag is-light">{{project.code}}</span>
+            </div>
+      </div>
+      <div class="media-right has-text-centered">
+      <div class="subtitle is-6">Votos</div>
+       <h1 class="title is-3">
+          {{project.likes}}
+        </h1>
+          </div>
+        </article>
+        {% endfor %}
+        <br>
+   </div>
+   <div class="column">
+   <div class="notification is-comunitario">
+   <img src="/assets/img/icons/w-comunitario.svg" alt="" class="image is-inline" style="width: 35px;margin-bottom: -8px;float:right;">
+    <h1 class="title is-4 has-text-white">Distrito Centro</h1>
+    <h1 class="subtitle is-5 has-text-white">Comunitarios</h1>
+   </div>
+        {% for project in proyectos if (project.district.id == 2 and project.type == 'comunitario') %}
+           <article class="media">
+      <div class="media-content" style="overflow: visible;">
+        <h1 class="subtitle is-6 has-text-primary" style="margin-bottom:10px;"><a href="{{path_for('showProject', {pro: project.id})}}">{{project.name}}</a></h1>
+        <div class="tags">
+                <span class="tag is-warning"><i class="fas fa-dollar-sign"></i>&nbsp; {{project.total_budget|replace({".00" : ""})|number_format(0, ',', '.')}}</span>
+              <span class="tag is-light">{{project.code}}</span>
+            </div>
+      </div>
+      <div class="media-right has-text-centered">
+      <div class="subtitle is-6">Votos</div>
+       <h1 class="title is-3">
+          {{project.likes}}
+        </h1>
+          </div>
+        </article>
+        {% endfor %}
+        <br>
+    <div class="notification is-institucional">
+   <img src="/assets/img/icons/w-institucional.svg" alt="" class="image is-inline" style="width: 35px;margin-bottom: -8px;float:right;">
+    <h1 class="title is-4 has-text-white">Distrito Centro</h1>
+    <h1 class="subtitle is-5 has-text-white">Institucionales</h1>
+    </div>
+        {% for project in proyectos if (project.district.id == 2 and project.type == 'institucional') %}
+           <article class="media">
+      <div class="media-content" style="overflow: visible;">
+        <h1 class="subtitle is-6 has-text-primary" style="margin-bottom:10px;"><a href="{{path_for('showProject', {pro: project.id})}}">{{project.name}}</a></h1>
+        <div class="tags">
+                <span class="tag is-warning"><i class="fas fa-dollar-sign"></i>&nbsp; {{project.total_budget|replace({".00" : ""})|number_format(0, ',', '.')}}</span>
+              <span class="tag is-light">{{project.code}}</span>
+            </div>
+      </div>
+      <div class="media-right has-text-centered">
+      <div class="subtitle is-6">Votos</div>
+       <h1 class="title is-3">
+          {{project.likes}}
+        </h1>
+          </div>
+        </article>
+        {% endfor %}
+      </tbody>
+    </table>
+   </div>
+   <div class="column">
+   <div class="notification is-comunitario">
+   <img src="/assets/img/icons/w-comunitario.svg" alt="" class="image is-inline" style="width: 35px;margin-bottom: -8px;float:right;">
+       <h1 class="title is-4 has-text-white">Distrito Sur</h1>
+    <h1 class="subtitle is-5 has-text-white">Comunitarios</h1>
+   </div>
+        {% for project in proyectos if (project.district.id == 3 and project.type == 'comunitario') %}
+           <article class="media">
+      <div class="media-content" style="overflow: visible;">
+        <h1 class="subtitle is-6 has-text-primary" style="margin-bottom:10px;"><a href="{{path_for('showProject', {pro: project.id})}}">{{project.name}}</a></h1>
+        <div class="tags">
+                <span class="tag is-warning"><i class="fas fa-dollar-sign"></i>&nbsp; {{project.total_budget|replace({".00" : ""})|number_format(0, ',', '.')}}</span>
+              <span class="tag is-light">{{project.code}}</span>
+            </div>
+      </div>
+      <div class="media-right has-text-centered">
+      <div class="subtitle is-6">Votos</div>
+       <h1 class="title is-3">
+          {{project.likes}}
+        </h1>
+          </div>
+        </article>
+        {% endfor %}
+        <br>
+
+    <div class="notification is-institucional">
+   <img src="/assets/img/icons/w-institucional.svg" alt="" class="image is-inline" style="width: 35px;margin-bottom: -8px;float:right;">
+    <h1 class="title is-4 has-text-white">Distrito Sur</h1>
+    <h1 class="subtitle is-5 has-text-white">Institucionales</h1>
+    </div>
+        {% for project in proyectos if (project.district.id == 3 and project.type == 'institucional') %}
+          <article class="media">
+      <div class="media-content" style="overflow: visible;">
+        <h1 class="subtitle is-6 has-text-primary" style="margin-bottom:10px;"><a href="{{path_for('showProject', {pro: project.id})}}">{{project.name}}</a></h1>
+        <div class="tags">
+                <span class="tag is-warning"><i class="fas fa-dollar-sign"></i>&nbsp; {{project.total_budget|replace({".00" : ""})|number_format(0, ',', '.')}}</span>
+              <span class="tag is-light">{{project.code}}</span>
+            </div>
+      </div>
+      <div class="media-right has-text-centered">
+      <div class="subtitle is-6">Votos</div>
+       <h1 class="title is-3">
+          {{project.likes}}
+        </h1>
+          </div>
+        </article>
+        {% endfor %}    
+   </div>
+   </div>
+  </section>
+  {% include 'sl/base/collab.twig' %}
+
+{% endblock %}

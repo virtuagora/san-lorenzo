@@ -1,0 +1,14 @@
+{% set votable = ( is_state('vote') and vote_available() ) ? 'true' : 'false'  %}
+{% extends 'sl/admin/master.twig' %}
+
+{% block section %}
+  <h1 class="title is-1">Sincronizar participación
+  </h1>
+<h2 class="subtitle is-4">
+  Mantenga el padrón actualizado para evitar doble voto (presencial y digital)
+</h2>
+<hr>
+<sync-padron url="{{path_for('getCiudadanoPadron')}}" url-add-citizen="{{path_for('runAddCitizen')}}" url-participacion="{{path_for('runParticipacionPadron')}}" url-public-vote="{{base_url() ~ path_for('showUrna')}}" :votable="{{votable}}">
+  {% include 'loading.twig' %}
+</sync-padron>
+{% endblock %}

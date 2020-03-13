@@ -1,0 +1,8 @@
+<section class="section">
+  <div class="container">
+		<h1 class="title has-text-centered is-1 is-size-3-touch has-text-primary">&nbsp;¡Algunos proyectos que participarán!</h1>
+    <exhibit url="{{path_for('retrieveProject')}}" :force-feasible="true" :random="true">
+        {% include 'loading.twig' %}
+    </exhibit>
+  </div>
+</section>

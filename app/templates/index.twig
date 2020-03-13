@@ -1,0 +1,68 @@
+{% set show_navbar = true %}
+{% set show_footer = true %}
+{# set body_class = '' #}
+
+{% extends 'master.twig' %}
+
+{% block body %}
+    <section class="hero is-primary {{is_state('vote') ? null : 'is-medium'}} indexBg">
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns">
+            {% if is_state('pre-vote') or is_state('vote') %}
+            <div class="column is-8">
+            <img src="{{asset('img/pp-logo-horizontal-white.svg')}}" alt="Volver al inicio" class="image logo-pp">
+            {% else %}  
+            <div class="column has-text-centered">
+            <img src="{{asset('img/pp-logo-horizontal-white.svg')}}" alt="Volver al inicio" class="image is-centered logo-pp">
+            {% endif %}
+            {% include 'sl/pages/index/hero/message.twig' %}
+            {% if options()['show-admin-notification'] == 'true' %}
+              <div class="message is-info">
+                <div class="message-body">
+                <i class="fas fa-exclamation-circle"></i>&nbsp;{{options()['admin-message']}}
+                </div>
+              </div>
+            {% endif %}
+            {% if is_state('pre-vote') or is_state('vote') %}
+              <div class="buttons">
+                {% include 'sl/pages/index/hero/buttons.twig' %}
+              </div>
+            {% else %}  
+              <div class="buttons is-centered">
+                {% include 'sl/pages/index/hero/buttons.twig' %}
+              </div>
+            {% endif %}
+            </div>
+            {% if is_state('pre-vote') or is_state('vote') %}
+            <div class="column">
+              <div class="notification is-primary" style="padding:7px; margin-bottom:8px;">
+                <p class="has-text-centered is-500 is-size-7">¡Descubrí donde y cuando nos podés encontrar en tú distrito!</p>
+              </div>
+              <calendar-index :calendar="{{options().calendar}}" :show-more="true" :small="true">
+                  {% include 'loading.twig' %}
+              </calendar-index>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </section>
+  {% if is_state('pre-upload-proposals') %}
+    {% include 'sl/pages/index/states/pre-upload-proposals.twig'%}
+  {% elseif is_state('upload-proposals') %}
+    {% include 'sl/pages/index/states/upload-proposals.twig'%}
+  {% elseif is_state('pre-vote') %}
+    {% include 'sl/pages/index/states/pre-vote.twig'%}
+  {% elseif is_state('vote') %}
+    {% include 'sl/pages/index/states/vote.twig'%}
+  {% elseif is_state('pre-results') %}
+    {% include 'sl/pages/index/states/pre-results.twig'%}
+  {% elseif is_state('results') %}
+    {% include 'sl/pages/index/states/results.twig'%}
+  {% endif %}
+  {% include 'sl/pages/index/resultsppjoven.twig' %}
+  {% include 'sl/pages/index/collaboration.twig' %}
+{% endblock %}
+
+{% block javascripts %}{% endblock %}

@@ -1,0 +1,47 @@
+{# {% if is_state('pre-upload-proposals') %} #}
+
+{% if is_state('upload-proposals') %}
+  {% if subject.id %}
+    {% if 'verified' in subject.roles and proposals_available() %}
+      <a href="{{path_for('showUserPanelCreateProject')}}" class="button is-link is-medium animated pulse infinite"><i class="fas fa-plus-square fa-fw fa-lg"></i>&nbsp;Subí una propuesta</a>
+    {% endif %}
+    <a href="{{path_for('showUserPanelOverview')}}" class="button is-dark is-medium"><i class="fas fa-external-link-alt"></i>&nbsp;Ir a mi panel</a>
+  {% else %}
+  {% if proposals_available() %}
+    <a href="/login" class="button is-link is-medium animated pulse infinite"><i class="fas fa-plus-square fa-fw fa-lg"></i>&nbsp;Subí tu propuesta</a>
+  {% endif %}
+  <a href="/login" class="button is-dark is-medium"><i class="fas fa-sign-in-alt"></i>&nbsp;Entrá a tu cuenta</a>
+  {% endif %}
+{% elseif is_state('pre-vote') %}
+  {% if subject.id %}
+    <a href="{{path_for('showUserPanelOverview')}}" class="button is-dark is-medium"><i class="fas fa-external-link-alt"></i>&nbsp;Ir a mi panel</a>
+  {% else %}
+    <a href="/login" class="button is-dark is-medium"><i class="fas fa-sign-in-alt"></i>&nbsp;Entrá a tu cuenta</a>
+  {% endif %}
+{% elseif is_state('vote') %}
+  {% if subject.id %}
+    {% if vote_available() and citizen() is not null and citizen().voted == false %}
+        <a href="{{path_for('showVoting')}}" class="button is-link is-medium is-rounded animated pulse infinite"><i class="fas fa-vote-yea fa-fw fa-lg"></i>&nbsp;Votá tus proyectos favoritos</a>
+    {% endif %}
+  {% else %}
+    {% if vote_available() %}
+    <a href="{{path_for('showLogin')}}" class="button is-link is-medium is-rounded animated pulse infinite"><i class="fas fa-sign-in-alt"></i>&nbsp;¡Entrá y votá HOY!</a>
+    {% else %}
+    <a href="{{path_for('showLogin')}}" class="button is-dark is-medium is-rounded"><i class="fas fa-sign-in-alt"></i>&nbsp;Entrá a tu cuenta</a>
+    {% endif %}
+  {% endif %}
+{% elseif is_state('pre-results') %}
+  {% if subject.id %}
+  
+  {% else %}
+    <a href="{{path_for('showLogin')}}" class="button is-dark is-medium is-rounded"><i class="fas fa-sign-in-alt"></i>&nbsp;Entrá a tu cuenta</a>
+  {% endif %}
+{% elseif is_state('results') %}
+  <a href="{{path_for('showSeleccionados')}}" class="button is-warning is-medium is-rounded animated pulse infinite"><i class="fas fa-medal"></i>&nbsp;Conocé los proyectos ganadores</a>
+{% else %}
+  {% if subject.id %}
+  
+  {% else %}
+    <a href="{{path_for('showLogin')}}" class="button is-dark is-medium is-rounded"><i class="fas fa-sign-in-alt"></i>&nbsp;Entrá a tu cuenta</a>
+  {% endif %}
+{% endif %}

@@ -1,0 +1,62 @@
+<?php
+
+return [
+    'settings' => [
+        'mode' => 'dev',
+        'determineRouteBeforeAppMiddleware' => true,
+        'displayErrorDetails' => true,
+        'timezone' => 'America/Argentina/Buenos_Aires',
+        'twig' => [
+            'path' => __DIR__.'/templates',
+            'options' => [
+                'cache' => __DIR__.'/../var/cache',
+                'debug' => true,
+            ],
+        ],
+        'swiftmailer' => [
+            'transport' => 'null',
+            'options' => [
+                'host' => '',
+                'port' => 25,
+                'username' => '',
+                'password' => '',
+                'security' => '',
+                'sender' => ['some@email.com' => "My Organization"],
+            ],
+        ],
+        'monolog' => [
+            'name' => 'monolog',
+            'path' => __DIR__.'/../var/logs/app.log',
+        ],
+        'eloquent' => [
+            'driver' => 'mysql',
+            'host' => 'localhost',
+            'database' => '',
+            'username' => '',
+            'password' => '',
+            'charset' => 'utf8',
+            'collation' => 'utf8_general_ci',
+            'prefix' => '',
+        ],
+        'filesystem' => [
+            'adapter' => 'League\Flysystem\Adapter\Local',
+            'args' => [
+                __DIR__ . '/../var/files',
+            ],
+        ],
+        'store' => [
+            'name' => 'virtuagora',
+            'autorefresh' => true,
+            'lifetime' => '1 hour',
+        ],
+        'facebook' => [
+            'app_id' => '',
+            'app_secret' => '',
+            'default_graph_version' => 'v2.12',
+        ],
+        'recaptcha' => [
+            'public_key' => '',
+            'secret_key' => '',
+        ],
+    ],
+];

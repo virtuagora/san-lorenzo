@@ -1,0 +1,61 @@
+{% set show_footer = true %}
+{% set show_navbar = true %}
+{# set body_class = '' #}
+
+{% block title %}
+  Consultas y preguntas frecuentes
+{% endblock %}
+
+{% extends 'master.twig' %}
+
+{% block body %}
+  <div class="hero is-primary indexBg">
+    <div class="hero-body has-text-centered">
+      <div class="container">
+        <h1 class="title is-2">
+          <i class="fas fa-question-circle fa-lg"></i>
+        </h1>
+        <h1 class="title is-2">¿Consultas?</h1>
+        <h1 class="subtitle is-5">Respondemos a las preguntas frecuentes sobre el Presupuesto Participativo y la plataforma</h1>
+      </div>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-6 is-offset-3">
+          <div class="message is-primary">
+            <div class="message-body has-text-centered">
+              Esta página se encuentra en constante actualización en base a las consultas que vamos recibiendo. Si tenés alguna duda, contactanos a
+              <a href="mailto:presupuestoparticipativo.sl@gmail.com">presupuestoparticipativo.sl@gmail.com</a>
+            </div>
+            </div>
+            <div class="content">
+              <ul>
+                <li><a href="#q1">Intenté registrarme, pero apareció el mensaje: "Error enviando el correo electrónico"</a></li>
+                <li><a href="#q2">Me registré correctamente, pero no he recibido el correo electrónico para confirmar</a></li>
+                <li><a href="#q3">Soy ciudadano de San Lorenzo, pero al iniciar sesión, me informa que no estoy habilitado para votar</a></li>
+              </ul>
+            </div>
+            <hr>
+            <div class="content">
+            <h3 id="q1" class="title is-600">Intenté registrarme, pero apareció el mensaje: "Error enviando el correo electrónico"</h1>
+            <p>En primer lugar, revisá si recibiste un correo electrónico para verificar tu registro. Si no recibiste nada, verificá primero estar conectado a internet y volvé a intentarlo.</p>
+            <h3 id="q2" class="title is-600">Me registré correctamente, pero no he recibido el correo electrónico para confirmar</h1>
+            <p>Revisá si recibiste el correo electrónico en la carpeta de "SPAM" o "Correo no deseado". De no haber recibido el correo, podés volver a intentar registrarte (se intentará enviar otro correo electronico a tu casilla) si el problema persiste, contactanos a <a href="mailto:presupuestoparticipativo.sl@gmail.com">presupuestoparticipativo.sl@gmail.com</a>.</p>
+            <h3 id="q3" class="title is-600">Soy ciudadano de San Lorenzo, pero al iniciar sesión, me informa que no estoy habilitado para votar.</h1>
+            <p>¿Estas recibiendo el siguiente mensaje?</p>
+            <div class="notification is-dark has-text-centered">
+            Usted <b>no se encuentra habilitado</b> para votar de forma <u>online</u>
+            </div>
+            <p>Eso ocurre porque en nuestras bases de datos, no te pudimos encontrar en el padrón de votantes habilitados. No te preocupes, aún podés navegar por la web.</p>
+            <p>Ademas, recordá que aún asi <a href="{{path_for('showAgenda')}}"><u><b>podés consultar la agenda</b></u></a> de las fechas y horarios donde nos encontraremos con la urna para que puedas votar presencialmente.</p>
+            <p>Si aún así preferís hacer la votación de forma ONLINE, tenemos que validar tú DNI previo a agregarte al padron de votantes habilitados. Para poder hacerlo, contactanos a <a href="mailto:presupuestoparticipativo.sl@gmail.com">presupuestoparticipativo.sl@gmail.com</a> para completar el proceso.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% include 'sl/base/collab.twig' %}
+
+{% endblock %}

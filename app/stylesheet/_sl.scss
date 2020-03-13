@@ -1,0 +1,354 @@
+.textarea,
+input.input {
+  background-color: rgb(252, 252, 252); // border-radius: 0;
+  // border: 0;
+  // border-bottom: 1px solid $dark;
+  // border-left: 1px solid $dark;
+  // border-bottom-left-radius: 8px;
+  box-shadow: none; // border-radius: 0;
+  padding-left: 10px; // padding-right: 0; // background-color: rgb(252, 252, 252);
+  // &:hover {
+  //   // border-bottom: 1px solid $primary;
+  // }
+  &:focus {
+    box-shadow: none; // border-bottom: 1px solid $primary;
+  } // background-color: #FAFBFC;
+  // border-color: #CCCCCC;
+  // &:hover {
+  // }
+  // &:focus {
+  //   box-shadow: none;
+  // }
+}
+
+.indexBg {
+  // background-color: #269;
+  // background-image: linear-gradient(#62aae0 2px, transparent 2px), linear-gradient(90deg, #62aae0 2px, transparent 2px), linear-gradient(rgba(255, 255, 255, .3) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .3) 1px, transparent 1px);
+  // background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+  // background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px
+  background-image: url('/assets/img/pp-institucional2.png');
+  background-position: center center;
+  background-size: contain; // &>div {
+  //   background: -moz-linear-gradient(45deg, rgba(231, 16, 0, 0.35) 15%, rgba(40, 94, 203, 0.8) 30%, rgba(243, 146, 0, 0.5) 70%, rgba(175, 202, 11, 0.2) 90%);
+  //   /* FF3.6-15 */
+  //   background: -webkit-linear-gradient(45deg, rgba(231, 16, 0, 0.35) 15%, rgba(40, 94, 203, 0.8) 30%, rgba(243, 146, 0, 0.5) 70%, rgba(175, 202, 11, 0.2) 90%);
+  //   /* Chrome10-25,Safari5.1-6 */
+  //   background: linear-gradient(45deg, rgba(231, 16, 0, 0.35) 15%, rgba(40, 94, 203, 0.8) 30%, rgba(243, 146, 0, 0.5) 70%, rgba(175, 202, 11, 0.2) 90%);
+  //   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  //   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d60c3c9b', endColorstr='#7d4f1489', GradientType=1);
+  //   /* IE6-9 fallback on horizontal gradient */
+  // }
+  img.logo-pp {
+    width: 350px;
+    margin-bottom: 30px !important;
+  }
+}
+
+.color-institucional {
+  color: #0b3371 !important;
+}
+
+.color-comunitario {
+  color: #9a9e00 !important;
+}
+
+.institucional-background {
+  background-image: url('/assets/img/institucional-bg.png');
+  background-position: center center;
+  background-size: contain; // background-color: #415281;
+  // background-image: url('/assets/img/floating-cogs.svg');
+}
+
+.comunitario-background {
+  background-image: url('/assets/img/comunitario-bg.png');
+  background-position: center center;
+  background-size: contain; // background-image: url('/assets/img/rounded-plus-connected.svg');
+  // background-color: #8b9d5d;
+}
+
+table.table.is-centered {
+  tr td,
+  tr th {
+    vertical-align: middle;
+  }
+}
+
+// .has-image-background {
+//   background-position: center center;
+//   background-size: cover;
+//   &>div {
+//     // background: -moz-linear-gradient(45deg, rgba(0, 23, 69, 0.5) 0%, rgba(74, 156, 214, 0.5) 39%, rgba(49, 0, 98, 0.5) 86%, rgba(48, 0, 96, 0.5) 100%);
+//     // /* FF3.6-15 */
+//     // background: -webkit-linear-gradient(45deg, rgba(0, 23, 69, 0.5) 0%, rgba(74, 156, 214, 0.5) 39%, rgba(49, 0, 98, 0.5) 86%, rgba(48, 0, 96, 0.5) 100%);
+//     // /* Chrome10-25,Safari5.1-6 */
+//     // background: linear-gradient(45deg, rgba(0, 23, 69, 0.5) 0%, rgba(74, 156, 214, 0.5) 39%, rgba(49, 0, 98, 0.5) 86%, rgba(48, 0, 96, 0.5) 100%);
+//     // /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+//     // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d60c3c9b', endColorstr='#7d4f1489', GradientType=1);
+//     // /* IE6-9 fallback on horizontal gradient */
+//     background: -moz-linear-gradient(45deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+//     /* FF3.6-15 */
+//     background: -webkit-linear-gradient(45deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+//     /* Chrome10-25,Safari5.1-6 */
+//     background: linear-gradient(45deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+//     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+//     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000', GradientType=1);
+//     /* IE6-9 fallback on horizontal gradient */
+//   }
+// }
+
+.shadow-text {
+  text-shadow: -1px 1px 3px #00000080;
+}
+
+img.image.is-centered {
+  margin: 0 auto;
+}
+
+#projectOverview.has-image-background {
+  background-position: center center !important;
+  background-size: cover !important;
+  // &.institucional {
+    // background: -moz-linear-gradient(45deg, rgba(5, 25, 55, 1) 3%, rgba(0, 212, 255, 0) 100%);
+    // background: -webkit-linear-gradient(45deg, rgba(5, 25, 55, 1) 3%, rgba(0, 212, 255, 0) 100%);
+    // background: linear-gradient(45deg, rgba(5, 25, 55, 1) 3%, rgba(0, 212, 255, 0) 100%);
+    // filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#051937", endColorstr="#00d4ff", GradientType=1);
+  // }
+  // &.comunitario {
+    // background: -moz-linear-gradient(45deg, rgba(76, 148, 12, 1) 3%, rgba(254, 249, 217, 0) 100%);
+    // background: -webkit-linear-gradient(45deg, rgba(76, 148, 12, 1) 3%, rgba(254, 249, 217, 0) 100%);
+    // background: linear-gradient(45deg, rgba(76, 148, 12, 1) 3%, rgba(254, 249, 217, 0) 100%);
+    // filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4c940c", endColorstr="#fef9d9", GradientType=1);
+  // }
+}
+
+#projectOverview {
+  position: relative;
+  img.bookmark {
+    margin-left: 15px;
+    margin-bottom: 10px;
+    right: 10px;
+    top: 0;
+    float: right;
+    width: 75px;
+    position: absolute;
+  }
+  .hero-foot{
+    .tabs a{
+      color: #FFF;
+    }
+    .tabs a:hover{
+      color: $primary;
+    }
+    .tabs li.is-active a{
+      color: $primary;
+    }
+  }
+}
+
+span.tag.is-institucional {
+  background-color: #0b3371;
+  color: #FFF;
+}
+
+span.tag.is-comunitario {
+  background-color: #9a9e00;
+  color: #FFF;
+}
+
+img.logo-small-pp-voting {
+  width: 125px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+}
+
+.has-text-comunitario {
+  color: #9a9e00 !important;
+}
+
+.has-text-institucional {
+  color: #0b3371 !important;
+}
+
+.is-comunitario {
+  background-color: #9a9e00;
+}
+
+.is-institucional {
+  background-color: #0b3371;
+}
+
+.logos-footer {
+  height: 70px;
+  margin: 0 auto;
+}
+
+.item-mosaic {
+  @include mobile {
+    width: 98%;
+    margin: 0 0.5% 10px;
+  }
+  @include tablet {
+    width: 48%;
+    margin: 0 0.5% 10px;
+  }
+  @include desktop {
+    width: 24%;
+    margin: 0 0.5% 10px;
+  } // .gradient {
+  //     background: -moz-linear-gradient(45deg, rgba(0, 23, 69, 0.9) 0%, rgba(74, 156, 214, 0.7) 39%, rgba(49, 0, 98, 0.5) 86%, rgba(48, 0, 96, 0.82) 100%);
+  //     /* FF3.6-15 */
+  //     background: -webkit-linear-gradient(45deg, rgba(0, 23, 69, 0.9) 0%, rgba(74, 156, 214, 0.7) 39%, rgba(49, 0, 98, 0.5) 86%, rgba(48, 0, 96, 0.82) 100%);
+  //     /* Chrome10-25,Safari5.1-6 */
+  //     background: linear-gradient(45deg, rgba(0, 23, 69, 0.9) 0%, rgba(74, 156, 214, 0.7) 39%, rgba(49, 0, 98, 0.5) 86%, rgba(48, 0, 96, 0.82) 100%);
+  //     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  //     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d60c3c9b', endColorstr='#7d4f1489', GradientType=1);
+  //     /* IE6-9 fallback on horizontal gradient */
+  // }
+  // .card-image figure.image {
+  //     background-size: cover;
+  //     background-position: center center;
+  // }
+  .notification {
+    @include mobile {
+      padding-top: 80px;
+    }
+    @include tablet {
+      padding-top: 80px;
+    }
+    @include desktop {
+      padding-top: 80px;
+    }
+    &.with-image {
+      @include mobile {
+        padding-top: 30%;
+      }
+      @include tablet {
+        padding-top: 40%;
+      }
+      @include desktop {
+        padding-top: 50%;
+      } // background-size: cover;
+      // background-position: center center
+    }
+    .title,
+    .subtitle,
+    .counter-likes {
+      text-shadow: -1px 1px 4px rgba(0, 0, 0, 1);
+    }
+    &.institucion-background {
+      background-image: url('/assets/img/institucional-bg.png');
+      background-position: center center;
+      background-size: contain; // background-color: #415281;
+      // background-image: url('/assets/img/floating-cogs.svg');
+    }
+    &.comunitario-background {
+      background-image: url('/assets/img/comunitario-bg.png');
+      background-position: center center;
+      background-size: contain; // background-image: url('/assets/img/rounded-plus-connected.svg');
+      // background-color: #8b9d5d;
+    }
+    // &.has-image-background {
+    //   background-position: center center;
+    //   background-size: cover;
+    //   &.institucional>div {
+    //     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e3b9a+0,2a61d8+50,2053ca+51,7ea1e8+100&1+0,0+100 */
+    //     background: -moz-linear-gradient(45deg, rgba(5, 25, 55, 1) 3%, rgba(0, 212, 255, 0) 100%);
+    //     background: -webkit-linear-gradient(45deg, rgba(5, 25, 55, 1) 3%, rgba(0, 212, 255, 0) 100%);
+    //     background: linear-gradient(45deg, rgba(5, 25, 55, 1) 3%, rgba(0, 212, 255, 0) 100%);
+    //     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#051937", endColorstr="#00d4ff", GradientType=1);
+    //   }
+    //   &.comunitario>div {
+    //     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#498115+0,72b41c+50,66a816+51,9fe33f+100&1+0,0+100 */
+    //     background: -moz-linear-gradient(45deg, rgba(76, 148, 12, 1) 3%, rgba(254, 249, 217, 0) 100%);
+    //     background: -webkit-linear-gradient(45deg, rgba(76, 148, 12, 1) 3%, rgba(254, 249, 217, 0) 100%);
+    //     background: linear-gradient(45deg, rgba(76, 148, 12, 1) 3%, rgba(254, 249, 217, 0) 100%);
+    //     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4c940c", endColorstr="#fef9d9", GradientType=1);
+    //   }
+    // }
+    &.and-more {
+      background-image: url('/assets/img/pp-institucional.png');
+      background-position: center center;
+      background-size: contain;
+    }
+  }
+  .bancar-count-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+}
+
+.box-project {
+  background-color: white;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  display: block;
+  margin: 0 5px;
+  color: #fff;
+  position: relative;
+  height: 200px;
+  &>div {
+    border-radius: 5px;
+    height: 100%;
+    position: relative;
+    .to-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: 1rem;
+    }
+  }
+  .title,
+  .subtitle {
+    color: #fff;
+    text-shadow: -1px 1px 3px #00000096;
+    line-height:normal;
+  }
+  p {
+    text-shadow: -1px 1px 3px #00000080;
+    font-size: 0.9rem;
+    line-height: normal;
+  }
+  .bancar-count-container {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+  }
+  &.institucion-background {
+    background-image: url('/assets/img/institucional-bg.png');
+    background-position: center center;
+    background-size: contain;
+  }
+  &.comunitario-background {
+    background-image: url('/assets/img/comunitario-bg.png');
+    background-position: center center;
+    background-size: contain; 
+  }
+  &.and-more{
+    background-image: url('/assets/img/pp-institucional2.png');
+    background-position: center center;
+    background-size: contain;
+  }
+  &.has-image-background {
+    background-position: center center;
+    background-size: cover;
+  }
+}
+
+.navbar.is-white .navbar-brand > a.navbar-item:hover, .navbar.is-white .navbar-brand > a.navbar-item.is-active, .navbar.is-white .navbar-brand .navbar-link:hover, .navbar.is-white .navbar-brand .navbar-link.is-active{
+  background-color: transparent;
+}
+
+.navbar-brand .navbar-item .image {
+    @include mobile {
+      width: 140px;
+    }
+    @include tablet {
+      width: 200px;
+    }
+    @include desktop {
+      width: 220px;
+    }
+}

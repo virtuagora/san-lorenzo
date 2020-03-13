@@ -1,0 +1,122 @@
+{% extends 'sl/admin/master.twig' %}
+
+{% block section %}
+  <h1 class="title is-1">Subir imagen a un proyecto
+  </h1>
+  <h2 class="subtitle is-4">
+    A continuacion puede asignar una imagen a un proyecto.
+  </h2>
+  <div class="notification is-dark">
+    La misma tambien aparecerá en las publicaciones de las redes sociales.
+  </div>
+  <div class="box">
+    <form action="{{path_for('runUploadImage')}}" method="POST" enctype="multipart/form-data">
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">
+            Proyecto
+          </label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control select is-fullwidth">
+              <select name="proyecto_id">
+                {% for project in projects if project.district_id == 1 %}
+                  <option value="{{project.id}}">{{project.code}}
+                    -
+                    {{project.name}}</option>
+                {% endfor %}
+                {% for project in projects if project.district_id == 2 %}
+                  <option value="{{project.id}}">{{project.code}}
+                    -
+                    {{project.name}}</option>
+                {% endfor %}
+                {% for project in projects if project.district_id == 3 %}
+                  <option value="{{project.id}}">{{project.code}}
+                    -
+                    {{project.name}}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">
+            Archivo
+          </label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input type="file" name="archivo">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="field is-horizontal">
+        <div class="field-label">
+          <!-- Left empty for spacing -->
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <button type="submit" class="button is-primary">
+                <i class="fas fa-upload fa-fw"></i>&nbsp;Subir imagen
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <h1 class="subtitle is-3">Archivos subidos
+  </h1>
+  <table class="table is-centered is-fullwidth is-hoverable">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Proyecto</th>
+        <th>Tipo</th>
+        <th>Distrito</th>
+        <th class="has-text-centered">Imagen</th>
+        {#<th width="100" class="has-text-centered">Acciones</th>#}
+      </tr>
+    </thead>
+    <tbody>
+      {% for project in projects if project.picture_name is not null %}
+        <tr>
+          <td>{{project.code}}</td>
+          <td>
+            <a href="{{path_for('showProject', {slug: project.slug})}}">{{project.name}}</a>
+            <br>
+            <small>Por
+              {{project.author_names}}
+              {{project.author_surnames}}</small>
+          </td>
+          <td>
+            <span class="tag is-{{project.type}}">
+            {{project.type|capitalize}}</span>
+          </td>
+          <td>
+            {{project.district.name}}
+          </td>
+          <td>
+            <a href="{{path_for('showImage',{'slug':project.slug})}}">
+              <img src="{{path_for('showImage',{'slug':project.slug})}}" class="image" style="max-height: 100px; margin: 0 auto;" alt="">
+            </a>
+          </td>
+          {#<td class="has-text-centered">
+            <form action="" method="POST">
+              <input type="hidden" name="id">
+              <button type="submit" class="button is-small is-danger is-outlined">
+                <i class="fas fa-trash fa-fw"></i>&nbsp;Eliminar
+              </button>
+            </form>
+          </td>#}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

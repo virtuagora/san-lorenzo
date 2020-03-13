@@ -1,0 +1,13 @@
+{% extends 'sl/admin/master.twig' %}
+
+{% block section %}
+  <h1 class="title is-1">Configuración
+  </h1>
+  <p>
+   Cambie variables de la plataforma aquí.
+  </p>
+  <hr>
+ <settings :settings="{{options|json_encode}}">
+{% include 'loading.twig' %}
+</settings>
+{% endblock %}

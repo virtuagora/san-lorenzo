@@ -1,0 +1,280 @@
+{% set show_footer = true %}
+{% set show_navbar = true %}
+{# set body_class = '' #}
+
+{% if project.picture_name is not null %}
+  {% set hero_classes = "has-image-background " ~ project.type  %}
+  {% if project.type == "comunitario" %}
+    {% set hero_styles = "background: linear-gradient(45deg, rgba(76, 148, 12, 1) 3%, rgba(254, 249, 217, 0) 100%), url('/proyectos/" ~ project.id ~ "/imagen')" %}
+  {% elseif project.type == "institucional" %}
+  {% set hero_styles = "background: linear-gradient(45deg, rgba(5, 25, 55, 1) 3%, rgba(0, 212, 255, 0) 100%), url('/proyectos/" ~ project.id ~ "/imagen')" %}
+  {% endif %}
+{% else %}
+  {% set hero_classes = project.type ~ "-background " %}
+  {% set hero_styles = null %}
+{% endif %}
+
+{% block title %}
+  {{project.name}}
+{% endblock %}
+
+{% block opengraph %}
+  <!-- Social Media Metatags! -->
+  <meta property="fb:app_id" content="367317793807869"/>
+  <meta property="og:type" content="article"/>
+  <meta name="description" content="{{project.description}}. El objetivo: {{project.objective|length > 250 ? project.objective|slice(0, 250) ~ '...' : project.objective}}">
+  <meta property="og:title" content="{{project.name}} - Presupuesto Participativo de San Lorenzo">
+  <meta property="og:description" content="{{project.description}}. El objetivo: {{project.objective|length > 250 ? project.objective|slice(0, 250) ~ '...' : project.objective}}">
+  {% if project.picture_name is not null %}
+    <meta property="og:image" content="https://pp.sanlorenzo.gob.ar/proyectos/{{project.id}}/imagen">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="682">
+  {% else %}
+    <meta property="og:image" content="https://pp.sanlorenzo.gob.ar/assets/img/sharer.jpg">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="565">
+  {% endif %}
+  <meta property="og:url" content="https://pp.sanlorenzo.gob.ar/proyectos/{{project.id}}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{project.name}} - Presupuesto Participativo de San Lorenzo">
+  <meta name="twitter:site" content="@prensasl">
+  <meta name="twitter:creator" content="@prensasl">
+  <meta name="twitter:description" content="{{project.description}}. El objetivo: {{project.objective|length > 250 ? project.objective|slice(0, 250) ~ '...' : project.objective}}">
+{% endblock %}
+{% block scriptshead %}
+  <script>
+    var shareOnFacebook = function () {
+      FB.ui({
+        method: 'share',
+        mobile_iframe: true,
+        href: 'https://pp.sanlorenzo.gob.ar/proyectos/{{project.id}}',
+        hashtag: '#PPSanLorenzo',
+        quote: '¡El proyecto "{{project.name}}" está participando del Presupuesto Participativo de San Lorenzo! ¡Ingresá en la página, registrate y votalo junto a otros proyectos que participan!',
+        display: 'popup'
+      }, function (response) {});
+    }
+
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: '367317793807869', cookie: true, // This is important, it's not enabled by default
+        version: 'v3.1'
+      });
+    };
+
+    (function (d, s, id) {
+      var js,
+        fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {
+        return;
+      }
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+{% endblock %}
+
+{% extends 'master.twig' %}
+
+{% block body %}
+  <section id="projectOverview" class="hero is-medium is-bold {{hero_classes}}" style="{{hero_styles}}">
+    <div class="hero-body">
+      <img src="/assets/img/icons/mark-{{project.type}}.svg" class="bookmark" alt="">
+      <div class="container">
+        <div class="columns">
+          <div class="column">
+            <div class="field is-grouped is-grouped-multiline">
+              <div class="control">
+                <div class="tags has-addons">
+                  <span class="tag is-dark is-large">Distrito</span>
+                  <span class="tag is-white is-large">
+                    {{project.district.name|capitalize}}
+                  </span>
+                </div>
+              </div>
+              {% if (is_state('pre-vote') or is_state('vote') or is_state('pre-results') or is_state('results')) and project.feasible is defined %}
+                <div class="control">
+                  <div class="tags has-addons">
+                    <span class="tag is-dark is-large">
+                    {% if project.feasible %}
+                      {% if project.selected == true and show_results() %}
+                        <i class="fas fa-star has-text-warning"></i>
+                      {% else %}
+                        <i class="fas fa-check has-text-success"></i>
+                      {% endif %}
+                    {% else %}
+                      <i class="fas fa-times has-text-danger"></i>
+                    {% endif %}
+                    </span>
+                    {% if project.feasible %}
+                    {% if project.selected == true and show_results() %}
+                        <span class="tag is-warning is-large">
+                          ¡Seleccionado!
+                        </span>
+                      {% else %}
+                        <span class="tag is-success is-large">
+                          Factible
+                        </span>
+                      {% endif %}
+                    {% else %}
+                      <span class="tag is-danger is-large">
+                      No factible
+                    </span>
+                    {% endif %}
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+            <h1 class="title shadow-text has-text-white is-1">{{project.name}}</h1>
+            {% if project.type == 'institucional' %}
+              <h1 class="subtitle shadow-text has-text-white is-3">Presenta:
+                {{project.organization_name}}</h1>
+            {% else %}
+              <h1 class="subtitle shadow-text has-text-white is-3">
+                Presenta:
+                {{project.author_names}}
+                {{project.author_surnames}}</h1>
+            {% endif %}
+            {% if (vote_available() and subject.id is null) 
+              or(vote_available()and subject.id and citizen()is not null and citizen().voted == false) %}
+              {% if citizen()is not null and citizen().voted == false %}
+                <a href="{{path_for('showVoting')}}" class="button is-white is-large is-rounded">
+                  <i class="fas fa-paper-plane fa-fw"></i>¡Votá este proyecto!</a>
+              {% endif %}
+              {% if subject.id is null %}
+                <a href="{{path_for('showLogin')}}" class="button is-white is-large is-rounded">
+                  <i class="fas fa-sign-in-alt fa-fw"></i>¡Entrá y votá!</a>
+              {% endif %}
+            {% endif %}
+          </div>
+          <div class="column is-3 is-offset-1 is-hidden-touch">
+            <div class="notification is-white has-text-centered">
+              <h1 class="title is-1 has-text-dark">
+                $
+                {{project.total_budget|replace({".00" : ""})|number_format(0, ',', '.')}}
+              </h1>
+            </div>
+            <div class="notification is-{{project.type}} has-text-centered">
+              <h1 class="title is-3 has-text-white">
+                <img src="/assets/img/icons/w-{{project.type}}.svg" alt="" class="image is-inline" style="width: 35px;margin-bottom: -8px;">
+                {{project.type|capitalize}}
+              </h1>
+            </div>
+            {# {% if project.selected and show_results() %}
+             <div class="notification is-warning has-text-centered">
+              <h1 class="title is-4">
+                <img src="/assets/img/icons/medal-dark.svg" alt="" class="image is-inline" style="width: 25px;margin-bottom: -8px;">
+                ¡Seleccionado!
+              </h1>
+            </div>
+            {% endif %} #}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-foot">
+    <nav class="tabs is-white is-boxed">
+      <div class="container">
+        <ul>
+          <li class="is-active is-hidden-touch"><a href="{{path_for('showProject',{'pro': project.id})}}"><i class="fas fa-info fa-lg"></i>&nbsp;Información</a></li>
+          <li class="is-active is-hidden-desktop"><a href="{{path_for('showProject',{'pro': project.id})}}"><i class="fas fa-info fa-lg"></i></a></li>
+          <li class="is-hidden-touch"><a href="{{path_for('showProjectBudget',{'pro': project.id})}}"><i class="fas fa-dollar-sign fa-lg"></i>&nbsp;Presupuesto</a></li>
+          <li class="is-hidden-desktop"><a href="{{path_for('showProjectBudget',{'pro': project.id})}}"><i class="fas fa-dollar-sign fa-lg"></i></a></li>
+          <li class="is-hidden-touch"><a href="{{path_for('showProjectJournal',{'pro': project.id})}}"><i class="fas fa-history fa-lg"></i>&nbsp;Historial</a></li>
+          <li class="is-hidden-desktop"><a href="{{path_for('showProjectJournal',{'pro': project.id})}}"><i class="fas fa-history fa-lg"></i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column">
+          {% if (is_state('pre-vote') or is_state('vote') or is_state('pre-results')) and project.feasible %}
+          <div class="notification is-success is-clearfix">
+              <h1 class="subtitle is-4">
+                <img src="/assets/img/icons/check-mark-white.svg" alt="" class="image is-pulled-left" style="width: 45px;margin-right: 10px;">
+                El proyecto <u>ES FACTIBLE</u> para participar de la votación del Presupuesto del año 2019</h1>
+            </div>
+          {% endif %}
+          {% if is_state('results') and project.feasible and project.selected == false %}
+          <div class="notification is-success is-clearfix">
+              <h1 class="subtitle is-4">
+                <img src="/assets/img/icons/check-mark-white.svg" alt="" class="image is-pulled-left" style="width: 45px;margin-right: 10px;">
+                El proyecto <u>FUE FACTIBLE</u> y <u>PARTICIPÓ</u> de la votación del presupuesto del año 2019</h1>
+            </div>
+          {% endif %}
+          {% if (is_state('pre-vote') or is_state('vote')) and not project.feasible %}
+          <div class="notification is-danger is-clearfix">
+              <h1 class="subtitle is-4">
+                <img src="/assets/img/icons/cancel-white.svg" alt="" class="image is-pulled-left" style="width: 45px;margin-right: 10px;">
+                El proyecto <u>NO ES FACTIBLE</u> para participar de la votación del Presupuesto del año 2019</h1>
+            </div>
+          {% endif %}
+          {% if is_state('results') and not project.feasible %}
+          <div class="notification is-danger is-clearfix">
+              <h1 class="subtitle is-4">
+                <img src="/assets/img/icons/cancel-white.svg" alt="" class="image is-pulled-left" style="width: 45px;margin-right: 10px;">
+                El proyecto <u>NO FUE FACTIBLE</u> para participar de la votación del Presupuesto del año 2019</h1>
+            </div>
+          {% endif %}
+          {% if project.selected and show_results() %}
+            <div class="notification is-warning is-clearfix">
+              <h1 class="subtitle is-4">
+                <img src="/assets/img/icons/medal-dark.svg" alt="" class="image is-pulled-left" style="width: 45px;margin-right: 10px;">
+                El proyecto ha sido seleccionado por el voto de los ciudadanos para el Presupuesto del año 2019</h1>
+            </div>
+          {% endif %}
+          <h1 class="title is-3 is-size-5-touch">El objetivo del proyecto</h1>
+          <p class="">{{project.objective|nl2br}}</p>
+          <br>
+          <h1 class="title is-3 is-size-5-touch">La problemática que aborda</h1>
+          <p class="">{{project.description|nl2br}}</p>
+          <br>
+          {% if project.benefited_population is not null %}
+            <h1 class="title is-3 is-size-5-touch">Poblacion beneficiada</h1>
+            <p class="">{{project.benefited_population|nl2br}}</p>
+            <br>
+          {% endif %}
+          {% if project.community_contributions is not null %}
+            <h1 class="title is-3 is-size-5-touch">Aportes comunitarios</h1>
+            <p class="">{{project.community_contributions|nl2br}}</p>
+          {% endif %}
+          {% if (is_state('pre-vote') or is_state('vote') or is_state('pre-results') or is_state('results')) and project.feasible is defined %}
+          <br>
+          <div class="box is-light">
+              <h1 class="title is-3 is-size-5-touch">Sentencia factibilidad</h1>
+              <h1 class="subtitle is-5 is-size-6-touch">Dictado por el equipo de Presupuesto Participativo de San Lorenzo</h1>
+            <p class="is-italic">{{project.feasibility|nl2br}}</p>
+            </div>
+            {% endif %}
+        </div>
+        {% include 'sl/project/column-right.twig'%}
+      </div>
+    </div>
+  </section>
+  {% if (vote_available() and subject.id is null) 
+    or (vote_available() and subject.id and citizen()is not null and citizen().voted == false) %}
+    <div class="hero is-primary indexBg">
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <div class="columns">
+            <div class="column is-6 is-offset-3">
+              {% if citizen() is not null and citizen().voted == false %}
+                <a href="{{path_for('showVoting')}}" class="button is-primary is-inverted is-fullwidth is-large is-rounded">
+                  <i class="fas fa-paper-plane fa-fw"></i>&nbsp;¡Votá&nbsp;<span class="is-800">HOY</span>!</a>
+              {% endif %}
+              {% if subject.id is null %}
+                <a href="{{path_for('showLogin')}}" class="button is-white is-outlined is-large is-rounded">
+                  <i class="fas fa-sign-in-alt fa-fw"></i>¡Entrá y votá!</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {% include 'sl/pages/index/collaboration.twig' %}
+{% endblock %}

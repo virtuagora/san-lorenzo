@@ -1,0 +1,66 @@
+{# set show_footer = true #}
+{% set show_navbar = false %}
+{# set body_class = '' #}
+
+{% block title %}
+  Privacidad
+{% endblock %}
+
+{% extends 'master.twig' %}
+{% block scriptshead %}
+  <script async="async" defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.0.0/masonry.pkgd.min.js"></script>
+{% endblock %}
+
+{% block body %}
+  {% include "ingenia/index/header.twig" %}
+  <div class="container">
+    <section class="section">
+      <div class="columns">
+        <div class="column is-8 is-offset-2 content">
+          <h1>
+            <b>Nuestra política de privacidad</b>
+          </h1>
+          <p>Para
+            <b>Virtuágora</b>
+            es muy importante proteger los datos personales; por ello, comprendemos la necesidad de contar con su consentimiento previo, informado, expreso e inequívoco antes de efectuar el tratamiento de sus datos. En ese sentido, consideraremos que usted nos ha brindado adecuadamente su consentimiento cuando disponga de manera positiva en “hacer clic”, “cliquear” o “pinchar”, “dar un toque”, “touch”, “pad” u otros similares cuando se le pregunte por su aceptación a los presentes términos aplicables al tratamiento de sus datos personales.</p>
+          <h2>1. La información que recolectamos.</h2>
+          <p>Sólo recolectamos los datos personales que usted desee proporcionar o que sean necesarios para el desarrollo de nuestras actividades. Nosotros recabamos información personal directa como nombres, apellidos, fecha de nacimiento, país de residencia, correo electrónico y redes sociales; la que esté expresamente indicada en nuestro sitio web a través de formularios u otros formatos; y la que usted nos proporcione directa e indirectamente, tal como cookies (información sobre preferencias del usuario cuando visita una página web), conexiones y sistemas de información.</p>
+          <h2>2. Guardamos su información de manera segura.</h2>
+          <p>Usted puede confiar que
+            <b>Virtuágora</b>
+            ha adoptado todas las medidas técnicas y organizacionales necesarias para garantizar la seguridad y confidencialidad de su información personal. Sólo personas autorizadas de
+            <b>Virtuágora</b>
+            y de terceros con los que mantenemos una relación, podrán tener acceso a tratar su información personal siempre que se comprometan a respetar la presente Política de Privacidad.</p>
+          <h2>3. Finalidades del tratamiento de sus datos personales.</h2>
+          <p>Los datos personales que usted nos proporciona serán tratados para los siguientes fines: atender consultas y hacer seguimiento de estos; enviar información o publicidad sobre nuestros proyectos; invitarlo a participar en nuestros proyectos; registrarlo en nuestra lista de embajador, colaborador o sponsor; gestión y administración interna, investigaciones o estadísticas; gestionar su postulación a algún cargo directivo dentro del proyecto
+            <b>Virtuágora</b>; actualizar o verificar su información; o, como fuente de consulta. Considerando los fines descritos, su consentimiento es obligatorio e indefinido. Si no está de acuerdo con el tratamiento posterior de su información, usted podrá proceder libremente de acuerdo a lo indicado en la sección 5.<br>
+            Con su consentimiento para el tratamiento de sus datos personales, declara que este prevalecerá sobre cualquier inscripción en cualquier lista de bloqueo para el envío de comunicaciones. Recuerde que siempre podrá eliminar o revocar su consentimiento.</p>
+          <h2>4. Acceso y transferencia.</h2>
+          <p>Nunca compartiremos sus datos personales con terceros para una finalidad distinta a la que usted ha consentido. Sin embargo, podemos compartir sus datos personales con terceros como parte del desarrollo del proyecto respetando las condiciones de esta política de privacidad, tales como proveedores de servicios de Internet, administradores de páginas web y managers de cuentas en redes sociales, ejecutores de proyectos, etc. En caso una autoridad nacional solicite sus datos personales, procederemos a comunicarle sobre dicho pedido antes de cumplir con la obligación legal.</p>
+          <h2>5. Ejercicio de sus derechos como titular de datos personales.</h2>
+          <p>Usted puede ejercer los derechos que como titular de datos personales le asisten (acceso, rectificación, cancelación, oposición, información o revocación). Para tal efecto, puede enviar una comunicación a admin@virtuagora.org.</p>
+          <h2>6. Uso de cookies y tecnologías de rastreo.</h2>
+          <p>Utilizamos la tecnología tracking (“Cookies”) para recopilar información personal, tales como tipo de navegador y el sistema operativo, página de referencia, avance a través del sitio, dominio ISP, entre otros, con el objeto de entender la manera en que los visitantes utilizan nuestro sitio web. Tenga seguridad que guardamos toda la información de cookies en formatos que no permiten identificar a su titular.</p>
+          <h2>7. Uso del sitio por parte de menores.</h2>
+          <p>Nuestro sitio web no está diseñado ni destinado a menores de 16 años y, en consecuencia, no recopilamos información de dichos menores. Si usted tiene menos de 16 años, por favor no utilice los sitios web.</p>
+          <h2>8. Modificaciones a la presente política de privacidad.</h2>
+          <p>Con motivo de la mejora continua de nuestros procesos, estaremos realizando modificaciones y correcciones a esta Política de Privacidad. Por favor, verifique estos términos regularmente para consultar los cambios que puedan haber existido y de qué manera le pueden afectar.</p>
+        </div>
+      </div>
+<br>
+<img src="{{asset('img/slogan3-dark.svg')}}" class="image is-hidden-touch" style="height: 100px; margin: 0 auto;">
+<img src="{{asset('img/slogan4-dark.svg')}}" class="image is-hidden-desktop" style="width: 250px; margin: 0 auto;">
+{% if subject.id is null %}
+  <br>
+  <h3 class="subtitle is-3 has-text-centered has-text-black">
+    ¡No esperes más!
+    <i class="em em-smiley"></i>
+  </h3>
+  <div class="buttons is-centered">
+    <a href="{{path_for('showLogin')}}" class="button is-medium is-black is-800">
+      <i class="em em-muscle"></i>&nbsp;&nbsp;¡Participá hoy inscribiendoté en INGENIA!</a>
+  </div>
+{% endif %}
+    </section>
+  </div>
+{% endblock %}

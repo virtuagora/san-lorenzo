@@ -1,0 +1,51 @@
+{% set show_footer = true %}
+{% set show_navbar = true %}
+{% set enableDownload = ( is_state('results') ) ? 'true' : 'false'  %}
+
+{% block title %}
+  Consultas y preguntas frecuentes
+{% endblock %}
+
+{% extends 'master.twig' %}
+
+{% block body %}
+  <div class="hero is-primary indexBg">
+    <div class="hero-body has-text-centered">
+      <div class="container">
+        <h1 class="title is-2">
+          <i class="fas fa-database fa-lg fa-fw"></i>
+          <i class="fas fa-check-double fa-lg fa-fw"></i>
+        </h1>
+        <h1 class="title is-2">Integridad de los resultados</h1>
+        <h1 class="subtitle is-5">En colaboración con Blockchain Federal Argentina</h1>
+      </div>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+    <div class="columns is-centered">
+    <div class="column is-6">
+    <div class="content">
+    <p>Con el objetivo de sumar una capa adicional de confiabilidad al proceso de votación de proyectos del Presupuesto Participativo de San Lorenzo, los resultados del mismo se van sellando digitalmente de forma diaria.</p>
+    <p>Este sello se ingresa en la blockchain de Blockchain Federal Argentina y cualquiera puede verificarlos en su web oficial (<a href="https://bfa.ar/sello#tab_3" class="has-text-link">https://bfa.ar/sello#tab_3</a>).</p>
+    <p>
+    <a href="https://bfa.ar/sello#tab_3">
+      <img src="{{asset('img/blockchain-federal-argentina.svg')}}" class="image is-centered" style="width:250px" alt="">
+    </a>
+    </p>
+    <p>El servicio de Sello de Tiempo de BFA permite demostrar digitalmente que el contenido de cualquier documento existió en un momento y que desde entonces, no ha cambiado.</p>
+    <p>A continuación se listan todos los sellos de tiempo realizados (los datasets podrán descargarse una vez que se publiquen los resultados oficiales).</p>
+    </div>
+        <public-stamp
+          get-url={{path_for('getSellos')}}
+          receipt-url={{path_for('showReciboSello',{'aud':':aud'})}}
+          dataset-url={{path_for('showDatasetSello',{'aud':':aud'})}}
+          :enable-download="{{enableDownload}}"
+          ></public-stamp>
+    </div>
+    </div>
+    </div>
+  </section>
+  {% include 'sl/base/collab.twig' %}
+
+{% endblock %}

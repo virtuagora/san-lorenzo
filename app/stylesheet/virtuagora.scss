@@ -1,0 +1,16 @@
+// Add the variables
+@import url('https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700');
+@import 'variables';
+// Add bulma
+@import "~bulma";
+@import "~buefy/src/scss/buefy";
+@import "bulma-timeline.sass";
+// Add imports to other css or other fonts you might use
+@import "~animate.css/animate.css";
+// Helpers: Classes that you might find useful!
+@import 'helpers';
+// Then add the other extensions
+@import "core";
+@import "login";
+// @import "ingenia2018";
+@import "sl";

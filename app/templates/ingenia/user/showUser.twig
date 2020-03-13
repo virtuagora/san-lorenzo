@@ -1,0 +1,60 @@
+{% set show_footer = true %}
+{% set show_navbar = true %}
+{# set body_class = '' #}
+{% extends 'master.twig' %}
+{% block title %}Perfil:
+  {{user.names ~ ' ' ~ user.surnames}}
+{% endblock %}
+{% block scriptshead %}{% endblock %}
+{% block body %}
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-6 is-offset-3">
+<article class="media">
+          <Avatar :subject="{{user.subject}}" class="media-left" size="128"></Avatar>
+          <div class="media-content">
+            <h1 class="title is-1">{{user.subject.display_name}}</h1>
+            {% if user.groups[0] is defined %}
+              <h1 class="subtitle is-4">
+                <i class="em em-tada"></i>
+                Participante de INGENIA 2018</h1>
+            {% endif %}
+            <div class="field">
+              <label class="label">Acerca de mí</label>
+              {% if user.bio is null %}
+                <p class="nl2br">
+                  <i>- Sin información -</i>
+                </p>
+              {% else %}
+                <p class="nl2br">{{user.bio}}</p>
+              {% endif %}
+            </div>
+            {% if user.groups[0] is defined %}
+              <div class="field">
+                <label class="label">Acerca de mi equipo INGENIA</label>
+                <p>Soy miembro del equipo
+                  <b>{{user.groups[0].name}}</b>
+                </p>
+              </div>
+            {% endif %}
+            {% if user.groups[0] is defined and user.groups[0].project is not null %}
+              <div class="field">
+                <label class="label">Acerca proyecto INGENIA</label>
+                <p>Mi proyecto se llama
+                  <a href="/proyecto/{{user.groups[0].project.id}}">{{user.groups[0].project.name}}</a>
+                </p>
+                <p>Visitanos y bancanos!
+                  <i class="em em-muscle"></i>
+                </p>
+              </div>
+            {% endif %}
+
+</article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+{% block javascripts %}{% endblock %}

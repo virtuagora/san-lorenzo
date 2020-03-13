@@ -1,0 +1,133 @@
+{# set show_footer = true #}
+{% set show_navbar = false %}
+{# set body_class = '' #}
+
+{% extends 'master.twig' %}
+
+{% block title %}
+  Acerca
+{% endblock %}
+
+{% block body %}
+  {% include "ingenia/index/header.twig" %}
+  <div class="container">
+    <section class="section">
+      <div class="columns">
+        <div class="column is-offset-2 is-8">
+          <div class="content">
+            <h1 class="title is-1 has-text-black">
+              <b>¿Qué es INGENIA?</b>
+            </h1>
+            <img src="{{asset('img/neuron.svg')}}" class="image is-128x128 is-pulled-right" style="margin-left:25px; margin-bottom:10px;">
+            <p>
+              Es un programa provincial desarrollado por el Gabinete Joven y la Secretaría de Juventudes del Gobierno de la Provincia de Santa Fe cuyo objetivo principal es promover la participación juvenil de grupos, colectivos y organizaciones de jóvenes, a través del financiamiento de sus ideas, iniciativas y proyectos.
+            </p>
+            <p>
+              Los y las jóvenes agrupados presentan sus ideas e iniciativas organizadas en un proyecto para que sean evaluadas. Si son seleccionados, recibirán hasta $22.000 para emprender ese proyecto, comprometiéndose a rendir cuentas de su desempeño.</h1>
+          </p>
+          <hr>
+          <h3 class="title is-3">
+            <i class="fas fa-angle-double-right"></i>
+            ¿Quienes pueden participar?</h3>
+          <p>Cada convocatoria invita a participar a grupos de jóvenes, con las siguientes características:</p>
+          <div class="notification is-primary">
+            <i class="fas fa-info-circle fa-fw fa-lg"></i>
+            Que cuenten con un mínimo de 5 integrantes.</div>
+          <div class="notification is-primary">
+            <i class="fas fa-info-circle fa-fw fa-lg"></i>
+            Que los jóvenes que integran el grupo tengan entre 15 y 29 años de edad.</div>
+          <div class="notification is-primary">
+            <i class="fas fa-info-circle fa-fw fa-lg"></i>
+            Que al menos dos de ellos sean mayores de 18 años (hasta 29 años) para poder ser responsables del grupo.</div>
+          <div class="notification is-primary">
+            <i class="fas fa-info-circle fa-fw fa-lg"></i>
+            Que residan en la provincia de Santa Fe.</div>
+          <div class="notification is-primary">
+            <i class="fas fa-info-circle fa-fw fa-lg"></i>
+            Que estén formal o informalmente constituidos, es decir que pueden ser organizaciones con personería jurídica o bien organizaciones, colectivos y grupos sin personería jurídica</div>
+          <div class="content">
+            <hr>
+            <h3 class="title is-3">
+              <i class="fas fa-angle-double-right"></i>
+              ¿Qué tipo de proyectos se impulsan?</h3>
+
+            <p>Durante la novena edición del programa Ingenia, los grupos de jóvenes participantes tendrán la posibilidad de presentar sus proyectos por un monto de hasta pesos veinte mil ($22.000) seleccionados conforme criterios mencionados en el reglamento.</p>
+            <p>Los proyectos que financia Ingenia son aquellos orientados al bienestar de la sociedad en general, y que se enmarcan en alguno de los siguientes 4 ejes:</p>
+            <article class="message is-primary">
+              <div class="message-header">
+                <p>Ciudadanía y Diálogo</p>
+              </div>
+              <div class="message-body">
+                Proyectos que fomenten la participación joven, la convivencia, el reconocimiento de la diversidad y el fortalecimiento de la ciudadanía.<br>
+                Por ejemplo, el grupo FairPlay de Labordeboy presentó un proyecto cuyo objetivo se orientaba a la concientización sobre la violencia en el fútbol. Durante el desarrollo de la iniciativa en el marco del programa realizaron diversas intervenciones en partidos, videos, folletería, etc.
+              </div>
+            </article>
+            <article class="message is-primary">
+              <div class="message-header">
+                <p>Emancipación y Proyecto de Vida</p>
+              </div>
+              <div class="message-body">
+                Proyectos que faciliten la emancipación de los jóvenes en todos los aspectos de la vida, personales, sociales y económicos, a través del acceso al trabajo decente, educación, formación, vivienda, el arraigo, el tránsito por el territorio y el fomento del emprendedorismo.<br>
+                Por ejemplo, el grupo Jóvenes Costeros en Acción de Santa Fe, presentó el proyecto Ideando un Futuro Posible en el que se proponía realizar talleres de capacitación en costura, generando diversas actividades como la participación en ferias, entrega de mantas a diferentes instituciones locales, etc.; para jóvenes de los barrios Alto Verde y La Boca; propiciando, además un espacio de contención, encuentro y diálogo.
+              </div>
+            </article>
+            <article class="message is-primary">
+              <div class="message-header">
+                <p>Bienestar Joven</p>
+              </div>
+              <div class="message-body">
+                Proyectos que logren un mayor bienestar joven, a través de facilitar el acceso a la salud, fomentar hábitos saludables, sensibilizar sobre cuestiones de seguridad vial y promover el desarrollo sostenible.<br>
+                Por ejemplo, el grupo Totoras Cardioprotegida presentó su proyecto Jornada Interdisciplinaria de salud Cardiovascular, cuyo objetivo era promocionar hábitos saludables y evitar conductas de riesgo. Las actividades que llevaron adelante fueron charlas, campañas de difusión, controles y compra de equipamiento médico.
+              </div>
+            </article>
+            <article class="message is-primary">
+              <div class="message-header">
+                <p>Lenguajes Culturales</p>
+              </div>
+              <div class="message-body">
+                Proyectos que potencien en los jóvenes el ocio creativo y el acceso a la cultura, al deporte y a las nuevas tecnologías.<br>
+                Por ejemplo, el grupo Tocacambá de Reconquista presentó un proyecto llamado Construcción Artesanal De Instrumentos de Percusión. El objetivo era nuclear a luthiers de la provincia para generar talleres de construcción de instrumentos de percusión.
+              </div>
+            </article>
+            <hr>
+            <h3 class="title is-3 has-text-centered">
+              <i class="fas fa-angle-double-right"></i>
+              ¿Qué valores se premian?</h3>
+            <p class="has-text-centered">Los valores que se premian son:</p>
+            <div class="tags is-centered">
+              <span class="tag is-link is-medium">Igualdad de oportunidades</span>
+              <span class="tag is-link is-medium">Integralidad</span>
+              <span class="tag is-link is-medium">Participación</span>
+              <span class="tag is-link is-medium">Diálogo intergeneracional</span>
+              <span class="tag is-link is-medium">Transversalidad</span>
+              <span class="tag is-link is-medium">Búsqueda de sinergias</span>
+              <span class="tag is-link is-medium">Paridad de género</span>
+              <span class="tag is-link is-medium">Convivencia</span>
+              <span class="tag is-link is-medium">Asociativismo</span>
+              <span class="tag is-link is-medium">
+                Generación de redes con otros actores</span>
+              <span class="tag is-link is-medium">Innovación</span>
+              <span class="tag is-link is-medium">Originalidad</span>
+              <span class="tag is-link is-medium">Impacto en la localidad</span>
+              <span class="tag is-link is-medium">Factibilidad</span>
+              <span class="tag is-link is-medium">Sostenibilidad</span>
+              <span class="tag is-link is-medium">Perdurabilidad</span>
+              <span class="tag is-link is-medium">Fortalecimiento de organizaciones</span>
+              <span class="tag is-link is-medium">Representatividad territorial</span>
+              <span class="tag is-link is-medium is-hidden-touch">Grupos o colectivos en formación, o con mayor debilidad institucional</span>
+            </div>
+            <div class="tags is-centered">
+              <span class="tag is-warning is-large">¡Y muchos mas!</span>
+            </div>
+          </div>
+          <br>
+          <br>
+          <img src="{{asset('img/slogan3-dark.svg')}}" class="image is-hidden-touch" style="height: 100px; margin: 0 auto;">
+          <img src="{{asset('img/slogan4-dark.svg')}}" class="image is-hidden-desktop" style="width: 250px; margin: 0 auto;">
+          <br>
+          <br>
+        </div>
+      </div>
+    </section>
+  </div>
+{% endblock %}

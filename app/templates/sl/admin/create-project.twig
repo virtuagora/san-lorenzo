@@ -1,0 +1,19 @@
+{% extends 'sl/admin/master.twig' %}
+
+{% block section %}
+  <h1 class="title is-1">Nueva propuesta
+  </h1>
+  {# {% if is_state('upload-proposals') and proposals_available() %} #}
+  {% if is_state('upload-proposals') %}
+  <h2 class="subtitle is-4">
+    Complete los campos para subir una nueva propuesta. Luego de la creación, podra asignarle imagenes, archivos y otras configuraciones de la administración.
+  </h2>
+  <admin-create-project form-url="{{path_for('createProject')}}" budget="{{options()['budget-limit']}}">
+    {% include 'loading.twig' %}
+  </admin-create-project>
+  {% else %}
+  <div class="notification is-warning">
+    <i class="fas fa-exclamation-triangle fa-fw"></i>&nbsp; <b>Se ha terminado la etapa para crear proyectos!</b>
+  </div>
+  {% endif %}
+{% endblock %}  

@@ -1,0 +1,10 @@
+{% extends 'sl/admin/master.twig' %}
+
+{% block section %}
+  <h1 class="title is-1">Añadir un nuevo registro
+  </h1>
+<h2 class="subtitle is-4">
+    Aqui puede agregar un nuevo registro en el padron
+</h2>
+  <add-citizen url="{{path_for('runAddCitizen')}}" :allow-restart="true" :allow-start-voting="false" url-participacion="{{path_for('runParticipacionPadron')}}"></add-citizen>
+{% endblock %}

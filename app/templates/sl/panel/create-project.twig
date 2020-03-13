@@ -1,0 +1,19 @@
+{% set editable = ( is_state('upload-proposals') and proposals_available() ) ? 'true' : 'false'  %}
+{% extends 'sl/panel/master.twig' %}
+
+{% block section %}
+    <h1 class="title is-2"><i class="fas fa-plus-square"></i>&nbsp;Nueva propuesta
+    </h1>
+    {% if is_state('upload-proposals') and proposals_available() %}
+    <h2 class="subtitle is-5">
+        Complete los campos para subir una nueva propuesta para el Presupuesto Participativo de San Lorenzo. Luego de la creación, podras subir una imagen y archivos.
+    </h2>
+    <user-panel-create-project form-url="{{path_for('createProject')}}" budget="{{options()['budget-limit']}}" :user="{{user|json_encode}}" :citizen="{{citizen()|json_encode}}" :editable="{{editable}}">
+        {% include 'loading.twig' %}
+    </user-panel-create-project>
+    {% else %}
+    <div class="notification is-warning">
+        <i class="fas fa-exclamation-triangle fa-fw"></i>&nbsp; <b>¡El formulario para crear propuestas no se encuentra disponible!</b>
+    </div>
+    {% endif %}
+{% endblock %}

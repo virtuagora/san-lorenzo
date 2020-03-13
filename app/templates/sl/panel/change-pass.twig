@@ -1,0 +1,12 @@
+{% extends 'sl/panel/master.twig' %}
+
+{% block section %}
+    <h1 class="title is-1">Cambiar contraseña</h1>
+    <h2 class="subtitle is-4">Aqui puede cambiar la contraseña de su cuenta</h2>
+    <div class="columns">
+        <div class="column is-8">
+    <user-panel-edit-password url="{{path_for('runUpdatePassword',{'usr': subject.extra.user_id})}}">
+    </user-panel-edit-password>
+        </div>
+    </div>
+{% endblock %}

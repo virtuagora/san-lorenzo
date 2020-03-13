@@ -1,0 +1,78 @@
+{% set show_footer = true %}
+{% set show_navbar = true %}
+{# set body_class = '' #}
+
+{% block title %}
+  Agenda
+{% endblock %}
+
+{% extends 'master.twig' %}
+
+{% block body %}
+  <div class="hero is-primary indexBg">
+    <div class="hero-body has-text-centered">
+      <div class="container">
+      <img src="{{asset('img/urna-white.svg')}}" class="image is-centered" alt=""><br>
+        <h1 class="title is-2">Nuestra agenda</h1>
+        <h1 class="subtitle is-5">¡Descubrí donde y cuando nos podés encontrar en tu distrito!</h1>
+      </div>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-8 is-offset-2">
+          <div class="columns">
+            <div class="column is-4">
+              <h1 class="title is-3 has-text-primary has-text-centered-touch">
+                Próximas fechas
+              </h1>
+              <h1 class="subtitle is-5">¡Estas son las fechas mas próximas donde podrás encontrarnos!</h1>
+            </div>
+            <div class="column">
+              <calendar-index :calendar="{{options().calendar}}" :show-more="false">
+                {% include 'loading.twig' %}
+              </calendar-index>
+            </div>
+            {# <img src="/assets/img/urna-color.svg" class="imagen is-centered" alt="Imagen de urna"> #}
+          </div>
+          <hr>
+          <div class="message is-link">
+          <div class="message-body has-text-centered">
+          <i class="fas fa-umbrella fa-fw"></i>&nbsp;{{options()['rain-message']}}
+          </div>
+          </div>
+          <hr>
+          <div class="columns">
+            <div class="column is-4">
+              <h1 class="title is-3 has-text-primary has-text-centered-touch">
+                Todas las fechas
+              </h1>
+              <h1 class="subtitle is-5">¡Informate para saber donde podés encontrarnos!</h1>
+            </div>
+            <div class="column">
+              {% for date in calendar.value %}
+                <article class="media">
+                  <figure class="media-left">
+                    <i class="far fa-calendar-alt fa-2x"></i>
+                  </figure>
+                  <div class="media-content" style="overflow: visible;">
+                    <span class="tag is-primary is-medium is-pulled-right">
+                      <i class="far fa-clock fa-fw"></i>&nbsp;{{date.from|date("H:i")}} - {{date.to|date("H:i")}}</span>
+                    <h1 class="title is-4 is-marginless has-text-primary">Distrito
+                      {{date.district|capitalize}}</h1>
+                    <h1 class="title is-5">{{date.from|date("d/m/Y")}}</h1>
+                    <h2 class="subtitle is-6">Dirección:
+                      {{date.address}}</h2>
+                  </div>
+                </article>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  {% include 'sl/base/collab.twig' %}
+    
+  {% endblock %}

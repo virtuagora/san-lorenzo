@@ -1,0 +1,32 @@
+{# set show_footer = true }}
+{# set show_navbar = true #}
+{# set body_class = '' #}
+
+{% extends 'master.twig' %}
+
+{% block title %}Login{% endblock %}
+{% block body %}
+  <div class="hero is-white is-fullheight is-login-window">
+    <div class="hero-body has-text-centered">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-6-tablet is-offset-3-tablet is-4-desktop is-offset-4-desktop">
+            <a href="{{base_url()}}">
+              <img src="{{asset('img/ingenia-logo.svg')}}" class="image login-logo" alt="">
+            </a>
+            <br>
+            <div id="loading" class="notification is-light has-text-centered">
+              <span class="icon">
+                <i class="fas fa-cog fa-spin"></i>
+              </span>
+              Cargando . . .
+            </div>
+            <fb-register form-url="{{ path_for('fbRegister') }}" token="{{token}}"></fb-register>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block javascripts %}{% endblock %}

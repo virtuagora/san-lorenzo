@@ -1,0 +1,7 @@
+{% extends 'emails/master.twig' %}
+
+{% block body %}
+  {% include 'emails/utils/paragraph.twig' with {'text':'Solicitaste cambiar tu dirección de email. Para hacer el cambio, por favor, accedé al siguiente link:'}%}
+  {% include 'emails/utils/button.twig' with {'url': url ,'label': 'Actualizar mi email'}%}
+  {% include 'emails/utils/paragraph.twig' with {'text':'Si no solicitaste este cambio, simplemente ignorá este mensaje.'}%}
+{% endblock %}

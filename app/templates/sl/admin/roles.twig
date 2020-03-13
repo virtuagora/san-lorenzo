@@ -1,0 +1,13 @@
+{% extends 'sl/admin/master.twig' %}
+
+{% block section %}
+  <h1 class="title is-1">Asignar nuevo administrador
+  </h1>
+<h2 class="subtitle is-4">
+    Aqui podrá asignar un nuevo administrador. Note que el usuario debe estar registrado previamente en la plataforma.
+</h2>
+  <hr>
+<admin-assign-admin get-candidates-url="{{path_for('getCandidatos')}}" run-admin="{{path_for('runNewAdmin')}}" :currents="{{administradores|json_encode}}">
+{% include 'loading.twig' %}
+</admin-assign-admin>
+{% endblock %}

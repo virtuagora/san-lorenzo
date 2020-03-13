@@ -1,0 +1,19 @@
+{# {% set editable = ( is_state('upload-proposals') and proposals_available() ) ? 'true' : 'false'  %} #}
+{% set editable = ( is_state('upload-proposals') ) ? 'true' : 'false'  %}
+{% extends 'sl/admin/master.twig' %}
+
+{% block section %}
+  <div class="tabs">
+    <ul>
+        <li><a href="{{path_for('showAdminUpdateProject',{'pro':proyecto.id})}}"><i class="fas fa-edit fa-lg"></i>&nbsp;Editar datos</a></li>
+        <li><a href="{{path_for('showAdminUpdateProjectUser',{'pro': proyecto.id})}}"><i class="fas fa-user-edit fa-lg"></i>&nbsp;Asignar usuario</a></li>
+        <li><a href="{{path_for('showAdminProjectFiles',{'pro': proyecto.id})}}"><i class="fas fa-upload fa-lg"></i>&nbsp;Subir archivos</a></li>
+        <li><a href="{{path_for('showAdminProjectImagen',{'pro': proyecto.id})}}"><i class="fas fa-image fa-lg"></i>&nbsp;Subir una imagen</a></li>
+        <li class="is-active"><a href="{{path_for('showAdminUpdateProjectFeasibility',{'pro':proyecto.id})}}"><i class="fas fa-clipboard-check fa-lg"></i>&nbsp;Factibilidad</a></li>
+        <li><a href="{{path_for('showAdminProjectJournal',{'pro':proyecto.id})}}"><i class="fas fa-history fa-lg"></i>&nbsp;Historial</a></li>
+    </ul>
+  </div>
+  <admin-edit-project-feasibility form-url="{{path_for('updateProjectFeasibility',{'pro':proyecto.id})}}" :existing-project="{{proyecto|json_encode}}" budget="{{options()['budget-limit']}}" :editable="{{editable}}">
+    {% include 'loading.twig' %}
+  </admin-edit-project-feasibility>
+{% endblock %}

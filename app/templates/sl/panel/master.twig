@@ -1,0 +1,60 @@
+{% set show_footer = true %}
+{% set show_navbar = true %}
+{# set body_class = '' #}
+
+{% extends 'master.twig' %}
+
+{% block title %}Mi panel de control{% endblock %}
+{% block body %}
+  <div class="hero is-small is-light">
+    <div class="hero-body has-text-centered">
+      <h1 class="subtitle is-4">Tu panel de control</h1>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-2">
+          <h1 class="subtitle is-4">Menu de opciones</h1>
+          <aside class="menu">
+            <ul class="menu-list">
+              <li>
+                <a href="{{path_for('showUserPanelOverview')}}">Inicio</a>
+              </li>
+            </ul>
+            {% if 'verified' in subject.roles %}
+              <p class="menu-label">
+                Mis propuestas
+              </p>
+              <ul class="menu-list">
+                {% if is_state('upload-proposals') and proposals_available() %}
+                <li>
+                  <a href="{{path_for('showUserPanelCreateProject')}}"><i class="fas fa-plus-square fa-lg has-text-link"></i>&nbsp; Nueva</a>
+                </li>
+                {% endif %}
+                <li>
+                  <a href="{{path_for('showUserPanelProjects')}}">Listado</a>
+                </li>
+              </ul>
+            {% endif %}
+            <p class="menu-label">
+              Mi cuenta
+            </p>
+            <ul class="menu-list">
+              <li>
+                <a href="{{path_for('showUserPanelChangePassword')}}">Cambiar contraseña</a>
+              </li>
+              {# <li>
+                <a href="{{path_for('showUserPanelChangePassword')}}">Cambiar mi email</a>
+              </li> #}
+            </ul>
+          </div>
+          <div class="column is-offset-1">
+            {% block section %}{% endblock %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+
+  {% block javascripts %}{% endblock %}

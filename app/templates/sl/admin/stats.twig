@@ -1,0 +1,505 @@
+{% extends 'sl/admin/master.twig' %}
+
+{% set percRetencion = ((cantUsuarios / (cantUsuarios + cantPendientes)) * 100) %}
+{% set percConversion = ((votantesRegistradosVotaron / cantCiudadanosUsuarios) * 100) %}
+
+{% block scriptshead %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+{% endblock %}
+
+{% block section %}
+  <h1 class="title is-1">
+    <i class="fas fa-poll"></i>
+    Estadísticas de la plataforma
+  </h1>
+  <h2 class="subtitle is-4">
+    Numeros y valores de la plataforma
+  </h2>
+  <hr>
+  <div class="message is-dark">
+    <div class="message-body">
+      <nav class="level">
+        <div class="level-item">
+          <h1 class="title is-3">Usuarios</h1>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Pendientes</p>
+            <p class="title">{{cantPendientes}}</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Registrados
+            </p>
+            <p class="title">{{cantUsuarios}}</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Retención</p>
+            <p class="title">{{percRetencion|number_format(2,'.',',')}}%</p>
+          </div>
+        </div>
+        <div class="level-item">
+          <h1 class="title is-1">
+            {% if percRetencion > 0 and percRetencion <= 10 %}
+              <i class="far fa-sad-cry"></i>
+            {% elseif percRetencion > 10 and percRetencion <= 20 %}
+              <i class="far fa-frown"></i>
+            {% elseif percRetencion > 20 and percRetencion <= 35 %}
+              <i class="far fa-frown-open "></i>
+            {% elseif percRetencion > 35 and percRetencion <= 50 %}
+              <i class="far fa-meh-blank "></i>
+            {% elseif percRetencion > 50 and percRetencion <= 65 %}
+              <i class="far fa-smile"></i>
+            {% elseif percRetencion > 65 and percRetencion <= 75 %}
+              <i class="far fa-laugh-wink "></i>
+            {% elseif percRetencion > 75 and percRetencion <= 85 %}
+              <i class="far fa-grin-tongue-squint"></i>
+            {% elseif percRetencion > 85 and percRetencion <= 95 %}
+              <i class="far fa-grin-squint-tears"></i>
+            {% elseif percRetencion > 95 %}
+              <i class="far fa-kiss-wink-heart"></i>
+            {% endif %}
+          </h1>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="message is-dark">
+    <div class="message-body">
+      <nav class="level">
+        <div class="level-item">
+          <h1 class="title is-3">Participación</h1>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">
+              <i class="fas fa-laptop"></i>
+              Web</p>
+            <p class="title">{{cantVotosWeb}}</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">
+              <i class="fas fa-tablet-alt"></i>
+              Tablet</p>
+            <p class="title">{{cantVotosTablet}}</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">
+              <i class="fab fa-whatsapp"></i>
+              Link</p>
+            <p class="title">{{cantVotosLink}}</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">
+              <i class="far fa-envelope"></i>
+              Papel</p>
+            <p class="title">{{cantVotosPaper}}</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">
+              <i class="fas fa-users"></i>
+              Total</p>
+            <p class="title">{{cantVotosTotal}}</p>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="message is-dark">
+    <div class="message-body">
+      <nav class="level">
+        <div class="level-item">
+          <h1 class="title is-3">Conversión</h1>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Ciudadanos registrados
+            </p>
+            <p class="title">{{cantCiudadanosUsuarios}}</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">ya votaron</p>
+            <p class="title">{{votantesRegistradosVotaron}}</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">faltan</p>
+            <p class="title">{{cantCiudadanosUsuarios - votantesRegistradosVotaron}}</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Conversion</p>
+            <p class="title">{{percConversion|number_format(2,'.',',')}}%</p>
+          </div>
+        </div>
+        <div class="level-item">
+          <h1 class="title is-1">
+            {% if percConversion > 0 and percConversion <= 10 %}
+              <i class="far fa-sad-cry"></i>
+            {% elseif percConversion > 10 and percConversion <= 20 %}
+              <i class="far fa-frown"></i>
+            {% elseif percConversion > 20 and percConversion <= 35 %}
+              <i class="far fa-frown-open "></i>
+            {% elseif percConversion > 35 and percConversion <= 50 %}
+              <i class="far fa-meh-blank "></i>
+            {% elseif percConversion > 50 and percConversion <= 65 %}
+              <i class="far fa-smile"></i>
+            {% elseif percConversion > 65 and percConversion <= 75 %}
+              <i class="far fa-laugh-wink"></i>
+            {% elseif percConversion > 75 and percConversion <= 85 %}
+              <i class="far fa-grin-tongue-squint"></i>
+            {% elseif percConversion > 85 and percConversion <= 95 %}
+              <i class="far fa-grin-squint-tears"></i>
+            {% elseif percConversion > 95 %}
+              <i class="far fa-kiss-wink-heart"></i>
+            {% endif %}
+          </h1>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="message is-dark">
+    <div class="message-body">
+      <nav class="level">
+        <div class="level-item">
+          <h1 class="title is-3">Padrón</h1>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">
+              <i class="fas fa-users"></i>
+              Usuarios registrados</p>
+            <p class="title">{{cantUsuarios}}</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">
+              <i class="fas fa-user"></i>
+              De SL</p>
+            <p class="title">{{cantCiudadanosUsuarios}}</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">
+              <i class="fas fa-user"></i>NO de SL</p>
+            <p class="title">{{cantUsuarios - cantCiudadanosUsuarios}}</p>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <hr>
+      <h1 class="title is-4 has-text-centered">Participación por fecha</h1>
+    <votes-chart 
+    :labels="{{arrayDates|json_encode}}" 
+    :web="{{votosWebPerDay|json_encode}}"
+    :tablet="{{votosTabletPerDay|json_encode}}"
+    :link="{{votosLinkPerDay|json_encode}}"
+    :paper="{{votosPaperPerDay|json_encode}}"
+    :total={{votosTotalPerDay|json_encode}} :height="300"></votes-chart>
+    <br>
+  <div class="columns is-centered">
+    <div class="column is-3 ">
+      <h1 class="title is-5 has-text-centered">Participación TOTAL</h1>
+      <table class="table is-fullwidth is-narrow">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th class="has-text-centered">Cant.</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for day in arrayDates %}
+            {# {% if votosTotalPerDay[day] is not null %} #}
+              <tr>
+                <td>
+                  {{day}}
+                </td>
+                <td class="has-text-centered">
+                  {{votosTotalPerDay[day].votes ?: '0'}}
+                </td>
+              </tr>
+            {# {% endif %} #}
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="column is-2">
+      <h1 class="title is-5 has-text-centered"><i class="fas fa-laptop"></i> WEB</h1>
+      <table class="table is-fullwidth is-narrow">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th class="has-text-centered">Cant.</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for day in arrayDates %}
+              <tr>
+                <td>
+                  {{day}}
+                </td>
+                <td class="has-text-centered">
+                  {{votosWebPerDay[day].votes ?: '0'}}
+                </td>
+              </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="column is-2">
+      <h1 class="title is-5 has-text-centered"><i class="fas fa-tablet-alt"></i> TABLET</h1>
+      <table class="table is-fullwidth is-narrow">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th class="has-text-centered">Cant.</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for day in arrayDates %}
+              <tr>
+                <td>
+                  {{day}}
+                </td>
+                <td class="has-text-centered">
+                  {{votosTabletPerDay[day].votes ?: '0'}}
+                </td>
+              </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="column is-2">
+      <h1 class="title is-5 has-text-centered"><i class="fab fa-whatsapp"></i> LINK</h1>
+      <table class="table is-fullwidth is-narrow">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th class="has-text-centered">Cant.</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for day in arrayDates %}
+              <tr>
+                <td>
+                  {{day}}
+                </td>
+                <td class="has-text-centered">
+                  {{votosLinkPerDay[day].votes ?: '0'}}
+                </td>
+              </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="column is-2">
+      <h1 class="title is-5 has-text-centered"><i class="far fa-envelope"></i> PAPEL</h1>
+      <table class="table is-fullwidth is-narrow">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th class="has-text-centered">Cant.</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for day in arrayDates %}
+              <tr>
+                <td>
+                  {{day}}
+                </td>
+                <td class="has-text-centered">
+                  {{votosPaperPerDay[day].votes ?: '0'}}
+                </td>
+              </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <hr>
+  <div class="columns is-centered">
+    <div class="column is-3">
+      <h1 class="title is-5 has-text-centered">Género TOTAL</h1>
+      <table class="table is-fullwidth is-narrow">
+        <thead>
+          <tr>
+            <th>Género</th>
+            <th class="has-text-centered">Cant.</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for genre in arrayGenre %}
+              <tr>
+                <td>
+                  {{genre}}
+                </td>
+                <td class="has-text-centered">
+                  {{votantesTotalGenre[genre].votantes ?: '0'}}
+                </td>
+              </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <genre-donut :arr={{votantesTotalGenre|json_encode}} :height="120" :width="100"></genre-donut>
+    </div>
+    <div class="column is-2">
+      <h1 class="title is-5 has-text-centered"><i class="fas fa-laptop"></i> WEB</h1>
+      <table class="table is-fullwidth is-narrow">
+        <thead>
+          <tr>
+            <th>Género</th>
+            <th class="has-text-centered">Cant.</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for genre in arrayGenre %}
+              <tr>
+                <td>
+                  {{genre}}
+                </td>
+                <td class="has-text-centered">
+                  {{votantesWebGenre[genre].votantes ?: '0'}}
+                </td>
+              </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <genre-donut :arr={{votantesWebGenre|json_encode}} :height="120" :width="100"></genre-donut>
+    </div>
+    <div class="column is-2">
+      <h1 class="title is-5 has-text-centered"><i class="fas fa-tablet-alt"></i> TABLET</h1>
+      <table class="table is-fullwidth is-narrow">
+        <thead>
+          <tr>
+            <th>Género</th>
+            <th class="has-text-centered">Cant.</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for genre in arrayGenre %}
+              <tr>
+                <td>
+                  {{genre}}
+                </td>
+                <td class="has-text-centered">
+                  {{votantesTabletGenre[genre].votantes ?: '0'}}
+                </td>
+              </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <genre-donut :arr={{votantesTabletGenre|json_encode}} :height="120" :width="100"></genre-donut>
+    </div>
+    <div class="column is-2">
+      <h1 class="title is-5 has-text-centered"><i class="fab fa-whatsapp"></i> LINK</h1>
+      <table class="table is-fullwidth is-narrow">
+        <thead>
+          <tr>
+            <th>Género</th>
+            <th class="has-text-centered">Cant.</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for genre in arrayGenre %}
+              <tr>
+                <td>
+                  {{genre}}
+                </td>
+                <td class="has-text-centered">
+                  {{votantesLinkGenre[genre].votantes ?: '0'}}
+                </td>
+              </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <genre-donut :arr={{votantesLinkGenre|json_encode}} :height="120" :width="100"></genre-donut>
+    </div>
+    <div class="column is-2">
+      <h1 class="title is-5 has-text-centered"><i class="far fa-envelope"></i> PAPEL</h1>
+      <table class="table is-fullwidth is-narrow">
+        <thead>
+          <tr>
+            <th>Género</th>
+            <th class="has-text-centered">Cant.</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for genre in arrayGenre %}
+              <tr>
+                <td>
+                  {{genre}}
+                </td>
+                <td class="has-text-centered">
+                  {{votantesPaperGenre[genre].votantes ?: '0'}}
+                </td>
+              </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <genre-donut :arr={{votantesPaperGenre|json_encode}} :height="120" :width="100"></genre-donut>
+    </div>
+    
+  </div>
+  <hr>
+  <div class="columns">
+    <div class="column">
+      <h1 class="title is-4 has-text-centered">Votantes por Barrio</h1>
+      <table class="table is-bordered is-narrow is-fullwidth">
+        <thead>
+          <tr>
+            <th>Distrito</th>
+            <th>Barrio</th>
+            <th class="has-text-centerered">Votantes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for barrio in votantesNeighbourhood %}
+            <tr>
+              <td>{{barrio.dname}}</td>
+              <td>{{barrio.nname}}</td>
+              <td class="has-text-centerered">{{barrio.votantes}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="column">
+      <h1 class="title is-4 has-text-centered">Votantes por Distrito</h1>
+      <table class="table is-bordered is-narrow is-fullwidth">
+        <thead>
+          <tr>
+            <th>Distrito</th>
+            <th>Votantes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for district in votantesDistricts %}
+            <tr>
+              <td>{{district.name}}</td>
+              <td class="has-text-centerered">{{district.votantes}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+{% endblock %}

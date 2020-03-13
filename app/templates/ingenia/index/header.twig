@@ -1,0 +1,122 @@
+<div class="hero is-primary" id="main-hero" style="background-image: url('/assets/img/header-bg-01.jpg')">
+  <img src="{{asset('img/santafelogo.svg')}}" class="image logo-sf-float is-48x48 is-hidden-touch" alt="">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-5">
+        <a href="{{path_for('showHome')}}">
+          <img src="./assets/img/ingenia2018.svg" class="logo-header image">
+        </a>
+        </div>
+        <div class="column">
+          <div class="columns is-mobile is-multiline" style="justify-content: flex-end">
+            <div class="column is-narrow">
+              {% if subject.id %}
+                <b-tooltip label="Cerrar sesion" type="is-dark" position="is-bottom">
+                  <a href="{{path_for('showLogout')}}" class="">
+                    <span class="icon is-large has-text-white">
+                      <i class="fas fa-sign-out-alt fa-3x "></i>
+                    </span>&nbsp;&nbsp;
+                  </a>
+                </b-tooltip>
+              {% else %}
+                <b-tooltip label="¡Inicia sesion!" type="is-dark" position="is-bottom">
+                  <a href="{{path_for('showLogin')}}" class="">
+                    <span class="icon is-large has-text-white">
+                      <i class="fas fa-sign-in-alt fa-3x "></i>
+                    </span>&nbsp;&nbsp;
+                  </a>
+                </b-tooltip>
+              {% endif %}
+            </div>
+            {% if subject.id %}
+              <div class="column is-narrow">
+                <b-tooltip label="Mi panel" type="is-warning" position="is-bottom">
+                  <a href="{{path_for('showPanel')}}" class="">
+                    <span class="icon is-large has-text-white">
+                      <i class="fas fa-compass fa-3x "></i>
+                    </span>&nbsp;&nbsp;
+                  </a>
+                </b-tooltip>
+              </div>
+              {% if 'admin' in subject.roles or 'coordin' in subject.roles %}
+            <div class="column is-narrow">
+              <b-tooltip label="Ajustes" type="is-dark" position="is-bottom">
+<a href="{{path_for('showAdminPanel')}}" class="">
+                  <span class="icon is-large has-text-white">
+                    <i class="fas fa-wrench fa-3x "></i>
+                  </span>&nbsp;&nbsp;
+                </a>
+              </b-tooltip>
+            </div>
+            {% endif %}
+            <ver-proyecto-button-hero-index></ver-proyecto-button-hero-index>
+            {% endif %}
+            <div class="column is-narrow is-hidden">
+              <b-tooltip label="Mi proyecto" type="is-dark" position="is-bottom">
+                <a href="/panel/equipo" class="">
+                  <span class="icon is-large has-text-white">
+                    <i class="fas fa-users fa-3x "></i>
+                  </span>
+                </a>
+              </b-tooltip>
+            </div>
+            {% if subject.id %}
+              <div class="column is-narrow has-text-centered">
+                <avatar :subject="{{subject.extra|json_encode}}" :to-panel="true" size="96"/>
+
+                <br>
+                <a href="#" class="has-text-white is-hidden">
+                  <b-tooltip label="¡32 bancan mi proyecto!" type="is-dark" position="is-bottom">
+                    <span class="is-size-3 is-800" style="text-shadow: 2px 2px 0px rgb(128, 128, 128);">32</span>&nbsp;
+                    <figure class="" style="height: 38px;width: 38px;margin-top: 1px;">
+                      <img src="{{asset('img/muscle-white.svg')}}" class="" alt="">
+                    </figure>
+                  </b-tooltip>
+                </a>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <nav class="tabs is-boxed">
+      <div class="container">
+        <ul>
+          <li class="{{ headerActive == 'showHome' ? 'is-active' }}">
+            <a href="{{path_for('showHome')}}">
+              <span class="icon">
+                <i class="fas fa-home fa-lg"></i>
+              </span>
+            </a>
+          </li>
+          <li class="{{ headerActive == 'showCatalogo' ? 'is-active' }}">
+            <a href="{{path_for('showCatalogo')}}">Proyectos</a>
+          </li>
+          {% if subject.id %}
+            <li>
+              <a href="/panel"><i class="fas fa-compass fa-fw"></i>&nbsp;Mi panel</a>
+            </li>
+            <ver-proyecto-tab-index></ver-proyecto-tab-index>
+          {% endif %}
+          <li class="{{ headerActive == 'showAcerca' ? 'is-active' }}">
+            <a href="{{path_for('showAcerca')}}">¿Que es INGENIA?</a>
+          </li>
+          <li class="{{ headerActive == 'showComoParticipar' ? 'is-active' }}">
+            <a href="{{path_for('showComoParticipar')}}">¿Como participar?</a>
+          </li>
+          <li class="{{ headerActive == 'showReglamento' ? 'is-active' }}">
+            <a href="{{path_for('showReglamento')}}">Reglamento</a>
+          </li>
+          <li class="{{ headerActive == 'showAyuda' ? 'is-active' }}">
+            <a href="{{path_for('showAyuda')}}"><span class="icon">
+                <i class="fas fa-question-circle"></i> 
+              </span>Ayuda</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>

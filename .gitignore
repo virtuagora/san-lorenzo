@@ -1,0 +1,7 @@
+/vendor/
+/var/*
+/node_modules/*
+/.sass-cache/*
+composer.phar
+/node_modules/
+app/settings.php

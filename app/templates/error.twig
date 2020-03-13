@@ -1,0 +1,32 @@
+{% set show_footer = true %}
+{% set show_navbar = true %}
+{# set body_class = '' #}
+
+{% extends 'master.twig' %}
+
+{% block title %}Error{% endblock %}
+
+{% block body %}
+  <section class="hero is-white is-medium">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <div class="columns">
+          <div class="column is-6 is-offset-3">
+            <span class="icon is-large">
+<i class="far fa-sad-tear fa-4x"></i>
+            </span>
+            <h1 class="title is-3 is-raleway">Ocurrio un error
+              <i class="em em-frowning"></i>
+            </h1>
+            <h4 class="subtitle is-5">{{message}}</h4>
+            <p>Si el problema persiste o si queres reportar un problema, contactate con nosotros en nuestro <b><a href="https://www.facebook.com/PresupuestoParticipativoSanLorenzo/">Facebook</a></b> o enviando un email a <u><a href="mailto:presupuestoparticipativo.sl@gmail.com">presupuestoparticipativo.sl@gmail.com</a></u> 
+            </p>
+            <br>
+            <a class="button is-dark is-outlined" href="{{path_for('showHome')}}">
+              <i class="fas fa-home"></i>&nbsp;&nbsp;Ir al inicio</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

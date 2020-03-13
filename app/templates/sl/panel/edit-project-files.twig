@@ -1,0 +1,52 @@
+
+{% extends 'sl/panel/master.twig' %}
+
+{% block section %}
+	<div class="tabs">
+     <ul>
+      {% if is_state('upload-proposals') and proposals_available() %}
+			<li><a href="{{path_for('showUserPanelUpdateProject',{'pro':proyecto.id})}}"><i class="fas fa-edit fa-lg"></i>&nbsp;Editar datos</a></li>
+			<li class="is-active"><a href="{{path_for('showUserPanelProjectFiles',{'pro': proyecto.id})}}"><i class="fas fa-upload fa-lg"></i>&nbsp;Subir archivos</a></li>
+			<li><a href="{{path_for('showUserPanelProjectImagen',{'pro': proyecto.id})}}"><i class="fas fa-image fa-lg"></i>&nbsp;Subir una imagen</a></li>
+			{% endif %}
+			<li><a href="{{path_for('showUserPanelProjectJournal',{'pro':proyecto.id})}}"><i class="fas fa-history fa-lg"></i>&nbsp;Historial</a></li>
+    </ul>
+  </div>
+	<table class="table is-fullwidth">
+  <thead>
+    <tr>
+    <th>Nombre</th>
+    <th width="60%">Descripción</th>
+    <th width="40" class="has-text-centered"><i class="fas fa-times"></i></th>
+    </tr>
+  </thead>
+    <tbody>
+    {% for archivo in proyecto.documents %}
+    <tr>
+    <td>
+    <p><b>{{archivo.name}}</b></p>
+    <p class="is-size-7"><a href="{{path_for('showDocument',{'pro':proyecto.id, 'doc':archivo.id })}}" class="has-text-info"><i class="fas fa-download"></i>&nbsp; Descargar archivo</a></p>
+    </td>
+    {% if archivo.description %}
+      <td><p class="is-size-7">{{archivo.description}}</p></td>
+    {% else %}
+      <td><p class="is-size-7">- Sin descripción -</p></td>
+    {% endif %}
+    <td class="has-text-centered">
+    <form action="{{path_for('deleteDocument',{'pro': proyecto.id, 'doc': archivo.id})}}" method="POST">
+      <button class="button is-danger is-small"><i class="fas fa-times"></i></button>
+    </form>
+    </td>
+    </tr>
+    {% endfor %}
+    {% if proyecto.documents|length == 0 %}
+    <tr>
+    <td colspan="3"><i>No se han subido archivos</i></td>
+    </tr>
+    {% endif %}
+    </tbody>
+  </table>
+  <form-file form-url="{{path_for('runUploadDocument',{'pro':proyecto.id})}}" :project="{{proyecto|json_encode}}">
+    {% include 'loading.twig' %}
+  </form-file>
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends 'sl/admin/master.twig' %}
+
+{% set percRetencion = ((cantUsuarios / (cantUsuarios + cantPendientes)) * 100) %}
+
+{% block section %}
+  <h1 class="title is-1">Registros pendientes
+  </h1>
+  <h2 class="subtitle is-4">
+    Reenvio del email de confirmación a usuarios que faltaron por validar su correo
+  </h2>
+  <hr>
+  <div class="message is-dark">
+    <div class="message-body">
+      <nav class="level">
+        <div class="level-item">
+          <h1 class="title is-3">Usuarios</h1>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Pendientes</p>
+            <p class="title">{{cantPendientes}}</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Completos</p>
+            <p class="title">{{cantUsuarios}}</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Retención</p>
+            <p class="title">{{percRetencion|number_format(2,'.',',')}}%</p>
+          </div>
+        </div>
+        <div class="level-item">
+          <h1 class="title is-1">
+            {% if percRetencion > 0 and percRetencion <= 10 %}
+              <i class="far fa-sad-cry"></i>
+            {% elseif percRetencion > 10 and percRetencion <= 20 %}
+              <i class="far fa-frown"></i>
+            {% elseif percRetencion > 20 and percRetencion <= 35 %}
+              <i class="far fa-frown-open "></i>
+            {% elseif percRetencion > 35 and percRetencion <= 50 %}
+              <i class="far fa-meh-blank "></i>
+            {% elseif percRetencion > 50 and percRetencion <= 65 %}
+              <i class="far fa-smile"></i>
+            {% elseif percRetencion > 65 and percRetencion <= 75 %}
+              <i class="far fa-laugh-wink "></i>
+            {% elseif percRetencion > 75 and percRetencion <= 85 %}
+              <i class="far fa-grin-tongue-squint"></i>
+            {% elseif percRetencion > 85 and percRetencion <= 95 %}
+              <i class="far fa-grin-squint-tears"></i>
+            {% elseif percRetencion > 95 and percRetencion <= 100 %}
+              <i class="far fa-kiss-wink-heart"></i>
+            {% endif %}
+          </h1>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="columns">
+    <div class="column">
+      <h1 class="title is-4 has-text-centered">Pendientes del dia que se registraron</h1>
+      <table class="table is-fullwidth is-narrow is-marginless">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th class="has-text-centered">Pendientes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for day in arrayDates %}
+            {% if pendientesDate[day] is not null %}
+              <tr>
+                <td>
+                  Registrados el
+                  {{pendientesDate[day].date}}
+                </td>
+                <td class="has-text-centered">
+                  {{pendientesDate[day].pendientes}}
+                </td>
+              </tr>
+            {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="column">
+      <div class="message is-dark">
+        <div class="message-body">
+          Si desea, puede volver a mandarle un email al usuario pidiendo que complete su registro haciendo clic en el botón
+          <i class="fas fa-paper-plane has-text-primary"></i><br><br>(El envio tiene un "cooldown" de
+          <i class="far fa-clock"></i>
+          15 minutos por usuario, para evitar que caiga en SPAM)
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <pending-sender url="{{path_for('getPendingUsers')}}" post="{{path_for('runResendPending')}}">
+    {% include 'loading.twig' %}
+  </pending-sender>
+{% endblock %}

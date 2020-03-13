@@ -1,0 +1,13 @@
+{% if is_state('pre-upload-proposals') %}
+<p><i class="fas fa-info-circle fa-lg"></i>&nbsp;{{subject.name|split(' ')[0]}}, <b>no estarás habilitado/a</b> para subir propuestas o votar de forma <u>online</u> Para conocer las causas, <a href="{{path_for('showFAQ')}}">hacé click aquí</a></p>
+{% elseif is_state('upload-proposals') %}
+<p><i class="fas fa-info-circle fa-lg"></i>&nbsp;{{subject.name|split(' ')[0]}}, <b>no estas habilitado/a</b> para subir propuestas, y no podrás votar de forma votar de forma <u>online</u> cuando comience la votación. Para conocer las causas, <a href="{{path_for('showFAQ')}}">hacé click aquí</a></p>
+{% elseif is_state('pre-vote') %}
+<p><i class="fas fa-info-circle fa-lg"></i>&nbsp;{{subject.name|split(' ')[0]}}, <b>no estarás habilitado/a</b> para votar de forma <u>online</u> cuando comience la votación. Para conocer las causas, <a href="{{path_for('showFAQ')}}">hacé click aquí</a></p>
+{% elseif is_state('vote') %}
+<p><i class="fas fa-info-circle fa-lg"></i>&nbsp;{{subject.name|split(' ')[0]}}, <b>no estas habilitado/a</b> para votar de forma <u>online</u>. Para conocer las causas, <a href="{{path_for('showFAQ')}}">hacé click aquí</a></p>
+{% elseif is_state('pre-results') %}
+<p><i class="fas fa-info-circle fa-lg"></i>&nbsp;{{subject.name|split(' ')[0]}}, usted no ha podido participar por <b>no estar habilitado/a</b> para votar de forma <u>online</u>. Para conocer las causas, <a href="{{path_for('showFAQ')}}">hacé click aquí</a></p>
+{% elseif is_state('results') %}
+<p><i class="fas fa-info-circle fa-lg"></i>&nbsp;{{subject.name|split(' ')[0]}}, usted no ha podido participar por <b>no estar habilitado/a</b> para votar de forma <u>online</u>. Para conocer las causas, <a href="{{path_for('showFAQ')}}">hacé click aquí</a></p>
+{% endif %}

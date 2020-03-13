@@ -1,0 +1,79 @@
+<div class="navbar-brand">
+  <a class="navbar-item" href="{{base_url()}}">
+    <img src="{{asset('img/ingenia-logo5.svg')}}" alt="Ir al inicio" class="image">
+  </a>
+{% if subject.id %}
+  <a class="navbar-item is-hidden-desktop" href="{{path_for('showProfile',{'usr': subject.extra.user_id})}}">
+    <avatar :subject="{{subject.extra|json_encode}}" size="32"></avatar>&nbsp;<span class="is-size-7">
+      <b>{{subject.name|split(' ')[0]}}</b>
+    </span>
+  </a>
+{% endif %}
+
+
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </a>
+</div>
+<div class="navbar-menu" id="navMenu">
+  <div class="navbar-start">
+  {# <span class="navbar-item">
+  <figure class="image is-32x32">
+<img src="{{asset('img/santafelogo.svg')}}" alt="">
+  </figure>
+  </span> #}
+  </div>
+  <div class="navbar-end">
+    {% if subject.id %}
+      <b-tooltip label="Mi panel" position="is-bottom" class="is-hidden-touch">
+        <a class="navbar-item" href="{{path_for('showPanel')}}">
+          <span class="icon">
+            <i class="fas fa-compass fa-lg"></i>
+          </span>
+          <span class="is-hidden-desktop">Mi panel</span>
+        </a>
+      </b-tooltip>
+      {% if 'admin' in subject.roles or 'coordin' in subject.roles %}
+      <b-tooltip label="Administración" position="is-bottom" class="is-hidden-touch">
+        <a class="navbar-item" href="{{path_for('showAdminPanel')}}">
+          <span class="icon">
+            <i class="fas fa-wrench fa-lg"></i>
+          </span>
+          <span class="is-hidden-desktop">Administración</span>
+        </a>
+      </b-tooltip>
+      {% endif %}
+      <b-tooltip label="Mi perfíl" position="is-bottom" class="is-hidden-touch">
+        <a class="navbar-item" href="{{path_for('showProfile',{'usr': subject.extra.user_id})}}">
+          <avatar :subject="{{subject.extra|json_encode}}" size="32"></avatar>
+        </a>
+      </b-tooltip>
+      <b-tooltip label="Cerrar sesión" position="is-bottom" class="is-hidden-touch">
+        <a class="navbar-item is-hidden-desktop-only" href="{{path_for('showLogout')}}">
+          <span class="icon">
+            <i class="fas fa-sign-out-alt fa-lg"></i>
+          </span>
+        </a>
+      </b-tooltip>
+      {# MOBILE MENU #}
+      <a class="navbar-item is-hidden-desktop" href="{{path_for('showPanel')}}">
+        <i class="fas fa-compass fa-lg"></i>&nbsp;&nbsp;Mi panel de control
+      </a>
+      <a class="navbar-item is-hidden-desktop" href="{{path_for('showLogout')}}">
+        <span class="icon">
+          <i class="fas fa-sign-out-alt fa-lg"></i>
+        </span>&nbsp;&nbsp;Cerrar sesión
+        <span class="is-size-7 is-italic">(Nos vemos pronto!)</span>
+      </a>
+    {% else %}
+      <a class="navbar-item" href="{{path_for('showLogin')}}">
+        <span class="icon">
+          <i class="fas fa-sign-in-alt fa-lg"></i>
+        </span>
+        &nbsp;Entrar
+      </a>
+    {% endif %}
+  </div>
+</div>

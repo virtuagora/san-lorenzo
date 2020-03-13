@@ -1,0 +1,32 @@
+{% set show_footer = true %}
+{% set show_navbar = true %}
+{# set body_class = '' #}
+{% extends 'master.twig' %}
+{% block title %}Panel de administración{% endblock %}
+{% block scriptshead %}{% endblock %}
+{% block body %}
+  <section class="section">
+    <div class="container is-fluid">
+      <div id="loading" class="notification is-light has-text-centered">
+        <span class="icon">
+          <i class="fas fa-cog fa-spin"></i>
+        </span>
+        Cargando . . .
+      </div>
+      <br>
+<router-view ref="adminPanel" id="{{subject.extra.user_id}}" 
+:roles="{{subject.roles|json_encode}}"
+:settings="{{options()|json_encode}}" 
+update-review="{{path_for('updProRev',{'pro': ':pro'})}}"
+get-users="{{path_for('getUsrs')}}" get-projects="{{path_for('lisPro')}}" 
+get-letter="{{path_for('getGroLet',{'gro': ':gro'})}}" get-agreement="{{path_for('getGroAgr',{'gro': ':gro'})}}"
+get-group-members="{{path_for('getGroUsr',{'gro': ':gro'})}}"
+get-user-dni="{{path_for('getUsrDni',{'usr': ':usr'})}}"
+post-validate-dni="{{path_for('runUpdUserDniVer',{'usr': ':usr'})}}"
+post-role-user="{{path_for('runUpdUsrRol')}}"
+put-project-note="{{path_for('putProNot', {'pro': ':pro'})}}"
+team-url="{{path_for('getGroup',{'gro': ':gro'})}}"></router-view>
+    </div>
+  </section>
+{% endblock %}
+{% block javascripts %}{% endblock %}

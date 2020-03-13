@@ -1,0 +1,16 @@
+{% set editable = ( is_state('upload-proposals') and proposals_available() ) ? 'true' : 'false'  %}
+{% extends 'sl/admin/master.twig' %}
+{% block section %}
+  <h1 class="title is-1">Sellados de tiempo</h1>
+  <h2 class="subtitle is-4">
+    Con la colaboración de Blockchain Federal Argentina
+  </h2>
+  <admin-stamp
+  get-url={{path_for('getSellos')}}
+  stamp-url={{path_for('runSellar')}}
+  check-url={{path_for('runComprobarSellos',{'aud':':aud'})}}
+  receipt-url={{path_for('showReciboSello',{'aud':':aud'})}}
+  dataset-url={{path_for('showDatasetSello',{'aud':':aud'})}}
+  stamp-url="{{path_for('runSellar')}}"
+  ></admin-stamp>
+{% endblock %}

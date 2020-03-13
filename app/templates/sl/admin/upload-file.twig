@@ -1,0 +1,102 @@
+{% extends 'sl/admin/master.twig' %}
+
+{% block section %}
+  <h1 class="title is-1">Subir archivos a un proyecto
+  </h1>
+  <h2 class="subtitle is-4">
+    Puede extender la información de un proyecto al subir archivos en su página. Seleccione el proyecto y cargue el archivo.
+  </h2>
+  <div class="box">
+    <form action="" method="POST">
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">
+            Proyecto
+          </label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control select is-fullwidth">
+              <select name="" id="">
+                <option value="">Proyecto 1</option>
+                <option value="">Proyecto 2</option>
+                <option value="">Proyecto 3</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">
+            Archivo
+          </label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input type="file" name="file" id="">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="field is-horizontal">
+        <div class="field-label">
+          <!-- Left empty for spacing -->
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <button type="submit" class="button is-primary">
+                Subir archivo
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <h1 class="subtitle is-3">Archivos subidos
+  </h1>
+  <table class="table is-centered is-fullwidth is-hoverable">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Proyecto</th>
+<th>Tipo</th>
+        <th>Region</th>
+        <th>Archivo</th>
+        <th width="100" class="has-text-centered">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in 1..3 %}
+        <tr>
+          <td>NS/32</td>
+          <td>
+            <a href="#">Plaza renovada</a>
+            <br><small>Por Guillermo C</small>
+          </td>
+          <td>
+          <span class="tag is-success">Comunitario</span>
+          </td>
+          <td>
+         Norte
+          </td>
+          <td>
+            <a href="#">comision_nueva.jpg</a>
+          </td>
+          <td class="has-text-centered">
+            <form action="" method="POST">
+              <input type="hidden" name="id">
+              <button type="submit" class="button is-danger">
+                <i class="fas fa-trash fa-fw"></i>
+              </button>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

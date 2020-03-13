@@ -1,0 +1,139 @@
+{% set show_navbar = true %}
+{% set show_footer = true %}
+{# set body_class = '' #}
+
+{% extends 'master.twig' %}
+
+{% block body %}
+  <section class="hero is-primary is-medium indexBg">
+    <div class="hero-body has-text-centered">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-8 is-offset-2">
+            <img src="{{asset('img/pp-logo-horizontal-white.svg')}}" alt="Volver al inicio" class="image is-centered logo-pp">
+            {% if vote_available() %}
+              <a href="">
+                <countdown-closing date="{{options()['vote-deadline']}}"></countdown-closing>
+              </a>
+              <p class="title is-3 shadow-text is-marginless">¡Conocé, compartí y votá los proyectos!</p>
+              <p class="is-size-6 shadow-text">Mas de 75 proyectos institucionales y comunitarios están participando este año y necesitan de tú apoyo.<br>
+                <b>¡Registrate y participá hoy!</b>
+              </p>
+              <br>
+              <a href="{{path_for('showLogin')}}" class="button is-rounded is-medium is-white is-outlined">
+                <i class="fas fa-sign-in-alt fa-fw "></i>&nbsp;Entrá y votá</a>
+              {% else%}
+              <countdown-to date="{{options().['vote-launch']}}"></countdown-to>
+            {% endif %}
+          </div>
+        </div>
+        {# <a href="#" class="button is-white is-large">¡Votá!</a> #}
+      </div>
+    </div>
+  </section>
+  {#
+  <div class="section has-text-centered">
+    <div class="container">
+      <h1 class="title is-2">¡Participá de la votación online!</h1>
+      <h1 class="subtitle is-3">Se votán dos tipos de proyectos</h1>
+      <div class="columns">
+        <div class="column is-3 is-offset-3">
+          <div class="notification is-institucional has-text-centered">
+            <img src="/assets/img/icons/w-institucional.svg" alt="" class="image is-centered" style="width: 50px;">
+            <h1 class="title is-3 has-text-white">
+              Institucionales
+            </h1>
+          </div>
+          {# <img src="{{asset('img/icons/mark-comunitario-round.svg')}}" class="image is-96x96 is-centered" alt="">
+          <h2 class="subtitle is-3 color-comunitario">Comunitarios</h2> #}
+        </div>
+        <div class="column is-3">
+          {# <img src="{{asset('img/icons/mark-institucional-round.svg')}}" class="image is-96x96 is-centered" alt="">
+          <h2 class="subtitle is-3 color-institucional">Institucionales</h2> #}
+          <div class="notification is-comunitario has-text-centered">
+            <img src="/assets/img/icons/w-comunitario.svg" alt="" class="image is-centered" style="width: 50px;">
+            <h1 class="title is-3 has-text-white">
+              Comunitarios
+            </h1>
+          </div>
+        </div>
+      </div>
+      <a href="{{path_for('showCatalogo')}}" class="button is-primary is-rounded is-outlined is-medium">
+        <i class="fas fa-book-reader fa-fw"></i>&nbsp;Conocé el catálogo</a>
+    </div>
+  </div>
+  <hr class="is-marginless">
+  <section class="section has-text-centered">
+    <img src="/assets/img/icons/comunidad-linea.svg" class="image is-96x96 is-centered" alt="">
+    <h1 class="subtitle is-size-3-touch is-2">Mirá algunos de los proyectos que participan</h1>
+    <ul class="is-hidden-desktop">
+      <li>
+        <a href="#norte" class="button is-link is-inverted is-medium">Distrito&nbsp;<b>NORTE</b>
+        </a>
+      </li>
+      <li>
+        <a href="#centro" class="button is-link is-inverted is-medium">Distrito&nbsp;<b>CENTRO</b>
+        </a>
+      </li>
+      <li>
+        <a href="#sur" class="button is-link is-inverted is-medium">Distrito&nbsp;<b>SUR</b>
+        </a>
+      </li>
+    </ul>
+    <nav class="breadcrumb is-centered is-large is-hidden-touch" aria-label="breadcrumbs">
+      <ul>
+        <li>
+          <a href="#norte" class="has-text-link">Distrito&nbsp;<b>NORTE</b>
+          </a>
+        </li>
+        <li>
+          <a href="#centro" class="has-text-link">Distrito&nbsp;<b>CENTRO</b>
+          </a>
+        </li>
+        <li>
+          <a href="#sur" class="has-text-link">Distrito&nbsp;<b>SUR</b>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </section>
+  
+  <section class="section" id="norte">
+    <div class="container">
+      <h1 class="title is-size-4-touch is-2 has-text-centered">
+        <i class="fas fa-map-marker-alt fa-fw"></i>&nbsp;Distrito
+        <b>NORTE</b>
+      </h1>
+      <project-carousel url="{{path_for('retrieveProject',{'distrito':1})}}" :timeout="6500" district="1">
+        {% include 'loading.twig' %}
+      </project-carousel>
+    </div>
+  </section>
+  <hr class="is-marginless">
+  <section class="section" id="centro">
+    <div class="container">
+      <h1 class="title is-size-4-touch is-2 has-text-centered">
+        <i class="fas fa-map-marker-alt fa-fw"></i>&nbsp;Distrito
+        <b>CENTRO</b>
+      </h1>
+      <project-carousel url="{{path_for('retrieveProject',{'distrito':1})}}" :timeout="6900" district="2">
+        {% include 'loading.twig' %}
+      </project-carousel>
+    </div>
+  </section>
+  <hr class="is-marginless">
+  <section class="section" id="sur">
+    <div class="container">
+      <h1 class="title is-size-4-touch is-2 has-text-centered">
+        <i class="fas fa-map-marker-alt fa-fw"></i>&nbsp;Distrito
+        <b>SUR</b>
+      </h1>
+      <project-carousel url="{{path_for('retrieveProject',{'distrito':1})}}" :timeout="7400" district="3">
+        {% include 'loading.twig' %}
+      </project-carousel>
+    </div>
+  </section>
+  #}
+{% endblock %}
+
+{% block javascripts %}{% endblock %}

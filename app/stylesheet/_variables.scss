@@ -1,0 +1,43 @@
+// Custom variables
+// Please watch out ot not use same variables as bulma.
+// http://bulma.io/documentation/overview/variables/
+// Import Bulma's core
+@import "~bulma/sass/utilities/_all";
+// Set your colors
+// $primary: #336acf;
+$primary: #9e2a54;
+// $primary: #007199;
+// $primary: #5d6faf;
+$primary-invert: findColorInvert($primary);
+$twitter: #4099FF;
+$twitter-invert: findColorInvert($twitter);
+$danger: #ca4343;
+$success: #5fb769;
+// Setup $colors to use as bulma classes (e.g. 'is-twitter')
+$colors: ( "white": ($white, $black), "black": ($black, $white), "light": ($light, $light-invert), "dark": ($dark, $dark-invert), "primary": ($primary, $primary-invert), "info": ($info, $info-invert), "success": ($success, $success-invert), "warning": ($warning, $warning-invert), "danger": ($danger, $danger-invert), "link": ($link, $link-invert), "twitter": ($twitter, $twitter-invert));
+// Links
+$link: $primary;
+$link-invert: $primary-invert;
+$link-focus-border: $primary;
+$footer-background-color: $dark;
+$body-size: 14px;
+// $family-sans-serif: 'Roboto',
+// 'Segoe UI',
+// BlinkMacSystemFont,
+// -apple-system,
+// "Oxygen",
+// "Cantarell",
+// "Fira Sans",
+// "Droid Sans",
+// "Helvetica Neue",
+// "Helvetica",
+// "Arial",
+// sans-serif;
+// $family-monospace: 'Ubuntu Mono',
+// monospace;
+$notification-padding: 1.25rem 1.5rem 1.25rem 1.5rem;
+$subtitle-weight: 300;
+$navbar-item-img-max-height: 4.29rem;
+$navbar-item-hover-background-color: transparent;
+$navbar-height: 5rem;
+$comunitario: #9a9e00;
