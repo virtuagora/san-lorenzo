@@ -44,7 +44,7 @@ $app->get('/sellos/{aud}/recibo', 'auditWebAction:downloadRecibo')->setName('sho
 $app->get('/sellos/{aud}/dataset', 'auditWebAction:downloadDataset')->setName('showDatasetSello');
 
 // MiscAction
-// $app->get('/install[/{extra}]', 'miscAction:runInstall');
+$app->get('/install[/{extra}]', 'miscAction:runInstall');
 $app->get('/update', 'miscAction:runUpdate');
 $app->get('/ping', 'miscAction:getLoggedPing')->setName('getLoggedPing');
 
