@@ -196,35 +196,35 @@
           <div class="notification is-success is-clearfix">
               <h1 class="subtitle is-4">
                 <img src="/assets/img/icons/check-mark-white.svg" alt="" class="image is-pulled-left" style="width: 45px;margin-right: 10px;">
-                El proyecto <u>ES FACTIBLE</u> para participar de la votación del Presupuesto del año 2019</h1>
+                El proyecto <u>ES FACTIBLE</u> para participar de la votación del Presupuesto del año 2020</h1>
             </div>
           {% endif %}
           {% if is_state('results') and project.feasible and project.selected == false %}
           <div class="notification is-success is-clearfix">
               <h1 class="subtitle is-4">
                 <img src="/assets/img/icons/check-mark-white.svg" alt="" class="image is-pulled-left" style="width: 45px;margin-right: 10px;">
-                El proyecto <u>FUE FACTIBLE</u> y <u>PARTICIPÓ</u> de la votación del presupuesto del año 2019</h1>
+                El proyecto <u>FUE FACTIBLE</u> y <u>PARTICIPÓ</u> de la votación del presupuesto del año 2020</h1>
             </div>
           {% endif %}
           {% if (is_state('pre-vote') or is_state('vote')) and not project.feasible %}
           <div class="notification is-danger is-clearfix">
               <h1 class="subtitle is-4">
                 <img src="/assets/img/icons/cancel-white.svg" alt="" class="image is-pulled-left" style="width: 45px;margin-right: 10px;">
-                El proyecto <u>NO ES FACTIBLE</u> para participar de la votación del Presupuesto del año 2019</h1>
+                El proyecto <u>NO ES FACTIBLE</u> para participar de la votación del Presupuesto del año 2020</h1>
             </div>
           {% endif %}
           {% if is_state('results') and not project.feasible %}
           <div class="notification is-danger is-clearfix">
               <h1 class="subtitle is-4">
                 <img src="/assets/img/icons/cancel-white.svg" alt="" class="image is-pulled-left" style="width: 45px;margin-right: 10px;">
-                El proyecto <u>NO FUE FACTIBLE</u> para participar de la votación del Presupuesto del año 2019</h1>
+                El proyecto <u>NO FUE FACTIBLE</u> para participar de la votación del Presupuesto del año 2020</h1>
             </div>
           {% endif %}
           {% if project.selected and show_results() %}
             <div class="notification is-warning is-clearfix">
               <h1 class="subtitle is-4">
                 <img src="/assets/img/icons/medal-dark.svg" alt="" class="image is-pulled-left" style="width: 45px;margin-right: 10px;">
-                El proyecto ha sido seleccionado por el voto de los ciudadanos para el Presupuesto del año 2019</h1>
+                El proyecto ha sido seleccionado por el voto de los ciudadanos para el Presupuesto del año 2020</h1>
             </div>
           {% endif %}
           <h1 class="title is-3 is-size-5-touch">El objetivo del proyecto</h1>

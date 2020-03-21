@@ -173,7 +173,7 @@
       <br>
       <div class="field is-grouped">
         <div class="control">
-          <b-datepicker placeholder="Hace clic!" v-model="dateActividad" :mobile-native="false" size="is-medium" :date-formatter="(date) => date.toLocaleDateString('es-AR')" :min-date="new Date()" :max-date="new Date('04/30/2019')" icon="calendar-alt">
+          <b-datepicker placeholder="Hace clic!" v-model="dateActividad" :mobile-native="false" size="is-medium" :date-formatter="(date) => date.toLocaleDateString('es-AR')" :min-date="new Date()" :max-date="new Date('04/30/2020')" icon="calendar-alt">
           </b-datepicker>
         </div>
         <p class="control is-expanded">
