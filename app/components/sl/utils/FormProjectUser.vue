@@ -392,7 +392,7 @@
       <p>Detallá como se compone el presupuesto de tu propuesta.</p>
     </div>
      <b-message type="is-warning">
-        <b><i class="fas fa-exclamation-triangle"></i>&nbsp;IMPORTANTE: IMPORTANTE: El limite a presupuestar en proyectos institucionales es $ 400.140 y en proyectos comunitarios $ 600.210 </b>
+        <b><i class="fas fa-exclamation-triangle"></i>&nbsp;IMPORTANTE: IMPORTANTE: El limite a presupuestar en proyectos institucionales es $ 480.000 y en proyectos comunitarios $ 720.000</b>
       </b-message>
       <h1 class="title is-4" :class="{'has-text-danger': errors.has('project.budget')}">
           <i class="fas fa-caret-right"></i>&nbsp; Items del presupuesto
