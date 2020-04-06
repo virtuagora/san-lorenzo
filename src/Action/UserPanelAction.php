@@ -64,7 +64,7 @@ class UserPanelAction
     public function showCreateProject($request, $response, $params)
     {
         $available = $this->options->getOption('proposals-available')->value;
-        $appState = $this->options->getOption('current-state')->value == 'upload-proposal';
+        $appState = $this->options->getOption('current-state')->value == 'upload-proposals';
         if (!$available || !$appState) {
             throw new AppException('El formulario no se encuentra disponible');
         }
@@ -87,7 +87,7 @@ class UserPanelAction
     public function showEditProject($request, $response, $params)
     {
         $available = $this->options->getOption('proposals-available')->value;
-        $appState = $this->options->getOption('current-state')->value == 'upload-proposal';
+        $appState = $this->options->getOption('current-state')->value == 'upload-proposals';
         if (!$available || !$appState) {
             throw new AppException('El formulario no se encuentra disponible');
         }
@@ -113,7 +113,7 @@ class UserPanelAction
     public function showProjectImage($request, $response, $params)
     {
         $available = $this->options->getOption('proposals-available')->value;
-        $appState = $this->options->getOption('current-state')->value == 'upload-proposal';
+        $appState = $this->options->getOption('current-state')->value == 'upload-proposals';
         if (!$available || !$appState) {
             throw new AppException('El formulario no se encuentra disponible');
         }
@@ -139,7 +139,7 @@ class UserPanelAction
     public function showProjectFiles($request, $response, $params)
     {
         $available = $this->options->getOption('proposals-available')->value;
-        $appState = $this->options->getOption('current-state')->value == 'upload-proposal';
+        $appState = $this->options->getOption('current-state')->value == 'upload-proposals';
         if (!$available || !$appState) {
             throw new AppException('El formulario no se encuentra disponible');
         }
