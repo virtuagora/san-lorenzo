@@ -156,7 +156,13 @@
         <div class="message-body">
 
      <h1 class="title is-3 is-marginless"><i class="fas fa-users"></i>&nbsp;Datos de la organización</h1>
-     <p>Como el proyecto es del tipo institucional, complete los datos que corresponde a la institución civil.</p>
+     <div class="content">
+        <p>Como el proyecto es del tipo institucional, complete los datos que corresponde a la institución civil.</p>
+        <p class="is-size-4"><i class="fas fa-exclamation-triangle"></i>&nbsp;<b>IMPORTANTE: Requisitos para proyectos institucionales.</b></p>
+        <p>Las instituciones que presenten proyectos institucionales deben enviar copia del estatuto, del acta de constitución de autoridades, y constancia de IGPJ antes del 6 de julio.</p>
+        <p>Las que participaron en ediciones anteriores de pp, y ya presentaron los documentos requeridos, están eximidos, excepto que se haya producido una renovación de autoridades, con posterioridad a la presentada. En ese caso presentar el último acta.</p>
+        <p class="is-size-5"><i class="fas fa-info-triangle"></i><b>¡Todos estos documentos se pueden subir a la web luego de haber creado la web!</b></p>
+     </div>
         </div>
      </div>
       <div class="field">
@@ -392,7 +398,7 @@
       <p>Detallá como se compone el presupuesto de tu propuesta.</p>
     </div>
      <b-message type="is-warning">
-        <b><i class="fas fa-exclamation-triangle"></i>&nbsp;IMPORTANTE: IMPORTANTE: El limite a presupuestar en proyectos institucionales es $ 480.000 y en proyectos comunitarios $ 720.000</b>
+        <b><i class="fas fa-exclamation-triangle"></i>&nbsp;IMPORTANTE: El limite a presupuestar en proyectos institucionales es $ 480.000 y en proyectos comunitarios $ 720.000</b>
       </b-message>
       <h1 class="title is-4" :class="{'has-text-danger': errors.has('project.budget')}">
           <i class="fas fa-caret-right"></i>&nbsp; Items del presupuesto

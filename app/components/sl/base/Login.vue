@@ -24,32 +24,28 @@
         <span class="help is-danger" v-show="errors.has('email')"><i class="fas fa-times-circle fa-fw"></i> Error. Debe ser un email bien formado</span>          
         <span class="help is-danger" v-show="errors.has('password')"><i class="fas fa-times-circle fa-fw"></i> Error. La contraseña no puede ser vacia</span>          
       <br>
-      <div class="field">
-        <div class="control">
+      <div class="buttons">
           <button @click="submitLogin" class="button is-medium is-primary is-rounded is-fullwidth" :class="{'is-loading': isLoading}">
-            <i class="fas fa-sign-in-alt fa-lg"></i>&nbsp;&nbsp;Iniciar sesión</button>
-        </div>
+            <i class="fas fa-sign-in-alt fa-lg"></i>&nbsp;&nbsp;Entrar a mi cuenta</button>
+
+          <a @click="reset = true" class="button is-white is-rounded is-fullwidth">
+            <i class="fas fa-question-circle fa-fw fa-lg"></i>
+            &nbsp;&nbsp;¡Olvidé mi contraseña!
+          </a>
       </div>
       </form>
+      <br>
+      <div class="strike">
+        <span class="is-size-5">¿Aún no te hiciste una cuenta?</span>
+      </div>
+      <br>
       <div class="field">
         <div class="control">
-          <button @click="register = true" class="button is-primary is-inverted is-medium is-fullwidth">
+          <button @click="register = true" class="button is-link is-rounded is-medium is-fullwidth">
             <i class="fas fa-user-plus fa-fw fa-lg"></i>
             &nbsp;&nbsp;¡Registrate!
           </button>
-        </div>
-      </div>
-      <br>
-      <div class="strike">
-        <span>¿Olvidaste tu contraseña?</span>
-      </div>
-      <br>
-       <div class="field">
-        <div class="control">
-          <button @click="reset = true" class="button is-white  is-fullwidth">
-            <i class="fas fa-question-circle fa-fw fa-lg"></i>
-            &nbsp;&nbsp;Recuperar mi clave
-          </button>
+          <br>
         </div>
       </div>
     </div>

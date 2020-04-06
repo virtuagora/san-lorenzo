@@ -20,8 +20,8 @@ class MiscAction extends ContainerClient
             $installer->down();
             $installer->up();
             $installer->populate();
-            // $loader = new \App\Util\DistrictsLoader($this->db);
-            // $loader->up();
+            $loader = new \App\Util\DistrictsLoader($this->db);
+            $loader->up();
             // $loader = new \App\Util\DemoLoader($this->db);
             // $loader->up();
         } else {
