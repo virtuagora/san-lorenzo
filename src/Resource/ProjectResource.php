@@ -72,22 +72,22 @@ class ProjectResource extends ContainerClient
 				'author_names' => [
 					'type' => 'string',
 					'minLength' => 1,
-					'maxLength' => 50,
+					'maxLength' => 100,
 				],
 				'author_surnames' => [
 					'type' => 'string',
 					'minLength' => 1,
-					'maxLength' => 50,
+					'maxLength' => 100,
 				],
 				'author_phone' => [
 					'type' => 'string',
 					'minLength' => 1,
-					'maxLength' => 50,
+					'maxLength' => 100,
 				],
 				'author_dni' => [
 					'type' => 'string',
-					'minLength' => 6,
-					'maxLength' => 10,
+					'minLength' => 2,
+					'maxLength' => 20,
 				],
 				'author_email' => [
 					'type' => 'string',
@@ -97,18 +97,18 @@ class ProjectResource extends ContainerClient
 				],
 				'organization_name' => [
 					'type' => 'string',
-					'minLength' => 1,
-					'maxLength' => 150,
+					'minLength' => 2,
+					'maxLength' => 250,
 				],
 				'organization_legal_entity' => [
 					'type' => 'string',
-					'minLength' => 1,
-					'maxLength' => 150,
+					'minLength' => 2,
+					'maxLength' => 250,
 				],
 				'organization_address' => [
 					'type' => 'string',
-					'minLength' => 1,
-					'maxLength' => 150,
+					'minLength' => 2,
+					'maxLength' => 250,
 				],
 				'district_id' => [
 					'type' => 'integer',

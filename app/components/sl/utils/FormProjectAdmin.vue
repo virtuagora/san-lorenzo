@@ -106,7 +106,7 @@
               data-vv-name="project.author_dni"
               data-vv-as="'DNI del autor'"
               type="text"
-              v-validate="'required|min:2|max:100'"
+              v-validate="'required|min:2|max:20'"
               class="input is-large"
               placeholder="Requerido *"
             >
@@ -290,17 +290,17 @@
           <i class="fas fa-caret-right"></i>&nbsp;Objetivo de la propuesta
         </h1>
         <h1 class="subtitle is-6">
-          <span class="has-text-link">* Requerido.</span> Defina el objetivo de la propuesta. Tenes un máximo de 1500 caracteres
+          <span class="has-text-link">* Requerido.</span> Defina el objetivo de la propuesta. Tenes un máximo de 2000 caracteres
         </h1>
       <div class="control">
         <b-input
           v-model="project.objective"
           data-vv-name="project.objective"
           data-vv-as="'Objetivo'"
-          v-validate="'required|min:5|max:1500'"
+          v-validate="'required|min:5|max:2000'"
           type="textarea"
           minlength="10"
-          maxlength="1500"
+          maxlength="2000"
           rows="3"
           placeholder="Requerido *"
         ></b-input>
@@ -315,17 +315,17 @@
           <i class="fas fa-caret-right"></i>&nbsp; Definición de la situación problemática
       </h1>
       <h1 class="subtitle is-6">
-          <span class="has-text-link">* Requerido.</span> ¿Cual es la problematica que atiende la propuesta?. Tenes un máximo de 1500 caracteres
+          <span class="has-text-link">* Requerido.</span> ¿Cual es la problematica que atiende la propuesta?. Tenes un máximo de 2000 caracteres
       </h1>
       <div class="control">
         <b-input
           v-model="project.description"
           data-vv-name="project.description"
           data-vv-as="'Descripcion'"
-          v-validate="'required|min:5|max:1500'"
+          v-validate="'required|min:5|max:2000'"
           type="textarea"
           minlength="10"
-          maxlength="1500"
+          maxlength="2000"
           rows="3"
           placeholder="Requerido *"
         ></b-input>
@@ -340,17 +340,16 @@
           <i class="fas fa-caret-right"></i>&nbsp; Población beneficiada
       </h1>
       <h1 class="subtitle is-6">
-          <span class="has-text-link">* Requerido.</span> ¿Cual es la población identificada que se verá beneficiada con tu propuesta?. Tenes un máximo de 1500 caracteres
-      </h1>
+          <span class="has-text-link">* Requerido.</span> ¿Cual es la población identificada que se verá beneficiada con tu propuesta?. Tenes un máximo de 2000 caracteres      </h1>
       <div class="control">
         <b-input
           v-model="project.benefited_population"
           data-vv-name="project.benefited_population"
           data-vv-as="'Poblacion beneficiada'"
-          v-validate="'required|min:5|max:1500'"
+          v-validate="'required|min:10|max:2000'"
           type="textarea"
           minlength="10"
-          maxlength="1500"
+          maxlength="2000"
           rows="3"
           placeholder="Requerido *"
         ></b-input>
@@ -365,17 +364,17 @@
           <i class="fas fa-caret-right"></i>&nbsp; Aportes comunitarios
       </h1>
       <h1 class="subtitle is-6">
-          <span class="has-text-link">* Requerido.</span> ¿Cuales van a ser los aportes comunitarios que ofrecerá tu propuesta?. Tenes un máximo de 1500 caracteres
+          <span class="has-text-link">* Requerido.</span> ¿Cuales van a ser los aportes comunitarios que ofrecerá tu propuesta?. Tenes un máximo de 2000 caracteres
       </h1>
       <div class="control">
         <b-input
           v-model="project.community_contributions"
           data-vv-name="project.community_contributions"
           data-vv-as="'Contribución a la comunidad'"
-          v-validate="'required|min:5|max:1500'"
+          v-validate="'required|min:10|max:2000'"
           type="textarea"
           minlength="10"
-          maxlength="1500"
+          maxlength="2000"
           rows="3"
           placeholder="Requerido *"
         ></b-input>
