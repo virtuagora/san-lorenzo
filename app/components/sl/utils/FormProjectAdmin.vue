@@ -62,9 +62,9 @@
               data-vv-name="project.author_phone"
               data-vv-as="'Telefono del autor'"
               type="text"
-              v-validate="'min:2|max:100'"
+              v-validate="'required|min:2|max:100'"
               class="input is-large"
-              placeholder="Opcional"
+              placeholder="Requerido *"
             >
             <span v-show="errors.has('project.author_phone')" class="help is-danger">
               <i class="fas fa-times-circle fa-fw"></i>

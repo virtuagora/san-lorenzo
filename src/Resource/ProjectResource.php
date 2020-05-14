@@ -120,6 +120,7 @@ class ProjectResource extends ContainerClient
 				'author_email',
 				'author_names',
 				'author_surnames',
+				'author_phone',
 				'benefited_population',
 				'budget',
 				'community_contributions',
