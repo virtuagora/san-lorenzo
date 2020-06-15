@@ -70,7 +70,7 @@
               <span>Click para cargar</span>
             </a>
           </b-upload>
-          <span class="file-name" style="max-width: none;" v-if="file">{{ file[0].name }}</span>
+          <span class="file-name" style="max-width: none;" v-if="file">{{ file.name }}</span>
         </b-field>
         <p
           v-show="!isFileOk && file !== null"
@@ -136,8 +136,8 @@ export default {
   computed: {
     isFileOk: function() {
       if (this.file === null) return false;
-      if (this.file[0] && this.file[0].size > 3145728) return false;
-      if (this.file[0] && !this.mimes.includes(this.file[0].type)) return false;
+      if (this.file && this.file.size > 3145728) return false;
+      if (this.file && !this.mimes.includes(this.file.type)) return false;
       return true;
     },
     descriptionFinal: function(){
