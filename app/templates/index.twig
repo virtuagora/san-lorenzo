@@ -35,14 +35,14 @@
             {% endif %}
             </div>
             {% if is_state('pre-vote') or is_state('vote') %}
-            <div class="column">
+            {# <div class="column">
               <div class="notification is-primary" style="padding:7px; margin-bottom:8px;">
                 <p class="has-text-centered is-500 is-size-7">¡Descubrí donde y cuando nos podés encontrar en tú distrito!</p>
               </div>
               <calendar-index :calendar="{{options().calendar}}" :show-more="true" :small="true">
                   {% include 'loading.twig' %}
               </calendar-index>
-            </div>
+            </div> #}
             {% endif %}
           </div>
         </div>
