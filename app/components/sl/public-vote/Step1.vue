@@ -98,7 +98,7 @@ export default {
   },
   methods: {
      getWho(project){
-      if(project.type == 'institucion'){
+      if(project.type == 'institucional'){
         return project.organization_name
       }
         return project.author_names + ' ' + project.author_surnames
