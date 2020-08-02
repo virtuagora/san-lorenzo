@@ -1,7 +1,8 @@
 <template>
   <section>
     <div class="buttons">
-      <button class="button is-primary is-fullwidth" @click="sendRandom" :class="{'is-loading': isSendingRandom}" :disabled="isSendingRandom">Enviar a 200 personas random</button>
+      <!--<button class="button is-primary is-fullwidth" @click="sendRandom" :class="{'is-loading': isSendingRandom}" :disabled="isSendingRandom">Enviar a  personas random</button> -->
+      <button class="button is-primary is-fullwidth" @click="sendRandom" :class="{'is-loading': isSendingRandom}" :disabled="isSendingRandom">Enviar a cada persona</button>
     </div>
     <table class="table is-narrow is-fullwidth">
       <thead>
@@ -106,7 +107,8 @@ export default {
       let count = 0;
       let intervalId = setInterval(() => {
         count += 1
-        let randomIndex = Math.floor(Math.random() * this.results.length)
+        // let randomIndex = Math.floor(Math.random() * this.results.length)
+        let randomIndex = count
         let user = this.results[randomIndex]
         console.log('Can send? (Counter: ' + count + ')')
         if(this.availableToShare(user.created_at,user.updated_at) && !this.isChecked(user.id)){
@@ -115,11 +117,12 @@ export default {
         } else {
           console.log('No, waiting...')
         }
-        if(count == 200){
+        //if(count == 200){
+        if(count == (this.results.length-1)){
           clearInterval(intervalId)
           this.isSendingRandom = false;
         }
-      }, 4500)      
+      }, 2000)      
     },
     resend: function(id) {
       this.sended.push(id);
