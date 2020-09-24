@@ -102,6 +102,20 @@ class AdminAction
             'proyecto' => $proyecto->toArray(),
         ]);
     }
+    public function showPrintProject($request, $response, $params)
+    {
+        $subject = $request->getAttribute('subject');
+        if (!$this->authorization->checkPermission($subject, 'admin')) {
+            throw new UnauthorizedException();
+        }
+        $proyecto = $this->helper->getEntityFromId(
+            'App:Project', 'pro', $params, ['author','district']
+        );
+        $proyecto->addVisible(['notes', 'author_phone', 'author_email', 'author_dni','author']);
+        return $this->view->render($response, 'sl/admin/print-project.twig', [
+            'proyecto' => $proyecto->toArray(),
+        ]);
+    }
     public function showEditProjectUser($request, $response, $params)
     {
         $subject = $request->getAttribute('subject');

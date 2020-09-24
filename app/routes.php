@@ -113,6 +113,7 @@ $app->group('/admin', function () {
     $this->group('/proyectos', function () {
         $this->get('', 'adminAction:showProjects')->setName('showAdminProjects');
         $this->get('/crear', 'adminAction:showCreateProject')->setName('showAdminCreateProject');
+        $this->get('/{pro}/imprimir', 'adminAction:showPrintProject')->setName('showAdimnPrintProject');
         $this->get('/{pro}/editar', 'adminAction:showEditProject')->setName('showAdminUpdateProject');
         $this->get('/{pro}/usuario', 'adminAction:showEditProjectUser')->setName('showAdminUpdateProjectUser');
         $this->get('/{pro}/factibilidad', 'adminAction:showEditProjectFeasibility')->setName('showAdminUpdateProjectFeasibility');

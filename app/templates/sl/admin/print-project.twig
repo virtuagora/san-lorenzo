@@ -1,0 +1,162 @@
+{# {% set editable = ( is_state('upload-proposals') and proposals_available() ) ? 'true' : 'false'  %} #}
+{% set editable = ( is_state('upload-proposals') ) ? 'true' : 'false'  %}
+{% extends 'master-print.twig' %}
+
+{% block title %}
+	{{proyecto.name}}
+{% endblock %}
+
+{% block body %}
+
+	<div class="section">
+  <div class="is-clearfix">
+  <img src="{{asset('img/logo-sl.svg')}}" style="height:32px;" class="image is-pulled-left">
+  <img src="{{asset('img/pp-logo-horizontal.svg')}}" style="height:32px;" class="image is-pulled-right">
+  </div>
+  <hr>
+  <div class="is-clearfix">
+    <div class="box is-pulled-right has-text-centered is-marginless">
+      <h1 class="title is-5">Votos</h1>
+      <h1 class="subtitle is-5">{{proyecto.likes}}</h1>
+    </div>
+    
+		<h1 class="title is-marginless is-3">{{proyecto.name}}</h1>
+      {% if proyecto.type == 'institucional' %}
+        <h1 class="subtitle is-marginless has-text-dark is-6">Presenta:
+          {{proyecto.organization_name}}</h1>
+      {% else %}
+        <h1 class="subtitle is-marginless has-text-dark is-6  ">
+          Presenta:
+          {{proyecto.author_names}}
+          {{proyecto.author_surnames}}</h1>
+      {% endif %}
+      <br>
+      <p class="is-size-7">Fecha creación: {{proyecto.created_at|date('Y-m-d H:i:s')}} - Fecha última actualización: {{proyecto.updated_at|date('Y-m-d H:i:s')}}</p>
+
+    </div>
+				<hr>
+    <div class="columns">
+    <div class="column">
+			<h1 class="title is-marginless is-5">Código</h1>
+      <p>{{proyecto.code ?? 'No asignado'}}</p>
+    </div>
+    <div class="column">
+			<h1 class="title is-marginless is-5">Distrito</h1>
+      <p>{{proyecto.district.name|capitalize}}</p>
+    </div>
+    <div class="column">
+			<h1 class="title is-marginless is-5">Categoría</h1>
+			<p>
+				{# <img src="/assets/img/icons/w-{{proyecto.type}}.svg" alt="" class="image is-inline" style="width: 20px;margin-bottom: -4px;"> #}
+				{{proyecto.type|capitalize}}
+			</p>
+    </div>
+    <div class="column">
+			<h1 class="title is-marginless is-5">Presupuesto</h1>
+			<p>
+				$
+				{{proyecto.total_budget|replace({".00" : ""})|number_format(0, ',', '.')}}
+			</p>
+    </div>
+    </div>
+		<hr>
+    <div class="columns">
+      <div class="column">
+        <h1 class="title is-marginless is-5">Autor</h1>
+        <p><b>{{proyecto.author_surnames}}</b>, {{proyecto.author_names}}</p>
+      </div>
+      <div class="column">
+        <h1 class="title is-marginless is-5">Teléfono</h1>
+        <p>{{proyecto.author_phone}}</p>
+      
+      </div>
+      <div class="column">
+        <h1 class="title is-marginless is-5">N° Documento</h1>
+        <p>{{proyecto.author_dni}}</p>
+      </div>
+    </div>
+    {% if proyecto.type == 'institucional' %}
+			<hr>
+      <div class="columns">
+        <div class="column">
+          <h1 class="title is-marginless is-5">Organización</h1>
+          <p>{{proyecto.organization_name}}</p>
+        </div>
+        <div class="column">
+          <h1 class="title is-marginless is-5">Entidad Legal</h1>
+          <p>{{proyecto.organization_legal_entity}}</p>
+        </div>
+        <div class="column">
+          <h1 class="title is-marginless is-5">Dirección</h1>
+          <p>{{proyecto.organization_address}}</p>
+        </div>
+      </div>
+		{% endif %}
+    <hr>
+
+     {% if (is_state('pre-vote') or is_state('vote') or is_state('pre-results')) and proyecto.feasible %}
+    <div class="notification is-dark is-clearfix">
+        <p>
+          <img src="/assets/img/icons/check-mark-white.svg" alt="" class="image is-pulled-left" style="width: 15px;margin-right: 10px;">
+          El proyecto <u>ES FACTIBLE</u> para participar de la votación del Presupuesto del año 2020</p>
+      </div>
+    {% endif %}
+    {% if is_state('results') and proyecto.feasible and proyecto.selected == false %}
+    <div class="notification is-dark is-clearfix">
+        <p>
+          <img src="/assets/img/icons/check-mark-white.svg" alt="" class="image is-pulled-left" style="width: 15px;margin-right: 10px;">
+          El proyecto <u>FUE FACTIBLE</u> y <u>PARTICIPÓ</u> de la votación del presupuesto del año 2020</p>
+      </div>
+    {% endif %}
+    {% if (is_state('pre-vote') or is_state('vote')) and not proyecto.feasible %}
+    <div class="notification is-dark is-clearfix">
+        <p>
+          <img src="/assets/img/icons/cancel-white.svg" alt="" class="image is-pulled-left" style="width: 15px;margin-right: 10px;">
+          El proyecto <u>NO ES FACTIBLE</u> para participar de la votación del Presupuesto del año 2020</p>
+      </div>
+    {% endif %}
+    {% if is_state('results') and not proyecto.feasible %}
+    <div class="notification is-dark is-clearfix">
+        <p>
+          <img src="/assets/img/icons/cancel-white.svg" alt="" class="image is-pulled-left" style="width: 15px;margin-right: 10px;">
+          El proyecto <u>NO FUE FACTIBLE</u> para participar de la votación del Presupuesto del año 2020</p>
+      </div>
+    {% endif %}
+    {% if proyecto.selected %}
+      <div class="notification is-dark is-clearfix">
+        <p>
+          <img src="/assets/img/icons/medal-white.svg" alt="" class="image is-pulled-left" style="width: 15px;margin-right: 10px;">
+          El proyecto ha sido seleccionado por el voto de los ciudadanos para el Presupuesto del año 2020</p>
+      </div>
+    {% endif %}
+    <hr>
+    <div class="content">
+    <h1 class="title is-5">El objetivo del proyecto</h1>
+    <p class="">{{proyecto.objective|nl2br}}</p>
+    <h1 class="title is-5">La problemática que aborda</h1>
+    <p class="">{{proyecto.description|nl2br}}</p>
+    {% if proyecto.benefited_population is not null %}
+    <h1 class="title is-5">Poblacion beneficiada</h1>
+    <p class="">{{proyecto.benefited_population|nl2br}}</p>
+    {% endif %}
+    {% if proyecto.community_contributions is not null %}
+    <h1 class="title is-5">Aportes comunitarios</h1>
+    <p class="">{{proyecto.community_contributions|nl2br}}</p>
+    {% endif %}
+    {% if (is_state('pre-vote') or is_state('vote') or is_state('pre-results') or is_state('results')) and proyecto.feasible is defined %}
+    <h1 class="title is-5">Sentencia factibilidad</h1>
+    <h1 class="subtitle is-7 is-300">Dictado por el equipo de Presupuesto Participativo de San Lorenzo</h1>
+    <p class="is-italic">{{proyecto.feasibility|nl2br}}</p>
+    {% endif %}
+    </div>
+    <hr>
+    <h1 class="title is-5">Presupuesto</h1>
+
+    <budget :project="{{proyecto|json_encode}}" >
+      {% include 'loading.twig' %}
+    </budget>
+    <hr>
+    <p class="is-size-6 has-text-right">Fecha impresión del documento: {{'now'|date('Y-m-d H:i:s')}}</p>
+  </div>
+	</div>
+{% endblock %}
