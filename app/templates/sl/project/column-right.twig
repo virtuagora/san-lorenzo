@@ -19,6 +19,8 @@
 <i class="fas fa-upload"></i>&nbsp;Subir archivos</a>
 <a href="{{path_for('showAdminProjectImagen', {'pro': project.id})}}" class="button is-link is-fullwidth is-outlined">
 <i class="fas fa-image"></i>&nbsp;Cambiar imagen</a>
+<a href="{{path_for('showAdminPrintProject', {'pro': project.id})}}" class="button is-link is-fullwidth is-outlined">
+<i class="fas fa-print"></i>&nbsp;Imprimir</a>
 </div>
 {% endif %}
 {% if project.picture_name %}

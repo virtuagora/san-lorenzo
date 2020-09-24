@@ -34,12 +34,13 @@
         <p class="is-size-7"><a :href="`/admin/proyectos/${props.row.id}/editar`" class="has-text-link"><i class="fas fa-edit fa-lg fa-fw"></i>&nbsp;Editar propuesta</a></p>
         <p class="is-size-7"><a :href="`/admin/proyectos/${props.row.id}/usuario`" class="has-text-link"><i class="fas fa-user-edit fa-lg fa-fw"></i>&nbsp;Asignar usuario</a></p>
         <p class="is-size-7"><a :href="`/admin/proyectos/${props.row.id}/archivos`" class="has-text-link"><i class="fas fa-upload fa-lg fa-fw"></i>&nbsp;Subir archivos</a></p>
+        <p class="is-size-7"><a :href="`/admin/proyectos/${props.row.id}/imagen`" class="has-text-link"><i class="fas fa-image fa-lg fa-fw"></i>&nbsp;Asignar una imagen</a></p>
 
           </div>
           <div class="column is-narrow">
-        <p class="is-size-7"><a :href="`/admin/proyectos/${props.row.id}/imagen`" class="has-text-link"><i class="fas fa-image fa-lg fa-fw"></i>&nbsp;Asignar una imagen</a></p>
         <p class="is-size-7"><a :href="`/admin/proyectos/${props.row.id}/factibilidad`" class="has-text-link"><i class="fas fa-clipboard-check fa-lg fa-fw"></i>&nbsp;Factibilidad</a></p>
         <p class="is-size-7"><a :href="`/admin/proyectos/${props.row.id}/bitacora`" class="has-text-link"><i class="fas fa-history fa-lg fa-fw"></i>&nbsp;Bicatora</a></p>
+        <p class="is-size-7"><a :href="`/admin/proyectos/${props.row.id}/imprimir`" class="has-text-link"><i class="fas fa-print fa-lg fa-fw"></i>&nbsp;Imprimir</a></p>
           </div>
         </div>
       </b-table-column>
