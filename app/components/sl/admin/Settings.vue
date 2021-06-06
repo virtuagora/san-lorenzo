@@ -16,6 +16,14 @@
     <change-state :currentState="theSettings['current-state'].value" :states="theSettings['states'].value"></change-state>
     <hr>
     <h1 class="title is-4">
+      <i class="fas fa-arrow-right fa-fw"></i> Refrescar cache</h1>
+    <h2 class="subtitle is-6">
+      ¿Errores de actualizacion? Haga clic para refrescar la cache (Puede utilizar el formato YYYYMMDD como protocolo)
+      <i class="fas fa-exclamation-triangle fa-fw"></i> Nota: Al modificar este dato, tu sesión se cerrará, tendras que volver a loguearte.
+    </h2>
+    <refresh-cache :value="theSettings['refresh-cache'].value"></refresh-cache>
+    <hr>
+    <h1 class="title is-4">
       <i class="fas fa-arrow-right fa-fw"></i> Comienzo de la subida de propuestas</h1>
     <h2 class="subtitle is-6">
       Aquí pueden modificar la fecha en que abre el formulario para subir propuestas.
@@ -118,6 +126,7 @@ import ShowResults from "./settings/ShowResults";
 import BudgetComunitarioLimit from "./settings/BudgetComunitarioLimit";
 import BudgetInstitucionalLimit from "./settings/BudgetInstitucionalLimit";
 import Calendar from "./settings/Calendar";
+import RefreshCache from "./settings/RefreshCache";
 import Rain from "./settings/Rain";
 
 export default {
@@ -135,6 +144,7 @@ export default {
     BudgetComunitarioLimit,
     BudgetInstitucionalLimit,
     Calendar,
+    RefreshCache,
     Rain
   },
   data() {

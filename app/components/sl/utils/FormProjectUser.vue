@@ -447,7 +447,7 @@
         <b><i class="fas fa-exclamation-triangle"></i>&nbsp;IMPORTANTE: El limite a presupuestar en proyectos institucionales es $ {{this.budgetInstitucional}}</b>
       </b-message>
      <b-message type="is-warning" v-if="project.type == 'comunitario'">
-        <b><i class="fas fa-exclamation-triangle"></i>&nbsp;IMPORTANTE: El limite a presupuestar en proyectos comunitarios es $ {{this.budgetInstitucional}}</b>
+        <b><i class="fas fa-exclamation-triangle"></i>&nbsp;IMPORTANTE: El limite a presupuestar en proyectos comunitarios es $ {{this.budgetComunitario}}</b>
       </b-message>
       <h1 class="title is-4" :class="{'has-text-danger': errors.has('project.budget')}">
           <i class="fas fa-caret-right"></i>&nbsp; Items del presupuesto
@@ -605,7 +605,7 @@ export default {
                 hardLimit
               ) {
                 this.$snackbar.open(
-                  "El item excede el total permitido ($" + this.hardLimit + ")"
+                  "El item excede el total permitido ($" + hardLimit + ")"
                 );
                 return;
               }

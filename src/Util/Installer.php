@@ -336,6 +336,13 @@ class Installer
 
         $this->db->table('options')->insert([
             [
+                'key' => 'refresh-cache',
+                'value' => '20210711',
+                'type' => 'string',
+                'group' => 'varios',
+                'autoload' => true,
+            ],
+            [
                 'key' => 'current-edition',
                 'value' => '2021',
                 'type' => 'integer',

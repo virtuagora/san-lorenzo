@@ -58,7 +58,7 @@
     {% endif %}
     <script type="text/javascript" src="{{asset('js/manifest.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/vendor.js')}}"></script>
-    <script type="text/javascript" src="{{asset('js/virtuagora.js')}}?updated=20200722"></script>
+    <script type="text/javascript" src="{{asset('js/virtuagora.js')}}?updated={{options()['refresh-cache']}}"></script>
     {% block javascripts %}{% endblock %}
     <script>
       document.addEventListener('DOMContentLoaded', function () {
