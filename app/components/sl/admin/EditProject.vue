@@ -95,6 +95,8 @@ export default {
         organization_name: null,
         organization_legal_entity: null,
         organization_address: null,
+        organization_cuit: null,
+        organization_nro_personeria: null,
         notes: null,
         district_id: null,
       },
@@ -125,6 +127,8 @@ export default {
     this.project.organization_name = this.existingProject.organization_name;
     this.project.organization_legal_entity = this.existingProject.organization_legal_entity;
     this.project.organization_address = this.existingProject.organization_address;
+    this.project.organization_cuit = this.existingProject.organization_cuit;
+    this.project.organization_nro_personeria = this.existingProject.organization_nro_personeria;
     this.project.notes = this.existingProject.notes;
     this.project.district_id = this.existingProject.district_id;
   },
@@ -229,10 +233,14 @@ export default {
         payload.organization_name = this.project.organization_name
         payload.organization_legal_entity = this.project.organization_legal_entity
         payload.organization_address = this.project.organization_address
+        payload.organization_cuit = this.project.organization_cuit
+        payload.organization_nro_personeria = this.project.organization_nro_personeria
       } else {
         payload.organization_name = null;
         payload.organization_legal_entity = null;
         payload.organization_address = null;
+        payload.organization_cuit = null;
+        payload.organization_nro_personeria = null;
       }
       return payload;
     }

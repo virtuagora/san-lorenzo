@@ -158,10 +158,10 @@
      <h1 class="title is-3 is-marginless"><i class="fas fa-users"></i>&nbsp;Datos de la organización</h1>
      <div class="content">
         <p>Como el proyecto es del tipo institucional, complete los datos que corresponde a la institución civil.</p>
-        <p class="is-size-4"><i class="fas fa-exclamation-triangle"></i>&nbsp;<b>IMPORTANTE: Requisitos para proyectos institucionales.</b></p>
+        <!-- <p class="is-size-4"><i class="fas fa-exclamation-triangle"></i>&nbsp;<b>IMPORTANTE: Requisitos para proyectos institucionales.</b></p>
         <p>Las instituciones que presenten proyectos institucionales deben enviar copia del estatuto, del acta de constitución de autoridades, y constancia de IGPJ antes del 6 de julio.</p>
         <p>Las que participaron en ediciones anteriores de pp, y ya presentaron los documentos requeridos, están eximidos, excepto que se haya producido una renovación de autoridades, con posterioridad a la presentada. En ese caso presentar el último acta.</p>
-        <p class="is-size-5"><i class="fas fa-info-triangle"></i><b>¡Todos estos documentos se pueden subir a la web luego de haber creado la web!</b></p>
+        <p class="is-size-5"><i class="fas fa-info-triangle"></i><b>¡Todos estos documentos se pueden subir a la web luego de haber creado el proyecto!</b></p> -->
      </div>
         </div>
      </div>
@@ -204,13 +204,59 @@
             v-validate="'required|min:2|max:250'"
             class="input is-large"
             placeholder="Requerido *"
-          >"message-body">
+          >
           <span v-show="errors.has('project.organization_legal_entity')" class="help is-danger">
             <i class="fas fa-times-circle fa-fw"></i>
             &nbsp;{{errors.first('project.organization_legal_entity')}}
           </span>
+        </div>
       </div>
-    </div>
+      <div class="field">
+        <h1 class="title is-4" :class="{'has-text-danger': errors.has('project.organization_cuit')}">
+          <i class="fas fa-caret-right"></i>&nbsp;CUIT
+        </h1>
+        <h1 class="subtitle is-6">
+          <span class="has-text-link">* Requerido.</span>
+        </h1>
+        <div class="control">
+          <input
+            v-model="project.organization_cuit"
+            data-vv-name="project.organization_cuit"
+            data-vv-as="'CUIT'"
+            type="text"
+            v-validate="'required|min:2|max:250'"
+            class="input is-large"
+            placeholder="Requerido *"
+          >
+          <span v-show="errors.has('project.organization_cuit')" class="help is-danger">
+            <i class="fas fa-times-circle fa-fw"></i>
+            &nbsp;{{errors.first('project.organization_cuit')}}
+          </span>
+        </div>
+      </div>
+      <div class="field">
+        <h1 class="title is-4" :class="{'has-text-danger': errors.has('project.organization_nro_personeria')}">
+          <i class="fas fa-caret-right"></i>&nbsp;Número de Personeria Júridica
+        </h1>
+        <h1 class="subtitle is-6">
+          <span class="has-text-link">* Requerido.</span>
+        </h1>
+        <div class="control">
+          <input
+            v-model="project.organization_nro_personeria"
+            data-vv-name="project.organization_nro_personeria"
+            data-vv-as="'Numero Personeria Juridica'"
+            type="text"
+            v-validate="'required|min:1|max:250'"
+            class="input is-large"
+            placeholder="Requerido *"
+          >
+          <span v-show="errors.has('project.organization_nro_personeria')" class="help is-danger">
+            <i class="fas fa-times-circle fa-fw"></i>
+            &nbsp;{{errors.first('project.organization_nro_personeria')}}
+          </span>
+        </div>
+      </div>
       <div class="field">
         <h1 class="title is-4" :class="{'has-text-danger': errors.has('project.organization_address')}">
           <i class="fas fa-caret-right"></i>&nbsp;Domicilio legal de la organización
@@ -398,7 +444,7 @@
       <p>Detallá como se compone el presupuesto de tu propuesta.</p>
     </div>
      <b-message type="is-warning">
-        <b><i class="fas fa-exclamation-triangle"></i>&nbsp;IMPORTANTE: El limite a presupuestar en proyectos institucionales es $ 480.000 y en proyectos comunitarios $ 720.000</b>
+        <b><i class="fas fa-exclamation-triangle"></i>&nbsp;IMPORTANTE: El limite a presupuestar en proyectos institucionales es $ 960.000 y en proyectos comunitarios $ 1.440.000</b>
       </b-message>
       <h1 class="title is-4" :class="{'has-text-danger': errors.has('project.budget')}">
           <i class="fas fa-caret-right"></i>&nbsp; Items del presupuesto
