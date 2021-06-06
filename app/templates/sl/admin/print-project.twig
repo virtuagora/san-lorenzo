@@ -15,11 +15,22 @@
   </div>
   <hr>
   <div class="is-clearfix">
-    <div class="box is-pulled-right has-text-centered is-marginless">
-      <h1 class="title is-5">Votos</h1>
-      <h1 class="subtitle is-5">{{proyecto.likes}}</h1>
+    <div class="is-pulled-right ">
+      <div class="columns is-mobile is-vcentered">
+      <div class="column is-narrow">
+        <div class="box has-text-centered is-marginless">
+          <h1 class="title is-5">Edición</h1>
+          <h1 class="subtitle is-5">{{proyecto.edition}}</h1>
+        </div>
+      </div>
+      <div class="column is-narrow">
+        <div class="box has-text-centered is-marginless">
+          <h1 class="title is-5">Votos</h1>
+          <h1 class="subtitle is-5">{{proyecto.likes}}</h1>
+        </div>
+      </div>
+      </div>
     </div>
-    
 		<h1 class="title is-marginless is-3">{{proyecto.name}}</h1>
       {% if proyecto.type == 'institucional' %}
         <h1 class="subtitle is-marginless has-text-dark is-6">Presenta:
@@ -31,27 +42,26 @@
           {{proyecto.author_surnames}}</h1>
       {% endif %}
       <br>
-      <p class="is-size-7">Fecha creación: {{proyecto.created_at|date('Y-m-d H:i:s')}} - Fecha última actualización: {{proyecto.updated_at|date('Y-m-d H:i:s')}}</p>
-
+      <p class="is-size-7">Fecha creación: {{proyecto.created_at|date('Y-m-d H:i')}} - Fecha última actualización: {{proyecto.updated_at|date('Y-m-d H:i')}}</p>
     </div>
 				<hr>
-    <div class="columns">
-    <div class="column">
+    <div class="columns is-multiline">
+    <div class="column is-6">
 			<h1 class="title is-marginless is-5">Código</h1>
       <p>{{proyecto.code ?? 'No asignado'}}</p>
     </div>
-    <div class="column">
+    <div class="column is-6">
 			<h1 class="title is-marginless is-5">Distrito</h1>
       <p>{{proyecto.district.name|capitalize}}</p>
     </div>
-    <div class="column">
+    <div class="column is-6">
 			<h1 class="title is-marginless is-5">Categoría</h1>
 			<p>
 				{# <img src="/assets/img/icons/w-{{proyecto.type}}.svg" alt="" class="image is-inline" style="width: 20px;margin-bottom: -4px;"> #}
 				{{proyecto.type|capitalize}}
 			</p>
     </div>
-    <div class="column">
+    <div class="column is-6">
 			<h1 class="title is-marginless is-5">Presupuesto</h1>
 			<p>
 				$
@@ -61,34 +71,42 @@
     </div>
 		<hr>
     <div class="columns">
-      <div class="column">
+      <div class="column is-4">
         <h1 class="title is-marginless is-5">Autor</h1>
         <p><b>{{proyecto.author_surnames}}</b>, {{proyecto.author_names}}</p>
       </div>
-      <div class="column">
+      <div class="column is-4">
         <h1 class="title is-marginless is-5">Teléfono</h1>
         <p>{{proyecto.author_phone}}</p>
       
       </div>
-      <div class="column">
+      <div class="column is-4">
         <h1 class="title is-marginless is-5">N° Documento</h1>
         <p>{{proyecto.author_dni}}</p>
       </div>
     </div>
     {% if proyecto.type == 'institucional' %}
 			<hr>
-      <div class="columns">
-        <div class="column">
+      <div class="columns is-multiline">
+        <div class="column is-4">
           <h1 class="title is-marginless is-5">Organización</h1>
           <p>{{proyecto.organization_name}}</p>
         </div>
-        <div class="column">
+        <div class="column is-4">
           <h1 class="title is-marginless is-5">Entidad Legal</h1>
           <p>{{proyecto.organization_legal_entity}}</p>
         </div>
-        <div class="column">
+        <div class="column is-4">
           <h1 class="title is-marginless is-5">Dirección</h1>
           <p>{{proyecto.organization_address}}</p>
+        </div>
+        <div class="column is-4">
+          <h1 class="title is-marginless is-5">CUIT</h1>
+          <p>{{proyecto.organization_cuit}}</p>
+        </div>
+        <div class="column is-4">
+          <h1 class="title is-marginless is-5">Nro. Personeria Juridica</h1>
+          <p>{{proyecto.organization_nro_personeria}}</p>
         </div>
       </div>
 		{% endif %}
@@ -98,35 +116,35 @@
     <div class="notification is-dark is-clearfix">
         <p>
           <img src="/assets/img/icons/check-mark-white.svg" alt="" class="image is-pulled-left" style="width: 15px;margin-right: 10px;">
-          El proyecto <u>ES FACTIBLE</u> para participar de la votación del Presupuesto del año 2020</p>
+          El proyecto <u>ES FACTIBLE</u> para participar de la votación del Presupuesto del año {{proyecto.edition}}</p>
       </div>
     {% endif %}
     {% if is_state('results') and proyecto.feasible and proyecto.selected == false %}
     <div class="notification is-dark is-clearfix">
         <p>
           <img src="/assets/img/icons/check-mark-white.svg" alt="" class="image is-pulled-left" style="width: 15px;margin-right: 10px;">
-          El proyecto <u>FUE FACTIBLE</u> y <u>PARTICIPÓ</u> de la votación del presupuesto del año 2020</p>
+          El proyecto <u>FUE FACTIBLE</u> y <u>PARTICIPÓ</u> de la votación del presupuesto del año {{proyecto.edition}}</p>
       </div>
     {% endif %}
     {% if (is_state('pre-vote') or is_state('vote')) and not proyecto.feasible %}
     <div class="notification is-dark is-clearfix">
         <p>
           <img src="/assets/img/icons/cancel-white.svg" alt="" class="image is-pulled-left" style="width: 15px;margin-right: 10px;">
-          El proyecto <u>NO ES FACTIBLE</u> para participar de la votación del Presupuesto del año 2020</p>
+          El proyecto <u>NO ES FACTIBLE</u> para participar de la votación del Presupuesto del año {{proyecto.edition}}</p>
       </div>
     {% endif %}
     {% if is_state('results') and not proyecto.feasible %}
     <div class="notification is-dark is-clearfix">
         <p>
           <img src="/assets/img/icons/cancel-white.svg" alt="" class="image is-pulled-left" style="width: 15px;margin-right: 10px;">
-          El proyecto <u>NO FUE FACTIBLE</u> para participar de la votación del Presupuesto del año 2020</p>
+          El proyecto <u>NO FUE FACTIBLE</u> para participar de la votación del Presupuesto del año {{proyecto.edition}}</p>
       </div>
     {% endif %}
     {% if proyecto.selected %}
       <div class="notification is-dark is-clearfix">
         <p>
           <img src="/assets/img/icons/medal-white.svg" alt="" class="image is-pulled-left" style="width: 15px;margin-right: 10px;">
-          El proyecto ha sido seleccionado por el voto de los ciudadanos para el Presupuesto del año 2020</p>
+          El proyecto ha sido seleccionado por el voto de los ciudadanos para el Presupuesto del año {{proyecto.edition}}</p>
       </div>
     {% endif %}
     <hr>
@@ -145,16 +163,29 @@
     {% endif %}
     {% if (is_state('pre-vote') or is_state('vote') or is_state('pre-results') or is_state('results')) and proyecto.feasible is defined %}
     <h1 class="title is-5">Sentencia factibilidad</h1>
-    <h1 class="subtitle is-7 is-300">Dictado por el equipo de Presupuesto Participativo de San Lorenzo</h1>
+    <h1 class="subtitle is-7 is-300">Dictado por la Municipalidad de San Lorenzo</h1>
     <p class="is-italic">{{proyecto.feasibility|nl2br}}</p>
     {% endif %}
     </div>
     <hr>
     <h1 class="title is-5">Presupuesto</h1>
-
-    <budget :project="{{proyecto|json_encode}}" >
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+        <th>Descripción</th>
+        <th width="150" class="has-text-centered">Monto</th>
+      </thead>
+      <tbody>
+      {% for item in proyecto.budget %}
+        <tr>
+          <td>{{item.description}}</td>
+          <td class="has-text-centered">$ {{item.amount|number_format(0, ',', '.')}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {# <budget :project="{{proyecto|json_encode}}" >
       {% include 'loading.twig' %}
-    </budget>
+    </budget> #}
     <hr>
     <p class="is-size-6 has-text-right">Fecha impresión del documento: {{'now'|date('Y-m-d H:i:s')}}</p>
   </div>

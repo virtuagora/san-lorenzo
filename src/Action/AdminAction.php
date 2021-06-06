@@ -111,7 +111,7 @@ class AdminAction
         $proyecto = $this->helper->getEntityFromId(
             'App:Project', 'pro', $params, ['author','district']
         );
-        $proyecto->addVisible(['notes', 'author_phone', 'author_email', 'author_dni','author']);
+        $proyecto->addVisible(['notes', 'author_phone', 'author_email', 'author_dni','author','created_at','updated_at']);
         return $this->view->render($response, 'sl/admin/print-project.twig', [
             'proyecto' => $proyecto->toArray(),
         ]);
