@@ -35,6 +35,10 @@ class ProjectResource extends ContainerClient
 					'minLength' => 1,
 					'maxLength' => 2000,
 				],
+				'edition' => [
+					'type' => 'number',
+					'minimum' => 2010,
+				],
 				'description' => [
 					'type' => 'string',
 					'minLength' => 1,
@@ -106,6 +110,16 @@ class ProjectResource extends ContainerClient
 					'maxLength' => 250,
 				],
 				'organization_address' => [
+					'type' => 'string',
+					'minLength' => 2,
+					'maxLength' => 250,
+				],
+				'organization_cuit' => [
+					'type' => 'string',
+					'minLength' => 2,
+					'maxLength' => 250,
+				],
+				'organization_nro_personeria' => [
 					'type' => 'string',
 					'minLength' => 2,
 					'maxLength' => 250,

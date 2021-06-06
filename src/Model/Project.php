@@ -15,6 +15,7 @@ class Project extends Model
         'code',
         'name',
         'type',
+        'edition',
         'slug',
         'objective',
         'description',
@@ -30,6 +31,8 @@ class Project extends Model
         'organization_legal_entity',
         'organization_name',
         'organization_address',
+        'organization_cuit',
+        'organization_nro_personeria',
         'picture_name',
         'youtube_id',
         'feasibility',
@@ -37,12 +40,15 @@ class Project extends Model
         'selected',
         'district_id',
         'district',
-        'likes'
+        'likes',
+        'created_at',
+        'updated_at'
     ];
     protected $fillable = [
         'code',
         'name',
         'type',
+        'edition',
         'slug',
         'objective',
         'description',
@@ -55,9 +61,11 @@ class Project extends Model
         'author_email',
         'author_dni',
         'author_phone',
-        'organization_legal_entity',
         'organization_name',
+        'organization_legal_entity',
         'organization_address',
+        'organization_cuit',
+        'organization_nro_personeria',
         'district_id',
     ];
     protected $with = [];

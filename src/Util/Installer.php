@@ -150,6 +150,7 @@ class Installer
             $table->string('code')->nullable();
             $table->string('name');
             $table->string('type');
+            $table->integer('edition')->default(2000);
             $table->string('slug')->nullable();
             $table->integer('district_id')->unsigned();
             $table->foreign('district_id')->references('id')->on('districts');
@@ -167,6 +168,8 @@ class Installer
             $table->string('organization_name')->nullable();
             $table->string('organization_legal_entity')->nullable();
             $table->string('organization_address')->nullable();
+            $table->string('organization_cuit')->nullable();
+            $table->string('organization_nro_personeria')->nullable();
             $table->text('feasibility')->nullable();
             $table->text('journal')->nullable();
             $table->text('notes')->nullable();
@@ -176,6 +179,8 @@ class Installer
             $table->boolean('feasible')->nullable();
             $table->boolean('selected')->default(false);
             $table->integer('likes')->default(0);
+            $table->integer('monitoringStatus')->default(0);
+            $table->text('monitoringComment')->nullable();
             $table->string('trace')->nullable();
             $table->integer('author_id')->unsigned()->nullable();
             $table->foreign('author_id')->references('id')->on('users');
@@ -346,14 +351,14 @@ class Installer
             ],
             [
                 'key' => 'proposals-launch',
-                'value' => '2019-08-27 12:00:00',
+                'value' => '2021-06-07 12:00:00',
                 'type' => 'date',
                 'group' => 'varios',
                 'autoload' => true,
             ],
             [
                 'key' => 'proposals-deadline',
-                'value' => '2019-09-05 23:59:59',
+                'value' => '2021-07-07 23:59:59',
                 'type' => 'date',
                 'group' => 'varios',
                 'autoload' => true,
@@ -367,14 +372,14 @@ class Installer
             ],  
             [
                 'key' => 'vote-launch',
-                'value' => '2019-08-27 12:00:00',
+                'value' => '2019-08-07 12:00:00',
                 'type' => 'date',
                 'group' => 'varios',
                 'autoload' => true,
             ],
             [
                 'key' => 'vote-deadline',
-                'value' => '2019-09-05 23:59:59',
+                'value' => '2019-09-07 23:59:59',
                 'type' => 'date',
                 'group' => 'varios',
                 'autoload' => true,
@@ -388,7 +393,7 @@ class Installer
             ],
             [
                 'key' => 'budget-limit',
-                'value' => '100000',
+                'value' => '1440000',
                 'type' => 'integer',
                 'group' => 'varios',
                 'autoload' => true,
@@ -402,14 +407,14 @@ class Installer
             ],
             [
                 'key' => 'rain-message',
-                'value' => 'En caso de llvia, nos podés encontrar en el parador turístico de San Lorenzo, 3 de Febrero entre San Carlos y Sg. Cabral',
+                'value' => 'En caso de lluvia, nos podés encontrar en el parador turístico de San Lorenzo, 3 de Febrero entre San Carlos y Sg. Cabral',
                 'type' => 'string',
                 'group' => 'varios',
                 'autoload' => true,
             ],
             [
                 'key' => 'admin-message',
-                'value' => 'Este mensaje se muestra ',
+                'value' => 'Este mensaje se muestra por el admin en caso de ser necesario',
                 'type' => 'string',
                 'group' => 'varios',
                 'autoload' => true,
