@@ -1,6 +1,13 @@
 <template>
   <section>
     <h1 class="title is-4">
+      <i class="fas fa-arrow-right fa-fw"></i> Edición actual</h1>
+    <h2 class="subtitle is-6">
+      Defina en el año de la edición actual. Todos los proyectos que se creen van a llevar este año.
+      <i class="fas fa-exclamation-triangle fa-fw"></i> Nota: Al modificar este dato, tu sesión se cerrará, tendras que volver a loguearte.
+    </h2>
+    <current-edition :value="theSettings['current-edition'].value"></current-edition>
+    <h1 class="title is-4">
       <i class="fas fa-arrow-right fa-fw"></i> Estado de la plataforma</h1>
     <h2 class="subtitle is-6">
       Defina en que estado se encuentra la plataforma
@@ -99,6 +106,7 @@
 </template>
 
 <script>
+import CurrentEdition from "./settings/CurrentEdition";
 import ChangeState from "./settings/ChangeState";
 import ProposalsDeadline from "./settings/ProposalsDeadline";
 import ProposalsLaunch from "./settings/ProposalsLaunch";
@@ -115,6 +123,7 @@ import Rain from "./settings/Rain";
 export default {
   props: ["settings"],
   components: {
+    CurrentEdition,
     ChangeState,
     ProposalsDeadline,
     ProposalsLaunch,

@@ -179,7 +179,7 @@ class Installer
             $table->boolean('feasible')->nullable();
             $table->boolean('selected')->default(false);
             $table->integer('likes')->default(0);
-            $table->integer('monitoringStatus')->default(0);
+            $table->string('monitoringStatus')->nullable();
             $table->text('monitoringComment')->nullable();
             $table->string('trace')->nullable();
             $table->integer('author_id')->unsigned()->nullable();
@@ -336,6 +336,13 @@ class Installer
 
         $this->db->table('options')->insert([
             [
+                'key' => 'current-edition',
+                'value' => '2021',
+                'type' => 'integer',
+                'group' => 'varios',
+                'autoload' => true,
+            ],
+            [
                 'key' => 'current-state',
                 'value' => 'pre-upload-proposals',
                 'type' => 'string',
@@ -351,14 +358,14 @@ class Installer
             ],
             [
                 'key' => 'proposals-launch',
-                'value' => '2021-06-07 12:00:00',
+                'value' => '2021-06-07 00:00:00',
                 'type' => 'date',
                 'group' => 'varios',
                 'autoload' => true,
             ],
             [
                 'key' => 'proposals-deadline',
-                'value' => '2021-07-07 23:59:59',
+                'value' => '2021-07-11 23:59:59',
                 'type' => 'date',
                 'group' => 'varios',
                 'autoload' => true,
@@ -372,14 +379,14 @@ class Installer
             ],  
             [
                 'key' => 'vote-launch',
-                'value' => '2019-08-07 12:00:00',
+                'value' => '2021-08-02 00:00:00',
                 'type' => 'date',
                 'group' => 'varios',
                 'autoload' => true,
             ],
             [
                 'key' => 'vote-deadline',
-                'value' => '2019-09-07 23:59:59',
+                'value' => '2021-08-22 23:59:59',
                 'type' => 'date',
                 'group' => 'varios',
                 'autoload' => true,

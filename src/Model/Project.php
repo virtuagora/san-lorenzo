@@ -33,6 +33,8 @@ class Project extends Model
         'organization_address',
         'organization_cuit',
         'organization_nro_personeria',
+        'monitoringStatus',
+        'monitoringComment',
         'picture_name',
         'youtube_id',
         'feasibility',
@@ -66,6 +68,8 @@ class Project extends Model
         'organization_address',
         'organization_cuit',
         'organization_nro_personeria',
+        'monitoringStatus',
+        'monitoringComment',
         'district_id',
     ];
     protected $with = [];

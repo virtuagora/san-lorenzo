@@ -124,6 +124,16 @@ class ProjectResource extends ContainerClient
 					'minLength' => 2,
 					'maxLength' => 250,
 				],
+				'monitoringStatus' => [
+					'type' => 'string',
+					'enum' => ['pendiente', 'en-ejecucion', 'no-ejecutado','ejecutado']
+				],
+        'monitoringComment' => [
+					'type' => 'string',
+					'minLength' => 2,
+					'maxLength' => 2000,
+				],
+
 				'district_id' => [
 					'type' => 'integer',
 					'minimum' => 1,
@@ -260,6 +270,7 @@ class ProjectResource extends ContainerClient
 			$project->author()->associate($user);
 			$schemaOpts = [];
 		}
+		$data['edition'] = $this->options->getOption('current-edition')->value;
 		$this->fillProjectData($project, $data, $schemaOpts);
 		$this->updateJournal($user, $project);
 		$project->save();
@@ -349,8 +360,10 @@ class ProjectResource extends ContainerClient
 
 	private function getWatchedFields() {
 		return $watchedFields = [
+			'edition',
 			'benefited_population', 'budget', 'community_contributions',
-			'description', 'name', 'objective', 'type',
+			'description', 'name', 'objective', 'type', 'monitoringStatus',
+			'monitoringComment'
 		];
 	}
 
