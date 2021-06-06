@@ -45,7 +45,7 @@
       </div>
     </div>
     <br>
-    <form-project-admin ref="FormProjectAdmin" :editing="true" :editable="editable" :budget="budget" :project.sync="project"></form-project-admin>
+    <form-project-admin ref="FormProjectAdmin" :editing="true" :editable="editable" :budget-institucional="budgetInstitucional" :budget-comunitario="budgetComunitario" :project.sync="project"></form-project-admin>
     <hr>
     <button
       class="button is-primary is-large is-fullwidth"
@@ -70,7 +70,7 @@
 <script>
 import FormProjectAdmin from "../utils/FormProjectAdmin";
 export default {
-  props: ["formUrl", "notesUrl", "budget", "existingProject", "editable"],
+  props: ["formUrl", "notesUrl", "budgetInstitucional", "budgetComunitario", "existingProject", "editable"],
   components: {
     FormProjectAdmin
   },

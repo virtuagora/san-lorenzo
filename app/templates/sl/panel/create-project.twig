@@ -8,7 +8,7 @@
     <h2 class="subtitle is-5">
         Complete los campos para subir una nueva propuesta para el Presupuesto Participativo de San Lorenzo. Luego de la creación, podras subir una imagen y archivos.
     </h2>
-    <user-panel-create-project form-url="{{path_for('createProject')}}" budget="{{options()['budget-limit']}}" :user="{{user|json_encode}}" :citizen="{{citizen()|json_encode}}" :editable="{{editable}}">
+    <user-panel-create-project form-url="{{path_for('createProject')}}" budget-institucional="{{options()['budget-institucional-limit']}}" budget-comunitario="{{options()['budget-comunitario-limit']}}" :user="{{user|json_encode}}" :citizen="{{citizen()|json_encode}}" :editable="{{editable}}">
         {% include 'loading.twig' %}
     </user-panel-create-project>
     {% else %}

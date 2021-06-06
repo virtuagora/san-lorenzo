@@ -1,6 +1,6 @@
 <template>
   <section>
-    <form-project ref="formProject" :project.sync="project" :budget="budget" :user="user" :citizen="citizen" :editable="editable"></form-project>
+    <form-project ref="formProject" :project.sync="project" :budget-institucional="budgetInstitucional" :budget-comunitario="budgetComunitario" :user="user" :citizen="citizen" :editable="editable"></form-project>
     <hr>
     <h1 class="title is-4 has-text-centered">
           ¿Todo listo?
@@ -24,7 +24,7 @@
 <script>
 import FormProject from "../utils/FormProjectUser";
 export default {
-  props: ["formUrl", "budget", "user", "citizen", "editable"],
+  props: ["formUrl", "budgetInstitucional", "budgetComunitario", "user", "citizen", "editable"],
   components: {
     FormProject
   },

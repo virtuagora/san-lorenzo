@@ -308,7 +308,13 @@ class ProjectResource extends ContainerClient
 		foreach ($data['budget'] as $item) {
 			$totalBudget += $item['amount'];
 		}
-		$limit = $this->options->getOption('budget-limit')->value;
+		if($data['type'] == 'comunitario'){
+			$limit = $this->options->getOption('budget-comunitario-limit')->value;
+		} else if($data['type'] == 'institucional') {
+			$limit = $this->options->getOption('budget-institucional-limit')->value;
+		} else {
+			$limit = $this->options->getOption('budget-comunitario-limit')->value;
+		}
 		if ($totalBudget > $limit) {
 			//tooMuchBudget
 			throw new AppException('El proyecto supera el limite del presupuesto');

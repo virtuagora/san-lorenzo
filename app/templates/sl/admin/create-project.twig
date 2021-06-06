@@ -8,7 +8,7 @@
   <h2 class="subtitle is-4">
     Complete los campos para subir una nueva propuesta. Luego de la creación, podra asignarle imagenes, archivos y otras configuraciones de la administración.
   </h2>
-  <admin-create-project form-url="{{path_for('createProject')}}" budget="{{options()['budget-limit']}}">
+  <admin-create-project form-url="{{path_for('createProject')}}" budget-institucional="{{options()['budget-institucional-limit']}}" budget-comunitario="{{options()['budget-comunitario-limit']}}">
     {% include 'loading.twig' %}
   </admin-create-project>
   {% else %}

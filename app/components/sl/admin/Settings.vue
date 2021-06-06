@@ -65,12 +65,20 @@
     <show-results :value="theSettings['show-results'].value"></show-results>
     <hr> -->
     <h1 class="title is-4">
-      <i class="fas fa-arrow-right fa-fw"></i> Presupuesto</h1>
+      <i class="fas fa-arrow-right fa-fw"></i> Limite de presupuesto p/ proyectos comunitarios</h1>
     <h2 class="subtitle is-6">
-      Aquí pueden modificar el valor máximo del presupuesto.
+      Aquí pueden modificar el valor máximo del presupuesto para proyectos comunitarios.
       <i class="fas fa-exclamation-triangle fa-fw"></i> Nota: Al modificar este dato, tu sesión se cerrará, tendras que volver a loguearte.
     </h2>
-    <budget-limit :value="theSettings['budget-limit'].value"></budget-limit>
+    <budget-comunitario-limit :value="theSettings['budget-comunitario-limit'].value"></budget-comunitario-limit>
+    <hr>
+    <h1 class="title is-4">
+      <i class="fas fa-arrow-right fa-fw"></i> Limite de presupuesto p/ proyectos Institucionales</h1>
+    <h2 class="subtitle is-6">
+      Aquí pueden modificar el valor máximo del presupuesto para proyectos institucionales.
+      <i class="fas fa-exclamation-triangle fa-fw"></i> Nota: Al modificar este dato, tu sesión se cerrará, tendras que volver a loguearte.
+    </h2>
+    <budget-institucional-limit :value="theSettings['budget-institucional-limit'].value"></budget-institucional-limit>
     <hr>
     <h1 class="title is-4">
       <i class="fas fa-arrow-right fa-fw"></i> Fechas de la urna</h1>
@@ -99,7 +107,8 @@ import VoteDeadline from "./settings/VoteDeadline";
 import VoteLaunch from "./settings/VoteLaunch";
 import VoteAvailable from "./settings/VoteAvailable";
 import ShowResults from "./settings/ShowResults";
-import BudgetLimit from "./settings/BudgetLimit";
+import BudgetComunitarioLimit from "./settings/BudgetComunitarioLimit";
+import BudgetInstitucionalLimit from "./settings/BudgetInstitucionalLimit";
 import Calendar from "./settings/Calendar";
 import Rain from "./settings/Rain";
 
@@ -114,7 +123,8 @@ export default {
     VoteLaunch,
     VoteAvailable,
     ShowResults,
-    BudgetLimit,
+    BudgetComunitarioLimit,
+    BudgetInstitucionalLimit,
     Calendar,
     Rain
   },

@@ -1,6 +1,6 @@
 <template>
   <section>
-    <form-project-admin ref="FormProjectAdmin" :project.sync="project" :budget="budget" :editable="true"></form-project-admin>
+    <form-project-admin ref="FormProjectAdmin" :project.sync="project" :budget-institucional="budgetInstitucional" :budget-comunitario="budgetComunitario" :editable="true"></form-project-admin>
     <hr>
     <button class="button is-primary is-large is-fullwidth" @click="submit" v-if="!response.replied"><i class="fas fa-save fa-fw"></i> Guardar</button>
     <div class="message is-success" v-show="response.replied && response.ok">
@@ -15,7 +15,7 @@
 <script>
 import FormProjectAdmin from "../utils/FormProjectAdmin";
 export default {
-  props: ["formUrl", "budget"],
+  props: ["formUrl", "budgetInstitucional", "budgetComunitario"],
   components: {
     FormProjectAdmin
   },

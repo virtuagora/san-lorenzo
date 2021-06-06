@@ -14,7 +14,7 @@ class Installer
         $this->db->schema()->create('options', function ($table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('key', 25)->unique();
+            $table->string('key', 35)->unique();
             $table->text('value')->nullable();
             $table->string('type'); //integer, string, text, hidden
             $table->string('group');
@@ -392,8 +392,15 @@ class Installer
                 'autoload' => true,
             ],
             [
-                'key' => 'budget-limit',
+                'key' => 'budget-comunitario-limit',
                 'value' => '1440000',
+                'type' => 'integer',
+                'group' => 'varios',
+                'autoload' => true,
+            ],
+            [
+                'key' => 'budget-institucional-limit',
+                'value' => '960000',
                 'type' => 'integer',
                 'group' => 'varios',
                 'autoload' => true,

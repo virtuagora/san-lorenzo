@@ -443,8 +443,11 @@
      <h1 class="title is-3 is-marginless"><i class="fas fa-file-invoice-dollar"></i>&nbsp;El presupuesto de tu propuesta</h1>
       <p>Detallá como se compone el presupuesto de tu propuesta.</p>
     </div>
-     <b-message type="is-warning">
-        <b><i class="fas fa-exclamation-triangle"></i>&nbsp;IMPORTANTE: El limite a presupuestar en proyectos institucionales es $ 960.000 y en proyectos comunitarios $ 1.440.000</b>
+     <b-message type="is-warning" v-if="project.type == 'institucional'">
+        <b><i class="fas fa-exclamation-triangle"></i>&nbsp;IMPORTANTE: El limite a presupuestar en proyectos institucionales es $ {{this.budgetInstitucional}}</b>
+      </b-message>
+     <b-message type="is-warning" v-if="project.type == 'comunitario'">
+        <b><i class="fas fa-exclamation-triangle"></i>&nbsp;IMPORTANTE: El limite a presupuestar en proyectos comunitarios es $ {{this.budgetInstitucional}}</b>
       </b-message>
       <h1 class="title is-4" :class="{'has-text-danger': errors.has('project.budget')}">
           <i class="fas fa-caret-right"></i>&nbsp; Items del presupuesto
@@ -537,7 +540,7 @@
 
 <script>
 export default {
-  props: ["project", "budget", "editing", "user", "citizen", "editable"],
+  props: ["project", "budgetInstitucional", "budgetComunitario", "editing", "user", "citizen", "editable"],
   data() {
     return {
       districtsLoading: false,
@@ -580,6 +583,18 @@ export default {
   },
   methods: {
     addItem: function() {
+      let hardLimit = 0;
+      switch (this.project.type) {
+        case 'comunitario':
+          hardLimit = this.budgetComunitario
+          break;
+        case 'institucional': 
+          hardLimit = this.budgetInstitucional
+          break; 
+        default: 
+          hardLimit = this.budgetComunitario
+          break;
+      }
       this.$validator
         .validate("inputItemMonto", this.inputItemMonto)
         .then(result => {
@@ -587,10 +602,10 @@ export default {
             if (!this.disableAddItem) {
               if (
                 parseFloat(this.inputItemMonto) + this.montoTotal >
-                this.budget
+                hardLimit
               ) {
                 this.$snackbar.open(
-                  "El item excede el total permitido ($" + this.budget + ")"
+                  "El item excede el total permitido ($" + this.hardLimit + ")"
                 );
                 return;
               }

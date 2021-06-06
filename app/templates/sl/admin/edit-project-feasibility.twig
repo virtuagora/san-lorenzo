@@ -13,7 +13,7 @@
         <li><a href="{{path_for('showAdminProjectJournal',{'pro':proyecto.id})}}"><i class="fas fa-history fa-lg"></i>&nbsp;Historial</a></li>
     </ul>
   </div>
-  <admin-edit-project-feasibility form-url="{{path_for('updateProjectFeasibility',{'pro':proyecto.id})}}" :existing-project="{{proyecto|json_encode}}" budget="{{options()['budget-limit']}}" :editable="{{editable}}">
+  <admin-edit-project-feasibility form-url="{{path_for('updateProjectFeasibility',{'pro':proyecto.id})}}" :existing-project="{{proyecto|json_encode}}" budget-institucional="{{options()['budget-institucional-limit']}}" budget-comunitario="{{options()['budget-comunitario-limit']}}" :editable="{{editable}}">
     {% include 'loading.twig' %}
   </admin-edit-project-feasibility>
 {% endblock %}

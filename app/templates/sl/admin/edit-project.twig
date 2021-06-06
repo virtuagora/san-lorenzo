@@ -17,7 +17,8 @@
   form-url="{{path_for('updateProject',{'pro':proyecto.id})}}"
   notes-url="{{path_for('updateProjectNotes',{'pro':proyecto.id})}}"
   :existing-project="{{proyecto|json_encode}}"
-  budget="{{options()['budget-limit']}}"
+  budget-institucional="{{options()['budget-institucional-limit']}}"
+  budget-comunitario="{{options()['budget-comunitario-limit']}}"
   :editable="{{editable}}">
     {% include 'loading.twig' %}
   </admin-edit-project>

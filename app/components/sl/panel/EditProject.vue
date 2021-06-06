@@ -1,6 +1,6 @@
 <template>
   <section>
-    <form-project ref="formProject" :editing="true" :budget="budget" :project.sync="project" :editable="editable"></form-project>
+    <form-project ref="formProject" :editing="true" :budget-institucional="budgetInstitucional" :budget-comunitario="budgetComunitario" :project.sync="project" :editable="editable"></form-project>
     <hr>
     <button class="button is-primary is-large is-fullwidth" @click="submit" v-if="!response.replied && editable"><i class="fas fa-save fa-fw"></i> Editar</button>
     <div class="notification is-warning" v-if="!editable">
@@ -18,7 +18,7 @@
 <script>
 import FormProject from "../utils/FormProjectUser";
 export default {
-  props: ["formUrl","budget", "existingProject", "editable"],
+  props: ["formUrl","budgetInstitucional", "budgetComunitario", "existingProject", "editable"],
   components: {
     FormProject
   },
