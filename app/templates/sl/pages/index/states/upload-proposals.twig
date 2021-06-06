@@ -4,7 +4,7 @@
       <div class="columns">
         <div class="column is-6 has-text-centered-touch has-text-left-desktop">
           <h1 class="title is-3 has-text-primary">¡Subí tu propuesta de forma ONLINE!</h1>
-          <h1 class="subtitle is-5">Tu propuesta puede quedar seleccionada para participar en la votación del Presupuesto Participativo del 2020</h1>
+          <h1 class="subtitle is-5">Tu propuesta puede quedar seleccionada para participar en la votación del Presupuesto Participativo del 2021</h1>
           {% if proposals_available() %}
 					<div class="buttons ">
               <a href="/login" class="button is-primary is-medium is-outlined is-rounded"><i class="fas fa-plus-square fa-fw fa-lg"></i>&nbsp;Subí tu propuesta</a>
@@ -35,7 +35,7 @@
 	<section class="section">
 		<div class="container">
 			<h1 class="title is-3 is-size-4-touch has-text-primary"><i class="fas fa-sticky-note"></i>&nbsp;Mis propuestas subidas</h1>
-			<h1 class="subtitle is-4 is-size-5-touch">Aquí están tus propuestas subidas para el Presupuesto Participativo del 2020</h1>
+			<h1 class="subtitle is-4 is-size-5-touch">Aquí están tus propuestas subidas para el Presupuesto Participativo del 2021</h1>
 				<project-carousel url="{{path_for('retrieveProject')}}" :timeout="7400" author="{{subject.extra.user_id}}">
 						{% include 'loading.twig' %}
 				</project-carousel>

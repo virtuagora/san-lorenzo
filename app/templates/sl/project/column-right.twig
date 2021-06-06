@@ -77,6 +77,14 @@
   <h1 class="subtitle is-5 is-spaced">{{project.organization_name}}</h1>
   <h1 class="title is-4">Entidad legal</h1>
   <h1 class="subtitle is-5 is-spaced">{{project.organization_legal_entity}}</h1>
+  {% if project.organization_cuit is not null %}
+  <h1 class="title is-4">CUIT</h1>
+  <h1 class="subtitle is-5 is-spaced">{{project.organization_cuit}}</h1>
+  {% endif %}
+  {% if project.organization_nro_personeria is not null %}
+  <h1 class="title is-4">Número Personeria Júridica</h1>
+  <h1 class="subtitle is-5 is-spaced">{{project.organization_nro_personeria}}</h1>
+  {% endif %}
   <h1 class="title is-4">Dirección</h1>
   <h1 class="subtitle is-5">{{project.organization_address}}</h1>
   <hr>
