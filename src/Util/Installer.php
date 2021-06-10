@@ -159,7 +159,7 @@ class Installer
             $table->text('benefited_population')->nullable();
             $table->text('community_contributions')->nullable();
             $table->text('budget')->nullable();
-            $table->decimal('total_budget',10,2)->default(0);
+            $table->decimal('total_budget',12,2)->default(0);
             $table->string('author_names');
             $table->string('author_surnames');
             $table->string('author_phone')->nullable();
