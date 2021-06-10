@@ -159,7 +159,7 @@ class Installer
             $table->text('benefited_population')->nullable();
             $table->text('community_contributions')->nullable();
             $table->text('budget')->nullable();
-            $table->decimal('total_budget')->default(0);
+            $table->decimal('total_budget',10,2)->default(0);
             $table->string('author_names');
             $table->string('author_surnames');
             $table->string('author_phone')->nullable();
@@ -169,7 +169,7 @@ class Installer
             $table->string('organization_legal_entity')->nullable();
             $table->string('organization_address')->nullable();
             $table->string('organization_cuit')->nullable();
-            $table->string('organization_nro_personeria')->nullable();
+            $table->string('organization_nro_personeria')->nullable();1440000
             $table->text('feasibility')->nullable();
             $table->text('journal')->nullable();
             $table->text('notes')->nullable();
