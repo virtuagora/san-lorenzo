@@ -7,6 +7,7 @@
       <i class="fas fa-exclamation-triangle fa-fw"></i> Nota: Al modificar este dato, tu sesión se cerrará, tendras que volver a loguearte.
     </h2>
     <current-edition :value="theSettings['current-edition'].value"></current-edition>
+    <hr>
     <h1 class="title is-4">
       <i class="fas fa-arrow-right fa-fw"></i> Estado de la plataforma</h1>
     <h2 class="subtitle is-6">
