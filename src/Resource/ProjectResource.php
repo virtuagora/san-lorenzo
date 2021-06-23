@@ -133,7 +133,6 @@ class ProjectResource extends ContainerClient
 					'minLength' => 2,
 					'maxLength' => 2000,
 				],
-
 				'district_id' => [
 					'type' => 'integer',
 					'minimum' => 1,
