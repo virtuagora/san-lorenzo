@@ -169,7 +169,7 @@ class Installer
             $table->string('organization_legal_entity')->nullable();
             $table->string('organization_address')->nullable();
             $table->string('organization_cuit')->nullable();
-            $table->string('organization_nro_personeria')->nullable();1440000
+            $table->string('organization_nro_personeria')->nullable();
             $table->text('feasibility')->nullable();
             $table->text('journal')->nullable();
             $table->text('notes')->nullable();
