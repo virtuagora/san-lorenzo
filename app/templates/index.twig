@@ -48,6 +48,29 @@
         </div>
       </div>
     </section>
+  
+    <div class="hero is-primary has-image-background" style="background-image: url({{asset('img/whatsapp-bg.jpg')}})">
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <h1 class="title is-3">
+            <i class="fab fa-whatsapp fa-2x"></i><br>
+            {% if is_state('upload-proposals') %}
+            Si necesitas ayuda para subir tu proyecto,
+            {% elseif is_state('vote') %}
+            Si querés votar y necesitás ayuda,
+            {% else %}
+            ¡Estamos para ayudarte!
+            {% endif %}
+            <br>¡Envianos un whatsapp!
+          </h1>
+          <p class="is-size-5 is-300">¡Te acompañamos y asesoramos en todo lo que necesites, mandanos un mensaje a nuestro WhatsApp de Presupuesto Participativo!</p>
+          <br>
+          <a href="https://wa.me/5493476418681" class="button is-white is-medium is-size-3-desktop is-size-4-tablet is-size-5-mobile is-700">
+            <i class="fab fa-whatsapp has-text-success"></i>&nbsp;+54 9 3476 418-681</a>
+        </div>
+      </div>
+    </div>
+
   {% if is_state('pre-upload-proposals') %}
     {% include 'sl/pages/index/states/pre-upload-proposals.twig'%}
   {% elseif is_state('upload-proposals') %}
