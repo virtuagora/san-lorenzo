@@ -10,8 +10,10 @@
               <a href="/login" class="button is-primary is-medium is-outlined is-rounded"><i class="fas fa-plus-square fa-fw fa-lg"></i>&nbsp;Subí tu propuesta</a>
           </div>
 					{% else %}
-					<h1 class="subtitle is-6"><b>¡El formulario ha cerrado!</b><br>
-					<a href="/catalogo"><u>¡Conocé todas las propuestas en el cátalogo!</u></a></h1>
+					<h1 class="subtitle is-4 is-800"><b>¡El formulario ha cerrado!</b></h1>
+          <div class="buttons">
+          <a href="/catalogo" class="button is-primary is-medium is-rounded">¡Conocé todas las propuestas en el cátalogo!</a>
+          </div>
 					<h1 class="subtitle is-6">Múy pronto conocerás las propuestas factibles que serán parte de la votación que comienza el {{options()['vote-launch']|date("d/m/Y")}}</h1>
 					{% endif %}
         </div>
@@ -43,7 +45,7 @@
 				<br>
 				<a class="button is-primary is-rounded" href="{{path_for('showUserPanelCreateProject')}}">
 					<i class="fas fa-plus-square fa-fw fa-lg"></i>&nbsp;Subí tu propuesta</a>
-				{% endif %}
+        {% endif %}
 		</div>
 	</section>
 	{% endif %}
@@ -51,7 +53,7 @@
 <hr class="is-marginless">
 <section class="section" id="norte">
     <div class="container">
-        <h1 class="has-text-centered subtitle is-3">Propuestas para</h1>
+        <h1 class="has-text-centered subtitle is-4">Últimas propuestas subidas para</h1>
         <h1 class="has-text-centered title is-4 has-text-info">
             <i class="fas fa-map-marker-alt fa-fw animated pulse infinite"></i>&nbsp;Distrito
             <b>NORTE</b>
@@ -59,12 +61,17 @@
         <project-carousel url="{{path_for('retrieveProject')}}" :timeout="6200" district="1">
             {% include 'loading.twig' %}
         </project-carousel>
+        <br>
+        <div class="buttons is-centered">
+        <a class="button is-primary is-outlined is-rounded" href="/catalogo">
+          <i class="fas fa-book fa-fw fa-lg"></i>&nbsp;Ver todas las propuestas</a>
+        </div>
     </div>
 </section>
 <hr class="is-marginless">
 <section class="section" id="centro">
     <div class="container">
-         <h1 class="has-text-centered subtitle is-3">Propuestas para</h1>
+         <h1 class="has-text-centered subtitle is-4">Últimas propuestas subidas para</h1>
         <h1 class="has-text-centered title is-4 has-text-info">
             <i class="fas fa-map-marker-alt fa-fw animated pulse infinite"></i>&nbsp;Distrito
             <b>CENTRO</b>
@@ -72,12 +79,17 @@
         <project-carousel url="{{path_for('retrieveProject')}}" :timeout="6900" district="2">
             {% include 'loading.twig' %}
         </project-carousel>
+        <br>
+        <div class="buttons is-centered">
+        <a class="button is-primary is-outlined is-rounded" href="/catalogo">
+          <i class="fas fa-book fa-fw fa-lg"></i>&nbsp;Ver todas las propuestas</a>
+        </div>
     </div>
 </section>
 <hr class="is-marginless">
 <section class="section" id="sur">
     <div class="container">
-         <h1 class="has-text-centered subtitle is-3">Propuestas para</h1>
+         <h1 class="has-text-centered subtitle is-4">Últimas propuestas subidas para</h1>
         <h1 class="has-text-centered title is-4 has-text-info">
             <i class="fas fa-map-marker-alt fa-fw animated pulse infinite"></i>&nbsp;Distrito
             <b>SUR</b>
@@ -85,5 +97,10 @@
         <project-carousel url="{{path_for('retrieveProject')}}" :timeout="7400" district="3">
             {% include 'loading.twig' %}
         </project-carousel>
+        <br>
+        <div class="buttons is-centered">
+        <a class="button is-primary is-outlined is-rounded" href="/catalogo">
+          <i class="fas fa-book fa-fw fa-lg"></i>&nbsp;Ver todas las propuestas</a>
+        </div>
     </div>
 </section>
