@@ -1,16 +1,16 @@
 <div class="column is-12-mobile is-3-desktop is-4-tablet is-offset-1-desktop">
-{% if project.author_id is not null and project.author.id == subject.extra.user_id and is_state('upload-proposals') and proposals_available() %}
 <div class="buttons">
+<a href="javascript:printProject()" class="button is-link is-fullwidth is-outlined">
+	<i class="far fa-file-pdf"></i>&nbsp;PDF</a>
+{% if project.author_id is not null and project.author.id == subject.extra.user_id and is_state('upload-proposals') and proposals_available() %}
 <a href="{{path_for('showUserPanelUpdateProject', {'pro': project.id})}}" class="button is-link is-fullwidth is-medium is-outlined">
 <i class="fas fa-edit"></i>&nbsp;Editar mí propuesta</a>
 <a href="{{path_for('showUserPanelProjectFiles', {'pro': project.id})}}" class="button is-link is-fullwidth is-medium is-outlined">
 <i class="fas fa-upload"></i>&nbsp;Subir un archivo</a>
 <a href="{{path_for('showUserPanelProjectImagen', {'pro': project.id})}}" class="button is-link is-fullwidth is-medium is-outlined">
 <i class="fas fa-image"></i>&nbsp;Cambiar imagen</a>
-</div>
 {% endif %}
 {% if 'admin' in subject.roles %}
-<div class="buttons">
 <a href="{{path_for('showAdminUpdateProject', {'pro': project.id})}}" class="button is-link is-fullwidth is-medium is-outlined">
 <i class="fas fa-edit"></i>&nbsp;Editar propuesta</a>
 <a href="{{path_for('showAdminUpdateProjectFeasibility', {'pro': project.id})}}" class="button is-link is-outlined is-fullwidth">
@@ -20,9 +20,9 @@
 <a href="{{path_for('showAdminProjectImagen', {'pro': project.id})}}" class="button is-link is-fullwidth is-outlined">
 <i class="fas fa-image"></i>&nbsp;Cambiar imagen</a>
 <a href="{{path_for('showAdminPrintProject', {'pro': project.id})}}" class="button is-link is-fullwidth is-outlined">
-<i class="fas fa-print"></i>&nbsp;Imprimir</a>
-</div>
+<i class="fas fa-print"></i>&nbsp;Versión para imprimir (Admin)</a>
 {% endif %}
+</div>
 {% if project.picture_name %}
 <img src="{{path_for('showProjectPicture',{'pro': project.id})}}" class="image" style="border-radius:5px;" alt="">
 <br>
