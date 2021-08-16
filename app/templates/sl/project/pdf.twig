@@ -1,0 +1,18 @@
+<script type="text/javascript">
+  
+function printProject() {
+  
+fetch('/api/proyectos/{{project.id}}/print').then(function (response) {
+		if (response.ok) {
+			return response.json();
+		} else {
+			return Promise.reject(response);
+		}
+	}).then(function (data) {
+    pdfMake.createPdf(data.documentDefinition).download(data.filename);
+	}).catch(function (error) {
+		console.warn(error);
+	});
+
+};
+</script>

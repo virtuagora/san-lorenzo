@@ -42,6 +42,10 @@
   <meta name="twitter:description" content="{{project.description}}. El objetivo: {{project.objective|length > 250 ? project.objective|slice(0, 250) ~ '...' : project.objective}}">
 {% endblock %}
 {% block scriptshead %}
+<script src="{{asset('js/pdfmake.min.js')}}"></script>
+<script src="{{asset('js/vfs_fonts.js')}}"></script>
+
+
   <script>
     var shareOnFacebook = function () {
       FB.ui({
@@ -278,3 +282,8 @@
   {% endif %}
   {% include 'sl/base/collab.twig' %}
 {% endblock %}
+
+{% block javascripts %}
+{% include 'sl/project/pdf.twig' %}
+{% endblock %}
+
