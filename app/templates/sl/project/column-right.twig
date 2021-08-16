@@ -1,7 +1,7 @@
 <div class="column is-12-mobile is-3-desktop is-4-tablet is-offset-1-desktop">
 <div class="buttons">
 <a href="javascript:printProject()" class="button is-link is-fullwidth is-outlined">
-	<i class="far fa-file-pdf"></i>&nbsp;PDF</a>
+	<i class="far fa-file-pdf"></i>&nbsp;Descargar PDF</a>
 {% if project.author_id is not null and project.author.id == subject.extra.user_id and is_state('upload-proposals') and proposals_available() %}
 <a href="{{path_for('showUserPanelUpdateProject', {'pro': project.id})}}" class="button is-link is-fullwidth is-medium is-outlined">
 <i class="fas fa-edit"></i>&nbsp;Editar mí propuesta</a>

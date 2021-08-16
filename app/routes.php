@@ -65,6 +65,7 @@ $app->group('/api', function () {
     $this->get('/proyectos', 'projectApiAction:retrieveMany')->setName('retrieveProject');
     $this->post('/proyectos', 'projectApiAction:createOne')->setName('createProject');
     $this->post('/proyectos/{pro}', 'projectApiAction:updateOne')->setName('updateProject');
+    $this->get('/proyectos/{pro}/print', 'projectApiAction:printOne')->setName('printProject');
     $this->post('/proyectos/{pro}/feasibility', 'projectApiAction:updateFeasibility')->setName('updateProjectFeasibility');
     $this->post('/proyectos/{pro}/notes', 'projectApiAction:updateNotes')->setName('updateProjectNotes');
     $this->post('/proyectos/{pro}/author', 'projectApiAction:updateAuthor')->setName('updateProjectAuthor');
