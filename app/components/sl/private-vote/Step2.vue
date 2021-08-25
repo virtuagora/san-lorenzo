@@ -26,19 +26,20 @@
         </div>
       </div>
     </div>
-    <div class="card">
+    <div class="card is-checkbox voting-box" :class="colorBackground(proyecto.id)" v-for="proyecto in visibleProjects" :key="`voting-box-${proyecto.id}`" @click="toggleCheckbox(proyecto)">
       <div class="card-content">
-    <article class="media" v-for="proyecto in visibleProjects" :key="proyecto.id">
-      <div class="media-left">
-        <h1 class="title is-2 is-marginless is-checkbox" :class="colorChecked(proyecto.id)">
-          <i :class="isChecked(proyecto.id)" @click="toggleCheckbox(proyecto)"></i>
-        </h1>
-      </div>
-      <div class="media-content">
-        <h1 class="title is-4 is-marginless" :class="colorChecked(proyecto.id)">{{proyecto.name}}</h1>
-         <p class="some-good-effects">Por <span class="is-600">{{getWho(proyecto)}}</span> - {{getShortDescription(proyecto.objective,150)}}</p>
-      </div>
-      <div class="media-right">
+        <article class="media">
+          <div class="media-left">
+            <h1 class="title is-1 is-marginless is-checkbox" :class="colorChecked(proyecto.id)">
+              <span v-if="checked.includes(proyecto.id)">✔</span>
+              <span v-else>☐</span>
+            </h1>
+          </div>
+          <div class="media-content">
+            <h1 class="title is-4 is-marginless" :class="colorChecked(proyecto.id)">{{proyecto.name}}</h1>
+            <p class="some-good-effects">Por <span class="is-600">{{getWho(proyecto)}}</span> - {{getShortDescription(proyecto.objective,150)}}</p>
+          </div>
+          <div class="media-right">
             <div class="control">
               <div class="tags has-addons">
                 <span class="tag is-dark">
@@ -60,7 +61,7 @@
     <hr>
     <h1 class="title is-5">Estos son los proyectos que elegiste</h1>
     <h1 class="subtitle is-6">(Podés cambiarlo antes de enviar tu voto)</h1>
-      <div class="notification is-institucional" v-for="voteProyecto in voteInstitucionales" :key="voteProyecto.id">
+      <div class="notification is-institucional" v-for="voteProyecto in voteInstitucionales" :key="`selected-${voteProyecto.id}`">
         <button class="delete" @click="toggleCheckbox(voteProyecto)"></button>
         <h1 class="title is-4 is-marginless has-text-white">{{voteProyecto.name}}</h1>
         <p class="some-good-effects has-text-white">Por <span class="is-600">{{getWho(voteProyecto)}}</span> - {{getShortDescription(voteProyecto.objective,150)}}</p>
@@ -113,6 +114,11 @@ export default {
       return {
         'has-text-institucional': (this.checked.indexOf(id) >= 0)
       }
+    },
+    colorBackground: function(id) {
+      return {
+        "is-institucional": this.checked.indexOf(id) >= 0
+      };
     },
     toggleCheckbox: function(proyecto){
         const index = indexOf(this.checked, proyecto.id);
@@ -189,6 +195,12 @@ export default {
 }
 .is-checkbox{
   cursor: pointer;
+}
+.voting-box.is-institucional{
+  color: #FFF !important;
+  .title{
+    color: #FFF !important;
+  }
 }
 .some-good-effects{
   line-height: normal;

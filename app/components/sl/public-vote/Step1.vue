@@ -26,16 +26,17 @@
         </div>
       </div>
     </div>
-    <div class="card">
+    <div class="card is-checkbox voting-box" :class="colorBackground(proyecto.id)" v-for="proyecto in visibleProjects" :key="`voting-box-${proyecto.id}`" @click="toggleCheckbox(proyecto)">
       <div class="card-content">
-        <article class="media" v-for="proyecto in visibleProjects" :key="proyecto.id">
+        <article class="media">
           <div class="media-left">
-            <h1 class="title is-2 is-marginless is-checkbox" :class="colorChecked(proyecto.id)">
-              <i :class="isChecked(proyecto.id)" @click="toggleCheckbox(proyecto)"></i>
+            <h1 class="title is-1 is-marginless is-checkbox" :class="colorChecked(proyecto.id)">
+              <span v-if="checked.includes(proyecto.id)">✔</span>
+              <span v-else>☐</span>
             </h1>
           </div>
           <div class="media-content">
-            <h1 class="title is-4 is-marginless" :class="colorChecked(proyecto.id)">{{proyecto.name}}</h1>
+            <h1 class="title is-4 is-marginless">{{proyecto.name}}</h1>
             <p class="some-good-effects">Por <span class="is-600">{{getWho(proyecto)}}</span> - {{getShortDescription(proyecto.objective,150)}}</p>
           </div>
           <div class="media-right">
@@ -114,6 +115,11 @@ export default {
         "has-text-comunitario": this.checked.indexOf(id) >= 0
       };
     },
+    colorBackground: function(id) {
+      return {
+        "is-comunitario": this.checked.indexOf(id) >= 0
+      };
+    },
     toggleCheckbox: function(proyecto) {
       const index = indexOf(this.checked, proyecto.id);
       if (index !== -1) {
@@ -188,6 +194,12 @@ export default {
 }
 .is-checkbox {
   cursor: pointer;
+}
+.voting-box.is-comunitario{
+  color: #FFF !important;
+  .title{
+    color: #FFF !important;
+  }
 }
 .some-good-effects{
   line-height: normal;
