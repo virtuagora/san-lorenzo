@@ -233,7 +233,7 @@ class AdminAction
         $proyectos = $this->db->query('App:Project', ['district'])->where('feasible',true)->orderByDesc("likes")->get();
         return $this->view->render($response, 'sl/admin/escrutinio.twig', [
             'lastParticipacion' => $lastParticipacion->created_at,
-            'lastOffline' => $lastOffline->created_at,
+            'lastOffline' => $lastOffline->created_at ?? null,
             'proyectos' => $proyectos
         ]);
     }

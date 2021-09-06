@@ -32,12 +32,12 @@
     <div class="column">
       <h1 class="title is-5">Última participación en padrón</h1>
       <p>
-        <i class="fa fa-calendar-alt fa-fw"></i>&nbsp;{{ lastParticipacion }}</p>
+        <i class="fa fa-calendar-alt fa-fw"></i>&nbsp;{{ lastParticipacion is not null ? lastParticipacion|date('Y-m-d H:i:s') : 'Nunca' }}</p>
     </div>
     <div class="column">
       <h1 class="title is-5">Última boleta offline indexada</h1>
       <p>
-        <i class="fa fa-calendar-alt fa-fw"></i>&nbsp;{{ lastOffline }}</p>
+        <i class="fa fa-calendar-alt fa-fw"></i>&nbsp;{{ lastOffline is not null ? lastOffline|date('Y-m-d H:i:s') : 'Nunca' }}</p>
     </div>
   </div>
   <form action="{{path_for('runScrutiny')}}" method="POST">
