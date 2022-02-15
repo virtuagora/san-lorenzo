@@ -35,6 +35,7 @@
             <th>2018</th>
             <th>2019</th>
             <th>2020</th>
+            <th>2021</th>
           </tr>
         </thead>
         <tbody>
@@ -48,6 +49,7 @@
             <td>$2.223.000</td>
             <td>$3.001.050</td>
             <td>$3.600.000</td>
+            <td> - - - - - </td>
           </tr>
           <tr>
             <th>Propuestas Presentadas</th>
@@ -59,6 +61,7 @@
             <td>92</td>
             <td>96</td>
             <td>104</td>
+            <td>113</td>
           </tr>
           <tr>
             <th>Proyectos Factibles</th>
@@ -70,6 +73,7 @@
             <td>68</td>
             <td>68</td>
             <td>85</td>
+            <td>86</td>
           </tr>
           <tr>
             <th>Proyectos Ganadores</th>
@@ -81,6 +85,7 @@
             <td>27</td>
             <td>27</td>
             <td>27</td>
+            <td>30</td>
           </tr>
           <tr>
             <th>Cant. de Participantes</th>
@@ -92,6 +97,7 @@
             <td>1625</td>
             <td>1248</td>
             <td>849</td>
+            <td>778</td>
           </tr>
         </tbody>
       </table>
@@ -99,19 +105,19 @@
       <div class="columns">
         <div class="column is-6">
           <h1 class="title is-3 has-text-centered has-text-primary">Cantidad Histórica de Votantes</h1>
-          <div class="subtitle is-5 has-text-centered">(2013-2020)</div>
-          <stat-lines :the-labels="[2013,2014,2015,2016,2017,2018,2019,2020]" :the-data="[{label:'Votantes',data:[775, 664, 883, 447, 1193, 1625, 1248, 849], borderColor: '#9e2a54',
+          <div class="subtitle is-5 has-text-centered">(2013-2021)</div>
+          <stat-lines :the-labels="[2013,2014,2015,2016,2017,2018,2019,2020,2021]" :the-data="[{label:'Votantes',data:[775, 664, 883, 447, 1193, 1625, 1248, 849, 778], borderColor: '#9e2a54',
         backgroundColor: 'rgba(157, 42, 84, 0.25)', pointRadius: 8, pointHoverRadius:10}]" :height="300"></stat-lines>
         </div>
         <div class="column is-6">
           <h1 class="title is-3 has-text-centered has-text-primary">Participación Online Vs. Presencial</h1>
-          <div class="subtitle is-5 has-text-centered">(Año 2018,2019,2020)</div>
+          <div class="subtitle is-5 has-text-centered">(Año 2018,2019,2020,2021)</div>
           <stat-bars 
-            :the-labels="['Votantes 2018','Votantes 2019','Votantes 2020']"
-            :the-data="[{label:'x/ Web',data:[629, 572, 687],borderWidth:2,borderColor: '#2274a5', backgroundColor: 'rgba(72, 99, 157, 0.25)'},
-            {label:'x/ Boleta',data: [996,57,0], borderWidth:2,borderColor: '#9e2a54', backgroundColor: 'rgba(157, 42, 84, 0.25)'},
-            {label:'x/ Tablet',data: [0,617,38], borderWidth:2,borderColor: '#f75c03', backgroundColor: 'rgba(247, 92, 2, 0.25)'},
-            {label:'x/ WhatsApp',data: [0,2,124], borderWidth:2,borderColor: '#3bb273', backgroundColor: 'rgba(59,178,115, 0.25)'}]" :height="300"></stat-bars>
+            :the-labels="['Votantes 2018','Votantes 2019','Votantes 2020', 'Votantes 2021']"
+            :the-data="[{label:'x/ Web',data:[629, 572, 687,661],borderWidth:2,borderColor: '#2274a5', backgroundColor: 'rgba(72, 99, 157, 0.25)'},
+            {label:'x/ Boleta',data: [996,57,0,0], borderWidth:2,borderColor: '#9e2a54', backgroundColor: 'rgba(157, 42, 84, 0.25)'},
+            {label:'x/ Tablet',data: [0,617,38,39], borderWidth:2,borderColor: '#f75c03', backgroundColor: 'rgba(247, 92, 2, 0.25)'},
+            {label:'x/ WhatsApp',data: [0,2,124,78], borderWidth:2,borderColor: '#3bb273', backgroundColor: 'rgba(59,178,115, 0.25)'}]" :height="300"></stat-bars>
         </div>
       </div>
       <div class="message is-dark">
@@ -245,50 +251,100 @@
       </nav>
     </div>
   </div>
+  <div class="message is-dark">
+    <div class="message-body">
+      <nav class="level">
+        <div class="level-item">
+          <h1 class="title is-3">Participación 2021</h1>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">
+              <i class="fas fa-laptop"></i>
+              Web</p>
+            <p class="title">661</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">
+              <i class="fas fa-tablet-alt"></i>
+              Tablet</p>
+            <p class="title">39</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">
+              <i class="fab fa-whatsapp"></i>
+              Link</p>
+            <p class="title">78</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">
+              <i class="far fa-envelope"></i>
+              Papel</p>
+            <p class="title">0</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">
+              <i class="fas fa-users"></i>
+              Total</p>
+            <p class="title">778</p>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
       <div class="columns">
         <div class="column is-6">
           <h1 class="title is-3 has-text-centered has-text-primary">Distribución de la Votación por Distrito</h1>
-          <div class="subtitle is-5 has-text-centered">(2013-2020)</div>
-          <stat-lines :the-labels="[2013,2014,2015,2016,2018,2019,2020]" :the-data="[{label:'Norte',data:[232,264,204,180,317,292,168], borderColor: '#7768ae',
+          <div class="subtitle is-5 has-text-centered">(2013-2021)</div>
+          <stat-lines :the-labels="[2013,2014,2015,2016,2018,2019,2020,2021]" :the-data="[{label:'Norte',data:[232,264,204,180,317,292,168,160], borderColor: '#7768ae',
         backgroundColor: 'rgba(157, 42, 84, 0)', pointRadius:6, pointHoverRadius:8},
-        {label:'Centro',data:[246,135,234,63,676,419,333], borderColor: '#3bb273',
+        {label:'Centro',data:[246,135,234,63,676,419,333,337], borderColor: '#3bb273',
         backgroundColor: 'rgba(157, 42, 84, 0)', pointRadius:6, pointHoverRadius:8},
-        {label:'Sur',data:[297,264,435,234,633,573,200], borderColor: '#e1bc29',
+        {label:'Sur',data:[297,264,435,234,633,573,200,198], borderColor: '#e1bc29',
         backgroundColor: 'rgba(157, 42, 84, 0)', pointRadius:6, pointHoverRadius:8}]" :height="300"></stat-lines>
-          <p class="is-size-7 has-text-centered">No se registran datos para 2017</p>
+          <p class="is-size-7 is-300 has-text-centered">No se registran datos para 2017</p>
+          <p class="is-size-7 is-300 has-text-centered">Nota 2021 - 83 ciudadanos votaron por tablets o links de forma anónima del cual no se tiene información de su Distrito</p>
         </div>
         <div class="column is-6">
-          <h1 class="title is-3 has-text-centered has-text-primary">Cantidad de Proyectos por Distrito</h1>
-          <div class="subtitle is-5 has-text-centered">(2013-2020)</div>
-          <stat-lines :the-labels="[2013,2014,2015,2016,2017,2018,2019,2020]" :the-data="[
-            {label:'Norte',data:[5,7,7,2,5,10,10,9], borderColor: '#7768ae',
+          <h1 class="title is-3 has-text-centered has-text-primary">Cantidad de Proyectos por Dstrito</h1>
+          <div class="subtitle is-5 has-text-centered">(2013-2021)</div>
+          <stat-lines :the-labels="[2013,2014,2015,2016,2017,2018,2019,2020,2021]" :the-data="[
+            {label:'Norte',data:[5,7,7,2,5,10,10,9,10], borderColor: '#7768ae',
         backgroundColor: 'rgba(157, 42, 84, 0)', pointRadius:6, pointHoverRadius:8},
-        {label:'Centro',data:[6,7,10,3,11,9,9,8], borderColor: '#3bb273',
+        {label:'Centro',data:[6,7,10,3,11,9,9,8,9], borderColor: '#3bb273',
         backgroundColor: 'rgba(157, 42, 84, 0)', pointRadius:6, pointHoverRadius:8},
-        {label:'Sur',data:[7,4,4,5,10,8,8,10], borderColor: '#e1bc29',
+        {label:'Sur',data:[7,4,4,5,10,8,8,10,11], borderColor: '#e1bc29',
         backgroundColor: 'rgba(157, 42, 84, 0)', pointRadius:6, pointHoverRadius:8}]" :height="300"></stat-lines>
         </div>
       </div>
       <div class="columns">
         <div class="column is-6">
           <h1 class="title is-3 has-text-centered has-text-primary">Género en las votaciones</h1>
-          <div class="subtitle is-5 has-text-centered">(Años 2013,2016,2018, 2019 y 2020)</div>
-          <stat-bars :the-labels="[2013,2016,2018,2019,2020]" :the-data="[{label:'Masculinos',data:[256,162,546,414,270],borderWidth:2,borderColor: '#48639c',
+          <div class="subtitle is-5 has-text-centered">(Años 2013,2016,2018,2019,2020 y 2021)</div>
+          <stat-bars :the-labels="[2013,2016,2018,2019,2020,2021]" :the-data="[{label:'Masculinos',data:[256,162,546,414,270,228],borderWidth:2,borderColor: '#48639c',
         backgroundColor: 'rgba(72, 99, 157, 0.25)'},
-        {label:'Femeninos',data:[519,315,1079,834,579],borderWidth:2,borderColor: '#f7996e',
+        {label:'Femeninos',data:[519,315,1079,834,579,550],borderWidth:2,borderColor: '#f7996e',
         backgroundColor: 'rgba(247, 153, 110, 0.25)'}]" :height="300"></stat-bars>
         </div>
         <div class="column is-6">
           <h1 class="title is-3 has-text-centered has-text-primary">Edad de los votantes a lo largo de los años</h1>
           <div class="subtitle is-5 has-text-centered">(Años 2013,2016,2018,2019 y 2020)</div>
-          <stat-stacked-bars :the-labels="[2013,2016,2018,2019,2020]" :the-data="[
-          {label:'16 a 25',data:[140,91,252,202,89],borderWidth:2,borderColor: '#2274a5',
+          <stat-stacked-bars :the-labels="[2013,2016,2018,2019,2020,2021]" :the-data="[
+          {label:'16 a 25',data:[140,91,252,202,89,70],borderWidth:2,borderColor: '#2274a5',
             backgroundColor: 'rgba(72, 99, 157, 0.25)'},
-            {label:'26 a 35',data:[209,100,416,294,139],borderWidth:2,borderColor: '#f1c40f',
+            {label:'26 a 35',data:[209,100,416,294,139,154],borderWidth:2,borderColor: '#f1c40f',
             backgroundColor: 'rgba(241, 196, 14, 0.25)'},
-            {label:'36 a 45',data:[124,119,437,322,187],borderWidth:2,borderColor: '#f75c03',
+            {label:'36 a 45',data:[124,119,437,322,187,177],borderWidth:2,borderColor: '#f75c03',
             backgroundColor: 'rgba(247, 92, 2, 0.25)'},
-            {label:'Más de 46',data:[302,167,520,230,221],borderWidth:2,borderColor: '#d90368',
+            {label:'Más de 46',data:[302,167,520,230,221,228],borderWidth:2,borderColor: '#d90368',
             backgroundColor: 'rgba(216, 3, 103, 0.25)'}]" :height="300"></stat-stacked-bars>
           <p class="is-size-7 is-300 has-text-centered"><u>Nota</u><br>Las edades contadas son basadas en usuarios registrados y hay fechas de nacimientos que no han sido cargadas a la hora del registro. De todas formas, este campo de fecha de nacimiento no impacta en la habilitacion de la votación ya que la fecha de nacimiento en el padrón es la que predomina en la validacion de los votantes.</p>
         </div>
@@ -335,6 +391,13 @@ Equipo técnico de la Secretaría de Coordinación General, Municipalidad San Lo
             <div class="content">
           <p class="tag is-white">MD5 Checksum: e3b525f11c1d76e35acedb1067faee90</p>
             </div>
+           <div class="buttons is-centered">
+              <a href="{{asset('data/pp-sl-2021-escrutinio.csv')}}" class="button is-link" target="_blank">
+                <i class="fas fa-download"></i>&nbsp; Descargar .csv (Proyectos 2021)</a>
+            </div>
+            <div class="content">
+          <p class="tag is-white">MD5 Checksum: d4bb6a69e724bfb7abb74ee3288592cb</p>
+            </div>
         </div>
         <div class="column has-text-centered">
           <h1 class="title is-4">Descargarte los votos</h1>
@@ -359,6 +422,13 @@ Equipo técnico de la Secretaría de Coordinación General, Municipalidad San Lo
             </div>
             <div class="content">
             <p class="tag is-white">MD5 Chechsum: dc6855bf18a03895085eb71b03578e42</p>
+            </div>
+            <div class="buttons is-centered">
+              <a href="{{asset('data/pp-sl-2021-votos-online-presencial.csv')}}" class="button is-link" target="_blank">
+                <i class="fas fa-download"></i>&nbsp; Descargar .csv (ONLINE Y PRESENCIAL 2021)</a>
+            </div>
+            <div class="content">
+            <p class="tag is-white">MD5 Chechsum: 3cefec3f34cdf71ba0b903f7986be78a</p>
             </div>
         </div>
       </div>
