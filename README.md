@@ -7,6 +7,8 @@ Maintained by
 - Guillermo Croppi / Twitter [@guillermocroppi]([https://twitter.com/guillermocroppi]) / Github [@guillecro](https://github.com/guillecro)
 - Augusto Mathurin / Twitter [@augusthur]([https://twitter.com/augusthur]) / Github [@augusthur](https://github.com/augusthur)
 
+![image](https://user-images.githubusercontent.com/8771166/153970264-32933c98-d6ae-4ada-8344-0898c4191789.png)
+
 ### Note
 
 > **NOTE 1:** Currently only available in Spanish.
