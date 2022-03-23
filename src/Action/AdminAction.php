@@ -48,7 +48,7 @@ class AdminAction
         if (!$this->authorization->checkPermission($subject, 'admin')) {
             throw new UnauthorizedException();
         }
-        $proyectos = $this->db->query('App:Project', ['district'])->get()->makeVisible(['author_id'])->toArray();
+        $proyectos = $this->db->query('App:Project', ['district'])->get()->makeVisible(['author_id','notes'])->toArray();
         
         return $this->view->render($response, 'sl/admin/projects.twig', [
             'proyectos' => $proyectos,
