@@ -4,16 +4,22 @@
       <header class="timeline-header">
         <span class="tag is-medium is-primary">Creación</span>
       </header>
+      <div class="timeline-item">
+        <div class="timeline-marker is-primary"></div>
+        <div class="timeline-content">
+          <p class="heading">Proyecto creado el día {{project.created_at}}</p>
+        </div>
+        </div>
       <div class="timeline-item" v-for="(j,index) in project.journal" :key="index">
         <div class="timeline-marker is-icon">
           <i class="fas fa-edit"></i>
         </div>
         <div class="timeline-content is-fullwidth">
           <p class="heading">Editado el {{getDate(index)}}</p>
-          <p class="heading">Editor: {{ getUser(j.author_id) }}</p>
+          <p class="heading">Editó: {{ getUser(j.author_id) }}</p>
           <b-collapse class="card" :open="false">
             <div slot="trigger" slot-scope="props" class="card-header" role="button">
-              <p class="card-header-title">Ver información</p>
+              <p class="card-header-title">Ver información previa a la edición</p>
               <a class="card-header-icon">
                 <i :class="props.open ? 'fas fa-angle-down fa-lg' : 'fas fa-angle-up fa-lg'"></i>
               </a>
@@ -43,7 +49,7 @@
           </b-collapse>
           <b-collapse class="card" :open="false">
             <div slot="trigger" slot-scope="props" class="card-header" role="button">
-              <p class="card-header-title">Presupuesto</p>
+              <p class="card-header-title">Presupuesto detallado</p>
               <a class="card-header-icon">
                 <i :class="props.open ? 'fas fa-angle-down fa-lg' : 'fas fa-angle-up fa-lg'"></i>
               </a>
