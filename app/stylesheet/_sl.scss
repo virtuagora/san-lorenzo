@@ -26,9 +26,9 @@ input.input {
   // background-image: linear-gradient(#62aae0 2px, transparent 2px), linear-gradient(90deg, #62aae0 2px, transparent 2px), linear-gradient(rgba(255, 255, 255, .3) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .3) 1px, transparent 1px);
   // background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
   // background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px
-  background-image: url('/assets/img/pp-institucional2.png');
-  background-position: center center;
-  background-size: contain; // &>div {
+  // background-image: url('/assets/img/pp-institucional2.png');
+  // background-position: center center;
+  // background-size: contain; // &>div {
   //   background: -moz-linear-gradient(45deg, rgba(231, 16, 0, 0.35) 15%, rgba(40, 94, 203, 0.8) 30%, rgba(243, 146, 0, 0.5) 70%, rgba(175, 202, 11, 0.2) 90%);
   //   /* FF3.6-15 */
   //   background: -webkit-linear-gradient(45deg, rgba(231, 16, 0, 0.35) 15%, rgba(40, 94, 203, 0.8) 30%, rgba(243, 146, 0, 0.5) 70%, rgba(175, 202, 11, 0.2) 90%);
@@ -38,10 +38,10 @@ input.input {
   //   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d60c3c9b', endColorstr='#7d4f1489', GradientType=1);
   //   /* IE6-9 fallback on horizontal gradient */
   // }
-  img.logo-pp {
-    width: 350px;
-    margin-bottom: 30px !important;
-  }
+  // img.logo-pp {
+  //   width: 200px;
+  //   margin-bottom: 30px !important;
+  // }
 }
 
 .color-institucional {
@@ -343,13 +343,13 @@ img.logo-small-pp-voting {
 
 .navbar-brand .navbar-item .image {
     @include mobile {
-      width: 140px;
+      width: 120px;
     }
     @include tablet {
-      width: 200px;
+      width: auto;
     }
     @include desktop {
-      width: 220px;
+      width: auto;
     }
 }
 
@@ -357,3 +357,9 @@ img.logo-small-pp-voting {
     background-position: center center;
     background-size: cover;
   }
+
+.virtuagora-footer{
+  background-color: #5d6fb0;
+  // background-color: #0a0a0a;
+  line-height: 0;
+}

@@ -15,14 +15,16 @@ body {
 footer.footer {
   flex-shrink: 0;
   color: #FFFFFF;
-  a {
+  ul {
+    a {
       color: #FFFFFF;
       &:hover{
           font-weight: bold;
       }
+    }
   }
 }
 
-.is-oswald{
-  font-family: "Oswald";
-}
+// .is-oswald{
+//   font-family: "Oswald";
+// }

@@ -6,12 +6,21 @@
 
 {% block title %}Completá tu registro{% endblock %}
 {% block body %}
-  <div class="hero is-white is-fullheight is-login-window">
+  <div class="hero is-light is-bold is-fullheight">
     <div class="hero-body has-text-centered">
       <div class="container">
-        <div class="columns">
-          <div class="column is-6-tablet is-offset-3-tablet is-4-desktop is-offset-4-desktop">
-            <img src="{{asset('img/logo-sl.svg')}}" class="image login-logo" alt="">
+        <div class="columns is-centered">
+          <div class="column is-7-tablet is-5-desktop">
+          <div class="box p-6">
+
+            <div class="is-flex is-flex-direction-row is-justify-content-space-between mb-4">
+            <a href="{{base_url()}}">
+              <img src="{{asset('img/logo-sl.svg')}}" class="image mx-auto mb-5" width="175" alt="">
+            </a>
+            <a href="{{base_url()}}">
+              <img src="{{asset('img/logo-pp-2022.svg')}}" class="image mx-auto" width="40" alt="">
+            </a>
+            </div>
             <h1 class="title is-5">¡Gracias por ser parte del Presupuesto Participativo!</h1>
             <p>Para terminar tu registro, te pedimos por favor que completes los siguientes campos.</p>
             <hr>
@@ -23,6 +32,7 @@
             <completar-registro form-url="{{ path_for('runNewUser') }}" :neighbourhoods="{{neighbourhoods|json_encode}}" log-in-url="{{path_for('showLogin')}}" token="{{activation_key}}">
               {% include 'loading.twig' %}
             </completar-registro>
+          </div>
           </div>
         </div>
       </div>

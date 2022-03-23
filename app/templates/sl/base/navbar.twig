@@ -1,14 +1,20 @@
-<nav class="navbar is-white" role="navigation" aria-label="main navigation">
-  <div class="container">
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  {# <div class="container is-fluid"> #}
     <div class="navbar-brand">
       <a class="navbar-item" href="{{path_for('showHome')}}">
         <img class="image" src="{{asset('img/logo-sl.svg')}}" alt="Volver al inicio">
       </a>
-      <a class="navbar-item" target="_blank" href="https://www.instagram.com/PrensaSL/">
+      <a class="navbar-item" target="_blank" href="https://www.instagram.com/PrensaSL">
         <i class="fab fa-instagram fa-lg"></i>
       </a>
-      <a class="navbar-item" target="_blank" href="https://www.facebook.com/PresupuestoParticipativoSanLorenzo/">
-        <i class="fab fa-facebook fa-lg"></i>
+      <a class="navbar-item" target="_blank" href="https://www.facebook.com/PresupuestoParticipativoSanLorenzo">
+        <i class="fab fa-facebook-f fa-lg"></i>
+      </a>
+      <a class="navbar-item" target="_blank" href="https://www.youtube.com/user/MunicipalidadSL">
+        <i class="fab fa-youtube fa-lg"></i>
+      </a>
+      <a class="navbar-item" target="_blank" href="https://twitter.com/PrensaSL">
+        <i class="fab fa-twitter fa-lg"></i>
       </a>
       <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
         <span aria-hidden="true"></span>
@@ -99,24 +105,27 @@
             <i class="fas fa-external-link-alt fa-lg fa-fw"></i>&nbsp;Panel
           </a>
           {% endif %}
-          <div class="navbar-item has-text-primary has-text-weight-bold">
-            {{subject.name|split(' ')[0]}}
+          <div class="navbar-item has-text-link has-text-weight-bold">
+            <i class="fas fa-user fa-lg fa-fw"></i>&nbsp;{{subject.name|split(' ')[0]}}
           </div>
           <a class="navbar-item" href="{{path_for('logout')}}">
               <i class="fas fa-sign-out-alt fa-lg fa-fw"></i>
             &nbsp;Salir
           </a>
           {% else %}
-            <a class="navbar-item has-text-link" href="{{path_for('showLogin')}}">
-              <span class="icon">
+            <div class="navbar-item " >
+            <a href="{{path_for('showLogin')}}" class="button is-link">
+                <i class="fas fa-sign-in-alt"></i>&nbsp;Entrar
+            </a>
+              {# <span class="icon">
                 <i class="fas fa-sign-in-alt fa-lg"></i>
               </span>
-              &nbsp;<b>Entrar</b>
-            </a>
+              &nbsp;<b>Entrar</b> #}
+            </div>
           {% endif %}
       </div>
     </div>
-  </div>
+  {# </div> #}
 </nav>
 {% if subject.id and 'verified' not in subject.roles  %}
 <div class="notification has-text-centered is-marginless is-radiusless is-black is-size-7-touch" style="padding:7px;">

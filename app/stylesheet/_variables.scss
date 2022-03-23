@@ -5,39 +5,115 @@
 @import "~bulma/sass/utilities/_all";
 // Set your colors
 // $primary: #336acf;
-$primary: #9e2a54;
+// $primary: #9e2a54;
+$primary: #2a285f;
+// $primary: #3452ff;
 // $primary: #007199;
 // $primary: #5d6faf;
 $primary-invert: findColorInvert($primary);
-$twitter: #4099FF;
-$twitter-invert: findColorInvert($twitter);
+
 $danger: #ca4343;
 $success: #5fb769;
 // Setup $colors to use as bulma classes (e.g. 'is-twitter')
-$colors: ( "white": ($white, $black), "black": ($black, $white), "light": ($light, $light-invert), "dark": ($dark, $dark-invert), "primary": ($primary, $primary-invert), "info": ($info, $info-invert), "success": ($success, $success-invert), "warning": ($warning, $warning-invert), "danger": ($danger, $danger-invert), "link": ($link, $link-invert), "twitter": ($twitter, $twitter-invert));
+// COLORS
+$link: #3452ff;
+$link-invert: findColorInvert($link);
+$link-light: findLightColor($link);
+$link-dark: findDarkColor($link);
+
+
+// Lists and maps
+$custom-colors: null !default;
+$custom-shades: null !default;
+
+// Setup $colors to use as bulma classes (e.g. 'is-twitter')
+$colors: mergeColorMaps(
+    (
+        "white": (
+            $white,
+            $black,
+        ),
+        "black": (
+            $black,
+            $white,
+        ),
+        "light": (
+            $light,
+            $light-invert,
+        ),
+        "dark": (
+            $dark,
+            $dark-invert,
+        ),
+        "primary": (
+            $primary,
+            $primary-invert,
+            $primary-light,
+            $primary-dark,
+        ),
+        "link": (
+            $link,
+            $link-invert,
+            $link-light,
+            $link-dark,
+        ),
+        "info": (
+            $info,
+            $info-invert,
+            $info-light,
+            $info-dark,
+        ),
+        "success": (
+            $success,
+            $success-invert,
+            $success-light,
+            $success-dark,
+        ),
+        "warning": (
+            $warning,
+            $warning-invert,
+            $warning-light,
+            $warning-dark,
+        ),
+        "danger": (
+            $danger,
+            $danger-invert,
+            $danger-light,
+            $danger-dark,
+        ),
+    ),
+    $custom-colors
+);
+
 // Links
 $link: $primary;
 $link-invert: $primary-invert;
 $link-focus-border: $primary;
-$footer-background-color: $dark;
+
+
+
+// FOORTER
+$footer-background-color: $black;
+
+
+// TYPOGRAPHY
 $body-size: 14px;
-// $family-sans-serif: 'Roboto',
-// 'Segoe UI',
-// BlinkMacSystemFont,
-// -apple-system,
-// "Oxygen",
-// "Cantarell",
-// "Fira Sans",
-// "Droid Sans",
-// "Helvetica Neue",
-// "Helvetica",
-// "Arial",
-// sans-serif;
-// $family-monospace: 'Ubuntu Mono',
-// monospace;
-$notification-padding: 1.25rem 1.5rem 1.25rem 1.5rem;
+$family-primary: 'Open Sans', $family-sans-serif;
 $subtitle-weight: 300;
-$navbar-item-img-max-height: 4.29rem;
+
+
+$notification-padding: 1.25rem 1.5rem 1.25rem 1.5rem;
+
+// NAVBAR
+$navbar-item-img-max-height: 3.25rem;
 $navbar-item-hover-background-color: transparent;
-$navbar-height: 5rem;
+$navbar-height: 6rem;
+$navbar-item-color: rgb(153,153,153);
+$navbar-item-hover-color: #3452ff;
+//$navbar-item-active-background-color: #3452ff;
+$navbar-tab-active-color: rgb(153,153,153);
+$navbar-dropdown-item-hover-color: #3452ff;
+$navbar-dropdown-arrow: rgb(153,153,153);
+
+
 $comunitario: #9a9e00;

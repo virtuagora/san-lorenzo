@@ -191,7 +191,7 @@
   </section>
   {% if (vote_available() and subject.id is null) 
     or (vote_available() and subject.id and citizen()is not null and citizen().voted == false) %}
-    <div class="hero is-primary indexBg">
+    <div class="hero is-primary">
       <div class="hero-body">
         <div class="container has-text-centered">
           <div class="columns">
@@ -210,7 +210,7 @@
       </div>
     </div>
   {% endif %}
-  {% include 'sl/base/collab.twig' %}
+  {# {% include 'sl/base/collab.twig' %} #}
 {% endblock %}
 
 {% block javascripts %}
