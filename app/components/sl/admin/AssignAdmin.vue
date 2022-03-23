@@ -76,7 +76,7 @@ export default {
             role: 'admin'
         })
         .then(response => {
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "¡Nuevo administrador agregado!",
             type: "is-success",
             actionText: "OK"
@@ -85,7 +85,7 @@ export default {
         })
         .catch(error => {
           console.error(error.message);
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Error inesperado",
             type: "is-danger",
             actionText: "Cerrar"
@@ -103,7 +103,7 @@ export default {
     //     })
     //     .catch(error => {
     //       console.error(error.message);
-    //       this.$snackbar.open({
+    //       this.$buefy.snackbar.open({
     //         message: "Error inesperado",
     //         type: "is-danger",
     //         actionText: "Cerrar"

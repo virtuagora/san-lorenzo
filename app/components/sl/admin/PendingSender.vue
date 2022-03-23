@@ -81,7 +81,7 @@ export default {
         .catch(error => {
           this.isLoading = false;
           console.error(error);
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Ocurrio un error inesperado. Recargue la página",
             type: "is-danger",
             actionText: "Ok"
@@ -120,7 +120,7 @@ export default {
         .post(this.post, {id: id})
         .then(response => {
           this.isSending = false;
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
               message: "¡Email enviado! El servidor de correo contestó correctamente.",
               type: "is-success",
               actionText: "Genial"
@@ -133,7 +133,7 @@ export default {
           }
           this.isSending = false;
           console.error(error);
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Ocurrio un error inesperado.",
             type: "is-danger",
             actionText: "Ok"

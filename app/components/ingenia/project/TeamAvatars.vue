@@ -42,7 +42,7 @@ export default {
       .catch(error => {
         console.error(error.message);
         this.isLoading = false;
-        this.$snackbar.open({
+        this.$buefy.snackbar.open({
           message:
             "Error al obtener los integrantes del equipo. Recargue la página",
           type: "is-danger",

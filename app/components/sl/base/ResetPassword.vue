@@ -81,7 +81,7 @@ export default {
         .validateAll()
         .then(result => {
           if (!result) {
-            this.$snackbar.open({
+            this.$buefy.snackbar.open({
               message: "Error. Verifique si el email está bien escrito.",
               type: "is-danger",
               actionText: "Cerrar"
@@ -111,7 +111,7 @@ export default {
               this.isLoading = false;
               this.response.replied = true;
               this.response.ok = false;
-              this.$snackbar.open({
+              this.$buefy.snackbar.open({
                 message: "Error inesperado",
                 type: "is-danger",
                 actionText: "Cerrar"
@@ -124,7 +124,7 @@ export default {
                 'event_category' : 'Password Recovery',
                 'event_label' : 'Unexpected error'
           });
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Error inesperado",
             type: "is-danger",
             actionText: "Cerrar"

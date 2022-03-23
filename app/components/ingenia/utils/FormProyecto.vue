@@ -377,7 +377,7 @@ export default {
       })
       .catch(error => {
         console.error(error.message);
-        this.$snackbar.open({
+        this.$buefy.snackbar.open({
           message:
             "Error de conexion con el servidor. No pudimos rescatar las categorias. Sin esto no se va a poder completar el formulario. Por favor, volvé a intentarlo más tarde o reintentá volviendo a cargar la pagina.",
           type: "is-danger",
@@ -423,7 +423,7 @@ export default {
           if (result) {
             if (!this.disableAddItem) {
               if (parseFloat(this.inputItemMonto) + this.montoTotal > 22000) {
-                this.$snackbar.open(
+                this.$buefy.snackbar.open(
                   "El item excede el total permitido ($22000)"
                 );
                 return;
@@ -438,7 +438,7 @@ export default {
               this.inputItemMonto = null;
             }
           } else {
-            this.$snackbar.open(
+            this.$buefy.snackbar.open(
               "El monto debe ser un numero sin coma ni punto decimal"
             );
           }

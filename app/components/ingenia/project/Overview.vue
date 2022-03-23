@@ -240,7 +240,7 @@ export default {
           this.payload
         )
         .then(response => {
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "¡La solicitud ha sido enviada!",
             type: "is-success",
             actionText: "OK"
@@ -251,7 +251,7 @@ export default {
         .catch(error => {
           console.error(error.message);
           this.isLoading = false;
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Error inesperado",
             type: "is-danger",
             actionText: "Cerrar"
@@ -277,7 +277,7 @@ export default {
           this.isLoading = false;
           this.notesCopy = null
           this.showEditObservation = false
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "¡Observacion guardada!",
             type: "is-success",
             actionText: "OK"
@@ -286,7 +286,7 @@ export default {
         .catch(error => {
           console.error(error.message);
           this.isLoading = false;
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Error inesperado",
             type: "is-danger",
             actionText: "Cerrar"
@@ -301,7 +301,7 @@ export default {
         .then(response => {
           this.notesCopy = this.noteInput
           this.showEditObservation = false          
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "¡Observacion guardada!",
             type: "is-success",
             actionText: "OK"
@@ -311,7 +311,7 @@ export default {
         .catch(error => {
           console.error(error.message);
           this.isLoading = false;
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Error inesperado",
             type: "is-danger",
             actionText: "Cerrar"

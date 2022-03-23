@@ -21,7 +21,7 @@
       <br>
       <div class="field">
         <div class="control">
-          <button @click="submitSignUp" :disabled="!recaptcha || errors.has('email')" class="button is-large is-primary is-rounded is-fullwidth" :class="{'is-loading': isLoading}">
+          <button @click="submitSignUp" :disabled="!recaptcha || errors.has('email')" class="button is-medium is-primary is-fullwidth" :class="{'is-loading': isLoading}">
             <i class="fas fa-paper-plane"></i>&nbsp;&nbsp;Enviar email</button>
         </div>
       </div>
@@ -81,7 +81,7 @@ export default {
         .validateAll()
         .then(result => {
           if (!result) {
-            this.$snackbar.open({
+            this.$buefy.snackbar.open({
               message: "Error. Verifique si el email está bien escrito.",
               type: "is-danger",
               actionText: "Cerrar"
@@ -112,7 +112,7 @@ export default {
               this.isLoading = false;
               this.response.replied = true;
               this.response.ok = false;
-              this.$snackbar.open({
+              this.$buefy.snackbar.open({
                 message: "Error inesperado",
                 type: "is-danger",
                 actionText: "Cerrar"
@@ -125,7 +125,7 @@ export default {
                 'event_category' : 'Sign Up',
                 'event_label' : 'Unexpected error'
           });
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Error inesperado",
             type: "is-danger",
             actionText: "Cerrar"

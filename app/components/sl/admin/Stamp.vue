@@ -14,23 +14,21 @@
   </div>
   <br>
   <b-table :data="stamps">
-    <template slot-scope="props">
-      <b-table-column field="id" label="ID" width="40" numeric sortable>
+      <b-table-column v-slot="props" field="id" label="ID" width="40" numeric sortable>
         {{ props.row.id }}
       </b-table-column>
-      <b-table-column field="state" label="Estado">
+      <b-table-column v-slot="props" field="state" label="Estado">
         <p class="is-size-7" style="word-break: break-all;">{{ capitalizeString(props.row.state) }}</p>
       </b-table-column>
-      <b-table-column field="description" label="Descripcion">
+      <b-table-column v-slot="props" field="description" label="Descripcion">
         <p class="is-size-7" style="word-break: break-all;">{{ props.row.description }}</p>
       </b-table-column>
-      <b-table-column label="Acciones" width="150" >
+      <b-table-column v-slot="props" label="Acciones" width="150" >
         <p class="is-size-7" v-if="props.row.state == 'created'"><a @click="checkStamp(props.row.id)" title="Comprobar" class="has-text-link"><i class="fa fa-file-import fa-lg"></i>&nbsp;Comprobar estado</a></p>
         <p class="is-size-7" v-if="props.row.state != 'created'"><a :href="makeUrl('receiptUrl',props.row.id)" title="Recibo" class="has-text-link"><i class="fa fa-receipt fa-lg"></i>&nbsp;Descargar recibo</a></p>
         <p class="is-size-7" v-if="props.row.state != 'created'"><a :href="makeUrl('datasetUrl',props.row.id)" class="has-text-link" title="Dataset"><i class="fa fa-database fa-lg"></i>&nbsp;Descargar dataset</a></p>
       </b-table-column>
-    </template>
-    <template slot="empty">
+    <template #empty>
       <section class="section">
         <div class="content has-text-grey has-text-centered">
             <p><i class="far fa-sad-cry fa-2x"></i></p>
@@ -73,7 +71,7 @@ export default {
       })
       .catch( err => {
         this.responseError = true;
-        this.$snackbar.open({
+        this.$buefy.snackbar.open({
           message: "Error al obtener los sellos",
           type: "is-danger",
           actionText: "Cerrar",
@@ -94,7 +92,7 @@ export default {
       .catch( err => {
         this.isLoading = false
         this.responseError = true;
-        this.$snackbar.open({
+        this.$buefy.snackbar.open({
           message: "Error al chequear el sello",
           type: "is-danger",
           actionText: "Cerrar",
@@ -113,7 +111,7 @@ export default {
       .catch( err => {
         this.responseError = true;
         this.isLoading = false
-        this.$snackbar.open({
+        this.$buefy.snackbar.open({
           message: "Error al crear el sello",
           type: "is-danger",
           actionText: "Cerrar",

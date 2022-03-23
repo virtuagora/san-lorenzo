@@ -158,7 +158,7 @@ export default {
       this.$http
         .post(this.urlParticipacion, this.payload)
         .then(response => {
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "¡Participación guardada!",
             type: "is-success",
             actionText: "¡Genial!"
@@ -170,7 +170,7 @@ export default {
         .catch(error => {
           console.error(error.message);
           this.responseFail = false;
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Error inesperado",
             type: "is-danger",
             actionText: "Cerrar",

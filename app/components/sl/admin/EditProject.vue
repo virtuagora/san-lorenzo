@@ -139,7 +139,7 @@ export default {
           notes: this.isOptional(this.project.notes)
         })
         .then(response => {
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "¡Observaciones guardadas!",
             type: "is-success",
             actionText: "¡Genial!"
@@ -151,7 +151,7 @@ export default {
         .catch(error => {
           console.error(error.message);
           this.isLoading = false;
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Error inesperado",
             type: "is-danger",
             actionText: "Cerrar",
@@ -170,7 +170,7 @@ export default {
             this.$http
               .post(this.formUrl, this.payload)
               .then(response => {
-                this.$snackbar.open({
+                this.$buefy.snackbar.open({
                   message: "¡Proyecto guardado!",
                   type: "is-success",
                   actionText: "¡Genial!"
@@ -182,7 +182,7 @@ export default {
               .catch(error => {
                 console.error(error.message);
                 this.isLoading = false;
-                this.$snackbar.open({
+                this.$buefy.snackbar.open({
                   message: "Error inesperado",
                   type: "is-danger",
                   actionText: "Cerrar",
@@ -192,7 +192,7 @@ export default {
           } else {
             // Not Valid
             this.isLoading = false;
-            this.$snackbar.open({
+            this.$buefy.snackbar.open({
               message: "Faltan datos o algunos son incorrectos. Verifíquelos.",
               type: "is-danger",
               actionText: "Cerrar",
@@ -203,7 +203,7 @@ export default {
         .catch(error => {
           console.error(error.message);
           this.isLoading = false;
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Error inesperado",
             type: "is-danger",
             actionText: "Cerrar",

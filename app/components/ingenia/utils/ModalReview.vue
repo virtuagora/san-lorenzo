@@ -91,7 +91,7 @@ export default {
         .validateAll()
         .then(result => {
           if (!result) {
-            this.$snackbar.open({
+            this.$buefy.snackbar.open({
               message: "Error en el formulario. Verifíquelo",
               type: "is-danger",
               actionText: "Cerrar"
@@ -102,7 +102,7 @@ export default {
           this.$http.post(this.url, this.payload)
           .then(response => {
             this.$parent.close()
-            this.$snackbar.open({
+            this.$buefy.snackbar.open({
               message: "Evaluación guardada",
               type: "is-success",
               actionText: "Ok!"
@@ -111,7 +111,7 @@ export default {
           })
           .catch(error => {
             console.error(error.message);
-            this.$snackbar.open({
+            this.$buefy.snackbar.open({
               message: "Error inesperado",
               type: "is-danger",
               actionText: "Cerrar"
@@ -119,7 +119,7 @@ export default {
           });
         })
         .catch(error => {
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Error inesperado",
             type: "is-danger",
             actionText: "Cerrar"

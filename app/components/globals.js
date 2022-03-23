@@ -23,7 +23,7 @@ module.exports = {
           })
           .catch(e => {
             console.error(e)
-            vm.$snackbar.open({
+            vm.$buefy.snackbar.open({
               message: "Error al conectarse con el servidor. Por favor, recarge la página.",
               type: "is-danger",
               actionText: "Cerrar"
@@ -45,7 +45,7 @@ module.exports = {
           })
           .catch(e => {
             console.error(e)
-            vm.$snackbar.open({
+            vm.$buefy.snackbar.open({
               message: "Error al conectarse con el servidor. Por favor, recarge la página.",
               type: "is-danger",
               actionText: "Cerrar"

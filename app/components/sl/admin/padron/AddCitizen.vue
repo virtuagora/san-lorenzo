@@ -151,7 +151,7 @@ export default {
     submit: function() {
       this.$validator.validateAll().then(result => {
         if (!result) {
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Faltan datos o algunos son incorrectos. Verifíquelos.",
             type: "is-danger",
             actionText: "Cerrar",
@@ -163,7 +163,7 @@ export default {
         this.$http
           .post(this.url, this.payload)
           .then(response => {
-            this.$snackbar.open({
+            this.$buefy.snackbar.open({
               message: "Ciudadano guardado con éxito!",
               type: "is-success",
               actionText: "¡Genial!"
@@ -178,7 +178,7 @@ export default {
             this.isLoading = false;
             this.response.ok = false;
             this.response.replied = true;
-            this.$snackbar.open({
+            this.$buefy.snackbar.open({
               message: "Error inesperado: " + error.message,
               type: "is-danger",
               actionText: "Cerrar",

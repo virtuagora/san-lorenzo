@@ -128,7 +128,7 @@ export default {
         return;
       }
       if (this.checked.length === 3) {
-        this.$snackbar.open({
+        this.$buefy.snackbar.open({
           message: "¡Recuerde! No puede votar mas de 3 proyectos",
           type: "is-warning",
           actionText: "OK"

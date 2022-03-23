@@ -59,7 +59,7 @@ export default {
       })
       .catch(error => {
         console.error(error.message);
-        this.$snackbar.open({
+        this.$buefy.snackbar.open({
           message: "Error inesperado",
           type: "is-danger",
           actionText: "Cerrar"
@@ -100,7 +100,7 @@ export default {
             this.departamentoLoading = false;
             this.localidades = [];
             this.localidadSelected = null;
-            this.$snackbar.open({
+            this.$buefy.snackbar.open({
               message: "Error inesperado",
               type: "is-danger",
               actionText: "Cerrar"
@@ -122,7 +122,7 @@ export default {
           .catch(error => {
             console.error(error.message);
             this.localidadLoading = false;
-            this.$snackbar.open({
+            this.$buefy.snackbar.open({
               message: "Error inesperado",
               type: "is-danger",
               actionText: "Cerrar"

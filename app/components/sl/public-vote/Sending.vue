@@ -24,7 +24,7 @@ export default {
     submit: function(){
       this.$http.post(this.urlVote, this.payload)
       .then( response => {
-        this.$snackbar.open({
+        this.$buefy.snackbar.open({
           message: response.data.message || "Boleta enviada",
           type: "is-success",
           actionText: "OK!",
@@ -32,7 +32,7 @@ export default {
         this.$router.push({name: 'PublicSuccess'})
       }).
       catch(err => {
-        this.$snackbar.open({
+        this.$buefy.snackbar.open({
           message: err.response.data.message || 'Se recibio un error al guardar el voto',
           type: "is-danger",
           actionText: "Cerrar",
