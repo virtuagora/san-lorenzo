@@ -229,7 +229,7 @@ export default {
       this.$validator.validateAll().then(result => {
         if (!result) {
           // Error validacion
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "No se puede enviar porque hay un error en algún dato",
             type: "is-danger",
             actionText: "Cerrar"
@@ -238,7 +238,7 @@ export default {
         this.$http
           .post(this.postBoleta, this.payload)
           .then(response => {
-            this.$snackbar.open({
+            this.$buefy.snackbar.open({
               message: "¡Boleta guardada!",
               type: "is-success",
               actionText: "¡Genial!"
@@ -250,7 +250,7 @@ export default {
           })
           .catch(error => {
             console.error(error.message);
-            this.$snackbar.open({
+            this.$buefy.snackbar.open({
               message:
                 "Error al guardar la boleta. Puede ser que el Nro ya haya sido cargado...",
               type: "is-danger",
@@ -263,7 +263,7 @@ export default {
       this.$validator.validateAll().then(result => {
         if (!result) {
           // Error validacion
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "No se puede enviar porque hay un error en algún dato",
             type: "is-danger",
             actionText: "Cerrar"
@@ -272,7 +272,7 @@ export default {
         this.$http
           .post(this.postBoletaNula, this.payloadNulo)
           .then(response => {
-            this.$snackbar.open({
+            this.$buefy.snackbar.open({
               message: "¡Boleta guardada!",
               type: "is-success",
               actionText: "¡Genial!"
@@ -284,7 +284,7 @@ export default {
           })
           .catch(error => {
             console.error(error.message);
-            this.$snackbar.open({
+            this.$buefy.snackbar.open({
               message:
                 "Error al guardar la boleta. Puede ser que el Nro ya haya sido cargado...",
               type: "is-danger",
@@ -297,7 +297,7 @@ export default {
       this.$http
         .delete(this.deleteBoleta.replace('##',id))
         .then(response => {
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "¡Boleta eliminada!",
             type: "is-success",
             actionText: "¡Genial!"
@@ -306,7 +306,7 @@ export default {
         })
         .catch(error => {
           console.error(error.message);
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message:
               "Error al eliminar la boleta...",
             type: "is-danger",
@@ -324,7 +324,7 @@ export default {
         })
         .catch(error => {
           console.error(error.message);
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Error cargando las boletas!",
             type: "is-danger",
             actionText: "Cerrar"
@@ -338,7 +338,7 @@ export default {
     //       return;
     //     }
     //     if(this.checkComunitarios.length === 3){
-    //       this.$snackbar.open({
+    //       this.$buefy.snackbar.open({
     //         message:
     //           "¡Recuerde! No puede votar mas de 3 proyectos",
     //         type: "is-warning",
@@ -356,7 +356,7 @@ export default {
     //       return;
     //     }
     //     if(this.checkInstitucionales.length === 3){
-    //       this.$snackbar.open({
+    //       this.$buefy.snackbar.open({
     //         message:
     //           "¡Recuerde! No puede votar mas de 3 proyectos",
     //         type: "is-warning",
@@ -412,7 +412,7 @@ export default {
   watch: {
     checkComunitarios: function(newVal, oldVal) {
       if (newVal.length > 3) {
-        this.$snackbar.open({
+        this.$buefy.snackbar.open({
           message:
             "¡Recuerde! No puede asignar mas de 3 proyectos en comunitarios",
           type: "is-warning",
@@ -422,7 +422,7 @@ export default {
     },
     checkInstitucionales: function(newVal, oldVal) {
       if (newVal.length > 3) {
-        this.$snackbar.open({
+        this.$buefy.snackbar.open({
           message:
             "¡Recuerde! No puede asignar mas de 3 proyectos en institucionales",
           type: "is-warning",

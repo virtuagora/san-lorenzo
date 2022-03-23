@@ -23,12 +23,11 @@
       </div>
         <span class="help is-danger" v-show="errors.has('email')"><i class="fas fa-times-circle fa-fw"></i> Error. Debe ser un email bien formado</span>          
         <span class="help is-danger" v-show="errors.has('password')"><i class="fas fa-times-circle fa-fw"></i> Error. La contraseña no puede ser vacia</span>          
-      <br>
       <div class="buttons">
-          <button @click="submitLogin" class="button is-medium is-primary is-rounded is-fullwidth" :class="{'is-loading': isLoading}">
+          <button @click="submitLogin" class="button is-medium is-primary is-fullwidth" :class="{'is-loading': isLoading}">
             <i class="fas fa-sign-in-alt fa-lg"></i>&nbsp;&nbsp;Entrar a mi cuenta</button>
 
-          <a @click="reset = true" class="button is-white is-rounded is-fullwidth">
+          <a @click="reset = true" class="button is-white is-fullwidth">
             <i class="fas fa-question-circle fa-fw fa-lg"></i>
             &nbsp;&nbsp;¡Olvidé mi contraseña!
           </a>
@@ -41,7 +40,7 @@
       <br>
       <div class="field">
         <div class="control">
-          <button @click="register = true" class="button is-link is-rounded is-medium is-fullwidth">
+          <button @click="register = true" class="button is-link is-medium is-fullwidth">
             <i class="fas fa-user-plus fa-fw fa-lg"></i>
             &nbsp;&nbsp;¡Registrate!
           </button>
@@ -80,7 +79,7 @@ export default {
         .validateAll()
         .then(result => {
           if (!result) {
-            this.$snackbar.open({
+            this.$buefy.snackbar.open({
               message: "Error. Email mal formado o contraseña vacia",
               type: "is-danger",
               actionText: "Cerrar"
@@ -91,7 +90,7 @@ export default {
           this.$refs.formLocalLogin.submit();
         })
         .catch(error => {
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Error inesperado",
             type: "is-danger",
             actionText: "Cerrar"

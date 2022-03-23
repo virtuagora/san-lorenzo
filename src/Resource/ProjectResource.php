@@ -271,7 +271,8 @@ class ProjectResource extends ContainerClient
 		}
 		$data['edition'] = $this->options->getOption('current-edition')->value;
 		$this->fillProjectData($project, $data, $schemaOpts);
-		$this->updateJournal($user, $project);
+		// First version is not 
+		//$this->updateJournal($user, $project);
 		$project->save();
 		return $project;
 	}

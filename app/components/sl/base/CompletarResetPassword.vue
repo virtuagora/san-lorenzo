@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="!response.replied">
-      <h1 class="subtitle is-5 is-marginless">¡Aquí vas a poder reestablecer tu contraseña!</h1>
+      <p>¡Aquí vas a poder reestablecer tu contraseña!</p>
       <p>Completá los campos para hacerlo</p>
       <br>
       <div class="field">
@@ -32,7 +32,7 @@
             v-validate="'required|confirmed:password'"
             class="input has-text-centered is-medium"
             style="padding-left:0"
-            placeholder="Ingresá tu contraseña"
+            placeholder="Volvé a ingresar tu contraseña"
           >
           <span class="help is-danger" v-show="errors.has('repeat')">
             <i class="fas fa-times-circle fa-fw"></i> Error. Las contraseñas no coinciden
@@ -44,7 +44,7 @@
         <div class="control">
           <button
             @click="submitReset"
-            class="button is-large is-primary is-fullwidth"
+            class="button is-medium is-primary is-fullwidth"
             :class="{'is-loading': isLoading}"
           >
             <i class="fas fa-user-plus"></i>&nbsp;&nbsp;Reiniciar contraseña
@@ -53,19 +53,18 @@
       </div>
     </div>
     <div v-else>
-      <div class="notification is-success" v-show="response.replied && response.ok">
+      <div class="notification is-success" v-if="response.replied && response.ok">
         <i class="fas fa-check fa-lg fa-fw"></i>
-        ¡La contraseña ha sido reiniciada! Continue iniciando sesión
-        <i class="em em-smiley"></i>
-        <br>
-        <br>
-        <a :href="logInUrl" class="button is-white is-outline">
+        ¡La contraseña ha sido reiniciada!<br> Continue iniciando sesión
+      </div>
+      <div class="buttons" v-if="response.replied && response.ok">
+         <a :href="logInUrl" class="button is-primary is-medium is-fullwidth">
           <i class="fas fa-sign-in-alt fa-lg"></i>&nbsp;&nbsp;Iniciar sesión
         </a>
       </div>
-      <div class="notification is-danger" v-show="response.replied && !response.ok">
+      <div class="notification is-danger" v-if="response.replied && !response.ok">
         <i class="fas fa-times fa-lg fa-fw"></i>
-        Error al cambiar la contraseña. Por favor vuelva a intentarlo. Si el problema persiste, contactesé con Gabinete Joven
+        Error al cambiar la contraseña. Por favor vuelva a intentarlo. Si el problema persiste, contactesé enviando un mail a presupuestoparticipativo.sl@gmail.com o comunicandose por teléfono +54 9 3476 418-681
       </div>
     </div>
     <b-loading :is-full-page="false" :active.sync="isLoading"></b-loading>
@@ -93,7 +92,7 @@ export default {
         .validateAll()
         .then(result => {
           if (!result) {
-            this.$snackbar.open({
+            this.$buefy.snackbar.open({
               message: "Error. Verifique los campos.",
               type: "is-danger",
               actionText: "Cerrar"
@@ -108,7 +107,7 @@ export default {
               repeat: this.repeat
             })
             .then(response => {
-              this.$snackbar.open({
+              this.$buefy.snackbar.open({
                 message: "Se cambio la contraseña correctamente",
                 type: "is-success",
                 actionText: "OK"
@@ -120,7 +119,7 @@ export default {
             .catch(error => {
               console.error(error.message);
               this.isLoading = false;
-              this.$snackbar.open({
+              this.$buefy.snackbar.open({
                 message: "Ocurrio un error: " + error.message,
                 type: "is-danger",
                 actionText: "Cerrar"
@@ -129,7 +128,7 @@ export default {
             });
         })
         .catch(error => {
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Error inesperado",
             type: "is-danger",
             actionText: "Cerrar"

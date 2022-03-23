@@ -373,7 +373,7 @@ export default {
           })
           .catch(error => {
             console.error(error.message);
-            this.$snackbar.open({
+            this.$buefy.snackbar.open({
               message: "Error al obtener la lista de proyectos",
               type: "is-danger",
               actionText: "Cerrar"
@@ -395,7 +395,7 @@ export default {
           })
           .catch(error => {
             console.error(error.message);
-            this.$snackbar.open({
+            this.$buefy.snackbar.open({
               message: "Error al obtener la lista de proyectos",
               type: "is-danger",
               actionText: "Cerrar"

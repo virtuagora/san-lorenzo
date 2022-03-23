@@ -72,11 +72,14 @@ class ProjectWebAction extends ContainerClient
         );
         $project->makeVisible(['journal', 'author']);
         $userArr = array();
-        foreach ($project->journal as $key => $value) {
-            $user = $this->helper->getEntityFromId(
-            'App:User', $value['author_id'], null, ['subject']
-            );
-            $userArr[$value['author_id']] = $user->subject->toDummy()->toArray();
+        // If $project->journal is not null, get the users
+        if ($project->journal) {
+            foreach ($project->journal as $key => $value) {
+                $user = $this->helper->getEntityFromId(
+                'App:User', $value['author_id'], null, ['subject']
+                );
+                $userArr[$value['author_id']] = $user->subject->toDummy()->toArray();
+            }
         }
         return $this->view->render($response, 'sl/project/overview-journal.twig', [
             'project' => $project,

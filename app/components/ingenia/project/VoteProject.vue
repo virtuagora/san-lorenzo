@@ -130,7 +130,7 @@ export default {
           this.counter = this.counter + 1
         })
         .catch(error => {
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Error inesperado. ¡No se pudo enviar el voto!",
             type: "is-danger",
             actionText: "Reintentar"
@@ -154,14 +154,14 @@ export default {
         .post(this.voteUrl)
         .then(response => {
           this.counter = this.counter - 1
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Ya no bancas este proyecto",
             type: "is-success",
             actionText: "OK"
           });
         })
         .catch(error => {
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Error inesperado. ¡No se pudo enviar el voto!",
             type: "is-danger",
             actionText: "Reintentar"
@@ -171,7 +171,7 @@ export default {
         });
     },
     cooldown: function() {
-      this.$snackbar.open({
+      this.$buefy.snackbar.open({
         message:
           "Recien enviaste tu voto. Vas a poder volver a votar recargando la página.",
         type: "is-warning",

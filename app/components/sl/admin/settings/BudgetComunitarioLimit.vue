@@ -33,7 +33,7 @@ export default {
     submit: function() {
       this.$validator.validateAll().then(result => {
         if (!result) {
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Limite de presupuesto invalido",
             type: "is-danger",
             actionText: "Ok"
@@ -47,7 +47,7 @@ export default {
             })
             .catch(x => {
               this.isLoading = false;
-              this.$snackbar.open({
+              this.$buefy.snackbar.open({
                 message: "Error inesperado",
                 type: "is-danger",
                 actionText: "Cerrar"

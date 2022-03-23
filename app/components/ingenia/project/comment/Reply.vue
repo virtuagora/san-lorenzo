@@ -54,7 +54,7 @@ export default {
         .validateAll()
         .then(result => {
           if (!result) {
-            this.$snackbar.open({
+            this.$buefy.snackbar.open({
               message: "Error. Verifique los campos.",
               type: "is-danger",
               actionText: "Cerrar"
@@ -68,14 +68,14 @@ export default {
             .then(response => {
               this.response.ok = true;
               this.$emit('updateComments')
-              this.$snackbar.open({
+              this.$buefy.snackbar.open({
               message: "Tu respuesta ha sido enviada!",
               type: "is-success",
               actionText: "Genial!"
             });
             })
             .catch(error => {
-              this.$snackbar.open({
+              this.$buefy.snackbar.open({
                 message: "Error inesperado. No se pudo enviar la respuesta.",
                 type: "is-danger",
                 actionText: "Reintentar"
@@ -84,7 +84,7 @@ export default {
             });
         })
         .catch(error => {
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Error inesperado",
             type: "is-danger",
             actionText: "Cerrar"

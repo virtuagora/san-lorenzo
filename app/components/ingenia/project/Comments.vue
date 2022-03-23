@@ -100,7 +100,7 @@ export default {
         .catch(error => {
           console.error(error.message);
           this.isLoading = false;
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Error al obtener los comentarios. Recargue la página",
             type: "is-danger",
             actionText: "Cerrar"
@@ -136,7 +136,7 @@ export default {
           })
           .catch(error => {
             console.error(error.message);
-            this.$snackbar.open({
+            this.$buefy.snackbar.open({
               message: "Error al obtener los comentarios",
               type: "is-danger",
               actionText: "Cerrar"
@@ -155,7 +155,7 @@ export default {
           })
           .catch(error => {
             console.error(error.message);
-            this.$snackbar.open({
+            this.$buefy.snackbar.open({
               message: "Error al obtener los comentarios",
               type: "is-danger",
               actionText: "Cerrar"
@@ -174,7 +174,7 @@ export default {
         .validateAll()
         .then(result => {
           if (!result) {
-            this.$snackbar.open({
+            this.$buefy.snackbar.open({
               message: "Error. Verifique los campos.",
               type: "is-danger",
               actionText: "Cerrar"
@@ -187,7 +187,7 @@ export default {
             .post(this.commentUrl, this.payload)
             .then(response => {
               this.response.ok = true;
-              this.$snackbar.open({
+              this.$buefy.snackbar.open({
                 message: "¡Tu comentario ha sido enviado!",
                 type: "is-success",
                 actionText: "Genial!"
@@ -195,7 +195,7 @@ export default {
               this.getComments();
             })
             .catch(error => {
-              this.$snackbar.open({
+              this.$buefy.snackbar.open({
                 message: "Error inesperado. No se pudo enviar el comentario.",
                 type: "is-danger",
                 actionText: "Reintentar"
@@ -204,7 +204,7 @@ export default {
             });
         })
         .catch(error => {
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Error inesperado",
             type: "is-danger",
             actionText: "Cerrar"

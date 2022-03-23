@@ -149,7 +149,7 @@ export default {
       this.showResults = false;
       this.$validator.validateAll().then(result => {
         if (!result) {
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Numero de matricula inválido",
             type: "is-danger",
             actionText: "Ok"
@@ -167,7 +167,7 @@ export default {
             .catch(error => {
               this.isLoading = false;
               console.error(error);
-              this.$snackbar.open({
+              this.$buefy.snackbar.open({
                 message: "Ocurrio un error inesperado. Recargue la página",
                 type: "is-danger",
                 actionText: "Ok"

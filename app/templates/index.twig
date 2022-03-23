@@ -5,16 +5,16 @@
 {% extends 'master.twig' %}
 
 {% block body %}
-    <section class="hero is-primary {{is_state('vote') ? null : 'is-medium'}} indexBg">
+    <section class="hero is-light {{is_state('vote') ? null : 'is-medium'}}">
       <div class="hero-body">
         <div class="container">
           <div class="columns">
             {% if is_state('pre-vote') or is_state('vote') %}
             <div class="column is-8">
-            <img src="{{asset('img/pp-logo-horizontal-white.svg')}}" alt="Volver al inicio" class="image logo-pp">
+            <img src="{{asset('img/logo-pp-2022.svg')}}" width="200" alt="Volver al inicio" class="image mb-6">
             {% else %}  
             <div class="column has-text-centered">
-            <img src="{{asset('img/pp-logo-horizontal-white.svg')}}" alt="Volver al inicio" class="image is-centered logo-pp">
+            <img src="{{asset('img/logo-pp-2022.svg')}}" width="200" alt="Volver al inicio" class="image is-centered mb-6">
             {% endif %}
             {% include 'sl/pages/index/hero/message.twig' %}
             {% if options()['show-admin-notification'] == 'true' %}
@@ -48,29 +48,7 @@
         </div>
       </div>
     </section>
-  
-    <div class="hero is-primary has-image-background" style="background-image: url({{asset('img/whatsapp-bg.jpg')}})">
-      <div class="hero-body">
-        <div class="container has-text-centered">
-          <h1 class="title is-3">
-            <i class="fab fa-whatsapp fa-2x"></i><br>
-            {% if is_state('upload-proposals') %}
-            Si necesitas ayuda para subir tu proyecto,
-            {% elseif is_state('vote') %}
-            Si querés votar y necesitás ayuda,
-            {% else %}
-            ¡Estamos para ayudarte!
-            {% endif %}
-            <br>¡Envianos un whatsapp!
-          </h1>
-          <p class="is-size-5 is-300">¡Te acompañamos y asesoramos en todo lo que necesites, mandanos un mensaje a nuestro WhatsApp de Presupuesto Participativo!</p>
-          <br>
-          <a href="https://wa.me/5493476418681" class="button is-white is-medium is-size-3-desktop is-size-4-tablet is-size-5-mobile is-700">
-            <i class="fab fa-whatsapp has-text-success"></i>&nbsp;+54 9 3476 418-681</a>
-        </div>
-      </div>
-    </div>
-
+  {% include 'sl/pages/index/tenyears.twig' %}
   {% if is_state('pre-upload-proposals') %}
     {% include 'sl/pages/index/states/pre-upload-proposals.twig'%}
   {% elseif is_state('upload-proposals') %}
@@ -84,9 +62,10 @@
   {% elseif is_state('results') %}
     {% include 'sl/pages/index/states/results.twig'%}
   {% endif %}
-  {% include 'sl/pages/index/coronavirus.twig' %}
+  {% include 'sl/pages/index/whatsapp.twig' %}
+  {# {% include 'sl/pages/index/coronavirus.twig' %} #}
   {# {% include 'sl/pages/index/resultsppjoven.twig' %} #}
-  {% include 'sl/base/collab.twig' %}
+  {# {% include 'sl/base/collab.twig' %} #}
 {% endblock %}
 
 {% block javascripts %}{% endblock %}

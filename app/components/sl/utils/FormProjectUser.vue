@@ -502,20 +502,18 @@
       <b-table 
         :data="project.budget"
         bordered>
-       <template slot-scope="props">
-         <b-table-column label="Descripción" >
+         <b-table-column  v-slot="props" label="Descripción" >
             {{ props.row.description }}
           </b-table-column>
-         <b-table-column label="Monto" width="100" centered>
+         <b-table-column  v-slot="props" label="Monto" width="100" centered>
             $ {{ props.row.amount }}
           </b-table-column>
-         <b-table-column label="Quitar" width="40" centered v-if="editable">
+         <b-table-column  v-slot="props" label="Quitar" width="40" centered v-if="editable">
             <a @click="removeItem(props.index)">
               <i class="fas fa-times has-text-danger"></i>
             </a>
           </b-table-column>
-       </template>
-       <template slot="empty">
+       <template #empty>
         <section class="section">
             <div class="content has-text-grey has-text-centered">
                 <p>
@@ -567,7 +565,7 @@ export default {
       .catch(error => {
         this.canComplete = false;
         console.error(error.message);
-        this.$snackbar.open({
+        this.$buefy.snackbar.open({
           message:
             "Error de conexion con el servidor. No pudimos rescatar los distritos. Sin esto no se va a poder completar el formulario. Por favor, volvé a intentarlo más tarde o reintentá volviendo a cargar la pagina.",
           type: "is-danger",
@@ -604,7 +602,7 @@ export default {
                 parseFloat(this.inputItemMonto) + this.montoTotal >
                 hardLimit
               ) {
-                this.$snackbar.open(
+                this.$buefy.snackbar.open(
                   "El item excede el total permitido ($" + hardLimit + ")"
                 );
                 return;
@@ -617,7 +615,7 @@ export default {
               this.inputItemMonto = null;
             }
           } else {
-            this.$snackbar.open(
+            this.$buefy.snackbar.open(
               "El monto debe ser un número sin coma ni punto decimal"
             );
           }

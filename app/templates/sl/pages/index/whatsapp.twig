@@ -1,0 +1,30 @@
+<div class="section has-image-background" style="background-image: url({{asset('img/whatsapp-bg.jpg')}})">
+  <div class="container">
+    <div class="columns is-vcentered ">
+      <div class="column">
+        <div class="is-flex is-flex-direction-row mb-3">
+          <div class="mr-5 has-text-white">
+          <i class="fab fa-whatsapp fa-3x"></i>
+          </div>
+          <div class="">
+          <h1 class="title is-4 has-text-white">
+              {% if is_state('upload-proposals') %}
+              Si necesitas ayuda para subir tu proyecto,
+              {% elseif is_state('vote') %}
+              Si querés votar y necesitás ayuda,
+              {% else %}
+              ¡Estamos para ayudarte!
+              {% endif %}
+              <br>¡Envianos un whatsapp!
+              </h1>
+          </div>
+        </div>
+        <p class="has-text-white">¡Te acompañamos y asesoramos en todo lo que necesites, mandanos un mensaje a nuestro WhatsApp de Presupuesto Participativo!</p>
+      </div>
+      <div class="column has-text-centered has-text-left-mobile">
+      <a href="https://wa.me/5493476418681" class="button is-white is-medium is-size-4 is-700">
+              <i class="fab fa-whatsapp has-text-success"></i>&nbsp;+54 9 3476 418-681</a>
+      </div>
+    </div>
+  </div>
+</div>

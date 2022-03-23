@@ -95,14 +95,7 @@
       <div class="message is-primary">
         <div class="message-body">
           <div class="field has-text-left">
-            <div class="is-clearfix">
-              <label class="label is-pulled-left">¿A que barrio pertenece?</label>
-              <!-- <label class="label is-pulled-right">
-                <a href="#">No lo sé
-                  <i class="far fa-question-circle fa-lg fa-fw"></i>
-                </a>
-              </label>-->
-            </div>
+              <label class="label has-text-centered">¿A que barrio pertenece?</label>
             <div class="control">
               <div class="select is-medium is-fullwidth">
                 <select name="district" v-model="user.neighbourhood_id" v-validate="'required'">
@@ -117,7 +110,6 @@
               <span class="help is-danger" v-show="errors.has('district')">
                 <i class="fas fa-times-circle fa-fw"></i> Debe seleccionar el barrio en donde vive.
               </span>
-              <!-- <span class="help is-italic">¿No recuerda cual es su barrio? Consultelo haciendo clic en "No lo sé", se abrirá una ventana con un mapa para poder informarse</span> -->
             </div>
           </div>
         </div>
@@ -161,7 +153,7 @@
           <button
             @click="submitSignUp"
             :disabled="errors.count() > 0 || repeatPassword == ''"
-            class="button is-large is-primary is-rounded is-fullwidth"
+            class="button is-large is-primary is-fullwidth"
             :class="{'is-loading': isLoading}"
           >
             <i class="fas fa-user-plus"></i>&nbsp;&nbsp;Crear cuenta
@@ -175,7 +167,7 @@
           <i class="fas fa-check fa-lg fa-fw"></i>
           ¡Tu cuenta ha sido creada correctamente y ya podés comenzar a participar del Presupuesto Participativo de San Lorenzo!
         </div>
-        <a :href="logInUrl" class="button is-primary is-rounded is-medium is-fullwidth">
+        <a :href="logInUrl" class="button is-primary is-medium is-fullwidth">
           <i class="fas fa-sign-in-alt fa-lg fa-fw"></i>&nbsp;Iniciar sesión
         </a>
       </div>
@@ -232,7 +224,7 @@ export default {
         .validateAll()
         .then(result => {
           if (!result) {
-            this.$snackbar.open({
+            this.$buefy.snackbar.open({
               message: "Error. Verifique los campos.",
               type: "is-danger",
               actionText: "Cerrar"
@@ -262,7 +254,7 @@ export default {
               this.response.replied = true;
               this.response.message = error.response.data.message;
               this.response.ok = false;
-              this.$snackbar.open({
+              this.$buefy.snackbar.open({
                 message: "Error inesperado",
                 type: "is-danger",
                 actionText: "Cerrar"
@@ -271,7 +263,7 @@ export default {
             });
         })
         .catch(error => {
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Error inesperado",
             type: "is-danger",
             actionText: "Cerrar"

@@ -57,14 +57,14 @@ export default {
           this.counter = this.counter + 1
         })
         .catch(error => {
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Error inesperado. No se pudo guardar tu aplauso.",
             type: "is-danger",
             actionText: "Reintentar"
           });
           this.sendingComment = false;
         });
-      this.$snackbar.open({
+      this.$buefy.snackbar.open({
         message: "¡Aplauso enviado!",
         type: "is-warning",
         actionText: "Genial!"
@@ -82,14 +82,14 @@ export default {
       this.vote = false;
       this.lockLike = true;
       this.counter = this.counter - 1;
-      this.$snackbar.open({
+      this.$buefy.snackbar.open({
         message: "Me gusta eliminado",
         type: "is-warning",
         actionText: "Genial!"
       });
     },
     cooldown: function() {
-      this.$snackbar.open({
+      this.$buefy.snackbar.open({
         message:
           "¡Despacio! Vas a poder volver a hacerlo cuando recargues la página.",
         type: "is-warning",

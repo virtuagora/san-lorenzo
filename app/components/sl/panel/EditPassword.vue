@@ -92,7 +92,7 @@ export default {
         .validateAll()
         .then(result => {
           if (!result) {
-            this.$snackbar.open({
+            this.$buefy.snackbar.open({
               message: "Error. Verifique los campos.",
               type: "is-danger",
               actionText: "Cerrar"
@@ -107,7 +107,7 @@ export default {
               repeat: this.repeat
             })
             .then(response => {
-              this.$snackbar.open({
+              this.$buefy.snackbar.open({
                 message: "Se cambio la contraseña correctamente",
                 type: "is-success",
                 actionText: "OK"
@@ -121,7 +121,7 @@ export default {
               this.isLoading = false;
               // this.response.replied = true;
               // this.response.ok = false;
-              this.$snackbar.open({
+              this.$buefy.snackbar.open({
                 message: "Ocurrio un error: " + error.message,
                 type: "is-danger",
                 actionText: "Cerrar"
@@ -130,7 +130,7 @@ export default {
             });
         })
         .catch(error => {
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Error inesperado",
             type: "is-danger",
             actionText: "Cerrar"

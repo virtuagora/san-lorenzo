@@ -142,7 +142,7 @@ export default {
       this.response.ok = false;
       this.$validator.validateAll().then(result => {
         if (!result) {
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Numero de matricula inválido",
             type: "is-danger",
             actionText: "Ok"
@@ -160,7 +160,7 @@ export default {
             .catch(error => {
               this.isLoading = false;
               console.error(error);
-              this.$snackbar.open({
+              this.$buefy.snackbar.open({
                 message: "Ocurrio un error inesperado. Recargue la página",
                 type: "is-danger",
                 actionText: "Ok"
@@ -183,7 +183,7 @@ export default {
       this.$http
         .post(this.urlParticipacion, this.payload)
         .then(response => {
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "¡Participación guardada!",
             type: "is-success",
             actionText: "¡Genial!"
@@ -197,7 +197,7 @@ export default {
           console.error(error.message);
           this.loadingMarking = false;
           this.response.ok = false;
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Error inesperado",
             type: "is-danger",
             actionText: "Cerrar",

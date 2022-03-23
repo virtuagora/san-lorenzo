@@ -65,7 +65,7 @@ export default {
         })
         .catch(x => {
           this.isLoading = false;
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Error inesperado",
             type: "is-danger",
             actionText: "Cerrar"

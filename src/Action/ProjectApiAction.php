@@ -197,20 +197,20 @@ class ProjectApiAction extends ContainerClient
                     'columns' => [
                         [
                             'alignment' => 'left',
-                            'image' => 'data:image/png;base64,'.$data_logo_pp,
-                            'fit' => [100,100]
+                            'image' => 'data:image/png;base64,'.$data_logo_sl,
+                            'fit' => [110,110]
                         ],
                         [
                             'alignment' => 'center',
-                            'image' => 'data:image/png;base64,'.$data_logo_sl,
-                            'fit' => [100,100]
+                            'image' => 'data:image/png;base64,'.$data_logo_pp,
+                            'fit' => [40,40]
                         ],
                         [
                             'alignment' => 'right',
                             'qr' => $this->helper->pathFor('showProject', true, ['pro' => $project->id], []),
                             'fit' => 70
-                            ]
-                        ],
+                        ]
+                    ],
                 ],
                 [
                     'text' => 'Fecha impresión: ' . Carbon::parse(null),

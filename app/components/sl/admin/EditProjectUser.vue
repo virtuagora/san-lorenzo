@@ -109,7 +109,7 @@ export default {
         })
         .then(response => {
           this.assigned = true
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Usuario vinculado al proyecto",
             type: "is-success",
             actionText: "¡Genial!"
@@ -119,7 +119,7 @@ export default {
         .catch(error => {
           console.error(error.message);
           this.isLoading = false;
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Error inesperado",
             type: "is-danger",
             actionText: "Cerrar",
@@ -137,7 +137,7 @@ export default {
           this.foundUser = false
           this.projectCopy.author = null
           this.getUser(this.projectCopy.author_dni)
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Usuario desvinculado del proyecto",
             type: "is-success",
             actionText: "¡Genial!"
@@ -147,7 +147,7 @@ export default {
         .catch(error => {
           console.error(error.message);
           this.isLoading = false;
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             message: "Error inesperado",
             type: "is-danger",
             actionText: "Cerrar",

@@ -79,7 +79,7 @@ export default {
       .catch(error => {
         console.error(error.message);
         this.isLoading = false;
-        this.$snackbar.open({
+        this.$buefy.snackbar.open({
           message:
             "Error inesperado",
           type: "is-danger",
@@ -97,7 +97,7 @@ export default {
       })
       .catch(error => {
         console.error(error.message);
-        this.$snackbar.open({
+        this.$buefy.snackbar.open({
           message:
             "Error inesperado",
           type: "is-danger",
@@ -112,7 +112,7 @@ export default {
       })
       .catch(error => {
         console.error(error.message);
-        this.$snackbar.open({
+        this.$buefy.snackbar.open({
           message:
             "Error inesperado",
           type: "is-danger",

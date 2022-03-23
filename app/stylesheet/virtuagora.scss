@@ -1,5 +1,7 @@
 // Add the variables
-@import url('https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700');
+// @import url('https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700,800,300i,400i,500i,600i,700i,800i&display=swap');
+
 @import 'variables';
 // Add bulma
 @import "~bulma";
@@ -11,6 +13,4 @@
 @import 'helpers';
 // Then add the other extensions
 @import "core";
-@import "login";
-// @import "ingenia2018";
 @import "sl";
