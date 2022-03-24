@@ -137,7 +137,9 @@ class UserResource extends Resource
             ->whereHas('subject.roles', function ($qry) {
                 $qry->whereIn('role_id', ['user']);
             })
-            ->whereDoesntHave('subject.roles', function ($qry) use ($excluded) {
+            // $excluded is not defined, was giving troubles.
+            // ->whereDoesntHave('subject.roles', function ($qry) use ($excluded) {
+            ->whereDoesntHave('subject.roles', function ($qry) {
                 $qry->whereIn('role_id', ['admin']);
             });
         if (isset($options['email'])) {
@@ -359,6 +361,35 @@ class UserResource extends Resource
             ->firstOrFail();
         // $roles = array_merge(['user'], [$data['role']]);
         $user->subject->roles()->syncWithoutDetaching($data['role']);
+        return true;
+    }
+
+    public function removeRoles($subject, $data)
+    {
+        $schema = [
+            'type' => 'object',
+            'properties' => [
+                'user_email' => [
+                    'type' => 'string',
+                    'format' => 'email',
+                ],
+                'role' => [
+                    'type' => 'string',
+                    'enum' => ['admin'],
+                ],
+            ],
+            'required' => [
+                'role', 'user_email',
+            ],
+            'additionalProperties' => false,
+        ];
+        $v = $this->validation->fromSchema($schema);
+        $v->assert($this->validation->prepareData($schema['properties'], $data));
+        $user = $this->db->query('App:User')
+            ->where('email', $data['user_email'])
+            ->firstOrFail();
+        // Remove role
+        $user->subject->roles()->detach($data['role']);
         return true;
     }
 

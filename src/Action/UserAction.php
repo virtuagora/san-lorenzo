@@ -384,6 +384,18 @@ class UserAction
             'status' => 200,
         ]);
     }
+    public function runRemoveAdmin($request, $response, $params)
+    {
+        $subject = $request->getAttribute('subject');
+        if (!$this->authorization->checkPermission($subject, 'admin')) {
+            throw new UnauthorizedException();
+        }
+        $this->userResource->removeRoles($subject, $request->getParsedBody());
+        return $this->representation->returnMessage($request, $response, [
+            'message' => 'El rol de admin ha sido quitado del usuario',
+            'status' => 200,
+        ]);
+    }
 
     public function runResendPending($request, $response, $params)
     {

@@ -84,6 +84,7 @@ $app->group('/api', function () {
         $this->get('/pending-voters', 'userAction:getPendingVoters')->setName('getPendingVoters');
         $this->post('/pending-voters/send', 'userAction:runSendPendingVoter')->setName('runSendPendingVoter');
         $this->post('/administradores/nuevo', 'userAction:runNewAdmin')->setName('runNewAdmin');
+        $this->delete('/administradores/quitar', 'userAction:runRemoveAdmin')->setName('runRemoveAdmin');
         $this->get('/candidatos', 'userAction:getCandidatos')->setName('getCandidatos');
         $this->post('/option/{opt}', 'adminAction:postOption');
         $this->get('/ballots/offline', 'ballotAction:retrieveOfflineBallots')->setName('getOfflineBallots');
@@ -135,7 +136,7 @@ $app->group('/admin', function () {
         $this->get('', 'adminAction:showCitizens')->setName('showAdminCitizens');
         $this->get('/nuevo', 'adminAction:showAddCitizen')->setName('showAddCitizen');
     });
-        $this->get('/escrutinio', 'adminAction:showEscrutinio')->setName('showEscrutinio');
+    $this->get('/escrutinio', 'adminAction:showEscrutinio')->setName('showEscrutinio');
     $this->post('/escrutinio/run', 'ballotAction:runScrutiny')->setName('runScrutiny');
     $this->get('/estadisticas', 'adminAction:showStats')->setName('showAdminStats');
     $this->get('/roles', 'adminAction:showRoles')->setName('showRoles');
