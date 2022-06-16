@@ -406,6 +406,10 @@ class ProjectApiAction extends ContainerClient
                '$ ' . number_format($item['amount'],2,',','.')
             ]);
         }
+        array_push($presupuesto['table']['body'], [
+            'Monto total del presupuesto',
+            '$ ' . number_format($project->budget_total,2,',','.')
+        ]);
         array_push($dd['content'],$presupuesto);
 
         $styles = [
