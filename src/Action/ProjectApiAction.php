@@ -145,6 +145,7 @@ class ProjectApiAction extends ContainerClient
         if (!$this->authorization->checkPermission($subject, 'manageProject', $project)) {
             throw new UnauthorizedException();
         }
+        $data = $request->getParsedBody();
         $this->resources['project']->updateSelected($subject, $project, $data);
         return $this->representation->returnMessage($request, $response, [
             'message' => 'Selección del proyecto actualizada exitosamente',
@@ -337,15 +338,15 @@ class ProjectApiAction extends ContainerClient
         ];
         $appState = $this->options->getOption('current-state')->value;
         if(($appState == 'pre-vote' || $appState == 'vote' || $appState == 'pre-results') && $project->feasible){
-            array_push($auxFactibilidad['table']['body'],["El proyecto ES FACTIBLE para participar de la votación del Presupuesto del año {$proyect->edition}"]);
+            array_push($auxFactibilidad['table']['body'],["El proyecto ES FACTIBLE para participar de la votación del Presupuesto del año {$project->edition}"]);
         } elseif (($appState == 'pre-vote' || $appState == 'vote' || $appState == 'pre-results') && !$project->feasible) {
-            array_push($auxFactibilidad['table']['body'],["El proyecto NO ES FACTIBLE para participar de la votación del Presupuesto del año {$proyect->edition}"]);
+            array_push($auxFactibilidad['table']['body'],["El proyecto NO ES FACTIBLE para participar de la votación del Presupuesto del año {$project->edition}"]);
         } elseif ($appState == 'results' && !$project->feasible) {
-            array_push($auxFactibilidad['table']['body'],["El proyecto NO FUE FACTIBLE para participar de la votación del Presupuesto del año {$proyect->edition}"]);
+            array_push($auxFactibilidad['table']['body'],["El proyecto NO FUE FACTIBLE para participar de la votación del Presupuesto del año {$project->edition}"]);
         } elseif ($appState == 'results' && $project->feasible && $project->selected == false) {
-            array_push($auxFactibilidad['table']['body'],["El proyecto FUE FACTIBLE Y PARTICIPÓ de la votación del Presupuesto del año {$proyect->edition}"]);
+            array_push($auxFactibilidad['table']['body'],["El proyecto FUE FACTIBLE Y PARTICIPÓ de la votación del Presupuesto del año {$project->edition}"]);
         } elseif ($appState == 'results' && $project->feasible && $project->selected == true) {
-            array_push($auxFactibilidad['table']['body'],["El proyecto FUE FACTIBLE Y FUE SELECCIONADO por el voto de los ciudadanos en el presupuesto participativo del año {$proyect->edition}"]);
+            array_push($auxFactibilidad['table']['body'],["El proyecto FUE FACTIBLE Y FUE SELECCIONADO por el voto de los ciudadanos en el presupuesto participativo del año {$project->edition}"]);
         } else {
             array_push($auxFactibilidad['table']['body'],['Pendiente de revisión']);
         }

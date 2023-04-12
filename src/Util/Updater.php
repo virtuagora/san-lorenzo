@@ -4,6 +4,7 @@ namespace App\Util;
 
 class Updater
 {
+    // Update for Version 02 - 2023-03-28
     protected $db;
     protected $schema;
     
@@ -15,45 +16,18 @@ class Updater
 
     public function up()
     {
-        $this->schema->table('citizens', function($t) {
-            $t->dropColumn('voted_at');
-            $t->boolean('voted')->default(false);
+        $this->schema->table('projects', function($t) {
+            // add edition column - INT 11 and required
+            $t->integer('edition')->nullable();
+            // add column monitoringStatus VARCHAR 255
+            $t->string('monitoringStatus', 255)->nullable();
+            // add column monitoringComment TEXT
+            $t->text('monitoringComment')->nullable();
+            // add column monitoringJournal TEXT
+            $t->text('monitoringJournal')->nullable();
+
         });
 
-        $this->schema->dropIfExists('online_ballots');
-        $this->schema->dropIfExists('online_votes');
         
-        $this->schema->create('online_ballots', function ($t) {
-            $t->engine = 'InnoDB';
-            $t->increments('id');
-            $t->string('code', 10)->nullable();
-            $t->timestamp('created_at');
-            $t->boolean('sent')->nullable(); // false -> invalid
-        });
-        $this->schema->create('online_votes', function ($t) {
-            $t->engine = 'InnoDB';
-            $t->increments('id');
-            $t->string('hash');
-            $t->integer('project_id')->unsigned();
-            $t->foreign('project_id')->references('id')->on('projects');
-        });
-
-        $this->schema->create('statistical_ballots', function ($t) {
-            $t->engine = 'InnoDB';
-            $t->increments('id');
-            $t->string('type'); // user, link, tablet, paper
-            $t->string('gender')->nullable;
-            $t->integer('age')->nullable();
-            $t->timestamps();
-        });
-        $this->schema->create('audit_trails', function ($t) {
-            $t->engine = 'InnoDB';
-            $t->increments('id');
-            $t->string('file_name');
-            $t->string('state');
-            $t->string('description');
-            $t->text('extra')->nullable();
-            $t->timestamps();
-        });
     }
 }

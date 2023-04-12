@@ -46,8 +46,43 @@ class MiscAction extends ContainerClient
 
     public function getDistricts($request, $response, $params)
     {
-        $regs = $this->db->query('App:District')->get();
-        return $response->withJSON($regs->toArray());
+        // the query parameter "with" is optional or it could be a string that can be "neighbourhoods" 
+        $withParam = $request->getQueryParams('with', null);
+        // $paramsSchema = [
+        //     'with' => [
+        //         'type' => 'string',
+        //         'optional' => true,
+        //         'enum' => ['neighbourhoods'],
+        //     ],
+        // ];
+        $schema = [
+			'type' => 'array',
+			'properties' => [
+				'with' => [
+					'type' => 'string',
+					'enum' => ['neighbourhoods'],
+				]
+			],
+			'additionalProperties' => false,
+		];
+        $v = $this->validation->fromSchema($schema);
+        $v->assert($withParam);
+        
+        // get the query parameter "with"
+        if(isset($withParam['with'])) {
+            $with = $withParam['with'];
+        } else {
+            $with = null;
+        }
+        //var_dump($with);
+
+        if($with == 'neighbourhoods') {
+            $districts = $this->db->query('App:District', ['neighbourhoods'])->get();
+        } else {
+            $districts = $this->db->query('App:District')->get();
+        }
+        
+        return $response->withJSON($districts->toArray());
     }
 
     public function getLoggedPing($request, $response, $params)

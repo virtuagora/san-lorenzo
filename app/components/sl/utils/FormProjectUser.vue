@@ -311,6 +311,20 @@
         </span>
       </div>
     </div>
+    <div class="message is-info">
+      <div class="message-body">
+        <i class="fas fa-info-circle fa-fw"></i>
+        &nbsp;Barrios por distrito:
+        <ul>
+          <li v-for="district in districts">
+            <strong>Distrito {{district.name}}:</strong>
+            <span v-for="(neighbourhood, index) in district.neighbourhoods">
+              {{neighbourhood.name}}{{ index < district.neighbourhoods.length - 1 ? ' / ' : '.' }}
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
     <div class="field">
       <h1 class="title is-4" :class="{'has-text-danger': errors.has('project.name')}">
         <i class="fas fa-caret-right"></i>&nbsp;Nombre de la propuesta
@@ -557,7 +571,7 @@ export default {
   mounted: function() {
     this.districtsLoading = true;
     this.$http
-      .get("/api/distritos")
+      .get("/api/distritos?with=neighbourhoods")
       .then(response => {
         this.districts = response.data;
         this.districtsLoading = false;

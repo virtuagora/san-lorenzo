@@ -362,8 +362,7 @@ class ProjectResource extends ContainerClient
 		return $watchedFields = [
 			'edition',
 			'benefited_population', 'budget', 'community_contributions',
-			'description', 'name', 'objective', 'type', 'monitoringStatus',
-			'monitoringComment'
+			'description', 'name', 'objective', 'type'
 		];
 	}
 

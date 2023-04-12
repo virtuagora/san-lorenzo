@@ -70,6 +70,7 @@ class Project extends Model
         'organization_nro_personeria',
         'monitoringStatus',
         'monitoringComment',
+        'monitoringJournal',
         'district_id',
     ];
     protected $with = [];

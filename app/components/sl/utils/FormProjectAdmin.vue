@@ -293,19 +293,33 @@
             v-validate="'required'"
             v-model="project.district_id"
             placeholder="Seleccione el distrito"
-          >
+            >
             <option :value="null" disabled>- Selecciona el distrito -</option>
             <option
-              v-for="district in districts"
-              :key="district.id"
-              :value="district.id"
-            >{{district.name}}</option>
+            v-for="district in districts"
+            :key="district.id"
+            :value="district.id"
+            >Distrito {{district.name}}</option>
           </select>
         </div>
         <span v-show="errors.has('project.district_id')" class="help is-danger">
           <i class="fas fa-times-circle fa-fw"></i>
           &nbsp;{{errors.first('project.district_id')}}
         </span>
+      </div>
+    </div>
+    <div class="message is-info">
+      <div class="message-body">
+        <i class="fas fa-info-circle fa-fw"></i>
+        &nbsp;Barrios por distrito:
+        <ul>
+          <li v-for="district in districts">
+            <strong>Distrito {{district.name}}:</strong>
+            <span v-for="(neighbourhood, index) in district.neighbourhoods">
+              {{neighbourhood.name}}{{ index < district.neighbourhoods.length - 1 ? ' / ' : '.' }}
+            </span>
+          </li>
+        </ul>
       </div>
     </div>
     <div class="field">
@@ -535,6 +549,7 @@ export default {
     return {
       districtsLoading: false,
       districts: [],
+      neighborhoods: [],
       inputItemDescripcion: null,
       inputItemMonto: null,
       canComplete: true
@@ -549,7 +564,7 @@ export default {
   mounted: function() {
     this.districtsLoading = true;
     this.$http
-      .get("/api/distritos")
+      .get("/api/distritos?with=neighbourhoods")
       .then(response => {
         this.districts = response.data;
         this.districtsLoading = false;
