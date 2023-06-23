@@ -1,6 +1,36 @@
 <template>
 <section>
-  <b-table :data="projects">
+  <div class="box">
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <label for="" class="label">Filtrar por tipo</label>
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select v-model="selectedType">
+                <option :value="null">- Todos los tipos - </option>
+                <option v-for="(type) in availableTypes" :key="`filter-${type}`" :value="type"> {{capitalizeFirstLetter(type)}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <label for="" class="label">Filtrar por distrito</label>
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select v-model="selectedDistrict">
+                <option :value="null">- Todos los distritos -</option>
+                <option v-for="(district) in availableDistricts" :key="`filter-district-${district}`" :value="district"> {{district}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <b-table :data="filteredProjects">
       <b-table-column v-slot="props" field="id" label="ID" width="40" numeric sortable>
       {{ props.row.id }}
       </b-table-column>
@@ -63,8 +93,20 @@ export default {
   data() {
     return {
         listing: this.projects,
+        selectedType: null,
+        availableTypes: [],
+        selectedDistrict: null,
+        availableDistricts: [],
+        filteredProjects: []
         // search: ''
     };
+  },
+  mounted: function(){
+    this.filteredProjects = this.projects;
+    // get available types from projects
+    this.availableTypes = [...new Set(this.projects.map(item => item.type))];
+    // get available districts from projects
+    this.availableDistricts = [...new Set(this.projects.map(item => item.district.name))];
   },
   methods: {
     // filterRows: debounce(function(){
@@ -106,6 +148,19 @@ export default {
     // },
     capitalizeFirstLetter: function(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
+    },
+    filterRows: function(){
+      let resultList = this.projects;
+      // first, filter by type if selectedType is not null
+      if(this.selectedType !== null){
+        resultList = resultList.filter(item => item.type === this.selectedType);
+      }
+      // second, filter by district if selectedDistrict is not null
+      if(this.selectedDistrict !== null){
+        resultList = resultList.filter(item => item.district.name === this.selectedDistrict);
+      }
+      this.filteredProjects = resultList;
+
     }
   },
   computed: {
@@ -120,6 +175,12 @@ export default {
     // },
   },
   watch: {
+    selectedType: function (newVal, oldVal) {
+      this.filterRows();
+    },
+    selectedDistrict: function (newVal, oldVal) {
+      this.filterRows();
+    },
     // search: function(newVal, oldVal){
     //   if(this.search.length > 0){
     //     this.filterRows();
