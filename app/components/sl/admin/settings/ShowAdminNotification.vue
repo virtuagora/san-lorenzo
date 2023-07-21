@@ -25,7 +25,7 @@ export default {
     submit: function() {
       this.isLoading = true;
       this.$http
-        .post("/api/admin/option/vote-available", this.payload)
+        .post("/api/admin/option/show-admin-notification", this.payload)
         .then(response => {
           window.location.href = "/logout";
         })

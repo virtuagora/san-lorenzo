@@ -39,7 +39,7 @@ export default {
         } else {
           this.isLoading = true;
           this.$http
-            .post("/api/admin/option/rain", this.payload)
+            .post("/api/admin/option/admin-message", this.payload)
             .then(response => {
               window.location.href = "/logout";
             })
