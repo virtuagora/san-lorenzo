@@ -17,7 +17,7 @@
             <img src="{{asset('img/logo-pp-2022.svg')}}" width="200" alt="Volver al inicio" class="image is-centered mb-6">
             {% endif %}
             {% include 'sl/pages/index/hero/message.twig' %}
-            {% if options()['show-admin-notification'] == 'true' %}
+            {% if options()['show-admin-notification'] %}
               <div class="message is-info">
                 <div class="message-body">
                 <i class="fas fa-exclamation-circle"></i>&nbsp;{{options()['admin-message']}}
