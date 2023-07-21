@@ -75,7 +75,7 @@
      <h1 class="title is-4">
       <i class="fas fa-arrow-right fa-fw"></i> Habilitar/Deshabilitar mensaje de admin</h1>
     <h2 class="subtitle is-6">
-      Active esta opcion para mostrar u ocultar el menú de "Votar" y el modulo de votación, aun si la votación se encuentra dentro de la fecha configurada. 
+      Active esta opcion para mostrar u ocultar el mensaje de admin a los usuarios 
       <i class="fas fa-exclamation-triangle fa-fw"></i> Nota: Al modificar este dato, tu sesión se cerrará, tendras que volver a loguearte.
     </h2>
     <show-admin-notification :value="theSettings['show-admin-notification'].value"></show-admin-notification>

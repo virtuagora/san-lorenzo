@@ -3,11 +3,11 @@
     <div class="field has-addons">
       <div class="control">
     <a class="button is-static is-medium">
-      <i class="fas fa-umbrella"></i>
+      <i class="fas fa-comment"></i>
     </a>
   </div>
       <div class="control is-expanded">
-        <input type="text" v-model="message" class="input is-medium" data-vv-name="mensajeLluvia" data-vv-as="'Mensaje lluvia'" v-validate="'required'" placeholder="Ingrese un mensaje en caso de lluvia">
+        <input type="text" v-model="message" class="input is-medium" data-vv-name="mensajeAdmin" data-vv-as="'Mensaje Admin'" v-validate="'required'" placeholder="Ingrese un mensaje de aviso">
       </div>
     </div>
     <div class="is-clearfix">
@@ -32,7 +32,7 @@ export default {
       this.$validator.validateAll().then(result => {
         if (!result) {
           this.$buefy.snackbar.open({
-            message: "No puede dejar el mensaje en caso de lluvia vacio!",
+            message: "No puede dejar el mensaje vacio!",
             type: "is-danger",
             actionText: "Ok"
           });
