@@ -72,6 +72,21 @@
     </h2>
     <vote-available :value="theSettings['vote-available'].value"></vote-available>
     <hr>
+     <h1 class="title is-4">
+      <i class="fas fa-arrow-right fa-fw"></i> Habilitar/Deshabilitar mensaje de admin</h1>
+    <h2 class="subtitle is-6">
+      Active esta opcion para mostrar u ocultar el menú de "Votar" y el modulo de votación, aun si la votación se encuentra dentro de la fecha configurada. 
+      <i class="fas fa-exclamation-triangle fa-fw"></i> Nota: Al modificar este dato, tu sesión se cerrará, tendras que volver a loguearte.
+    </h2>
+    <show-admin-notification :value="theSettings['show-admin-notification'].value"></show-admin-notification>
+    <hr>
+    <h1 class="title is-4">
+      <i class="fas fa-arrow-right fa-fw"></i> Mensaje de admin</h1>
+    <h2 class="subtitle is-6">
+      Mensaje que aparecerá en el home para dar avisos a los usuarios.
+      <i class="fas fa-exclamation-triangle fa-fw"></i> Nota: Al modificar este dato, tu sesión se cerrará, tendras que volver a loguearte.
+    </h2>
+    <admin-message :value="theSettings['admin-message'].value"></admin-message>
      <!-- <h1 class="title is-4">
       <i class="fas fa-arrow-right fa-fw"></i> Mostrar los resultados</h1>
     <h2 class="subtitle is-6">
@@ -80,6 +95,7 @@
     </h2>
     <show-results :value="theSettings['show-results'].value"></show-results>
     <hr> -->
+    
     <h1 class="title is-4">
       <i class="fas fa-arrow-right fa-fw"></i> Limite de presupuesto p/ proyectos comunitarios</h1>
     <h2 class="subtitle is-6">
@@ -129,6 +145,8 @@ import BudgetInstitucionalLimit from "./settings/BudgetInstitucionalLimit";
 import Calendar from "./settings/Calendar";
 import RefreshCache from "./settings/RefreshCache";
 import Rain from "./settings/Rain";
+import AdminMessage from "./settings/AdminMessage";
+import ShowAdminNotification from "./settings/ShowAdminNotification";
 
 export default {
   props: ["settings"],
@@ -146,7 +164,9 @@ export default {
     BudgetInstitucionalLimit,
     Calendar,
     RefreshCache,
-    Rain
+    Rain,
+    AdminMessage,
+    ShowAdminNotification
   },
   data() {
     return {};
