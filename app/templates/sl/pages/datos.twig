@@ -38,6 +38,7 @@
             <th>2021</th>
             <th>2022</th>
             <th>2023</th>
+            <th>2024</th>
           </tr>
         </thead>
         <tbody>
@@ -54,6 +55,7 @@
             <td>$7.200.000</td>
             <td>$10.080.000</td>
             <td>$20.160.000</td>
+            <td>$59.400.000</td>
           </tr>
           <tr>
             <th>Propuestas Presentadas</th>
@@ -68,6 +70,7 @@
             <td>113</td>
             <td>81</td>
             <td>97</td>
+            <td>88</td>
           </tr>
           <tr>
             <th>Proyectos Factibles</th>
@@ -82,6 +85,7 @@
             <td>86</td>
             <td>62</td>
             <td>83</td>
+            <td>75</td>
           </tr>
           <tr>
             <th>Proyectos Ganadores</th>
@@ -96,6 +100,7 @@
             <td>30</td>
             <td>24</td>
             <td>27</td>
+            <td>33</td>
           </tr>
           <tr>
             <th>Cant. de Participantes</th>
@@ -110,6 +115,7 @@
             <td>778</td>
             <td>857</td>
             <td>953</td>
+            <td>675</td>
           </tr>
         </tbody>
       </table>
@@ -118,18 +124,18 @@
         <div class="column is-6">
           <h1 class="title is-3 has-text-centered has-text-primary">Cantidad Histórica de Votantes</h1>
           <div class="subtitle is-5 has-text-centered">(2013-2023)</div>
-          <stat-lines :the-labels="[2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023]" :the-data="[{label:'Votantes',data:[775, 664, 883, 447, 1193, 1625, 1248, 849, 778, 857, 953], borderColor: '#9e2a54',
+          <stat-lines :the-labels="[2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024]" :the-data="[{label:'Votantes',data:[775, 664, 883, 447, 1193, 1625, 1248, 849, 778, 857, 953, 675], borderColor: '#9e2a54',
         backgroundColor: 'rgba(157, 42, 84, 0.25)', pointRadius: 8, pointHoverRadius:10}]" :height="300"></stat-lines>
         </div>
         <div class="column is-6">
           <h1 class="title is-3 has-text-centered has-text-primary">Participación Online Vs. Presencial</h1>
-          <div class="subtitle is-5 has-text-centered">(Año 2018,2019,2020,2021,2022,2023)</div>
+          <div class="subtitle is-5 has-text-centered">(Año 2018,2019,2020,2021,2022,2023,2024)</div>
           <stat-bars 
-            :the-labels="['Votantes 2018','Votantes 2019','Votantes 2020', 'Votantes 2021', 'Votantes 2022','Votantes 2023']"
-            :the-data="[{label:'x/ Web',data:[629, 572, 687,661,468,519],borderWidth:2,borderColor: '#2274a5', backgroundColor: 'rgba(72, 99, 157, 0.25)'},
-            {label:'x/ Boleta',data: [996,57,0,0,0], borderWidth:2,borderColor: '#9e2a54', backgroundColor: 'rgba(157, 42, 84, 0.25)'},
-            {label:'x/ Tablet',data: [0,617,38,39,371,416], borderWidth:2,borderColor: '#f75c03', backgroundColor: 'rgba(247, 92, 2, 0.25)'},
-            {label:'x/ WhatsApp',data: [0,2,124,78,20,18], borderWidth:2,borderColor: '#3bb273', backgroundColor: 'rgba(59,178,115, 0.25)'}]" :height="300"></stat-bars>
+            :the-labels="['Votantes 2018','Votantes 2019','Votantes 2020', 'Votantes 2021', 'Votantes 2022','Votantes 2023','Votantes 2024']"
+            :the-data="[{label:'x/ Web',data:[629, 572, 687,661,468,519,345],borderWidth:2,borderColor: '#2274a5', backgroundColor: 'rgba(72, 99, 157, 0.25)'},
+            {label:'x/ Boleta',data: [996,57,0,0,0,0], borderWidth:2,borderColor: '#9e2a54', backgroundColor: 'rgba(157, 42, 84, 0.25)'},
+            {label:'x/ Tablet',data: [0,617,38,39,371,416,264], borderWidth:2,borderColor: '#f75c03', backgroundColor: 'rgba(247, 92, 2, 0.25)'},
+            {label:'x/ WhatsApp',data: [0,2,124,78,20,18,66], borderWidth:2,borderColor: '#3bb273', backgroundColor: 'rgba(59,178,115, 0.25)'}]" :height="300"></stat-bars>
         </div>
       </div>
       <div class="message is-dark">
@@ -410,30 +416,80 @@
       </nav>
     </div>
   </div>
+  <div class="message is-dark">
+    <div class="message-body">
+      <nav class="level">
+        <div class="level-item">
+          <h1 class="title is-3">Participación 2024</h1>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">
+              <i class="fas fa-laptop"></i>
+              Web</p>
+            <p class="title">345</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">
+              <i class="fas fa-tablet-alt"></i>
+              Tablet</p>
+            <p class="title">264</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">
+              <i class="fab fa-whatsapp"></i>
+              Link</p>
+            <p class="title">66</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">
+              <i class="far fa-envelope"></i>
+              Papel</p>
+            <p class="title">0</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">
+              <i class="fas fa-users"></i>
+              Total</p>
+            <p class="title">675</p>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
       <div class="columns">
         <div class="column is-6">
           <h1 class="title is-3 has-text-centered has-text-primary">Distribución de la Votación por Distrito</h1>
           <div class="subtitle is-5 has-text-centered">(2013-2023)</div>
-          <stat-lines :the-labels="[2013,2014,2015,2016,2018,2019,2020,2021,2022,2023]" :the-data="[{label:'Norte',data:[232,264,204,180,317,292,168,160,168,163], borderColor: '#7768ae',
+          <stat-lines :the-labels="[2013,2014,2015,2016,2018,2019,2020,2021,2022,2023,2024]" :the-data="[{label:'Norte',data:[232,264,204,180,317,292,168,160,168,163,122], borderColor: '#7768ae',
         backgroundColor: 'rgba(157, 42, 84, 0)', pointRadius:6, pointHoverRadius:8},
-        {label:'Centro',data:[246,135,234,63,676,419,333,337,242,243], borderColor: '#3bb273',
+        {label:'Centro',data:[246,135,234,63,676,419,333,337,242,243,177], borderColor: '#3bb273',
         backgroundColor: 'rgba(157, 42, 84, 0)', pointRadius:6, pointHoverRadius:8},
-        {label:'Sur',data:[297,264,435,234,633,573,200,198,116,188], borderColor: '#e1bc29',
+        {label:'Sur',data:[297,264,435,234,633,573,200,198,116,188,128], borderColor: '#e1bc29',
         backgroundColor: 'rgba(157, 42, 84, 0)', pointRadius:6, pointHoverRadius:8}]" :height="300"></stat-lines>
           <p class="is-size-7 is-300 has-text-centered">No se registran datos para 2017</p>
           <p class="is-size-7 is-300 has-text-centered">Nota 2021 - 83 ciudadanos votaron por tablets o links de forma anónima del cual no se tiene información de su Distrito</p>
           <p class="is-size-7 is-300 has-text-centered">Nota 2022 - 331 ciudadanos votaron por tablets o links de forma anónima del cual no se tiene información de su Distrito</p>
           <p class="is-size-7 is-300 has-text-centered">Nota 2023 - 358 ciudadanos votaron por tablets o links de forma anónima del cual no se tiene información de su Distrito</p>
+          <p class="is-size-7 is-300 has-text-centered">Nota 2024 - 256 ciudadanos votaron por tablets o links de forma anónima del cual no se tiene información de su Distrito</p>
         </div>
         <div class="column is-6">
           <h1 class="title is-3 has-text-centered has-text-primary">Cantidad de Proyectos por Dstrito</h1>
           <div class="subtitle is-5 has-text-centered">(2013-2023)</div>
-          <stat-lines :the-labels="[2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023]" :the-data="[
-            {label:'Norte',data:[5,7,7,2,5,10,10,9,10,8,12], borderColor: '#7768ae',
+          <stat-lines :the-labels="[2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024]" :the-data="[
+            {label:'Norte',data:[5,7,7,2,5,10,10,9,10,8,12,9], borderColor: '#7768ae',
         backgroundColor: 'rgba(157, 42, 84, 0)', pointRadius:6, pointHoverRadius:8},
-        {label:'Centro',data:[6,7,10,3,11,9,9,8,9,8,8], borderColor: '#3bb273',
+        {label:'Centro',data:[6,7,10,3,11,9,9,8,9,8,8,10], borderColor: '#3bb273',
         backgroundColor: 'rgba(157, 42, 84, 0)', pointRadius:6, pointHoverRadius:8},
-        {label:'Sur',data:[7,4,4,5,10,8,8,10,11,8,7], borderColor: '#e1bc29',
+        {label:'Sur',data:[7,4,4,5,10,8,8,10,11,8,7,14], borderColor: '#e1bc29',
         backgroundColor: 'rgba(157, 42, 84, 0)', pointRadius:6, pointHoverRadius:8}]" :height="300"></stat-lines>
         </div>
       </div>
@@ -441,22 +497,22 @@
         <div class="column is-6">
           <h1 class="title is-3 has-text-centered has-text-primary">Género en las votaciones</h1>
           <div class="subtitle is-5 has-text-centered">(Años 2013,2016-2023)</div>
-          <stat-bars :the-labels="[2013,2016,2018,2019,2020,2021,2022,2023]" :the-data="[{label:'Masculinos',data:[256,162,546,414,270,228,250,306],borderWidth:2,borderColor: '#48639c',
+          <stat-bars :the-labels="[2013,2016,2018,2019,2020,2021,2022,2023,2024]" :the-data="[{label:'Masculinos',data:[256,162,546,414,270,228,250,306,187],borderWidth:2,borderColor: '#48639c',
         backgroundColor: 'rgba(72, 99, 157, 0.25)'},
-        {label:'Femeninos',data:[519,315,1079,834,579,550,608,647],borderWidth:2,borderColor: '#f7996e',
+        {label:'Femeninos',data:[519,315,1079,834,579,550,608,647,488],borderWidth:2,borderColor: '#f7996e',
         backgroundColor: 'rgba(247, 153, 110, 0.25)'}]" :height="300"></stat-bars>
         </div>
         <div class="column is-6">
           <h1 class="title is-3 has-text-centered has-text-primary">Edad de los votantes a lo largo de los años</h1>
           <div class="subtitle is-5 has-text-centered">(Años 2013,2016-2023)</div>
-          <stat-stacked-bars :the-labels="[2013,2016,2018,2019,2020,2021,2022,2023]" :the-data="[
-          {label:'16 a 25',data:[140,91,252,202,89,70,45,96],borderWidth:2,borderColor: '#2274a5',
+          <stat-stacked-bars :the-labels="[2013,2016,2018,2019,2020,2021,2022,2023,2024]" :the-data="[
+          {label:'16 a 25',data:[140,91,252,202,89,70,45,96,57],borderWidth:2,borderColor: '#2274a5',
             backgroundColor: 'rgba(72, 99, 157, 0.25)'},
-            {label:'26 a 35',data:[209,100,416,294,139,154,116,125],borderWidth:2,borderColor: '#f1c40f',
+            {label:'26 a 35',data:[209,100,416,294,139,154,116,125,108],borderWidth:2,borderColor: '#f1c40f',
             backgroundColor: 'rgba(241, 196, 14, 0.25)'},
-            {label:'36 a 45',data:[124,119,437,322,187,177,125,151],borderWidth:2,borderColor: '#f75c03',
+            {label:'36 a 45',data:[124,119,437,322,187,177,125,151,100],borderWidth:2,borderColor: '#f75c03',
             backgroundColor: 'rgba(247, 92, 2, 0.25)'},
-            {label:'Más de 46',data:[302,167,520,230,221,228,171,149],borderWidth:2,borderColor: '#d90368',
+            {label:'Más de 46',data:[302,167,520,230,221,228,171,149,130],borderWidth:2,borderColor: '#d90368',
             backgroundColor: 'rgba(216, 3, 103, 0.25)'}]" :height="300"></stat-stacked-bars>
           <p class="is-size-7 is-300 has-text-centered"><u>Nota</u><br>Las edades contadas son basadas en usuarios registrados y hay fechas de nacimientos que no han sido cargadas a la hora del registro. De todas formas, este campo de fecha de nacimiento no impacta en la habilitacion de la votación ya que la fecha de nacimiento en el padrón es la que predomina en la validacion de los votantes.</p>
         </div>
@@ -524,10 +580,17 @@ Equipo técnico de la Secretaría de Coordinación General, Municipalidad San Lo
             <div class="content">
           <p class="tag is-white">MD5 Checksum: cf62f22be449e0d8de93ad2a095bf308</p>
             </div>
+            <div class="buttons is-centered">
+              <a href="{{asset('data/pp-sl-2024-escrutinio.csv')}}" class="button is-link" target="_blank">
+                <i class="fas fa-download"></i>&nbsp; Descargar .csv (Proyectos 2024)</a>
+            </div>
+            <div class="content">
+          <p class="tag is-white">MD5 Checksum: 241b7ab38f516a434923a77980659378</p>
+            </div>
         </div>
         <div class="column has-text-centered">
           <h1 class="title is-4">Descargarte los votos</h1>
-            <h1 class="subtitle is-6">Los listado son anónimos</h1>
+            <h1 class="subtitle is-6">Los listados son anónimos</h1>
             <div class="buttons is-centered">
               <a href="{{asset('data/pp-sl-2018-votos-online-presencial.csv')}}" class="button is-link" target="_blank">
                 <i class="fas fa-download"></i>&nbsp; Descargar .csv (ONLINE Y PRESENCIAL 2018)</a>
@@ -569,6 +632,13 @@ Equipo técnico de la Secretaría de Coordinación General, Municipalidad San Lo
             </div>
             <div class="content">
             <p class="tag is-white">MD5 Chechsum: 7c50612f4879dac429275530d0d8b10f</p>
+            </div>
+            <div class="buttons is-centered">
+              <a href="{{asset('data/pp-sl-2024-votos-online-presencial.csv')}}" class="button is-link" target="_blank">
+                <i class="fas fa-download"></i>&nbsp; Descargar .csv (ONLINE Y PRESENCIAL 2024)</a>
+            </div>
+            <div class="content">
+            <p class="tag is-white">MD5 Chechsum: 7dc7c0a0c6ba2f8eec8f65aa2984510e</p>
             </div>
         </div>
       </div>
