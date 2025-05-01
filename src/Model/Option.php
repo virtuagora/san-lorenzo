@@ -22,6 +22,11 @@ class Option extends Model
             case 'string':
                 return (string) $value;
             case 'boolean':
+                if($value === 'true' || $value === '1') {
+                    return true;
+                } elseif($value === 'false' || $value === '0') {
+                    return false;
+                }
                 return (bool) $value;
             case 'object':
             case 'array':
