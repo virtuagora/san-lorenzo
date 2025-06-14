@@ -72,6 +72,7 @@ $app->group('/api', function () {
     $this->post('/proyectos/{pro}/selected', 'projectApiAction:updateSelected')->setName('updateProjectSelected');
     $this->get('/sellos-tiempo', 'auditWebAction:showSellos')->setName('getSellos');
     $this->post('/sellos-tiempo', 'auditWebAction:runSellar')->setName('runSellar');
+    $this->post('/sellos-tiempo-unattended', 'auditWebAction:runSellarUnattended')->setName('runSellarUnattended');
     $this->post('/sellos-tiempo/{aud}', 'auditWebAction:runComprobar')->setName('runComprobarSellos');
     $this->group('/admin', function () {
         $this->get('/ciudadanos', 'adminAction:getCiudadanoPadron')->setName('getCiudadanoPadron');

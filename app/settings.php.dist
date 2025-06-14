@@ -13,6 +13,9 @@ return [
                 'debug' => true,
             ],
         ],
+        'audit' => [
+            'cronjobKey' => 'pleaseSetUpARandomStringoOfAtLeast32Characters',
+        ],
         'swiftmailer' => [
             'transport' => 'null',
             'options' => [
