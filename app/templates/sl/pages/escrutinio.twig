@@ -1,4 +1,4 @@
- {% if options()['last-scrutiny'] is not null %}
+ {% if options()['last-scrutiny'] is not null and is_state('results') %}
     <h1 class="title is-4">Distrito Norte</h1>
     <h1 class="subtitle is-5">Comunitarios</h1>
     <table class="table is-centered is-fullwidth is-hoverable">
@@ -39,6 +39,7 @@
             </td>
           </tr>
         {% endfor %}
+        {}
       </tbody>
     </table>
     <h1 class="title is-4">Distrito Norte</h1>
@@ -254,4 +255,8 @@
         {% endfor %}
       </tbody>
     </table>
+  {% endif %}
+  {% else %}
+    <h1 class="title is-4 has-text-centered">Escrutinio x/ Distrito y Tipo de proyecto</h1>
+    <h1 class="subtitle is-5 has-text-centered">Una vez finalizado el escrutinio y se publiquen los resultados, podrás ver la cantidad de votos por proyecto.</h1>
   {% endif %}
