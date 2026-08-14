@@ -41,6 +41,21 @@ class CitizenResource extends Resource
         return $schema;
     }
 
+    protected function ensureVerifiedRole($subjectId)
+    {
+        $hasVerifiedRole = $this->db->table('subject_role')
+            ->where('subject_id', $subjectId)
+            ->where('role_id', 'verified')
+            ->exists();
+
+        if (!$hasVerifiedRole) {
+            $this->db->table('subject_role')->insert([
+                'subject_id' => $subjectId,
+                'role_id' => 'verified',
+            ]);
+        }
+    }
+
     public function createOne($subject, $data)
     {
         $v = $this->validation->fromSchema($this->retrieveSchema());
@@ -79,10 +94,7 @@ class CitizenResource extends Resource
                 ->first();
             $subject->citizen_id = $citizen->id;
             $subject->save();
-            $this->db->table('subject_role')->insert([
-                'role_id' => 'verified',
-                'subject_id' => $subject->id,
-            ]);
+            $this->ensureVerifiedRole($subject->id);
         }
         // $roles = array_merge(['user'], ['verified']);
 

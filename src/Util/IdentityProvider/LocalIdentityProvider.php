@@ -50,6 +50,21 @@ class LocalIdentityProvider
         return null;
     }
 
+    protected function ensureVerifiedRole($subjectId)
+    {
+        $hasVerifiedRole = $this->db->table('subject_role')
+            ->where('subject_id', $subjectId)
+            ->where('role_id', 'verified')
+            ->exists();
+
+        if (!$hasVerifiedRole) {
+            $this->db->table('subject_role')->insert([
+                'subject_id' => $subjectId,
+                'role_id' => 'verified',
+            ]);
+        }
+    }
+
     public function createPendingUser($data)
     {
         $v = $this->validation->fromSchema([
@@ -121,6 +136,9 @@ class LocalIdentityProvider
         $user->save();
         $pending->delete();
         $subj->roles()->sync($roles);
+        if (isset($citz)) {
+            $this->ensureVerifiedRole($subj->id);
+        }
         return $user;
     }
 }
