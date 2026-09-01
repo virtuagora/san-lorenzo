@@ -37,7 +37,7 @@ $app->get('/agenda', 'pagesAction:showAgenda')->setName('showAgenda');
 $app->get('/consultas', 'pagesAction:showFAQ')->setName('showFAQ');
 $app->get('/seleccionados', 'pagesAction:showSeleccionados')->setName('showSeleccionados');
 $app->get('/datos', 'pagesAction:showDatos')->setName('showDatos');
-$app->get('/sellos', 'pagesAction:showSellos')->setName('showSellos');
+// $app->get('/sellos', 'pagesAction:showSellos')->setName('showSellos');
 $app->get('/resultados-ppjoven', 'pagesAction:showResultsPPJoven')->setName('showResultsPPJoven');
 
 $app->get('/sellos/{aud}/recibo', 'auditWebAction:downloadRecibo')->setName('showReciboSello');
